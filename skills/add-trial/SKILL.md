@@ -69,12 +69,21 @@ contrast to the concise properties above:
 
 # Results {color="yellow_bg"}
 ---
-## Primary endpoints {color="red_bg"}
+## Key Efficacy Results {color="red_bg"}
 ---
+**Always include this table — it is required for every trial entry.**
+Rows cover all reported efficacy endpoints (PFS, OS, ORR, DOR, CBR, etc.;
+omit a row only if the trial genuinely did not report that endpoint).
+Use "—" for unreported/immature data, not an empty cell.
+
 <table header-row="true" header-column="true">
-  rows: Endpoint | Study group | Control group | HR (95% CI; p value)
+  rows: Endpoint | Study group | Control group | HR or OR (95% CI; p value)
+  example rows: PFS (median, mo) | 16.9 | 9.3 | 0.63 (0.52–0.77); P<0.001
+                OS (median, mo)  | 46.0 | 37.3 | 0.81 (0.65–1.00); P=0.048
+                ORR (%)          | 42.1 | 34.7 | —
+                CBR (%)          | 68.1 | 40.5 | —
 </table>
-(optional <columns> with OS / PFS sub-sections for figures/notes)
+(optional <columns> with OS / PFS sub-sections for Kaplan-Meier figures/notes)
 ### Safety {color="yellow_bg"}
 ---
 - Key safety findings, grade >=3 AEs, discontinuation rates
