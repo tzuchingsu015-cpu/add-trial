@@ -72,18 +72,52 @@ contrast to the concise properties above:
 ## Key Efficacy Results {color="red_bg"}
 ---
 **Always include this table — it is required for every trial entry.**
-Rows cover all reported efficacy endpoints (PFS, OS, ORR, DOR, CBR, etc.;
-omit a row only if the trial genuinely did not report that endpoint).
-Use "—" for unreported/immature data, not an empty cell.
+Rows cover **all** reported efficacy endpoints (PFS, OS, ORR, CR, PR, SD, CBR,
+DOR, PFS2, EFS, iDFS, etc.; omit a row only if the trial genuinely did not
+report that endpoint). Use "—" for unreported/immature data, not an empty cell.
 
+Formatting rules (follow the BOLERO-2 page as the canonical example):
+- Column headers: use the **actual arm names** (e.g., "Palbociclib + Fulvestrant"
+  and "Placebo + Fulvestrant"), not generic labels.
+- **Bold** the column header cells.
+- Highlight each **primary endpoint row** with `color="yellow_bg"` on the `<tr>`;
+  also bold the cell values in those rows.
+- Include 95% CI for medians when reported (e.g., `6.9 mo (6.4–8.1)`).
+- Include exact p-values; use `P<0.001` style.
+
+```
 <table header-row="true" header-column="true">
-  rows: Endpoint | Study group | Control group | HR or OR (95% CI; p value)
-  example rows: PFS (median, mo) | 16.9 | 9.3 | 0.63 (0.52–0.77); P<0.001
-                OS (median, mo)  | 46.0 | 37.3 | 0.81 (0.65–1.00); P=0.048
-                ORR (%)          | 42.1 | 34.7 | —
-                CBR (%)          | 68.1 | 40.5 | —
+<tr>
+<td>**Endpoint**</td><td>**[Study arm]**</td><td>**[Control arm]**</td><td>**HR (95% CI); P**</td>
+</tr>
+<tr color="yellow_bg">
+<td>**Median PFS (mo)**</td><td>16.9 (15.2–20.9)</td><td>9.3 (7.5–10.3)</td><td>**0.63 (0.52–0.77); P<0.001**</td>
+</tr>
+<tr color="yellow_bg">
+<td>**Median OS (mo)**</td><td>46.0 (42.5–51.8)</td><td>37.3 (33.4–42.2)</td><td>0.81 (0.65–1.00); P=0.048</td>
+</tr>
+<tr>
+<td>ORR (%)</td><td>42.1% (38.6–45.7)</td><td>34.7% (31.2–38.3)</td><td>—</td>
+</tr>
+<tr>
+<td>CR (%)</td><td>3.2%</td><td>1.1%</td><td>—</td>
+</tr>
+<tr>
+<td>PR (%)</td><td>38.9%</td><td>33.6%</td><td>—</td>
+</tr>
+<tr>
+<td>SD (%)</td><td>48.7%</td><td>48.0%</td><td>—</td>
+</tr>
+<tr>
+<td>CBR (%)</td><td>68.1%</td><td>40.5%</td><td>—</td>
+</tr>
+<tr>
+<td>Median DOR (mo)</td><td>—</td><td>—</td><td>—</td>
+</tr>
 </table>
-(optional <columns> with OS / PFS sub-sections for Kaplan-Meier figures/notes)
+```
+
+(optional `<columns>` with OS / PFS sub-sections for Kaplan-Meier figures/notes)
 ### Safety {color="yellow_bg"}
 ---
 - Key safety findings, grade >=3 AEs, discontinuation rates
