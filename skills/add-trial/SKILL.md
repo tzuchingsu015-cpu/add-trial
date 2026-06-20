@@ -140,20 +140,25 @@ sections, `<table>`/`<columns>` blocks as shown above.
 1. **Get inputs**: trial name (title) from `$ARGUMENTS` or ask the user if
    missing; confirm the reference attachment(s) are available (PDF, slide
    deck, or images already in the conversation/filesystem).
-2. **Extract source content**: read PDFs/images directly. If a `.pptx` can't
+2. **Check for existing page**: search the database for the trial name using
+   `mcp__claude_ai_Notion__notion-search` (query = trial name). If a page
+   already exists in the Metastatic Cancer Database, **stop and inform the
+   user** — show the existing page URL and ask whether to proceed anyway
+   (e.g. to overwrite/update) or cancel. Do not create a duplicate silently.
+3. **Extract source content**: read PDFs/images directly. If a `.pptx` can't
    be parsed directly, ask the user to export it to PDF or paste key slide
    screenshots instead — surface this as a limitation rather than failing
    silently.
-3. **Map extracted data** to the schema fields above, matching existing
+4. **Map extracted data** to the schema fields above, matching existing
    multi-select option labels wherever possible.
-4. **Write the properties** map following the concise conventions above.
-5. **Compose the page body** following the detailed structure above.
-6. **Create the page** with `mcp__claude_ai_Notion__notion-create-pages`:
+5. **Write the properties** map following the concise conventions above.
+6. **Compose the page body** following the detailed structure above.
+7. **Create the page** with `mcp__claude_ai_Notion__notion-create-pages`:
    - `parent`: `{"type": "data_source_id", "data_source_id": "2a012797-0a62-81ff-b9bc-000b1334cb16"}`
    - `icon`: `"📊"`
    - `properties`: the mapped properties (title under `Key Trials/Med`)
    - `content`: the composed body (do not repeat the title in content)
-7. **Report back**: share the new page URL, list any property values that
+8. **Report back**: share the new page URL, list any property values that
    were inferred/uncertain so the user can spot-check against the source,
    and remind them that the original file must be attached manually in
    Notion under Reference if they want it embedded — the Notion MCP tools
