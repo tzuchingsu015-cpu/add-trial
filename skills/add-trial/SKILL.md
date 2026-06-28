@@ -12,12 +12,27 @@ properties concisely and writing a detailed narrative summary in the page body.
 
 ## Target database
 
-- Database: "Metastatic Cancer Database"
-- Data source id (parent for new pages): `2a012797-0a62-81ff-b9bc-000b1334cb16`
-- Title property: `Key Trials/Med`
-- If the data source id no longer resolves, re-fetch it: search Notion for
-  "Metastatic Cancer Database", fetch the result, and read the
-  `<data-source url="collection://...">` id from the response.
+**Route by disease setting** (see [`DATABASES.md`](DATABASES.md) for full schemas):
+
+- **Early-stage** trials (adjuvant / neoadjuvant / peri-operative) →
+  **Early Stage Cancer Database**, data source id `2a312797-0a62-81c7-82ef-000b4de44d4b`.
+- **Metastatic / advanced** trials → **Metastatic Cancer Database**,
+  data source id `2a012797-0a62-81ff-b9bc-000b1334cb16`.
+
+Both use title property `Key Trials/Med`. Determine the setting from the source
+before doing anything else; if it genuinely covers both, ask the user. The two
+databases have **different schemas** — map the trial to the chosen database's
+fields (don't force metastatic-only fields like Line/PFS-medians/ORR onto an
+early-stage trial, or vice versa).
+
+If a data source id no longer resolves, re-fetch it: search Notion for the
+database name, fetch the result, and read the `<data-source url="collection://...">`
+id from the response.
+
+The schema reference and page-body template below are written for the Metastatic
+database; for early-stage trials, use the schema in [`DATABASES.md`](DATABASES.md)
+(e.g. `Timing`, `Treatment` incl. Anti-HER2, `DFS`, `pCR (%)`) and the same page
+body structure.
 
 ## Schema reference
 
@@ -140,11 +155,14 @@ sections, `<table>`/`<columns>` blocks as shown above.
 1. **Get inputs**: trial name (title) from `$ARGUMENTS` or ask the user if
    missing; confirm the reference attachment(s) are available (PDF, slide
    deck, or images already in the conversation/filesystem).
-2. **Check for existing page**: search the database for the trial name using
-   `mcp__claude_ai_Notion__notion-search` (query = trial name). If a page
-   already exists in the Metastatic Cancer Database, **stop and inform the
-   user** — show the existing page URL and ask whether to proceed anyway
-   (e.g. to overwrite/update) or cancel. Do not create a duplicate silently.
+1b. **Determine the target database** by disease setting (early-stage vs
+   metastatic) per the "Target database" section / [`DATABASES.md`](DATABASES.md).
+   Use that database's data source id and schema for all subsequent steps.
+2. **Check for existing page**: search the chosen database for the trial name
+   using the Notion search tool (query = trial name). If a page already exists
+   in that database, **stop and inform the user** — show the existing page URL
+   and ask whether to proceed anyway (e.g. to overwrite/update) or cancel. Do
+   not create a duplicate silently.
 3. **Extract source content**: read PDFs/images directly. If a `.pptx` can't
    be parsed directly, ask the user to export it to PDF or paste key slide
    screenshots instead — surface this as a limitation rather than failing
@@ -153,8 +171,8 @@ sections, `<table>`/`<columns>` blocks as shown above.
    multi-select option labels wherever possible.
 5. **Write the properties** map following the concise conventions above.
 6. **Compose the page body** following the detailed structure above.
-7. **Create the page** with `mcp__claude_ai_Notion__notion-create-pages`:
-   - `parent`: `{"type": "data_source_id", "data_source_id": "2a012797-0a62-81ff-b9bc-000b1334cb16"}`
+7. **Create the page** with the Notion create-pages tool:
+   - `parent`: `{"type": "data_source_id", "data_source_id": "<chosen data source id from step 1b>"}`
    - `icon`: `"📊"`
    - `properties`: the mapped properties (title under `Key Trials/Med`)
    - `content`: the composed body (do not repeat the title in content)
