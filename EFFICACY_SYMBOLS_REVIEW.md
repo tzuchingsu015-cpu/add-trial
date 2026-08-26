@@ -105,6 +105,20 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 
 ---
 
+### 3a. Borderline: CI upper bound sitting exactly on 1.00
+
+- **FLAURA (OS)** — marked **⚠️**, but this one is genuinely arguable and it is a
+  high-traffic row, so please look. OS was 38.6 vs 31.8 mo, HR 0.80
+  (0.64–**1.00**), p=0.046. FLAURA's prespecified OS alpha was 0.0495, so
+  **p=0.046 did formally meet it** and the paper reports OS as significant —
+  that argues for ✅. I used ⚠️ instead to stay consistent with the rule you
+  already approved on MONALEESA-3, where the 2L subset (HR 0.73, CI 0.53–**1.00**)
+  was marked ⚠️ for exactly this CI shape. Say the word and I'll flip FLAURA to ✅;
+  the trade-off is that ⚠️ then stops meaning "CI touches 1" and starts meaning
+  only "failed its own alpha", which would also mean revisiting MONALEESA-3.
+
+---
+
 ### 3b. The reverse case — endpoint met, later look labelled "descriptive"
 
 - **EMILIA (OS)** — the cell holds two lines: the 2nd interim (30.9 vs 25.1,
@@ -144,7 +158,8 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 | ADRIATIC | ORR 30.3% vs 32.0% favours the control arm; left unmarked as there is no test, but worth a note in the row. |
 | BREAKWATER | ORR is the primary endpoint; the cell has no p-value but the page body gives **OR 2.44, P<0.001**, so it *was* marked ✅. Consider adding the statistic to the cell itself. |
 | CM-77T, CM-816, KN-671, KN-905/EV-303, MATTERHORN, FLOT4, RAPIDO, PICC | pCR reported without a p-value; several of these were significant in publication. Adding the statistic would let them be marked. |
-| CALGB-SWOG 80405 | The `HR (95% CI)` cell says **OS HR 0.92 (0.78–1.09), p=0.34**, but the page-body table says **OS HR 0.88 (0.77–1.01), P=0.08**. Two different analyses or a transcription error — please reconcile. |
+| CALGB-SWOG 80405 | The `HR (95% CI)` cell says **OS HR 0.92 (0.78–1.09), p=0.34**, but the page-body table says **OS HR 0.88 (0.77–1.01), P=0.08**. Two different analyses or a transcription error — please reconcile. **Update:** the FIRE-3 page's own comparison table independently gives CALGB OS as "30.0 vs. 29.0 months (HR 0.88; P=0.08)", which agrees with the CALGB *body* — so the **0.92 / p=0.34 in the HR cell is the outlier** and is the value most likely wrong. |
+| CALGB-SWOG 80405 (ORR reversal, confirmed) | The FIRE-3 page also lists CALGB ORR as "59.6% vs. 55.2% (P=0.13)" with cetuximab first — confirming the CALGB row's ORR cell has its arms **reversed**. |
 | CALGB-SWOG 80405 | `ORR` reads "55.2% vs. 59.6%" but `Drug/Control` is "Cetuximab vs. bevacizumab" and the body gives cetuximab **59.6%** / bev **55.2%** — the arms in the ORR cell are **reversed** relative to every other cell in the row. Left ORR unmarked because of this. |
 | CM-8HW | `HR (95% CI)` reads **"PFS 0.21 (0.33-0.35)"** — the confidence interval does not contain the point estimate, so one of the two is a typo. |
 | CASPIAN | The `ORR` cell gives only the durvalumab arm ("79% unconfirmed; 68% confirmed") with no comparator. Marked ✅ because the underlying comparison is significant (OR 1.64, 1.11–2.44 vs 70%), but the cell should carry both arms. |
