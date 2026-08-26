@@ -46,6 +46,33 @@ Property value conventions (match existing entries, e.g. MONARCH-2):
 - `Key takeaway` is short, bolded, may use `<span color="red">...</span>` to
   highlight the key result.
 
+### Efficacy result symbols
+
+Prefix every efficacy **outcome** value with a verdict symbol so the database
+view shows at a glance whether each endpoint was positive. Applies to
+`PFS (month)`, `mOS (month)`, `ORR (%)`, and `DCR (%)`:
+
+- `✅` — statistically significant benefit (endpoint met; p below the
+  prespecified boundary, or HR 95% CI excluding 1).
+- `⚠️` — numerically favorable but **not** statistically significant, not
+  formally tested, or immature/unreported data.
+- `❌` — no benefit, endpoint not met, or the control arm did better.
+
+Rules:
+- One symbol per result line — if a property holds several populations
+  (`Overall:` / `1L:` / `2L:` separated by `<br>`), each line gets its own
+  symbol, since subgroups can differ from ITT.
+- Judge the verdict from the trial's own statistics, not from the size of the
+  numeric gap. E.g. MONALEESA-3 OS is `✅` in the ITT (HR 0.72, P=0.00455) but
+  `⚠️` in the 1L and 2L subsets (HR 0.70 [0.48–1.02] and 0.73 [0.53–1.00],
+  both CIs touching 1).
+- Do **not** put symbols on `CR (%)`, `PR (%)`, `SD (%)`, or `>= Gr. 3 TRAE` —
+  those are response components and safety data, not endpoints with a
+  positive/negative verdict.
+- `HR (95% CI)` stays unmarked; it is the supporting statistic that justifies
+  the symbol, and the existing bold/yellow convention there already flags the
+  primary endpoint.
+
 ## Page body structure
 
 Reproduce this exact section structure (yellow background headers), written
