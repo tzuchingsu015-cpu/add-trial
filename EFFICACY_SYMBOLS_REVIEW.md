@@ -7,6 +7,7 @@ Legend applied across both databases:
 | ✅ | Statistically significant benefit — endpoint met (p below the prespecified boundary, or HR 95% CI excluding 1) |
 | ⚠️ | Numerically favorable but **not** statistically significant, not formally tested, or immature |
 | ❌ | No benefit, endpoint not met, or the control arm did better |
+| **↔** | **Non-inferiority met** — the endpoint was powered to show "not worse", so a hazard ratio near 1 is a success. Applied per endpoint, not per trial |
 | *(no symbol)* | Deliberately left unmarked — see below |
 
 **Marking scope.** PFS / OS / DFS / EFS are marked from the trial's own HR and
@@ -24,18 +25,25 @@ ABBV-400 · ByLieve · CM-040 · CM-275 · DESTINY PanTumor-02 · DESTINY-Breast
 DESTINY-CRC01 · HERACLES-A · KCSG-LU15-09 · MOUNTAINEER · MyPathway · PYNNACLE ·
 TriComB · NSABP-B27 (Real-world) · Cercek et al · Ludford et al · NICHE-2
 
-A symbol here would imply a comparison that was never made. If you want these
-marked, we'd need a convention for single-arm results (e.g. ✅ = met its
-prespecified ORR bar) — tell me and I'll apply it.
+A symbol here would imply a comparison that was never made. **Confirmed
+decision: these stay blank.**
 
-### 1b. Non-inferiority designs — ✅/❌ is the wrong axis
-**ASPECCT** · **Gem-cis** · **RATIONALE-301 (OS)** · **REFLECT (OS)** ·
-**PROSPECT** · **STELLAR (DFS)**
+### 1b. Non-inferiority designs — now marked **↔** (RESOLVED, applied)
+These trials asked "is it *not worse*", not "is it better", so ✅/❌ would both
+misreport them. All six are done:
 
-These trials asked "is it *not worse*", not "is it better". ASPECCT's OS HR 0.97
-and PROSPECT's DFS HR 0.92 are *successes* under their own design, but a ✅ would
-read as superiority and a ❌ would read as failure. Both are wrong. Suggest a
-separate marker (e.g. ↔ for "non-inferiority met") — your call.
+| Trial | Endpoint marked **↔** | Other endpoints |
+|---|---|---|
+| ASPECCT | OS (NI p=0.0007), PFS | — |
+| Gem-cis | OS, PFS | — |
+| RATIONALE-301 | OS (NI p=0.04) | PFS ❌ (HR 1.11, median 2.1 vs 3.4) |
+| REFLECT | OS (HR 0.92, NI met) | PFS ✅ (HR 0.66, P<0.001) |
+| PROSPECT | DFS (NI P=0.005), OS, LRR | — |
+| STELLAR | DFS (NI p<0.001) | OS ✅ (HR 0.67, p=0.033); MFS ⚠️; pCR ✅ (p=0.002) |
+
+Note REFLECT and STELLAR are the interesting ones: non-inferior on the primary
+endpoint but genuinely *superior* on a secondary, so the row now carries **↔**
+and ✅ side by side — which is the correct reading of both trials.
 
 ### 1c. Rows with no efficacy data at all
 ALEX · ASPECT · Beamion-Lung 01 · CodeBreak 301 · KANDLELIT-012 · KN-016 ·

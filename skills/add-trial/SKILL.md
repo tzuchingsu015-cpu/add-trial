@@ -57,6 +57,12 @@ view shows at a glance whether each endpoint was positive. Applies to
 - `⚠️` — numerically favorable but **not** statistically significant, not
   formally tested, or immature/unreported data.
 - `❌` — no benefit, endpoint not met, or the control arm did better.
+- `**↔**` (bold) — **non-inferiority met**. Use this, never `✅`/`❌`, whenever
+  the endpoint was powered for non-inferiority rather than superiority: there
+  the question was "is it not worse", so a hazard ratio near 1 is a *success*
+  and both a check and a cross would misreport it. Applies per endpoint, not
+  per trial — a trial can be `**↔**` on OS and `❌` on a superiority PFS
+  endpoint in the same row.
 
 Rules:
 - One symbol per result line — if a property holds several populations
@@ -66,6 +72,10 @@ Rules:
   numeric gap. E.g. MONALEESA-3 OS is `✅` in the ITT (HR 0.72, P=0.00455) but
   `⚠️` in the 1L and 2L subsets (HR 0.70 [0.48–1.02] and 0.73 [0.53–1.00],
   both CIs touching 1).
+- Leave **single-arm trials completely unmarked**. With no comparator there is
+  no verdict to report, and a symbol would imply a comparison that was never
+  made. Same for rows with no efficacy data, template rows, and analyses that
+  are not treatment comparisons (e.g. a pCR-vs-no-pCR prognostic association).
 - Do **not** put symbols on `CR (%)`, `PR (%)`, `SD (%)`, or `>= Gr. 3 TRAE` —
   those are response components and safety data, not endpoints with a
   positive/negative verdict.
