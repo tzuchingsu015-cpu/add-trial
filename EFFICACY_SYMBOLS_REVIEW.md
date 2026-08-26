@@ -40,10 +40,17 @@ misreport them. All six are done:
 | REFLECT | OS (HR 0.92, NI met) | PFS ✅ (HR 0.66, P<0.001) |
 | PROSPECT | DFS (NI P=0.005), OS, LRR | — |
 | STELLAR | DFS (NI p<0.001) | OS ✅ (HR 0.67, p=0.033); MFS ⚠️; pCR ✅ (p=0.002) |
+| HIMALAYA | OS, durvalumab-mono arm only (HR 0.86, CI 0.73–1.03 vs NI margin 1.08) | STRIDE OS ✅ (HR 0.78, p=0.0037); both PFS lines ❌ |
 
 Note REFLECT and STELLAR are the interesting ones: non-inferior on the primary
 endpoint but genuinely *superior* on a secondary, so the row now carries **↔**
 and ✅ side by side — which is the correct reading of both trials.
+
+HIMALAYA is the seventh, found later in the pass, and is the only row where **↔**
+and ✅ and ❌ all appear together: the STRIDE arm beat sorafenib on OS (✅), the
+durvalumab-monotherapy arm only had to prove non-inferiority and did (**↔**), and
+*neither* arm improved PFS — sorafenib's median was numerically longer in both
+comparisons (❌ ❌). A per-trial verdict would have flattened all of that.
 
 ### 1c. Rows with no efficacy data at all
 ALEX · ASPECT · Beamion-Lung 01 · CodeBreak 301 · KANDLELIT-012 · KN-016 ·
@@ -162,6 +169,7 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 | CALGB-SWOG 80405 (ORR reversal, confirmed) | The FIRE-3 page also lists CALGB ORR as "59.6% vs. 55.2% (P=0.13)" with cetuximab first — confirming the CALGB row's ORR cell has its arms **reversed**. |
 | CALGB-SWOG 80405 | `ORR` reads "55.2% vs. 59.6%" but `Drug/Control` is "Cetuximab vs. bevacizumab" and the body gives cetuximab **59.6%** / bev **55.2%** — the arms in the ORR cell are **reversed** relative to every other cell in the row. Left ORR unmarked because of this. |
 | CM-8HW | `HR (95% CI)` reads **"PFS 0.21 (0.33-0.35)"** — the confidence interval does not contain the point estimate, so one of the two is a typo. |
+| HIMALAYA | The `HR (95% CI)` cell gives STRIDE OS as **0.78 (0.63-0.99)**, but the `mOS` cell and the page body both give **0.78 (0.67-0.92)**. Same point estimate, two different CIs — one is a transcription error. |
 | CASPIAN | The `ORR` cell gives only the durvalumab arm ("79% unconfirmed; 68% confirmed") with no comparator. Marked ✅ because the underlying comparison is significant (OR 1.64, 1.11–2.44 vs 70%), but the cell should carry both arms. |
 | DESTINY-Breast03 | The page body attaches **P=0.0037** to two different OS hazard ratios: the Discussion says "OS met significance at 2nd interim (**HR 0.64**; P=0.0037)" while the results table says **HR 0.73 (0.56–0.94); P=0.0037**. 0.64 is the Lancet 2023 2nd-interim figure and 0.73 is the Nat Med 2024 long-term figure — the p-value belongs only to the former. Both are ✅ either way, but the pairing should be fixed. |
 | DESTINY-Breast03 | `HR (95% CI)` gives PFS **0.28 (0.22–0.37)** while the body table gives PFS BICR **0.33 (0.26–0.43)**. Not an error — different data cutoffs (NEJM 2022 primary vs Lancet 2023 update) — but the cell doesn't say which, so it reads as a contradiction. |
