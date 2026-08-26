@@ -104,6 +104,12 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 - **KN-177 (OS, left unmarked)** — the cell shows HR 0.73 (0.53–0.99) but
   KEYNOTE-177's final OS did **not** cross its boundary. Please verify which
   analysis this row refers to before it gets a ✅.
+- **INAVO-120 (OS)** — same shape as EMERALD, and this row may simply be out of
+  date. The results table gives interim OS HR 0.64 (0.43–**0.97**), P=0.03, and
+  labels it *"not significant per interim boundary"* — so I marked ⚠️. But the
+  row's own **Key takeaway** already says *"2025 ASCO: OS benefit"*, which
+  suggests a later, positive OS readout exists that the `mOS`/`HR` cells have
+  not been updated with. If you add the final OS figures, both lines become ✅.
 - **EMERALD (OS)** — ESR1-mut p=.03 is flagged NS in the cell (interim alpha).
   Applied as ⚠️. Worth flagging as the clearest counterexample to the
   "CI excludes 1 → ✅" shortcut: HR 0.59 (0.36–0.96) *does* exclude 1, yet the
