@@ -50,7 +50,7 @@ Property value conventions (match existing entries, e.g. MONARCH-2):
 
 Prefix every efficacy **outcome** value with a verdict symbol so the database
 view shows at a glance whether each endpoint was positive. Applies to
-`PFS (month)`, `mOS (month)`, `ORR (%)`, and `DCR (%)`:
+`PFS (month)`, `mOS (month)`, `ORR (%)`, `DCR (%)`, and `HR (95% CI)`:
 
 - `✅` — statistically significant benefit (endpoint met; p below the
   prespecified boundary, or HR 95% CI excluding 1).
@@ -69,9 +69,17 @@ Rules:
 - Do **not** put symbols on `CR (%)`, `PR (%)`, `SD (%)`, or `>= Gr. 3 TRAE` —
   those are response components and safety data, not endpoints with a
   positive/negative verdict.
-- `HR (95% CI)` stays unmarked; it is the supporting statistic that justifies
-  the symbol, and the existing bold/yellow convention there already flags the
-  primary endpoint.
+- `HR (95% CI)` is marked too, so each statistic line carries the same verdict
+  as the outcome value it supports. Keep the symbols consistent between the two
+  columns — a `✅` PFS value must not sit beside a `⚠️` PFS hazard ratio.
+- Preserve any existing inline markup when adding a symbol to `HR (95% CI)`.
+  Some cells wrap an endpoint label in `<span discussion-urls="...">`, which
+  anchors a Notion comment; put the symbol **before** the span and copy the
+  span through verbatim, or the comment is orphaned. The same applies to
+  escaped characters such as `p\<0.0001`.
+- The existing bold/yellow convention in `HR (95% CI)` still flags which
+  endpoint was primary; the symbol reports whether it was met. They are
+  independent — do not use one in place of the other.
 
 ## Page body structure
 
