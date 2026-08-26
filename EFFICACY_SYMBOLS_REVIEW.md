@@ -5,7 +5,7 @@ Legend applied across both databases:
 | Symbol | Meaning |
 |---|---|
 | ✅ | Statistically significant benefit — endpoint met (p below the prespecified boundary, or HR 95% CI excluding 1) |
-| ⚠️ | Numerically favorable but **not** statistically significant, not formally tested, or immature |
+| ⚠️ | Failed its own prespecified test, was never formally tested, or immature. (Does **not** mean "CI touches 1" — see §3a) |
 | ❌ | No benefit, endpoint not met, or the control arm did better |
 | **↔** | **Non-inferiority met** — the endpoint was powered to show "not worse", so a hazard ratio near 1 is a success. Applied per endpoint, not per trial |
 | *(no symbol)* | Deliberately left unmarked — see below |
@@ -118,17 +118,30 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 
 ---
 
-### 3a. Borderline: CI upper bound sitting exactly on 1.00
+### 3a. Borderline CIs resting on 1.00 — RESOLVED, now ✅
 
-- **FLAURA (OS)** — marked **⚠️**, but this one is genuinely arguable and it is a
-  high-traffic row, so please look. OS was 38.6 vs 31.8 mo, HR 0.80
-  (0.64–**1.00**), p=0.046. FLAURA's prespecified OS alpha was 0.0495, so
-  **p=0.046 did formally meet it** and the paper reports OS as significant —
-  that argues for ✅. I used ⚠️ instead to stay consistent with the rule you
-  already approved on MONALEESA-3, where the 2L subset (HR 0.73, CI 0.53–**1.00**)
-  was marked ⚠️ for exactly this CI shape. Say the word and I'll flip FLAURA to ✅;
-  the trade-off is that ⚠️ then stops meaning "CI touches 1" and starts meaning
-  only "failed its own alpha", which would also mean revisiting MONALEESA-3.
+**Your decision: these are green checks.** A CI bound sitting on (or a hundredth
+past) 1.00 does not by itself make a result negative when the trial met its own
+significance level and the effect is clinically meaningful. Applied:
+
+| Row | Cells changed | Statistic |
+|---|---|---|
+| FLAURA | `mOS`, `HR` OS line | HR 0.80 (0.64–**1.00**), p=0.046 vs prespecified alpha 0.0495 — boundary met |
+| MONALEESA-3 | `mOS` and `HR`, both the 1L and 2L lines | 1L HR 0.70 (0.48–**1.02**); 2L HR 0.73 (0.53–**1.00**), under a significant ITT (HR 0.72, P=0.00455) |
+
+The rule in `SKILL.md` has been rewritten to match, so future `/add-trial`
+entries follow it automatically. **⚠️ now means only** "failed its own
+prespecified test, was never formally tested, or is immature" — it no longer
+means "CI touches 1". Rows still ⚠️ for the genuine reason are unaffected
+(KEYNOTE-224/240, LEAP-002, EMERALD interim OS, INAVO-120 interim OS).
+
+**One thing to look at.** MONALEESA-3's 1L CI is **0.48–1.02**, which crosses 1
+rather than resting on it, so unlike the other three that line is not
+statistically significant on its own terms. I applied ✅ as instructed — the
+reading is defensible (prespecified subgroup, significant ITT, same direction as
+2L) — but it is the one cell of the four where ✅ asserts something the subgroup
+statistic alone doesn't support. Say the word and I'll put that single line back
+to ⚠️ and leave the other three green.
 
 ---
 

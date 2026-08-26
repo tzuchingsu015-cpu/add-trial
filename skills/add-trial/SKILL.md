@@ -53,7 +53,9 @@ view shows at a glance whether each endpoint was positive. Applies to
 `PFS (month)`, `mOS (month)`, `ORR (%)`, `DCR (%)`, and `HR (95% CI)`:
 
 - `✅` — statistically significant benefit (endpoint met; p below the
-  prespecified boundary, or HR 95% CI excluding 1).
+  prespecified boundary, or HR 95% CI excluding 1). A confidence interval
+  whose bound sits **exactly on 1.00** still counts as `✅` when the trial
+  reported the endpoint as met — see the borderline rule below.
 - `⚠️` — numerically favorable but **not** statistically significant, not
   formally tested, or immature/unreported data.
 - `❌` — no benefit, endpoint not met, or the control arm did better.
@@ -69,9 +71,20 @@ Rules:
   (`Overall:` / `1L:` / `2L:` separated by `<br>`), each line gets its own
   symbol, since subgroups can differ from ITT.
 - Judge the verdict from the trial's own statistics, not from the size of the
-  numeric gap. E.g. MONALEESA-3 OS is `✅` in the ITT (HR 0.72, P=0.00455) but
-  `⚠️` in the 1L and 2L subsets (HR 0.70 [0.48–1.02] and 0.73 [0.53–1.00],
-  both CIs touching 1).
+  numeric gap, and not from the CI bound alone.
+- **Borderline CIs resting on 1.00 are `✅`, not `⚠️`.** A bound that rounds to
+  1.00 (or sits a hundredth past it) does not by itself make a result
+  negative — what matters is whether the trial met its own prespecified
+  significance level and whether the effect is clinically meaningful. Two
+  worked examples, both settled as `✅`:
+    - FLAURA OS — HR 0.80 (0.64–**1.00**), p=0.046 against a prespecified
+      alpha of 0.0495. The boundary was met; the trial reports OS as positive.
+    - MONALEESA-3 OS in the 1L and 2L subsets — HR 0.70 (0.48–**1.02**) and
+      0.73 (0.53–**1.00**), sitting under a significant ITT result
+      (HR 0.72, P=0.00455) and pointing the same direction.
+  Reserve `⚠️` for results that genuinely failed their own test — a p-value
+  above the prespecified boundary (KEYNOTE-224/240, LEAP-002, EMERALD's
+  interim OS), an untested or exploratory analysis, or immature data.
 - Leave **single-arm trials completely unmarked**. With no comparator there is
   no verdict to report, and a symbol would imply a comparison that was never
   made. Same for rows with no efficacy data, template rows, and analyses that
