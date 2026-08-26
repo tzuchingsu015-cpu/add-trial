@@ -128,6 +128,8 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 | CM-77T, CM-816, KN-671, KN-905/EV-303, MATTERHORN, FLOT4, RAPIDO, PICC | pCR reported without a p-value; several of these were significant in publication. Adding the statistic would let them be marked. |
 | CALGB-SWOG 80405 | The `HR (95% CI)` cell says **OS HR 0.92 (0.78–1.09), p=0.34**, but the page-body table says **OS HR 0.88 (0.77–1.01), P=0.08**. Two different analyses or a transcription error — please reconcile. |
 | CALGB-SWOG 80405 | `ORR` reads "55.2% vs. 59.6%" but `Drug/Control` is "Cetuximab vs. bevacizumab" and the body gives cetuximab **59.6%** / bev **55.2%** — the arms in the ORR cell are **reversed** relative to every other cell in the row. Left ORR unmarked because of this. |
+| CM-8HW | `HR (95% CI)` reads **"PFS 0.21 (0.33-0.35)"** — the confidence interval does not contain the point estimate, so one of the two is a typo. |
+| CASPIAN | The `ORR` cell gives only the durvalumab arm ("79% unconfirmed; 68% confirmed") with no comparator. Marked ✅ because the underlying comparison is significant (OR 1.64, 1.11–2.44 vs 70%), but the cell should carry both arms. |
 
 ---
 
@@ -140,6 +142,11 @@ misleading. Left unmarked or partially marked:
   one line, where overall is ❌ and AKT-altered is ⚠️.
 - **EMERALD (OS)**, **HIMALAYA (PFS)**, **KN-048**, **SOFT** (3-arm),
   **ARTIST 2** (3-arm), **MARIPOSA-2 (OS)**, **GERCOR**, **PARADIGM (PFS)**.
+- **CM-8HW (PFS)** — "24M 72% vs. 55% vs. 14%" packs both dual primary
+  comparisons onto one line with *opposite* verdicts: nivo-ipi **vs chemo** was
+  positive (HR 0.21, p<0.0001 → ✅), but nivo-ipi **vs nivo monotherapy** missed
+  its boundary (p=0.0413 vs 0.0383), so dual-IO superiority could not be
+  declared. Left unmarked — a single symbol would assert the wrong thing.
 - **FALCON** — only the ITT line is marked; non-visceral and visceral subgroups
   have no separate statistics in the row.
 
