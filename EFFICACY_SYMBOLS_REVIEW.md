@@ -98,6 +98,10 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
   KEYNOTE-177's final OS did **not** cross its boundary. Please verify which
   analysis this row refers to before it gets a ✅.
 - **EMERALD (OS)** — ESR1-mut p=.03 is flagged NS in the cell (interim alpha).
+  Applied as ⚠️. Worth flagging as the clearest counterexample to the
+  "CI excludes 1 → ✅" shortcut: HR 0.59 (0.36–0.96) *does* exclude 1, yet the
+  Haybittle-Peto interim boundary was α=.0001, so the result is not significant.
+  Both EMERALD OS lines are ⚠️ for this reason, not because the CI crosses 1.
 
 ---
 
@@ -130,6 +134,8 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 | CALGB-SWOG 80405 | `ORR` reads "55.2% vs. 59.6%" but `Drug/Control` is "Cetuximab vs. bevacizumab" and the body gives cetuximab **59.6%** / bev **55.2%** — the arms in the ORR cell are **reversed** relative to every other cell in the row. Left ORR unmarked because of this. |
 | CM-8HW | `HR (95% CI)` reads **"PFS 0.21 (0.33-0.35)"** — the confidence interval does not contain the point estimate, so one of the two is a typo. |
 | CASPIAN | The `ORR` cell gives only the durvalumab arm ("79% unconfirmed; 68% confirmed") with no comparator. Marked ✅ because the underlying comparison is significant (OR 1.64, 1.11–2.44 vs 70%), but the cell should carry both arms. |
+| DESTINY-Breast03 | The page body attaches **P=0.0037** to two different OS hazard ratios: the Discussion says "OS met significance at 2nd interim (**HR 0.64**; P=0.0037)" while the results table says **HR 0.73 (0.56–0.94); P=0.0037**. 0.64 is the Lancet 2023 2nd-interim figure and 0.73 is the Nat Med 2024 long-term figure — the p-value belongs only to the former. Both are ✅ either way, but the pairing should be fixed. |
+| DESTINY-Breast03 | `HR (95% CI)` gives PFS **0.28 (0.22–0.37)** while the body table gives PFS BICR **0.33 (0.26–0.43)**. Not an error — different data cutoffs (NEJM 2022 primary vs Lancet 2023 update) — but the cell doesn't say which, so it reads as a contradiction. |
 
 ---
 
