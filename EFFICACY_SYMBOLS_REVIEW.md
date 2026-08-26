@@ -105,6 +105,19 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 
 ---
 
+### 3b. The reverse case — endpoint met, later look labelled "descriptive"
+
+- **EMILIA (OS)** — the cell holds two lines: the 2nd interim (30.9 vs 25.1,
+  HR 0.68, P<0.001) and the final analysis (29.9 vs 25.9, HR 0.75, descriptive,
+  27% crossover). I marked **both ✅**. The final analysis is "descriptive" only
+  because OS had already been declared positive at the interim and the alpha was
+  spent — not because the result is in doubt (HR 0.75, CI 0.64–0.88, still
+  excludes 1). Marking the second line ⚠️ would have implied EMILIA's OS benefit
+  is uncertain, which is wrong. Flagging it in case you'd rather it read ⚠️ to
+  signal "not formally tested".
+
+---
+
 ## 4. Primary endpoints that failed (marked ❌ — sanity-check these)
 
 - **FIRE-3** — primary endpoint was **ORR** and it failed (OR 1.18, p=0.18),
@@ -125,6 +138,7 @@ These look significant by naive p<0.05 but did **not** meet their own alpha:
 |---|---|
 | MONALEESA-3 | `PFS (month)` says 2L = **14.6**; the page-body table says **14.9**. One is wrong. |
 | EV-302 | `OS HR 0.47` paired with CI **(0.63-0.96)** — the CI cannot contain the point estimate. Likely a typo. |
+| EV-302 | Three different median OS values appear on the row/page: the `mOS` property says **33.6**, the primary-endpoint table says **31.5**, and the 2.5-year update says **33.8**. The property matches none of them. (Also note the 2.5-yr update's own HR reads "0.61, 0.43-0.61" — upper bound equals the point estimate, so that one is mistyped too.) |
 | IMpower 010 | ITT DFS HR appears as **0.81 (0.67-0.99)** in the DFS cell but **0.85 (0.71–1.01)** in the HR cell — these disagree on significance. Left the HR cell unmarked. |
 | Gem-cis | `PFS` reads "7.7 vs **8,3**" — comma instead of decimal point. |
 | ADRIATIC | ORR 30.3% vs 32.0% favours the control arm; left unmarked as there is no test, but worth a note in the row. |
