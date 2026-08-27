@@ -217,3 +217,78 @@ misleading. Left unmarked or partially marked:
 
 Splitting these onto separate `<br>` lines (as MONALEESA-3 now is) would let each
 population carry its own verdict.
+
+---
+
+# Part 2 — findings from the rest of the metastatic database (KN-024 → VIKTORIA-1)
+
+The metastatic database is now **complete**. Everything below was found while
+finishing the remaining ~45 rows.
+
+## 7. Verdicts you should confirm (I made a judgment call)
+
+| Trial | Cell | What I did | Why it's arguable |
+|---|---|---|---|
+| **KN-177** | OS | ⚠️ | HR 0.73 (0.53–0.99) — the CI **excludes** 1, which normally earns ✅. But the page body says OS "did not reach statistical significance and was not formally re-tested" at the 2021 final analysis. This is the mirror image of the FLAURA case: there, a CI touching 1 was ✅ because the trial met its boundary; here a CI clearing 1 is ⚠️ because the trial did not. |
+| **KN-355** | PFS in CPS ≥1 | ⚠️ | The page **bolds** "0.75 (0.62–0.91), p=0.0014" as if significant. In the Lancet hierarchy the alpha for that population was 0.00111, so p=0.0014 missed it. The page's own Key takeaway ("improves BOTH PFS and OS in **CPS ≥10**") agrees with ⚠️. |
+| **STELLAR-303** | PFS | ⚠️ | HR 0.68 (0.59–0.79) looks strongly positive, but the results table itself says "hierarchical testing: superiority not formally claimable yet". |
+| **TRIPLETE** | OS | ✅ | HR 0.79 (0.63–0.99), p=0.049 — but this is a later OS update on a trial whose **primary endpoint (ORR) failed**, and your own Key takeaway asks "Final OS positive???". Treat the green check as provisional. |
+| **MORPHEUS-Liver** | PFS, OS | ✅ ✅ | Both CIs exclude 1, but this is a randomised **phase 1b/2 with N=59** whose control arm badly underperformed IMbrave150 (ORR 11% vs 30%). The checks reflect the CIs, not a confirmatory result. |
+| **ReTrITA** | PFS, OS | ✅ ✅ | **Retrospective** real-world study (Phase = "Retro"). The checks come from adjusted real-world HRs, not randomisation. |
+| **ACOSOG Z1031** | whole row | left blank | 3-arm AI-vs-AI phase II **selection** design with no control. PEPI-0 P=.9 means the three AIs didn't differ — not that neoadjuvant AI failed. A ❌ would say the opposite of the trial's conclusion. |
+
+## 8. One rule conflict you need to settle
+
+Two rows have the **same shape** and currently carry **different symbols**:
+
+- **FIRE-3** — ORR was the primary endpoint and failed (62% vs 58%, p=0.18).
+  The drug arm was numerically **better**. Marked **❌**.
+- **RCT by HORG** — OS was the primary endpoint and failed (21.5 vs 19.5 mo,
+  p=0.337). The drug arm was numerically **better** on every endpoint.
+  Marked **⚠️**.
+
+Pick one rule and I'll make both match:
+
+- **(a)** A failed primary endpoint is ❌ regardless of direction → flip HORG to ❌.
+- **(b)** ❌ only when the control arm actually did better → flip FIRE-3's ORR to ⚠️.
+
+Everything else in the pass follows **(b)**. I left HORG at ⚠️ because a red ✗
+next to "21.5 vs 19.5 months" reads as *FOLFOXIRI did worse*, which is false.
+
+## 9. New data-quality issues (add these to the tracker)
+
+| # | Trial | Where | Problem |
+|---|---|---|---|
+| 33 | KN-224/240 | property vs body | PFS p-value is **0.0022** in the HR property but **0.022** in the body. One is a typo. |
+| 34 | KN-224/240 | body | "pSembro" — stray character. |
+| 35 | KN-355 | body | "Prespecified statistical criterion of alpha=0·00411" is stated once as if global; it applies only to the CPS ≥10 PFS test (OS used ~0.0193). |
+| 36 | MARIPOSA | property vs body | OS is **HR 0.74 (0.56–0.97), p=0.026** in the property but **HR 0.75 (0.61–0.92), p=0.005** in the body table. |
+| 37 | MARIPOSA-2 | HR property | Carries only the two PFS comparisons; both OS rows live only in the body. |
+| 38 | MARIPOSA-2 | HR property | Line 2 repeats the arm label: "…(0.35–0.56) **for Ami+Laz+ChT vs ChT**". |
+| 39 | MONARCH-3 | figure caption | PFS caption says "HR 0.64 (0.43–0.67)"; table and property say "0.535/0.54 (0.429–0.668)". Wrong on both estimate and CI. |
+| 40 | P025 | HR property | "ORR **HR** 1.78 (1.32–2.40)" — a value >1 favouring letrozole makes this an **odds ratio**, not a hazard ratio. Same error class as NIAGARA's pCR "HR 1.30". |
+| 41 | PALOMA-3 | figure | Second OS panel is titled "OS (ITT)" but shows 20.2 vs 26.2, HR 1.14 — that's the endocrine-**resistant** subgroup. |
+| 42 | PARADIGM | DCR property | Holds 74.9% vs 67.3%, which the body identifies as **ORR (Overall)**. Wrong property. |
+| 43 | PARADIGM | missing | PFS right-sided HR 1.43 (1.03–1.97) — bevacizumab significantly **better** — appears only in the body. |
+| 44 | REACH-2 | property vs body | PFS control median is **1.5** in the property, **1.9** in the body. |
+| 45 | RECOURSE | body | DCR cell reads "44**\$**" instead of "44%". |
+| 46 | ReTrITA | property | "11.5**vs**. 8.5" — missing space. |
+| 47 | ReTrITA | body | Monotherapy CIs don't contain their medians: R mOS 5.0 (CI 9.0–13.4), T mPFS 3.3 (CI 4.0–4.8), R mPFS 3.2 (CI 3.8–4.9). The CI column looks shifted by a row. |
+| 48 | RIGHT Choice | 3 places | ORR stated three different ways: property 66.1%/61.8%, table 74%/68%, figure 65.2%/60.0%. CBR likewise 81.3/74.5 vs 80.4/72.7. |
+| 49 | RIGHT Choice | body | TTF row "18.6 vs 9.1, HR 0.497 (0.363–0.680" (unclosed bracket) vs figure "18.6 vs 8.5, HR 0.45 (0.32–0.63)". |
+| 50 | Saltz et al. | property vs body | ORR "50% vs 28%" in the property, "39% vs 21%" in the body table. |
+| 51 | SUNLIGHT | mOS property | Line 2 is an unfinished fragment: "Prior bev 9". |
+| 52 | SUNLIGHT | internal | Subgroup toggle says "prior bev does NOT affect efficacy"; the Key takeaway and Discussion say it matters a lot (HR 0.40 vs 0.72). |
+| 53 | SOFT | placement | It is an **adjuvant** trial (its own Patient population says "Adjuvant setting") sitting in the **Metastatic** database. |
+| 54 | SOFT | HR property | Holds the 12-year update (0.82/0.78/0.83); the body table holds the 8-year analysis (0.76/0.67/…). Not wrong, but the cell should say which. |
+| 55 | MAINTAIN | — | ORR P=0.51 and CBR P=0.06 were only in the body; both now marked ⚠️. |
+
+## 10. Cells left unmarked in this batch (and why)
+
+- **PARADIGM PFS (left-sided)** — medians favour panitumumab (13.1 vs 11.9) but
+  HR is exactly **1.00** (0.83–1.20). The two disagree; I flagged rather than guessed.
+- **SOFT PFS / OS** — three-arm percentages, not a two-arm median. One symbol
+  can't describe three arms.
+- **SUNLIGHT mOS line 2**, **ReTrITA monotherapy lines** — descriptive, no test.
+- **RASolute 302 / STELLAR-303 / TROPION-Breast02 ORR** — marked only where a
+  formal OR/CI on the difference exists.
