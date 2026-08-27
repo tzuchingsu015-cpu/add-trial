@@ -104,6 +104,86 @@ Rules:
   endpoint was primary; the symbol reports whether it was met. They are
   independent — do not use one in place of the other.
 
+
+#### Before assigning a symbol, check these five traps
+
+Learned from applying this convention across ~190 existing rows. Each one
+produced a *clinically wrong* verdict on a first mechanical pass:
+
+1. **Which arm is the HR expressed for?** INT-0116 reports OS HR **1.32**
+   (P=.0046) with medians 36 vs 27 favouring the study arm — the ratio is
+   written for the *control* arm, so HR > 1 means the study arm **won**.
+   Check the direction against the medians before marking. If the medians and
+   the hazard ratio disagree, **leave the cell unmarked** and flag it rather
+   than guessing (Gem-carbo, PARADIGM left-sided PFS).
+2. **Does the arm order match `Drug/Control`?** CALGB-SWOG 80405's `ORR (%)`
+   is written control-first while every other cell in the row is drug-first.
+   A symbol read off the raw order would be backwards.
+3. **Is it really a hazard ratio?** Response endpoints are usually reported as
+   **odds ratios**, where a value **> 1 is favourable** — the opposite of the
+   HR convention. NIAGARA's "pCR HR 1.30" and P025's "ORR HR 1.78" are both
+   odds ratios. Read the statistic, not the column header.
+4. **Is the number a failure rate?** RAPIDO's "3yr DrTF 23.7% vs 30.4%" is a
+   *failure* rate, so the smaller number is the good result.
+5. **Did the trial meet its own alpha, or just p<0.05?** See below.
+
+#### A p-value under 0.05 is not automatically `✅`
+
+The rule is the trial's **own** prespecified boundary, in both directions:
+
+- **Missed a hierarchical or alpha-recycled boundary → `⚠️`.** KEYNOTE-355's
+  CPS ≥1 PFS reads "HR 0.75 (0.62–0.91), p=0.0014" — significant-looking, but
+  the alpha at that position in the testing hierarchy was 0.00111, so it
+  failed. STELLAR-303's PFS table says outright "superiority not formally
+  claimable yet". Others: KEYNOTE-224/240, LEAP-002.
+- **CI excludes 1 but the endpoint was never formally re-tested → `⚠️`.**
+  KEYNOTE-177's final OS is HR 0.73 (0.53–0.99) — the CI clears 1, yet the
+  trial did not cross its boundary and did not re-test. This is the exact
+  mirror of the FLAURA borderline rule above: what settles it is the trial's
+  own test, never the CI bound.
+- **Interim looks carry their own alpha.** EMERALD's ESR1-mut OS is
+  HR 0.59 (0.36–0.96), p=.03 against a Haybittle-Peto boundary of α=.0001 —
+  `⚠️`, despite a CI that excludes 1 comfortably.
+- **The reverse case is `✅`.** An endpoint already declared positive at an
+  interim, whose later analysis is labelled "descriptive" only because the
+  alpha was spent, stays `✅` (EMILIA's final OS, HR 0.75, 0.64–0.88).
+  "Descriptive" there means *already proven*, not *unproven*.
+
+#### Response endpoints: only mark what was actually tested
+
+Mark `ORR (%)`, `DCR (%)` and `pCR (%)` **only** where a p-value, odds ratio,
+or confidence interval on the *difference* exists — in the cell or in the page
+body. A response rate reported with no test is left **unmarked** rather than
+guessed at, even when the gap looks large. When the statistic exists only in
+the body, add it to the property as well so the cell can stand alone.
+
+#### Failed primary endpoints
+
+Current convention: `❌` is used when the **control arm actually did better**,
+and `⚠️` when a primary endpoint failed while the study arm was still
+numerically ahead. So RCT by HORG (OS 21.5 vs 19.5, p=0.337) is `⚠️`, not `❌`
+— a red cross beside a longer median reads as "the drug did worse", which is
+false. Trials where the control genuinely won are `❌`: AVANT (OS HR 1.27,
+p=0.02), CAIRO2 (PFS HR 1.22, p=0.01), KRISTINE (EFS HR 2.61).
+
+### Early Stage Cancer Database
+
+The same symbol convention applies to the **Early Stage Cancer Database**
+(data source id `2a312797-0a62-81c7-82ef-000b4de44d4b`), which has a different
+schema. Mark `"DFS "` (**note the trailing space in the property name**), `OS`,
+`PFS`, `pCR (%)` and `HR (95% CI)`. It has no `ORR`/`DCR`/`CR`/`PR`/`SD`
+properties. Do not mark `Completion (%)` — it is an adherence measure, not an
+efficacy endpoint.
+
+### Writing symbols back safely
+
+Fetch the page with `notion-fetch` and write from **that** markdown. Do **not**
+build an update from `notion-query-data-sources` output: SQL results are
+returned as plain text and silently strip `**bold**`, `<span color="...">`, and
+`<span discussion-urls="discussion://...">` comment anchors. Writing back from
+a SQL result destroys all three. When a bold or colour wrapper spans several
+`<br>` lines, put each symbol **inside** the wrapper, not before it.
+
 ## Page body structure
 
 Reproduce this exact section structure (yellow background headers), written
