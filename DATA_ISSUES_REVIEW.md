@@ -319,3 +319,113 @@ p-value. Response endpoints (ORR, DCR/CBR, pCR) are marked **only** where a
 p-value or confidence interval actually exists — in the cell or in the page body.
 A response rate reported with no test is left unmarked rather than guessed at.
 Symbols are applied **per result line**, never per trial.
+
+---
+
+# Part 2 — the early-stage database (both databases now complete)
+
+The Early Stage Cancer Database has been worked end to end: **56 rows, 45
+marked, 11 deliberately unmarked**. Together with the 103 metastatic rows,
+**148 rows now carry per-endpoint symbols**.
+
+Everything below is new. Item numbers continue from §1–§7 above.
+
+## 14. Two corrections to the register above
+
+| # | What changes | Why |
+|---|---|---|
+| **61** | **#26 (NIAGARA) — the verdict was wrong.** The OR-mislabelled-as-HR finding stands, but the row is now **⚠️, not ✅**. | pCR was a **dual primary** endpoint and the page says outright: *"pCR rate did **NOT** meet the pre-specified significance threshold (p<0.001)"* — the reported p was 0.004. The row's own Key takeaway reads "EFS, OS +, **pCR −**". |
+| **62** | **#4 (IMpower 010) is not an error — downgrade it.** | The DFS cell holds the **2021 interim** analysis (ITT HR 0.81); the HR cell holds the **2024 five-year update** (ITT HR 0.85). Two data cutoffs, not a contradiction. Same class as #16. **Fix = label the cutoffs**, not reconcile the numbers. |
+
+Two register items can also be **closed**:
+
+- **#33 (KRISTINE arm order)** — confirmed. `Drug/Control` is "T-DM1+P vs TCHP",
+  experimental-first, and pCR 44.4% vs 55.7% (diff −11.3%, p=0.016) means the
+  experimental arm did worse. The reading was right.
+- **#1 (CALGB OS HR)** — unchanged, still the highest-value single fix.
+
+## 15. New P1 — conflicting values
+
+| # | Trial | Statistic | Value A | Value B |
+|---|---|---|---|---|
+| **63** | **MAGIC** | **OS and PFS hazard ratios are SWAPPED in the `HR` property.** | property: "PFS 0.66 (0.53–0.81, p<0.001)" and "OS 0.75 (0.60–0.93, p=0.009)" | **both** body tables: 5yr **OS** (primary) HR **0.66**; 5yr **PFS** HR **0.75**. The property has the labels the wrong way round. |
+| 64 | **CM-816** | EFS | property + 5-yr table: **HR 0.68 (0.51–0.91)** | primary table: **0.63 (97.38% CI 0.43–0.91)**; figure caption: **0.66 (0.49–0.90)**, with mEFS "43.8 vs 18.4" against the property's "31.6 vs 20.8" |
+| 65 | **CM-816** | OS HR | property + figure: **0.69 (0.49–0.97)** | OS table: **0.72 (0.523–0.998)** |
+| 66 | **CM-816** | p-value attachment | P=0.005 sits on HR 0.68 in the property | it belongs to the **primary** analysis (HR 0.63) — same shape as #15 |
+| 67 | **ARTIST** | DFS p-value | property + HR cell: **0.0922** | results table: **0.0862** |
+| 68 | **ARTIST** | DFS timepoint | property: "**5yr** DFS 78.2% vs 74.2%" | the primary table labels the **same numbers** "**3yr** DFS" |
+| 69 | **ARTIST** | LN+ subgroup | table: **77.5% vs 72.3%, p=0.0365** | subgroup detail: **76% vs 72%, P=0.04** |
+| 70 | **KN-671** | EFS HR | property + figure: **0.58 (0.46–0.72)** | primary table: **0.59 (0.48–0.72)**. The table also calls 3-yr EFS "3yr **RFS**". |
+| 71 | **MATTERHORN** | EFS timepoint | property: "**2yr** EFS 67% vs 59%" | table: "**1yr** EFS 67.4% vs 58.5%" |
+| 72 | **CM-77T** | EFS | property: "**1yr** EFS 73% vs 59%" | table: "**18-M** EFS 70.2% vs 50.0%" — the property's numbers appear **nowhere** in the body |
+| 73 | **JACCRO GC-07** | 5yr RFS | property: **59.8% vs 50.6%** | the secondary table's "5yr RFS" row **repeats the 3yr percentages** (67.7% vs 57.4%) |
+| 74 | **FNCLCC-FFCD** | R0 rate | Patient population: **PF 84%** | both body tables: **87%** |
+| 75 | **FNCLCC-FFCD** | grade ≥3 neutropenia | property: **22%** | safety section: **20.2%** |
+| 76 | **CLASSIC** | completion | `Completion (%)`: **32%** | body: "Only **67%** of patients completed 8 cycles" |
+| 77 | **SAMIT** | TS-1 3yr DFS | property: **58.1%** | table: **58.2%** |
+
+## 16. New P2/P3 — impossible or mislabelled
+
+| # | Trial | Problem |
+|---|---|---|
+| 78 | **AMBASSADOR** | Body table: "DFS (CPS <10)" HR reads "**0.53–0.95)**" — the point estimate and opening bracket are missing entirely. |
+| 79 | **AMBASSADOR** | CPS ≥10 DFS is **not** significant (0.81, 0.61–1.08) while CPS <10 **is** — the page already flags this with a "??" callout, but it is worth confirming against the publication. |
+| 80 | **DESTINY-Breast05** | The population callout is headed "**T-DXd \| T-DM1**" but its rows (dual-HER2 70/20, N+ 80/45, inoperable 50/20) actually compare **DB-05 with KATHERINE**. As headed, it reads as a severe baseline imbalance between the two arms. |
+| 81 | **DESTINY-Breast05** | Same callout gives 70/80/50 where the body text gives **79% / 80.7% / 52.7%**. |
+| 82 | **APHINITY** | `HR` cell: "8-yr OS (**IIT**)" — typo for ITT. |
+| 83 | **HERA** | `HR` cell labels OS "**(11-yr)**"; the property and table both report **12-yr** OS. |
+| 84 | **MOSAIC** | `HR` cell: "OS **HR HR** 0.90" — duplicated. |
+| 85 | **FLOT4** | `HR` cell: "DFS 0.75 **0.62–0.91**, p=0.0036)" — missing opening bracket. |
+| 86 | **BCIRG-006** | The trastuzumab arm is labelled **three different ways in one row**: "AC-T+T", "AC-T+H", "AC-H+T". |
+| 87 | **P024** | The `pCR (%)` property holds **ORR**, not pCR — a workaround for the early-stage schema having no ORR field. It *is* labelled "Primary endpoint ORR", so this is a schema gap rather than an error. |
+| 88 | **ARTIST 2** | SOX vs S-1 HR **0.693 (0.409–0.987)** — the CI is markedly asymmetric on the log scale, which is unusual for a Cox hazard ratio. Worth checking against Ann Oncol 2021. |
+| 89 | **ARTIST 2** | `DFS` lists arms S-1 / SOX / SOXRT; `Drug/Control` lists SOX / SOX-RT / S-1. Different order in the same row. |
+| 90 | **ARTIST**, **ARTIST 2**, **CM-274**, **MATTERHORN** | Table header typos: "HR (95% CI, p **valua**)" / "p **valu**". |
+| 91 | **ARTIST** | Body: "Distant recurrence … p = **5568**" — missing the leading "0.". |
+| 92 | **KN-355** *(metastatic, found while cross-checking)* | "Prespecified statistical criterion of alpha=0·00411" is stated once as if global; it applies only to the CPS ≥10 PFS test. |
+
+## 17. New P4/P7 — direction, structure, and completeness
+
+| # | Trial | Problem |
+|---|---|---|
+| 93 | **ARTIST (OS)** | 5yr OS **75% vs 73%** favours the study arm, but **HR 1.13** favours control. Direction conflict. Null either way (p=0.5272), so the ⚠️ stands, but the row contradicts itself. |
+| 94 | **KRISTINE (IDFS)** | 3yr IDFS **93.0% vs 92.0%** favours T-DM1+P, but **HR 1.11** favours TCH+P. Same conflict. |
+| 95 | **AVANT** | `HR` cell had a **stray `<br>`** splitting "HR 1.27" from "(1.03–1.57; p=0.02)". **Repaired** into four clean lines while marking. |
+| 96 | **SAMIT** | `HR` cell has **two** stray `<br>` tags splitting statistics mid-value. Left verbatim; the orphan fragments carry no symbol. |
+| 97 | **DESTINY-Breast11** | The **T-DXd-alone arm was INFERIOR** (ΔpCR −13.2%, P=0.001; closed early by the IDMC) — that appears **only in the body**. The properties show only the winning comparison. |
+| 98 | **NeoSphere** | **Group D** (pertuzumab + docetaxel, no trastuzumab) was significantly **worse** than control — PFS HR 2.05 (1.07–3.93), DFS HR 2.16 (1.08–4.32) — body only. |
+| 99 | **PARADIGM** *(metastatic)* + **NSABP B-27** | B-27's DFS and OS properties read "NA (no exact number)" although the body carries HR ~0.94, P=NS. |
+| 100 | **PRODIGE 23** | The Key takeaway claims TNT improved "DFS, MFS, **and OS**", but the only OS statistic on the page is **HR 0.65, p=0.0773** (not significant), and the 7-yr figures (82% vs 72%) carry **no HR or p at all**. |
+| 101 | **KATHERINE** | `HR` line 3 packs IHC 3+ (0.47, positive) and IHC 2+ (0.84, not) onto one line — **left unmarked**, needs splitting. |
+| 102 | **IMpower 010** | Both `HR` lines pack **four** and **two** populations with different verdicts — **left unmarked**, needs splitting. |
+| 103 | **AVANT**, **NO16968** | Page bodies are **completely blank** (properties only). With FALCON, that's three. |
+| 104 | **SUNLIGHT** *(metastatic)* | *(already #18)* — internal contradiction on prior bevacizumab. |
+
+## 18. Three more rows deliberately left unmarked
+
+Added to §12. All three are **randomised trials without a comparative test**,
+so any symbol would assert something the design cannot support.
+
+| Trial | Why |
+|---|---|
+| **GEICAM/2006-03** | Randomised **phase II, explicitly not designed to compare the arms** (Simon two-stage on the endocrine arm only; the primary result is reported as "P=0.075 *(exploratory)*"). The only markable property is pCR — **1 patient vs 0**. |
+| **PICC** | Randomised **phase 2, non-comparative**; both arms had 1-yr DFS and OS of **100% with no events**; pCR carries no test. |
+| **ACOSOG Z1031** | *(already in §8)* — 3-arm selection design with no control. |
+
+## 19. One more decision for you
+
+**NSABP B-18 and TRAIN-2** are the same shape and I marked both **⚠️**:
+
+- **B-18** — neoadjuvant vs adjuvant AC. Dual primary OS and DFS, both null
+  (RR 1.02, P=.80; RR 0.95, P=.50). The field reads this as **equivalence**.
+- **TRAIN-2** — anthracycline vs anthracycline-free. pCR 67% vs 68%, P=.95.
+  Read as **"anthracyclines add nothing"**.
+
+Neither trial prespecified a **non-inferiority margin**, so **↔** would claim
+more than the design supports — that is why both are ⚠️. But ⚠️ reads as
+"inconclusive", when the clinical message in both cases is closer to "these are
+equivalent, pick the less toxic one".
+
+**If you'd rather these two carry ↔, say so and I'll change both.** They are the
+only rows in either database where a failed superiority test is treated as a
+practice-defining equivalence result.
