@@ -53,7 +53,7 @@ direction traps that produced wrong verdicts on a first mechanical pass.
 
 ## Requirements
 
-- Claude Code with the Notion MCP integration connected (`mcp__claude_ai_Notion__*` tools available).
+- Claude Code with the Notion MCP integration connected (`mcp__Notion__notion-fetch`, `mcp__Notion__notion-update-page`, `mcp__Notion__notion-query-data-sources`, etc. available).
 - A Notion workspace containing:
   - **Metastatic Cancer Database** — data source id `2a012797-0a62-81ff-b9bc-000b1334cb16`
   - **Early Stage Cancer Database** — data source id `2a312797-0a62-81c7-82ef-000b4de44d4b`
@@ -75,13 +75,17 @@ value conventions, and page body template.
 
 ## Review reports
 
-A verdict pass has been applied across both databases. Two artefacts record what
-it found:
+A full verdict pass has been completed across **both databases** — 103 metastatic
+rows and 45 early-stage rows carry per-endpoint symbols (11 early-stage rows are
+deliberately unmarked: non-comparative designs, prognostic analyses, template and
+empty rows). Two artefacts record what the pass found along the way:
 
 - [`DATA_ISSUES_REVIEW.md`](DATA_ISSUES_REVIEW.md) — every data error and
   second-look item, ordered by how wrong the data is: conflicting values,
   statistically impossible CIs, mislabelled statistics, direction traps, missing
-  statistics, typos, and structural problems.
+  statistics, typos, and structural problems. Includes a handful of open
+  questions (verdicts to confirm, one rule conflict) that only the database
+  owner can settle.
 - `Oncology_DB_data_issues.xlsx` — the same register as a working spreadsheet,
   with a Status column for tracking fixes, plus tabs for verdicts to confirm,
   the open rule decision, deliberately unmarked rows, and non-inferiority designs.
