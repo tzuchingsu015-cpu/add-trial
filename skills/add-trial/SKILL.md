@@ -67,14 +67,19 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 - `Cancer type` (**select**, single): Other, Endometrial CA, Cerical CA, Ovary,
   Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
   HEENT
-- `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2
+- `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
+  Others
 - `Biomarker` (multi-select): HER2, ER/PR (HR), PD-L1, BRCA1/2, PIK3CA, ESR1,
   EGFR, ALK, MSI-H / dMMR, ctDNA
 
 Text/number properties: `Year` (number), `Number` (number — enrolled N),
-`Drug/Control`, `Patient population`, `DFS ` (**note the trailing space in the
-property name**), `PFS`, `OS`, `HR (95% CI)`, `pCR (%)`, `Completion (%)`,
-`>= Gr. 3 TRAE`, `Key takeaway`.
+`Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`,
+`pCR (%)`, `Completion (%)`, `>= Gr. 3 TRAE`, `Key takeaway`.
+
+The database has a page template, "Template for Early Cancer", which is the
+canonical body layout for this DB (Primary endpoints table with RFS rows, then
+Key secondary endpoints with mOS and pCR rate). Follow it in preference to the
+metastatic example below where the two differ.
 
 Notes specific to this database:
 - There is **no** `Line` property and **no** ORR/CR/PR/SD/DCR properties.
@@ -262,7 +267,11 @@ page body, URL, and any manually attached files:
    `mcp__Notion__notion-update-page` (`command: "update_properties"`) — the
    schemas differ, so most values do **not** carry across the move.
 3. Update any body text that referenced the old database's fields.
-4. Verify with a query against both data sources that exactly one row exists.
+4. **Clean up the schema damage the move causes** — see the Gotchas entry
+   below. Null out the moved page's stale values, then `DROP COLUMN` the
+   injected properties and restore any property whose type was changed.
+5. Verify with a query against both data sources that exactly one row exists,
+   and re-fetch the destination schema to confirm it matches what it was.
 
 ## Gotchas
 
@@ -276,10 +285,22 @@ These are failure modes that have actually occurred — check for them.
   dropping columns and their data. Give every `<tr>` an identical number of
   `<td>`s; put anything that would have spanned into a bullet below the table.
 - **Multi-select options cannot be created on the fly.** Passing an unknown
-  value returns `validation_error`. Leave blank and flag instead.
+  value returns `validation_error`. Leave blank and flag instead. To add one,
+  use `mcp__Notion__notion-update-data-source` with
+  `ALTER COLUMN "<prop>" SET MULTI_SELECT(...)` — and **list every existing
+  option with its current color**, because the statement replaces the whole
+  option set rather than appending to it.
+- **Moving a page between data sources pollutes the destination schema.**
+  `notion-move-pages` carries the page's old properties with it and Notion
+  silently creates matching columns in the destination — a move from the
+  metastatic DB injected `Line`, `Treatments`, `SD (%)`, `PR (%)` and
+  `DCR (%)` into the early-stage DB, flipped `Cancer type` from `select` to
+  `multi_select`, and renamed `DFS ` to `DFS`. Always re-fetch the
+  destination schema after a move, diff it against what it was, and clean up.
+  Before dropping an injected column, check no other row uses it:
+  `SELECT COUNT("<prop>") FROM "collection://…"`.
 - **`Cancer type` differs between the databases**: single `select` in Early
   Stage (pass a string), `multi_select` in Metastatic (pass an array).
-- **The early-stage DFS property is named `DFS ` with a trailing space.**
 - **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`

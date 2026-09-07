@@ -29,8 +29,8 @@ Attach the trial PDF, exported slide deck (PDF preferred), or screenshots before
 ## Schema
 
 **Early Stage Cancer Database**
-Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant), `Cancer type` (single select), `Treatment`, `Biomarker`
-Text/number: `Year`, `Number`, `Drug/Control`, `Patient population`, `DFS `, `PFS`, `OS`, `HR (95% CI)`, `pCR (%)`, `Completion (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
+Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant), `Cancer type` (single select), `Treatment` (incl. `Others`), `Biomarker`
+Text/number: `Year`, `Number`, `Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`, `pCR (%)`, `Completion (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
 
 **Metastatic Cancer Database**
 Multi-select: `Phase`, `Line`, `Cancer type`, `Treatments`, `Biomarker`
@@ -43,5 +43,5 @@ See [`skills/add-trial/SKILL.md`](skills/add-trial/SKILL.md) for the routing rul
 - The Notion MCP tools do not support file uploads, so the original PDF/slide deck must be attached manually in Notion under the Reference section after the page is created.
 - If a `.pptx` cannot be parsed directly, export it to PDF or paste key slide screenshots instead.
 - Notion does not support `colspan`/`rowspan` in tables — it silently drops columns instead of erroring, so every row must have the same cell count. The skill verifies this after creating a page.
-- Notion rejects unknown multi-select option values rather than creating them; the skill leaves the property blank and flags it instead of forcing a wrong label.
-- A trial filed in the wrong database should be **moved**, not recreated — see "Correcting a mis-routed page" in the skill.
+- Notion rejects unknown multi-select option values rather than creating them; the skill leaves the property blank and flags it instead of forcing a wrong label. Adding an option replaces the whole option set, so every existing option and colour must be restated.
+- A trial filed in the wrong database should be **moved**, not recreated — see "Correcting a mis-routed page" in the skill. Note that moving a page carries its old properties along and Notion silently adds matching columns to the destination database, so the destination schema must be re-checked and cleaned up afterwards.
