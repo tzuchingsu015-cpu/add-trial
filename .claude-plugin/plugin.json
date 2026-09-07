@@ -1,6 +1,6 @@
 {
   "name": "add-trial",
-  "description": "Summarizes a clinical trial from uploaded reference attachments (PDF, slide deck, or images) and creates a structured entry in the Notion Metastatic Cancer Database, filling all schema properties and writing a detailed narrative page body.",
+  "description": "Oncology reference tooling. `add-trial` summarizes a clinical trial from uploaded reference attachments (PDF, slide deck, or images) into a structured entry in the Notion Metastatic Cancer Database. `nccn-summary` isolates one disease subset of an NCCN guideline into an HTML artifact where every algorithm recommendation carries the Discussion evidence and rationale behind it.",
   "author": {
     "name": "tzuchingsu015-cpu",
     "email": "tzuchingsu015@gmail.com"
