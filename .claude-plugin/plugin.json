@@ -1,6 +1,6 @@
 {
   "name": "add-trial",
-  "description": "Summarizes a clinical trial from uploaded reference attachments (PDF, slide deck, or images) and creates a structured entry in the Notion Metastatic Cancer Database, filling all schema properties and writing a detailed narrative page body.",
+  "description": "Summarizes a clinical trial from uploaded reference attachments (PDF, slide deck, or images), routes it to the correct Notion oncology database (Early Stage or Metastatic, by disease setting), and creates a structured entry filling all schema properties and writing a detailed narrative page body.",
   "author": {
     "name": "tzuchingsu015-cpu",
     "email": "tzuchingsu015@gmail.com"
