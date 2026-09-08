@@ -98,8 +98,8 @@ Data source: `2a012797-0a62-81ff-b9bc-000b1334cb16`
 - `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
   Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
   HEENT
-- `Treatments` (multi-select — note the plural name): NSAI, Anti-EGFR, SERD,
-  CDK4/6i, Endocrine, RT, BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
+- `Treatment` (multi-select): NSAI, Anti-EGFR, SERD, CDK4/6i, Endocrine, RT,
+  BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
 - `Biomarker` (multi-select): BRCA, AKT, PIK3CA, HR, TP53, dMMR, RAF, RAS, RET,
   MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA
 
@@ -301,7 +301,9 @@ These are failure modes that have actually occurred — check for them.
   `SELECT COUNT("<prop>") FROM "collection://…"`.
 - **`Cancer type` differs between the databases**: single `select` in Early
   Stage (pass a string), `multi_select` in Metastatic (pass an array).
-- **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
+- **`Treatment` in both databases.** The metastatic DB's property was once named
+  `Treatments` (plural); it has since been renamed, so the singular `Treatment`
+  is correct for both. Re-check it in the fetched schema before mapping.
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`
   as separate runs.
