@@ -29,7 +29,7 @@ Attach the trial PDF, exported slide deck (PDF preferred), or screenshots before
 ## Schema
 
 **Early Stage Cancer Database**
-Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant), `Cancer type` (single select), `Treatment` (incl. `Others`), `Biomarker`
+Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant), `Cancer type`, `Treatment` (incl. `Others`), `Biomarker`
 Text/number: `Year`, `Number`, `Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`, `pCR (%)`, `Completion (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
 
 **Metastatic Cancer Database**

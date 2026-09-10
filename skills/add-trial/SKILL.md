@@ -64,7 +64,7 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 
 - `Phase` (multi-select): Meta, Ongoing, I, II, III, Retro
 - `Timing` (**select**, single): Peri-OP, Neoadjuvant, Adjuvant
-- `Cancer type` (**select**, single): Other, Endometrial CA, Cerical CA, Ovary,
+- `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
   Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
   HEENT
 - `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
@@ -118,6 +118,10 @@ Text/number properties: `Year` (number), `Drug/Control`, `Patient population`,
 - Percentages as `"A% vs. B%"`, optionally with population/year in parentheses.
 - `Key takeaway` is short and numbered, may use `<span color="red">...</span>`
   to highlight the key result.
+- `Cancer type`: when a trial's population spans two organ labels, **tag both**.
+  Gastro-oesophageal junction trials are the usual case — RAINBOW (gastric 80% /
+  GEJ 20%) and CM-577 (oesophagus 58% / GEJ 42%) each carry `GC` + `Esophagus`.
+  State the split in the page body so the dual tag is self-explaining.
 - Multi-select: **reuse an existing option label whenever the data matches one.**
   Notion **rejects** unknown option values (`validation_error`) — it will not
   create them on the fly. If nothing fits, leave the property blank, flag it in
@@ -298,12 +302,17 @@ These are failure modes that have actually occurred — check for them.
   silently creates matching columns in the destination — a move from the
   metastatic DB injected `Line`, `SD (%)`, `PR (%)` and `DCR (%)` into the
   early-stage DB, flipped `Cancer type` from `select` to `multi_select`, and
-  renamed `DFS ` to `DFS`. Always re-fetch the
+  renamed `DFS ` to `DFS`. **`Cancer type` being `multi_select` is now the
+  intended state in both databases** (deliberately changed) — do not "restore"
+  it to `select` as if it were move damage. Always re-fetch the
   destination schema after a move, diff it against what it was, and clean up.
   Before dropping an injected column, check no other row uses it:
   `SELECT COUNT("<prop>") FROM "collection://…"`.
-- **`Cancer type` differs between the databases**: single `select` in Early
-  Stage (pass a string), `multi_select` in Metastatic (pass an array).
+- **`Cancer type` is `multi_select` in BOTH databases** — pass an array to
+  each. It used to be a single `select` in the early-stage DB (pass a string),
+  and earlier drafts of this skill said so; that is no longer true. The option
+  sets still differ slightly: the metastatic DB has `GIST`, the early-stage DB
+  does not. `Timing` is the only remaining single `select` (early-stage only).
 - **`Treatment` is the property name in BOTH databases** (earlier drafts of
   this skill said the metastatic one was `Treatments` — it is not). The trap is
   that the two share a name but have **different option sets**: the early-stage
