@@ -95,13 +95,13 @@ Data source: `2a012797-0a62-81ff-b9bc-000b1334cb16`
 
 - `Phase` (multi-select): Retro, Ongoing, I, II, III
 - `Line` (multi-select): 1, 2, 3
-- `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
-  Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
-- `Treatments` (multi-select — note the plural name): NSAI, Anti-EGFR, SERD,
-  CDK4/6i, Endocrine, RT, BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
+- `Cancer type` (**multi-select**): GIST, Other, Endometrial CA, Cerical CA,
+  Ovary, Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast,
+  Lung, NPC, HEENT
+- `Treatment` (multi-select): NSAI, Anti-EGFR, SERD, CDK4/6i, Endocrine, RT,
+  BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
 - `Biomarker` (multi-select): BRCA, AKT, PIK3CA, HR, TP53, dMMR, RAF, RAS, RET,
-  MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA
+  MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA, PD-L1
 
 Text/number properties: `Year` (number), `Drug/Control`, `Patient population`,
 `mOS (month)`, `PFS (month)`, `HR (95% CI)`, `ORR (%)`, `CR (%)`, `PR (%)`,
@@ -289,19 +289,27 @@ These are failure modes that have actually occurred — check for them.
   use `mcp__Notion__notion-update-data-source` with
   `ALTER COLUMN "<prop>" SET MULTI_SELECT(...)` — and **list every existing
   option with its current color**, because the statement replaces the whole
-  option set rather than appending to it.
+  option set rather than appending to it. The DDL response may render the
+  database's page templates as `Untitled`; that is a display artifact of the
+  response, not damage — re-fetch the template page to confirm before
+  "fixing" anything.
 - **Moving a page between data sources pollutes the destination schema.**
   `notion-move-pages` carries the page's old properties with it and Notion
   silently creates matching columns in the destination — a move from the
-  metastatic DB injected `Line`, `Treatments`, `SD (%)`, `PR (%)` and
-  `DCR (%)` into the early-stage DB, flipped `Cancer type` from `select` to
-  `multi_select`, and renamed `DFS ` to `DFS`. Always re-fetch the
+  metastatic DB injected `Line`, `SD (%)`, `PR (%)` and `DCR (%)` into the
+  early-stage DB, flipped `Cancer type` from `select` to `multi_select`, and
+  renamed `DFS ` to `DFS`. Always re-fetch the
   destination schema after a move, diff it against what it was, and clean up.
   Before dropping an injected column, check no other row uses it:
   `SELECT COUNT("<prop>") FROM "collection://…"`.
 - **`Cancer type` differs between the databases**: single `select` in Early
   Stage (pass a string), `multi_select` in Metastatic (pass an array).
-- **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
+- **`Treatment` is the property name in BOTH databases** (earlier drafts of
+  this skill said the metastatic one was `Treatments` — it is not). The trap is
+  that the two share a name but have **different option sets**: the early-stage
+  DB has `ET` and `Anti-HER2`, the metastatic DB has `NSAI`, `Anti-EGFR`,
+  `SERD`, `Endocrine`, `BsAb` and `Anti-VEGF`. Map against the routed
+  database's own options.
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`
   as separate runs.
