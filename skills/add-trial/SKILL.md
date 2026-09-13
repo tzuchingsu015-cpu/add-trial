@@ -64,7 +64,8 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 
 - `Phase` (multi-select): Meta, Ongoing, I, II, III, Retro
 - `Timing` (**select**, single): Peri-OP, Neoadjuvant, Adjuvant
-- `Cancer type` (**select**, single): Other, Endometrial CA, Cerical CA, Ovary,
+- `Cancer type` (**multi-select** — see Gotchas; this was a single `select`
+  until a page move flipped it): Other, Endometrial CA, Cerical CA, Ovary,
   Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
   HEENT
 - `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
@@ -109,6 +110,28 @@ Text/number properties: `Year` (number), `Drug/Control`, `Patient population`,
 
 ## Property value conventions (both databases)
 
+**Properties are a scannable table row, not the write-up.** Every property holds
+only its *key* reportable items; the detailed narrative belongs in the page body.
+Trim aggressively — if a fact is not what a reader would compare across trials,
+it goes in the body instead.
+
+| Property | Keep | Leave to the body |
+| --- | --- | --- |
+| `Patient population` | Key inclusion criteria, key exclusions, and the demographics that matter **across trials in the same setting** (e.g. nodal stage / primary site / HPV-p16 / smoking in HNSCC; HR and HER2 status in breast; sidedness and RAS in CRC) | Full eligibility lists, per-arm demographic tables |
+| `DFS`, `PFS`, `OS`, `pCR (%)`, ORR/CR/PR/SD/DCR | The primary endpoint result, the key secondary endpoints, and only those subgroups the article itself emphasises | Every subgroup, event counts by category, sensitivity and competing-risk detail |
+| `Completion (%)` | The headline delivery or adherence numbers | Per-cycle dose-intensity detail |
+| `>= Gr. 3 TRAE` | The differentiating toxicities, treatment-related deaths, and SAE or discontinuation rates | Full adverse-event tables |
+| `Key takeaway` | 3–5 short numbered lines | Discussion-level reasoning |
+
+- **Never attach a confidence interval to anything except a hazard ratio.**
+  Medians, percentages and rates carry the point estimate plus, where it matters,
+  the P value. CIs belong only in `HR (95% CI)`. Where an HR is quoted *outside*
+  that property (in `OS`, `PFS` or `DFS`, say), write `HR x.xx; P=y` without the
+  CI — the full `value (lower–upper); P=x` form already appears in
+  `HR (95% CI)`, so repeating it is noise.
+- **A convention change applies to new entries only.** When the user revises a
+  convention, do not go back and rewrite the properties of pages that already
+  exist unless they explicitly ask for a retroactive pass.
 - Comparative arms as `"A vs. B"` (e.g. PFS `"16.9 vs. 9.3"`).
 - Prefix outcome lines with a verdict marker, as existing entries do:
   `✅` met/positive, `⚠️` numerical trend or not formally significant,
@@ -299,8 +322,11 @@ These are failure modes that have actually occurred — check for them.
   destination schema after a move, diff it against what it was, and clean up.
   Before dropping an injected column, check no other row uses it:
   `SELECT COUNT("<prop>") FROM "collection://…"`.
-- **`Cancer type` differs between the databases**: single `select` in Early
-  Stage (pass a string), `multi_select` in Metastatic (pass an array).
+- **`Cancer type` is now `multi_select` in *both* databases** — pass an array.
+  It was originally a single `select` in the early-stage DB; a page move from the
+  metastatic DB flipped its type and it was never restored. Always confirm the
+  type against the live schema before mapping (step 5), because a string where an
+  array is expected fails validation.
 - **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`
