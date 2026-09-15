@@ -70,7 +70,7 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 - `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
   PARPi, Others
 - `Biomarker` (multi-select): HER2, ER/PR (HR), PD-L1, BRCA1/2, PIK3CA, ESR1,
-  EGFR, ALK, MSI-H / dMMR, ctDNA
+  EGFR, ALK, MSI-H / dMMR, ctDNA, BRAF
 
 Text/number properties: `Year` (number), `Number` (number — enrolled N),
 `Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`,
@@ -289,7 +289,14 @@ These are failure modes that have actually occurred — check for them.
   use `mcp__Notion__notion-update-data-source` with
   `ALTER COLUMN "<prop>" SET MULTI_SELECT(...)` — and **list every existing
   option with its current color**, because the statement replaces the whole
-  option set rather than appending to it.
+  option set rather than appending to it. Done that way it is safe: restating
+  every option preserves each one's `collectionPropertyOption://` url, so
+  existing rows keep their values (verified on the early-stage `Biomarker` when
+  `BRAF` was added, 2026-09-15). Omitting an option would drop it from every
+  row that uses it, so check usage first with
+  `SELECT COUNT("<prop>") FROM "collection://…"` and re-count afterwards.
+  All ten Notion colors were already in use on that property, so `BRAF` reuses
+  `purple` — duplicate colors are fine and already common in these databases.
 - **Moving a page between data sources pollutes the destination schema.**
   `notion-move-pages` carries the page's old properties with it and Notion
   silently creates matching columns in the destination — a move from the
