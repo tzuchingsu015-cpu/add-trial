@@ -6,7 +6,7 @@ A Claude Code skill that reads a clinical-trial reference attachment (PDF, slide
 
 1. Reads the uploaded source material directly (PDFs/images) and extracts key trial data.
 2. **Routes the trial to the correct database** based on disease setting: localized stage I–III with curative intent (neoadjuvant/adjuvant/peri-operative) goes to the early-stage DB; advanced/metastatic disease treated with palliative intent goes to the metastatic DB. Ambiguous cases stop and ask.
-3. Fetches the target data source's live schema and maps the data to it. The two databases have **different** schemas — e.g. the early-stage DB has `Timing`, `Number`, `DFS`, `pCR (%)` and `Completion (%)`, while the metastatic DB has `Line` and ORR/CR/PR/SD/DCR.
+3. Fetches the target data source's live schema and maps the data to it — the schema drifts, so this step is never skipped. The two databases have **different** schemas — e.g. the early-stage DB has `Timing`, `Number`, `DFS`, `pCR (%)` and `Completion (%)`, while the metastatic DB has `Line` and ORR/CR/PR/SD/DCR.
 4. Creates a new Notion page with all properties filled and a detailed narrative body (Trial Design → Patient Population → Treatment → Results → Discussion → Reference), including a mandatory key efficacy results table.
 5. Re-fetches the page to verify nothing was silently dropped, then reports what was inferred or left blank.
 
@@ -29,11 +29,11 @@ Attach the trial PDF, exported slide deck (PDF preferred), or screenshots before
 ## Schema
 
 **Early Stage Cancer Database**
-Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant), `Cancer type` (single select), `Treatment` (incl. `Others`), `Biomarker`
+Multi-select: `Phase`, `Cancer type`, `Treatment` (incl. `PARPi`, `Others`), `Biomarker`. Single select: `Timing` (Peri-OP/Neoadjuvant/Adjuvant)
 Text/number: `Year`, `Number`, `Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`, `pCR (%)`, `Completion (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
 
 **Metastatic Cancer Database**
-Multi-select: `Phase`, `Line`, `Cancer type`, `Treatments`, `Biomarker`
+Multi-select: `Phase`, `Line`, `Cancer type`, `Treatment`, `Biomarker`
 Text/number: `Year`, `Drug/Control`, `Patient population`, `mOS (month)`, `PFS (month)`, `HR (95% CI)`, `ORR (%)`, `CR (%)`, `PR (%)`, `SD (%)`, `DCR (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
 
 See [`skills/add-trial/SKILL.md`](skills/add-trial/SKILL.md) for the routing rules, full schemas, value conventions, and page body template.

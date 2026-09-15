@@ -64,11 +64,11 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 
 - `Phase` (multi-select): Meta, Ongoing, I, II, III, Retro
 - `Timing` (**select**, single): Peri-OP, Neoadjuvant, Adjuvant
-- `Cancer type` (**select**, single): Other, Endometrial CA, Cerical CA, Ovary,
-  Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
+- `Cancer type` (**multi-select** — pass an array): Other, Endometrial CA,
+  Cerical CA, Ovary, Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC,
+  Breast, Lung, NPC, HEENT
 - `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
-  Others
+  PARPi, Others
 - `Biomarker` (multi-select): HER2, ER/PR (HR), PD-L1, BRCA1/2, PIK3CA, ESR1,
   EGFR, ALK, MSI-H / dMMR, ctDNA
 
@@ -95,13 +95,13 @@ Data source: `2a012797-0a62-81ff-b9bc-000b1334cb16`
 
 - `Phase` (multi-select): Retro, Ongoing, I, II, III
 - `Line` (multi-select): 1, 2, 3
-- `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
-  Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
-- `Treatments` (multi-select — note the plural name): NSAI, Anti-EGFR, SERD,
-  CDK4/6i, Endocrine, RT, BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
+- `Cancer type` (**multi-select**): GIST, Other, Endometrial CA, Cerical CA,
+  Ovary, Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast,
+  Lung, NPC, HEENT
+- `Treatment` (multi-select): NSAI, Anti-EGFR, SERD, CDK4/6i, Endocrine, RT,
+  BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
 - `Biomarker` (multi-select): BRCA, AKT, PIK3CA, HR, TP53, dMMR, RAF, RAS, RET,
-  MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA
+  MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA, PD-L1
 
 Text/number properties: `Year` (number), `Drug/Control`, `Patient population`,
 `mOS (month)`, `PFS (month)`, `HR (95% CI)`, `ORR (%)`, `CR (%)`, `PR (%)`,
@@ -299,9 +299,16 @@ These are failure modes that have actually occurred — check for them.
   destination schema after a move, diff it against what it was, and clean up.
   Before dropping an injected column, check no other row uses it:
   `SELECT COUNT("<prop>") FROM "collection://…"`.
-- **`Cancer type` differs between the databases**: single `select` in Early
-  Stage (pass a string), `multi_select` in Metastatic (pass an array).
-- **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
+- **`Cancer type` is `multi_select` in BOTH databases — pass an array.** It was
+  originally a single `select` in the early-stage DB; a page move flipped it to
+  `multi_select` (see the entry above) and it was never restored. Verified live
+  2026-09-15. Passing a bare string fails.
+- **`Treatment` is the property name in BOTH databases.** Earlier drafts of this
+  file called the metastatic one `Treatments`; it is not. Verified live
+  2026-09-15.
+- **The schema drifts — step 5 is not optional.** Options observed on the live
+  schema but missing from older copies of this file: `PARPi` (early `Treatment`),
+  `GIST` (metastatic `Cancer type`), `PD-L1` (metastatic `Biomarker`).
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`
   as separate runs.
