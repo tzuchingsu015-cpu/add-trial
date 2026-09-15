@@ -7,8 +7,9 @@ A Claude Code skill that reads a clinical-trial reference attachment (PDF, slide
 1. Reads the uploaded source material directly (PDFs/images) and extracts key trial data.
 2. **Routes the trial to the correct database** based on disease setting: localized stage I–III with curative intent (neoadjuvant/adjuvant/peri-operative) goes to the early-stage DB; advanced/metastatic disease treated with palliative intent goes to the metastatic DB. Ambiguous cases stop and ask.
 3. Fetches the target data source's live schema and maps the data to it. The two databases have **different** schemas — e.g. the early-stage DB has `Timing`, `Number`, `DFS`, `pCR (%)` and `Completion (%)`, while the metastatic DB has `Line` and ORR/CR/PR/SD/DCR.
-4. Creates a new Notion page with all properties filled and a detailed narrative body (Trial Design → Patient Population → Treatment → Results → Discussion → Reference), including a mandatory key efficacy results table.
-5. Re-fetches the page to verify nothing was silently dropped, then reports what was inferred or left blank.
+4. **Checks the drug's current FDA approval status** for the trial's indication (regular vs. accelerated, and whether the approved population matches the trial's primary-endpoint population) and records it in the Discussion/Notes section. If the trial result and the approval status disagree — e.g. a positive trial with only accelerated/narrower/no approval, or a negative trial that's approved anyway — flags it with `⚠️` in the Key takeaway.
+5. Creates a new Notion page with all properties filled and a detailed narrative body (Trial Design → Patient Population → Treatment → Results → Discussion → Reference), including a mandatory key efficacy results table.
+6. Re-fetches the page to verify nothing was silently dropped, then reports what was inferred or left blank (including any FDA discordance found).
 
 ## Usage
 
@@ -45,3 +46,4 @@ See [`skills/add-trial/SKILL.md`](skills/add-trial/SKILL.md) for the routing rul
 - Notion does not support `colspan`/`rowspan` in tables — it silently drops columns instead of erroring, so every row must have the same cell count. The skill verifies this after creating a page.
 - Notion rejects unknown multi-select option values rather than creating them; the skill leaves the property blank and flags it instead of forcing a wrong label. Adding an option replaces the whole option set, so every existing option and colour must be restated.
 - A trial filed in the wrong database should be **moved**, not recreated — see "Correcting a mis-routed page" in the skill. Note that moving a page carries its old properties along and Notion silently adds matching columns to the destination database, so the destination schema must be re-checked and cleaned up afterwards.
+- FDA approval status is looked up fresh every time (web search, not memory) since approvals change — regular vs. accelerated, and whether the approved population matches the trial's primary-endpoint population, are both recorded in Discussion/Notes, with a `⚠️` Key-takeaway flag when the trial result and approval status disagree.

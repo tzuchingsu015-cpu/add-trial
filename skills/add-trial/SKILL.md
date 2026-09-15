@@ -118,6 +118,12 @@ Text/number properties: `Year` (number), `Drug/Control`, `Patient population`,
 - Percentages as `"A% vs. B%"`, optionally with population/year in parentheses.
 - `Key takeaway` is short and numbered, may use `<span color="red">...</span>`
   to highlight the key result.
+- **FDA discordance marker**: prefix a `Key takeaway` line with `⚠️` (in
+  addition to, or instead of, the outcome-verdict usage above) whenever the
+  trial result and the drug's current FDA approval status disagree — see
+  "Check FDA approval status" in the Workflow below. State the discordance
+  in words on that line (e.g. `⚠️ FDA discordance: positive trial, but
+  approval remains accelerated`), don't rely on the emoji alone.
 - Multi-select: **reuse an existing option label whenever the data matches one.**
   Notion **rejects** unknown option values (`validation_error`) — it will not
   create them on the fly. If nothing fits, leave the property blank, flag it in
@@ -207,6 +213,11 @@ Formatting rules (follow the BOLERO-2 and KN-177 pages as canonical examples):
 # Discussion/Notes {color="yellow_bg"}
 ---
 - Interpretation, clinical context, how this changes practice
+- **FDA approval status**: current approval line, drug(s), regimen, and
+  approved population/indication, with the approval date and type (regular
+  vs **accelerated**). Explicitly compare the approved population against the
+  trial's primary-endpoint population. If there is **no** FDA approval for
+  this indication, say so. See "Check FDA approval status" in the Workflow.
 
 # Reference {color="yellow_bg"}
 ---
@@ -241,20 +252,43 @@ sections, `<table>`/`<columns>` blocks as shown above.
 6. **Map extracted data** to the target schema, matching existing multi-select
    option labels wherever possible.
 7. **Write the properties** map following the conventions above.
-8. **Compose the page body** following the detailed structure above.
-9. **Create the page** with `mcp__Notion__notion-create-pages`:
-   - `parent`: `{"type": "data_source_id", "data_source_id": "<routed id>"}`
-   - `icon`: `"📊"`
-   - `properties`: the mapped properties (title under `Key Trials/Med`)
-   - `content`: the composed body (do not repeat the title in content)
-10. **Verify**: re-fetch the created page and check that every table kept all of
+8. **Check FDA approval status**: search for the drug/regimen's **current**
+   FDA approval status in the routed indication (web search — do not rely on
+   training-data memory, approvals change). Determine:
+   - Whether it's approved at all for this population/indication.
+   - **Regular** approval vs **accelerated** approval (and, if accelerated,
+     whether it has since been converted or withdrawn).
+   - Whether the **approved population** matches the trial's **primary
+     endpoint population** (e.g. approved only for a biomarker subgroup,
+     a later line, or a narrower stage than the trial's ITT/primary analysis).
+
+   Then classify:
+   - **Positive trial** (met its primary endpoint) **+** approval is
+     accelerated, restricted to a different/narrower population than the
+     primary endpoint population, or **absent** → **discordant**.
+   - **Negative trial** (primary endpoint not met) **+** FDA approved anyway
+     → **discordant**.
+   - Otherwise → concordant, no flag needed.
+
+   Record the approval facts in `Discussion/Notes` (see the page body
+   structure above) regardless of concordance. When discordant, also prefix
+   a `Key takeaway` line with `⚠️` per the property convention above.
+9. **Compose the page body** following the detailed structure above,
+   including the FDA approval note from step 8.
+10. **Create the page** with `mcp__Notion__notion-create-pages`:
+    - `parent`: `{"type": "data_source_id", "data_source_id": "<routed id>"}`
+    - `icon`: `"📊"`
+    - `properties`: the mapped properties (title under `Key Trials/Med`)
+    - `content`: the composed body (do not repeat the title in content)
+11. **Verify**: re-fetch the created page and check that every table kept all of
     its columns and that the properties landed as intended. Notion fails
     silently on some markup — see Gotchas.
-11. **Report back**: share the new page URL, name the database it went into,
+12. **Report back**: share the new page URL, name the database it went into,
     list any property values that were inferred/uncertain or left blank so the
-    user can spot-check against the source, and remind them that the original
-    file must be attached manually in Notion under Reference — the Notion MCP
-    tools have no file-upload capability.
+    user can spot-check against the source, flag any FDA discordance found in
+    step 8, and remind them that the original file must be attached manually
+    in Notion under Reference — the Notion MCP tools have no file-upload
+    capability.
 
 ## Correcting a mis-routed page
 
