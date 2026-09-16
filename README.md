@@ -33,22 +33,29 @@ Attach the trial PDF, exported slide deck (PDF preferred), or screenshots before
 
 Every trial in the two databases is also a flashcard in **Trial Recall** — a two-stage study deck (identity → population/treatment/endpoints → takeaway) filterable by database, cancer type, setting and treatment class.
 
-### Using it as an app
+### Three ways to read the deck
 
-The deck installs to a home screen or dock — tap **Install** in the deck's own
-toolbar for the steps for your device. On iPhone it must be Safari (Chrome on
-iOS cannot add to the home screen), and because the hosted deck lives on
-claude.ai it needs you signed in.
+| Copy | Where | Installs | Offline | Updates itself |
+| --- | --- | --- | --- | --- |
+| **Installed app** | GitHub Pages, from `docs/` | yes, own icon and name | yes, via service worker | yes, on each sync push |
+| **Artifact** | claude.ai | no — see below | no | yes |
+| **Offline file** | `deck/trial-recall-offline.html` | yes, once saved locally | yes | no, replace it by hand |
 
-For studying with no account and no connection, `deck/trial-recall-offline.html`
-is the whole deck in one self-contained file — open it straight from Files or
-the filesystem. Rebuild it after a sync:
+The artifact cannot be installed with its own icon: it renders inside a
+sandboxed frame on claude.ai, and iOS reads home-screen metadata from the
+top-level page. The deck's **Add to device** button detects this and offers the
+routes that do work.
+
+Both offline copies are built from `deck/trials.json`:
 
 ```bash
-python3 deck/build-standalone.py
+python3 deck/build.py          # rebuilds deck/trial-recall-offline.html and docs/
+python3 deck/build.py --icons  # also redraws the app icons
 ```
 
-It does not update itself, so replace the copy on your device after each sync.
+`docs/` is what GitHub Pages serves, so it has to be committed for the app to
+update. The icons are drawn by a small pure-standard-library PNG writer in
+`build.py` — there is no image dependency to install.
 
 ### Order and progress
 
@@ -108,6 +115,6 @@ See [`skills/add-trial/SKILL.md`](skills/add-trial/SKILL.md) for the routing rul
 - Notion does not support `colspan`/`rowspan` in tables — it silently drops columns instead of erroring, so every row must have the same cell count. The skill verifies this after creating a page.
 - Notion rejects unknown multi-select option values rather than creating them; the skill leaves the property blank and flags it instead of forcing a wrong label. Adding an option replaces the whole option set, so every existing option and colour must be restated.
 - SQL queries against a data source return at most 100 rows; both databases are larger, so a full sync pages from both ends and de-duplicates on `url`. A short pull is indistinguishable from mass deletion, which is why the sync never deletes on its own.
-- The offline file is a build artifact of `deck/trials.json`; regenerate it with `deck/build-standalone.py` rather than editing it by hand.
+- `deck/trial-recall-offline.html` and everything in `docs/` are build outputs of `deck/trials.json`; regenerate with `deck/build.py` rather than editing them by hand.
 - Moving a trial between databases leaves its flashcard filed under the old one — re-run the flashcard-writer on that page after a move.
 - A trial filed in the wrong database should be **moved**, not recreated — see "Correcting a mis-routed page" in the skill. Note that moving a page carries its old properties along and Notion silently adds matching columns to the destination database, so the destination schema must be re-checked and cleaned up afterwards.

@@ -718,6 +718,14 @@ kbd{
     return el;
   }
   function setupInstall(){
+    if(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches) document.body.classList.add("standalone");
+    if(window.navigator.standalone) document.body.classList.add("standalone");
+
+    /* The GitHub Pages build ships a real <head> with a manifest and icon
+       files; injecting a second set there would fight it. Only the artifact
+       and the offline file need these built at runtime. */
+    if(document.querySelector('link[rel="manifest"]')) return;
+
     /* iOS reads these when you tap Add to Home Screen, which is after load,
        so injecting them here works even though the head is not ours to author */
     head("meta",{name:"apple-mobile-web-app-capable",content:"yes"});
@@ -741,8 +749,6 @@ kbd{
       head("link",{rel:"manifest",href:url});
     }catch(e){}
 
-    if(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches) document.body.classList.add("standalone");
-    if(window.navigator.standalone) document.body.classList.add("standalone");
   }
 
   var deferredPrompt=null;
