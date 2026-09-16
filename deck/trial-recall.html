@@ -297,8 +297,8 @@ kbd{
       <button type="button" class="btn" id="shuffle">New run</button>
       <button type="button" class="btn" id="starOnly" aria-pressed="false">★ Starred</button>
       <button type="button" class="btn" id="viewBtn">Index</button>
-      <button type="button" class="btn" id="installBtn">Install</button>
     </div>
+    <button type="button" class="btn" id="installBtn">Add to device</button>
   </div>
 
   <div class="meter">
@@ -734,9 +734,35 @@ kbd{
     var ua=navigator.userAgent, body=document.getElementById("sheetBody");
     var iOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(ua)&&navigator.maxTouchPoints>1);
     var mac=/Macintosh/.test(ua)&&!(navigator.maxTouchPoints>1);
+    var framed=false;
+    try{ framed = window.top !== window.self; }catch(e){ framed = true; }
     var html="";
     if(document.body.classList.contains("standalone")){
       html='<p class="note">You are already running Trial Recall as an installed app.</p>';
+    }else if(framed){
+      /* Hosted on claude.ai the deck runs inside a sandboxed frame, so Add to
+         Home Screen saves the page around it — claude.ai — not this one, and
+         not its icon. Promising otherwise would promise an icon that never
+         appears. */
+      document.getElementById("sheetNote").textContent =
+        "This copy runs inside claude.ai, so Add to Home Screen would save claude.ai — not this deck, and not its icon. Three ways to get a real one:";
+      html+='<h3>A. Offline copy — works anywhere</h3><ol>'+
+        '<li>Ask Claude for <strong>trial-recall-offline.html</strong>.</li>'+
+        '<li>Save it to <strong>Files</strong> on iPhone, or anywhere on a computer.</li>'+
+        '<li>Open it — no account, no connection, all '+CARDS.length+' cards. '+
+        'From Safari you can then Add to Home Screen properly.</li></ol>'+
+        '<p class="note" style="margin-top:8px">Replace the file after a sync; it does not update itself.</p>';
+      if(iOS){
+        html+='<h3>B. Icon that opens this link — Shortcuts app</h3><ol>'+
+          '<li>Open <strong>Shortcuts</strong> → <strong>+</strong> → <strong>Add Action</strong>.</li>'+
+          '<li>Search <strong>Open URL</strong> and paste this deck’s link.</li>'+
+          '<li>Tap the shortcut name → <strong>Add to Home Screen</strong>, then pick your own name and icon.</li></ol>'+
+          '<p class="note" style="margin-top:8px">Opens in Safari, and still needs you signed in to claude.ai.</p>';
+      }
+      html+='<h3>C. A genuinely installable app</h3><p class="note" style="margin:0">'+
+        'Ask Claude to publish the deck to GitHub Pages. It then has an address of its own, '+
+        'so it installs with its own icon and name, runs offline, needs no sign-in, and updates '+
+        'itself whenever the weekly sync runs.</p>';
     }else if(iOS){
       html+='<h3>iPhone &amp; iPad — Safari</h3><ol>'+
         '<li>Tap the <strong>Share</strong> button (the square with an arrow).</li>'+
@@ -756,9 +782,11 @@ kbd{
         '<li>Look for the <strong>install icon</strong> in the address bar, or open the <strong>⋮</strong> menu.</li>'+
         '<li>Choose <strong>Install page as app…</strong> (or <strong>Apps → Install this site</strong>).</li></ol>';
     }
-    html+='<h3>Prefer no sign-in?</h3><p class="note" style="margin:0">'+
-      'Ask Claude for the offline copy — a single file you can keep on the device and open with no account and no connection. '+
-      'It does not update itself; you replace it after a sync.</p>';
+    if(!framed){
+      html+='<h3>Prefer no sign-in?</h3><p class="note" style="margin:0">'+
+        'Ask Claude for the offline copy — a single file you can keep on the device and open with no account and no connection. '+
+        'It does not update itself; you replace it after a sync.</p>';
+    }
     body.innerHTML=html;
 
     var sheet=document.getElementById("sheet");
