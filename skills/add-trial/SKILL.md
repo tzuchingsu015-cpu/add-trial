@@ -64,13 +64,13 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 
 - `Phase` (multi-select): Meta, Ongoing, I, II, III, Retro
 - `Timing` (**select**, single): Peri-OP, Neoadjuvant, Adjuvant
-- `Cancer type` (**select**, single): Other, Endometrial CA, Cerical CA, Ovary,
-  Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
+- `Cancer type` (**multi-select** — pass an array): Other, Endometrial CA,
+  Cerical CA, Ovary, Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC,
+  Breast, Lung, NPC, HEENT
 - `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
-  Others
+  PARPi, Others
 - `Biomarker` (multi-select): HER2, ER/PR (HR), PD-L1, BRCA1/2, PIK3CA, ESR1,
-  EGFR, ALK, MSI-H / dMMR, ctDNA
+  EGFR, ALK, MSI-H / dMMR, ctDNA, BRAF
 
 Text/number properties: `Year` (number), `Number` (number — enrolled N),
 `Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`,
@@ -95,13 +95,13 @@ Data source: `2a012797-0a62-81ff-b9bc-000b1334cb16`
 
 - `Phase` (multi-select): Retro, Ongoing, I, II, III
 - `Line` (multi-select): 1, 2, 3
-- `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
-  Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
-- `Treatments` (multi-select — note the plural name): NSAI, Anti-EGFR, SERD,
-  CDK4/6i, Endocrine, RT, BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
+- `Cancer type` (**multi-select**): GIST, Other, Endometrial CA, Cerical CA,
+  Ovary, Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast,
+  Lung, NPC, HEENT
+- `Treatment` (multi-select): NSAI, Anti-EGFR, SERD, CDK4/6i, Endocrine, RT,
+  BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
 - `Biomarker` (multi-select): BRCA, AKT, PIK3CA, HR, TP53, dMMR, RAF, RAS, RET,
-  MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA
+  MET, ESR, ALK, ROS1, EGFR, HER2, KIT, PDGFRA, PD-L1
 
 Text/number properties: `Year` (number), `Drug/Control`, `Patient population`,
 `mOS (month)`, `PFS (month)`, `HR (95% CI)`, `ORR (%)`, `CR (%)`, `PR (%)`,
@@ -295,13 +295,18 @@ These are failure modes that have actually occurred — check for them.
   silently creates matching columns in the destination — a move from the
   metastatic DB injected `Line`, `Treatments`, `SD (%)`, `PR (%)` and
   `DCR (%)` into the early-stage DB, flipped `Cancer type` from `select` to
-  `multi_select`, and renamed `DFS ` to `DFS`. Always re-fetch the
+  `multi_select`, and renamed `DFS ` to `DFS`. The injected columns were
+  dropped, but **the `Cancer type` type flip was never reverted** and is now the
+  live state of both databases — see the entry below. Always re-fetch the
   destination schema after a move, diff it against what it was, and clean up.
   Before dropping an injected column, check no other row uses it:
   `SELECT COUNT("<prop>") FROM "collection://…"`.
-- **`Cancer type` differs between the databases**: single `select` in Early
-  Stage (pass a string), `multi_select` in Metastatic (pass an array).
-- **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
+- **`Cancer type` is `multi_select` in BOTH databases** — pass an array in each.
+  It used to be a single `select` in the early-stage DB; the page move described
+  above flipped it, and it has stayed flipped. Only `Timing` (early-stage) is
+  still a single `select` that takes a bare string.
+- **`Treatment` is the property name in BOTH databases.** The metastatic DB was
+  once `Treatments` (plural) and has since been renamed to match.
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`
   as separate runs.

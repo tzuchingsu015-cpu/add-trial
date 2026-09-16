@@ -29,11 +29,11 @@ Attach the trial PDF, exported slide deck (PDF preferred), or screenshots before
 ## Schema
 
 **Early Stage Cancer Database**
-Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant), `Cancer type` (single select), `Treatment` (incl. `Others`), `Biomarker`
+Select/multi-select: `Phase`, `Timing` (Peri-OP/Neoadjuvant/Adjuvant — the only single select), `Cancer type`, `Treatment` (incl. `PARPi`, `Others`), `Biomarker` (incl. `BRAF`)
 Text/number: `Year`, `Number`, `Drug/Control`, `Patient population`, `DFS`, `PFS`, `OS`, `HR (95% CI)`, `pCR (%)`, `Completion (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
 
 **Metastatic Cancer Database**
-Multi-select: `Phase`, `Line`, `Cancer type`, `Treatments`, `Biomarker`
+Multi-select: `Phase`, `Line`, `Cancer type` (incl. `GIST`), `Treatment`, `Biomarker` (incl. `PD-L1`)
 Text/number: `Year`, `Drug/Control`, `Patient population`, `mOS (month)`, `PFS (month)`, `HR (95% CI)`, `ORR (%)`, `CR (%)`, `PR (%)`, `SD (%)`, `DCR (%)`, `>= Gr. 3 TRAE`, `Key takeaway`
 
 See [`skills/add-trial/SKILL.md`](skills/add-trial/SKILL.md) for the routing rules, full schemas, value conventions, and page body template.
