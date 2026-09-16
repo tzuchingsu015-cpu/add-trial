@@ -1,0 +1,876 @@
+<title>Trial Recall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --paper:#eceff1; --surface:#ffffff; --surface-2:#f4f7f8; --surface-3:#e4e9ec;
+  --ink:#11171b; --ink-2:#3e4b53; --ink-3:#6c7b84;
+  --rule:#d3dadd; --rule-2:#c2cbd0;
+  --early:#0d6e5f; --early-tint:#dcecea; --early-line:#9ecabf;
+  --met:#8c3a6b; --met-tint:#f3e1ec; --met-line:#d5a6c2;
+  --pos:#1c7a4f; --cau:#8a6400; --neg:#a33232; --neu:#5b6b74; --pend:#5a6a99;
+  --shadow:0 1px 2px rgba(17,23,27,.06), 0 8px 28px -12px rgba(17,23,27,.22);
+  --accent:var(--early); --accent-tint:var(--early-tint); --accent-line:var(--early-line);
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1215; --surface:#161d21; --surface-2:#1b242a; --surface-3:#243036;
+    --ink:#e9eff2; --ink-2:#aab9c1; --ink-3:#7d8e98;
+    --rule:#2a353b; --rule-2:#35434a;
+    --early:#4fd3ba; --early-tint:#0f302b; --early-line:#1f5a50;
+    --met:#e78fbe; --met-tint:#35182b; --met-line:#6b3354;
+    --pos:#5ad19a; --cau:#dfb54c; --neg:#f2908e; --neu:#8fa0aa; --pend:#9aabe0;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1215; --surface:#161d21; --surface-2:#1b242a; --surface-3:#243036;
+  --ink:#e9eff2; --ink-2:#aab9c1; --ink-3:#7d8e98;
+  --rule:#2a353b; --rule-2:#35434a;
+  --early:#4fd3ba; --early-tint:#0f302b; --early-line:#1f5a50;
+  --met:#e78fbe; --met-tint:#35182b; --met-line:#6b3354;
+  --pos:#5ad19a; --cau:#dfb54c; --neg:#f2908e; --neu:#8fa0aa; --pend:#9aabe0;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%; text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent;
+}
+.wrap{max-width:1080px; margin:0 auto; padding-inline:18px; padding-block:22px 56px}
+a{color:var(--accent)}
+button,select,input{font:inherit; color:inherit; touch-action:manipulation}
+button{-webkit-appearance:none; appearance:none}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+
+/* installed as an app: no browser chrome, so clear the status bar ourselves */
+body.standalone .wrap{padding-top:calc(14px + env(safe-area-inset-top,0px))}
+
+/* ---------- masthead ---------- */
+.head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px; margin-bottom:16px}
+.head h1{
+  font-family:var(--serif); font-weight:600; font-size:27px; letter-spacing:-.01em;
+  margin:0; text-wrap:balance;
+}
+.head .sub{color:var(--ink-3); font-size:13px; margin:0}
+.head .sub b{color:var(--ink-2); font-weight:500; font-family:var(--mono); font-size:12.5px}
+.spacer{flex:1 1 auto}
+
+/* ---------- controls ---------- */
+.rail{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  padding:10px; background:var(--surface); border:1px solid var(--rule);
+  border-radius:10px; margin-bottom:14px;
+}
+.seg{display:flex; border:1px solid var(--rule-2); border-radius:7px; overflow:hidden}
+.seg button{
+  background:transparent; border:0; padding:6px 11px; cursor:pointer;
+  font-size:12.5px; font-weight:500; color:var(--ink-2); white-space:nowrap;
+}
+.seg button+button{border-left:1px solid var(--rule-2)}
+.seg button[aria-pressed="true"]{background:var(--accent); color:var(--surface)}
+.seg button[aria-pressed="true"].d-early{background:var(--early)}
+.seg button[aria-pressed="true"].d-met{background:var(--met)}
+select,.srch{
+  background:var(--surface-2); border:1px solid var(--rule-2); border-radius:7px;
+  padding:6px 9px; font-size:12.5px; max-width:100%;
+  -webkit-appearance:none; appearance:none;
+}
+select{padding-right:26px; background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%); background-position:right 12px center,right 7px center; background-size:5px 5px,5px 5px; background-repeat:no-repeat}
+.srch{min-width:150px; flex:1 1 150px}
+.more{display:contents}
+.only-mobile{display:none}
+.btn{
+  background:var(--surface-2); border:1px solid var(--rule-2); border-radius:7px;
+  padding:6px 11px; font-size:12.5px; font-weight:500; cursor:pointer; white-space:nowrap;
+}
+.btn:hover{background:var(--surface-3)}
+.btn.on{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+
+/* ---------- progress ---------- */
+.meter{display:flex; align-items:center; gap:11px; margin-bottom:6px}
+.meter .track{flex:1; height:3px; background:var(--surface-3); border-radius:2px; overflow:hidden}
+.meter .fill{height:100%; background:var(--accent); transition:width .25s ease}
+.meter .count{
+  font-family:var(--mono); font-size:12px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.runbar{
+  display:flex; align-items:baseline; gap:9px; flex-wrap:wrap;
+  font-size:11.5px; color:var(--ink-3); margin-bottom:14px; min-height:17px;
+}
+.runbar button{
+  background:none; border:0; padding:0; font-size:11.5px; color:var(--accent);
+  cursor:pointer; text-decoration:underline; text-underline-offset:2px;
+}
+
+/* ---------- card ---------- */
+.stage{display:flex; flex-direction:column; gap:12px}
+.card{
+  background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent);
+  border-radius:12px; box-shadow:var(--shadow); overflow:hidden;
+}
+.card.d-early{--accent:var(--early); --accent-tint:var(--early-tint); --accent-line:var(--early-line)}
+.card.d-met{--accent:var(--met); --accent-tint:var(--met-tint); --accent-line:var(--met-line)}
+
+.face{padding:26px 26px 22px; display:flex; flex-direction:column; gap:13px}
+.chips{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.chip{
+  font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  padding:3px 8px; border-radius:4px; background:var(--surface-3); color:var(--ink-2);
+}
+.chip.deck{background:var(--accent-tint); color:var(--accent); border:1px solid var(--accent-line)}
+.chip.bm{background:transparent; border:1px dashed var(--rule-2); color:var(--ink-3); letter-spacing:.05em}
+.title{
+  font-family:var(--serif); font-weight:600; font-size:clamp(25px,4.6vw,36px);
+  line-height:1.14; letter-spacing:-.015em; margin:0; text-wrap:balance;
+}
+.facts{
+  display:flex; flex-wrap:wrap; gap:4px 16px; font-family:var(--mono);
+  font-size:12.5px; color:var(--ink-3); font-variant-numeric:tabular-nums;
+}
+.facts span b{color:var(--ink-2); font-weight:500}
+.cue{
+  font-size:13px; color:var(--ink-3); font-style:italic; font-family:var(--serif);
+  border-top:1px dashed var(--rule); padding-top:13px; margin:0;
+}
+
+/* revealed body */
+.body{border-top:1px solid var(--rule); padding:4px 26px 24px; display:flex; flex-direction:column}
+.block{padding-top:19px; display:flex; flex-direction:column; gap:6px}
+.block+.block{border-top:1px solid var(--rule); margin-top:19px}
+.lbl{
+  font-size:10.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.block p{margin:0; max-width:66ch; color:var(--ink-2)}
+.block p.arms{color:var(--ink); font-weight:500}
+
+/* endpoint table */
+.ep{display:flex; flex-direction:column; gap:1px; margin-top:2px}
+.ep .row{display:grid; grid-template-columns:132px 1fr; gap:0 14px; padding:7px 0 7px 11px; border-left:3px solid var(--neu)}
+.ep .row.pos{border-left-color:var(--pos)}
+.ep .row.cau{border-left-color:var(--cau)}
+.ep .row.neg{border-left-color:var(--neg)}
+.ep .row.pend{border-left-color:var(--pend)}
+.ep .row.note{border-left-color:var(--accent)}
+.ep .k{
+  font-size:11.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
+  text-transform:uppercase; padding-top:2px;
+}
+.ep .v{font-family:var(--mono); font-size:12.8px; line-height:1.5; color:var(--ink); font-variant-numeric:tabular-nums}
+.ep .row.pos .v{color:var(--pos)}
+.ep .row.neg .v{color:var(--neg)}
+.ep .row.cau .v{color:var(--cau)}
+.ep .row.pend .v{color:var(--pend)}
+
+/* takeaway */
+.take{background:var(--accent-tint); border-top:1px solid var(--accent-line); padding:20px 26px 22px}
+.take .lbl{color:var(--accent)}
+.take p{
+  margin:6px 0 0; font-family:var(--serif); font-size:17.5px; line-height:1.45;
+  color:var(--ink); max-width:62ch;
+}
+.src{padding:13px 26px 16px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3)}
+.src a{text-decoration:none; border-bottom:1px solid var(--accent-line)}
+
+/* footer nav */
+.nav{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.nav .hint{
+  flex:1 1 auto; text-align:right; font-size:11.5px; color:var(--ink-3);
+  font-family:var(--mono);
+}
+kbd{
+  font-family:var(--mono); font-size:10.5px; background:var(--surface-3);
+  border:1px solid var(--rule-2); border-bottom-width:2px; border-radius:4px;
+  padding:1px 5px; color:var(--ink-2);
+}
+.primary{background:var(--accent); border-color:var(--accent); color:var(--surface); font-weight:600}
+.primary:hover{filter:brightness(1.08); background:var(--accent)}
+
+/* ---------- index ---------- */
+.index{background:var(--surface); border:1px solid var(--rule); border-radius:12px; overflow:hidden}
+.index .grp{
+  padding:9px 16px; background:var(--surface-2); border-bottom:1px solid var(--rule);
+  font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+  position:sticky; top:0;
+}
+.index button.item{
+  display:grid; grid-template-columns:1fr auto; gap:3px 14px; align-items:baseline;
+  width:100%; text-align:left; background:transparent; border:0;
+  border-bottom:1px solid var(--rule); padding:10px 16px; cursor:pointer;
+}
+.index button.item:hover{background:var(--surface-2)}
+.index .nm{font-family:var(--serif); font-size:16px; font-weight:500; color:var(--ink)}
+.index .mt{font-family:var(--mono); font-size:11.5px; color:var(--ink-3); text-align:right}
+.index .tk{grid-column:1/-1; font-size:12.5px; color:var(--ink-3); max-width:80ch}
+.star-on{color:var(--cau)}
+.empty{padding:34px 20px; text-align:center; color:var(--ink-3); font-size:14px}
+
+/* ---------- install sheet ---------- */
+.sheet[hidden]{display:none}
+.sheet{
+  position:fixed; inset:0; z-index:60; background:rgba(8,12,15,.55);
+  display:flex; align-items:center; justify-content:center; padding:18px;
+}
+.sheet .panel{
+  background:var(--surface); border:1px solid var(--rule); border-radius:12px;
+  box-shadow:var(--shadow); max-width:430px; width:100%;
+  max-height:86vh; overflow-y:auto; padding:22px 22px 18px;
+}
+.sheet h2{font-family:var(--serif); font-size:20px; margin:0 0 4px; font-weight:600}
+.sheet .note{font-size:12.5px; color:var(--ink-3); margin:0 0 16px}
+.sheet h3{
+  font-size:10.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3); margin:16px 0 5px;
+}
+.sheet ol{margin:0; padding-left:19px; font-size:13.5px; color:var(--ink-2)}
+.sheet li{margin:3px 0}
+.sheet .close{margin-top:18px; width:100%; text-align:center}
+
+@media (max-width:640px){
+  .wrap{padding-block:14px 20px}
+  .head{gap:4px 12px; margin-bottom:12px}
+  .head h1{font-size:23px}
+  .head .sub{font-size:12px}
+  .face{padding:20px 18px 18px}
+  .body{padding-inline:18px}
+  .take{padding-inline:18px}
+  .src{padding-inline:18px}
+  .ep .row{grid-template-columns:1fr; gap:3px; padding-left:10px}
+  .index button.item{grid-template-columns:1fr; padding-block:13px}
+  .index .mt{text-align:left}
+
+  /* 16px stops iOS Safari zooming the page when a field takes focus */
+  .srch{font-size:16px; padding:9px 11px; flex:1 1 100%; min-width:0}
+  select{font-size:16px; padding:9px 26px 9px 11px}
+  .only-mobile{display:inline-flex}
+  .seg button{padding:9px 12px; font-size:13px}
+  .rail{padding:9px; gap:7px}
+  .more{display:none; width:100%; flex-wrap:wrap; gap:7px}
+  .more.open{display:flex}
+  .more select{flex:1 1 46%}
+  .more .btn{flex:1 1 auto; text-align:center}
+
+  /* actions stay under the thumb instead of below a long card */
+  .nav{
+    position:sticky; bottom:0; z-index:20; gap:7px;
+    background:var(--paper); border-top:1px solid var(--rule);
+    margin-inline:-18px; margin-top:0;
+    padding:9px 18px calc(9px + env(safe-area-inset-bottom,0px));
+  }
+  .nav .hint{display:none}
+  .nav .btn{min-height:44px; display:inline-flex; align-items:center; justify-content:center}
+  .nav #next{flex:1 1 auto}
+  .stage{gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <h1>Trial Recall</h1>
+    <p class="sub"><b id="tot">—</b> trials from your Oncology Database</p>
+    <span class="spacer"></span>
+    <p class="sub" id="deckcount"></p>
+  </header>
+
+  <div class="rail">
+    <div class="seg" role="group" aria-label="Database">
+      <button type="button" id="dAll" data-deck="all" aria-pressed="true">All</button>
+      <button type="button" id="dEarly" class="d-early" data-deck="early" aria-pressed="false">Early stage</button>
+      <button type="button" id="dMet" class="d-met" data-deck="met" aria-pressed="false">Metastatic</button>
+    </div>
+    <input class="srch" id="q" type="search" placeholder="Search trial, drug, biomarker…" aria-label="Search">
+    <button type="button" class="btn only-mobile" id="moreBtn" aria-expanded="false" aria-controls="more">Filters</button>
+    <div class="more" id="more">
+      <select id="fCancer" aria-label="Cancer type"><option value="">All cancers</option></select>
+      <select id="fSetting" aria-label="Setting or line"><option value="">All settings</option></select>
+      <select id="fTx" aria-label="Treatment class"><option value="">All treatments</option></select>
+      <button type="button" class="btn" id="shuffle">New run</button>
+      <button type="button" class="btn" id="starOnly" aria-pressed="false">★ Starred</button>
+      <button type="button" class="btn" id="viewBtn">Index</button>
+    </div>
+    <button type="button" class="btn" id="installBtn">Add to device</button>
+  </div>
+
+  <div class="meter">
+    <span class="count" id="pos">0 / 0</span>
+    <span class="track"><span class="fill" id="fill" style="width:0%"></span></span>
+    <span class="count" id="starCount">★ 0</span>
+  </div>
+  <div class="runbar" id="runbar"></div>
+
+  <section class="stage" id="stage">
+    <article class="card" id="card" aria-live="polite"></article>
+    <div class="nav">
+      <button type="button" class="btn" id="prev">← Previous</button>
+      <button type="button" class="btn primary" id="next">Reveal</button>
+      <button type="button" class="btn" id="star">★ Star</button>
+      <span class="hint"><kbd>space</kbd> reveal · <kbd>←</kbd><kbd>→</kbd> move · <kbd>s</kbd> star · <kbd>/</kbd> search</span>
+    </div>
+  </section>
+
+  <section class="index" id="index" hidden></section>
+</div>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="panel">
+    <h2 id="sheetTitle">Keep Trial Recall on your device</h2>
+    <p class="note" id="sheetNote">Adds a home-screen or dock icon that opens the deck full screen, without browser chrome.</p>
+    <div id="sheetBody"></div>
+    <button type="button" class="btn close" id="sheetClose">Close</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ persistence ============
+     One record holds the shuffled run, the position in it, the revealed
+     depth and the filters, so reopening resumes exactly where you stopped.
+     Stars are keyed by Notion url, not name: a sync can rename a card. */
+  var KEY="trialrecall.v2", OLDKEY="trialrecall.stars";
+  var S={order:[],pos:0,stage:0,stars:{},filters:{deck:"all",cancer:"",setting:"",tx:"",q:"",starOnly:false}};
+  var resumed=false, saveTimer=null;
+
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY);
+      if(raw){
+        var d=JSON.parse(raw);
+        if(d&&typeof d==="object"){
+          S.order=Array.isArray(d.order)?d.order:[];
+          S.pos=typeof d.pos==="number"?d.pos:0;
+          S.stage=typeof d.stage==="number"?d.stage:0;
+          S.stars=d.stars&&typeof d.stars==="object"?d.stars:{};
+          if(d.filters&&typeof d.filters==="object"){
+            for(var k in S.filters) if(k in d.filters) S.filters[k]=d.filters[k];
+          }
+        }
+      }
+    }catch(e){}
+    return migrateStars();
+  }
+  /* v1 keyed stars by trial name; carry them over once we know the deck */
+  var legacyStarNames=null;
+  function migrateStars(){
+    try{
+      var old=localStorage.getItem(OLDKEY);
+      if(old&&!Object.keys(S.stars).length) legacyStarNames=JSON.parse(old);
+    }catch(e){}
+  }
+  function save(){
+    if(saveTimer) return;
+    saveTimer=setTimeout(function(){
+      saveTimer=null;
+      try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){}
+    },150);
+  }
+
+  var CARDS=[], byUrl=Object.create(null), view=[], mode="card";
+  var card=document.getElementById("card"), index=document.getElementById("index");
+
+  /* ---- helpers ---- */
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  var MARK={"✅":"pos","❌":"neg","⚠":"cau","↔":"neu","⏳":"pend","\u{1F4DD}":"pend","⭐":"note"};
+  function grade(v){
+    var s=String(v||"").trim();
+    for(var k in MARK){ if(s.indexOf(k)===0) return {cls:MARK[k], text:s.slice(k.length).replace(/^️?\s*/,"")}; }
+    return {cls:"neu", text:s};
+  }
+  /* plain scan, not a lookbehind regex — Safari before iOS 16.4 throws on those */
+  function firstSentence(s){
+    s=String(s==null?"":s).trim();
+    var k=s.search(/\.[\s]/);
+    return k<0 ? s : s.slice(0,k+1);
+  }
+  function toTop(){
+    try{ window.scrollTo({top:0,behavior:"smooth"}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function group(c){
+    if(/^Lung/.test(c)) return "Lung";
+    if(/^Pan-tumour/.test(c)) return "Pan-tumour";
+    if(/^Sarcoma/.test(c)) return "Sarcoma";
+    if(/^Skin/.test(c)) return "Skin";
+    return c;
+  }
+  function bucket(s){
+    if(s==="Adjuvant"||s==="Neoadjuvant"||s==="Peri-OP") return s;
+    if(/1L/.test(s)&&!/2L|3L/.test(s)) return "1st line";
+    if(/^2L/.test(s)) return "2nd line";
+    if(/^3L/.test(s)) return "3rd line";
+    return "Multi-line";
+  }
+  function shuffled(a){
+    a=a.slice();
+    for(var k=a.length-1;k>0;k--){ var j=Math.floor(Math.random()*(k+1)); var t=a[k]; a[k]=a[j]; a[j]=t; }
+    return a;
+  }
+
+  /* ---- the run: a shuffled pass over the current filtered view ---- */
+  function pool(){
+    var f=S.filters, qv=(f.q||"").trim().toLowerCase();
+    return CARDS.filter(function(c){
+      if(f.deck!=="all" && c.db!==f.deck) return false;
+      if(f.starOnly && !S.stars[c.url]) return false;
+      if(f.cancer && group(c.cancer)!==f.cancer) return false;
+      if(f.setting && bucket(c.setting)!==f.setting) return false;
+      if(f.tx && (c.tx||[]).indexOf(f.tx)<0) return false;
+      if(qv && c._hay.indexOf(qv)<0) return false;
+      return true;
+    });
+  }
+
+  /* Rebuild the run for the current filters, keeping as much of the saved
+     progress as still applies. Cards added by a sync are shuffled into the
+     part of the run you have not reached yet, so a sync never restarts you. */
+  function rebuild(fresh){
+    var p=pool(), live=Object.create(null), k;
+    p.forEach(function(c){ live[c.url]=1; });
+
+    var kept=[];
+    if(!fresh){
+      for(k=0;k<S.order.length;k++) if(live[S.order[k]]) kept.push(S.order[k]);
+    }
+    var seen=Object.create(null);
+    kept.forEach(function(u){ seen[u]=1; });
+    var added=[];
+    for(k=0;k<p.length;k++) if(!seen[p[k].url]) added.push(p[k].url);
+
+    if(!kept.length){                       /* nothing to resume: fresh shuffle */
+      S.order=shuffled(added); S.pos=0; S.stage=0;
+    }else{
+      added=shuffled(added);
+      var at=Math.min(Math.max(S.pos+1,0), kept.length);
+      S.order=kept.slice(0,at).concat(added, kept.slice(at));
+      if(S.pos>=S.order.length) S.pos=0;
+    }
+    view=S.order.map(function(u){ return byUrl[u]; }).filter(Boolean);
+    if(S.pos>=view.length) S.pos=0;
+    save();
+  }
+
+  function current(){ return view[S.pos]; }
+
+  /* ---- render ---- */
+  function render(){
+    var n=view.length, c=current();
+    document.getElementById("pos").textContent=(n?S.pos+1:0)+" / "+n;
+    document.getElementById("fill").style.width=(n?((S.pos+1)/n*100):0)+"%";
+    document.getElementById("starCount").textContent="★ "+Object.keys(S.stars).length;
+    document.getElementById("deckcount").textContent=n+" in view";
+    renderRunbar(n);
+
+    if(mode==="index"){ renderIndex(); return; }
+    if(!n){
+      card.className="card";
+      card.innerHTML='<div class="empty">No trials match these filters. Clear the search or pick another cancer type.</div>';
+      document.getElementById("next").textContent="Reveal";
+      return;
+    }
+    card.className="card d-"+c.db;
+    var chips='<span class="chip deck">'+(c.db==="early"?"Early stage":"Metastatic")+'</span>'+
+      '<span class="chip">'+esc(c.cancer)+'</span>'+
+      '<span class="chip">'+esc(c.setting)+'</span>'+
+      (c.biomarker?'<span class="chip bm">'+esc(c.biomarker)+'</span>':"")+
+      (S.stars[c.url]?'<span class="chip star-on">★ starred</span>':"");
+
+    var facts=[];
+    if(c.phase) facts.push("<span>Phase <b>"+esc(c.phase)+"</b></span>");
+    if(c.year)  facts.push("<span>Reported <b>"+esc(c.year)+"</b></span>");
+    if(c.n)     facts.push("<span>n = <b>"+c.n.toLocaleString("en-US")+"</b></span>");
+
+    var h='<div class="face">'+
+      '<div class="chips">'+chips+'</div>'+
+      '<h2 class="title">'+esc(c.name)+'</h2>'+
+      (facts.length?'<div class="facts">'+facts.join("")+'</div>':"")+
+      (S.stage===0?'<p class="cue">Who was enrolled, what were they given, and what did it show?</p>':"")+
+      '</div>';
+
+    if(S.stage>=1){
+      var eps=(c.endpoints||[]).map(function(e){
+        var g=grade(e[1]);
+        return '<div class="row '+g.cls+'"><div class="k">'+esc(e[0])+'</div><div class="v">'+esc(g.text)+'</div></div>';
+      }).join("");
+      h+='<div class="body">'+
+        '<div class="block"><div class="lbl">Key patient population</div><p>'+esc(c.population)+'</p></div>'+
+        '<div class="block"><div class="lbl">Treatment</div><p class="arms">'+esc(c.treatment)+'</p></div>'+
+        '<div class="block"><div class="lbl">Efficacy endpoints</div><div class="ep">'+eps+'</div></div>'+
+        '</div>';
+    }
+    if(S.stage>=2){
+      h+='<div class="take"><div class="lbl">Key takeaway</div><p>'+esc(c.takeaway)+'</p></div>';
+      h+='<div class="src">Source: <a href="'+esc(c.url)+'" target="_blank" rel="noopener">open in Notion ↗</a></div>';
+    }
+    card.innerHTML=h;
+    document.getElementById("next").textContent =
+      S.stage===0?"Reveal answer" : S.stage===1?"Reveal takeaway" : "Next trial →";
+    document.getElementById("star").textContent = S.stars[c.url]?"★ Starred":"☆ Star";
+  }
+
+  function renderRunbar(n){
+    var el=document.getElementById("runbar");
+    if(!n){ el.innerHTML=""; return; }
+    var bits=[];
+    if(resumed && S.pos>0) bits.push("Resumed where you left off");
+    else if(S.pos===0) bits.push("Shuffled run — random order");
+    if(S.pos>=n-1) bits.push("Last card in this run");
+    el.innerHTML=(bits.join(" · ")||"&nbsp;")+
+      ' <button type="button" id="newrun">Start a new shuffled run</button>';
+    var b=document.getElementById("newrun");
+    if(b) b.addEventListener("click",newRun);
+  }
+
+  /* the index is for lookup, so it stays alphabetical whatever the run order */
+  function renderIndex(){
+    if(!view.length){ index.innerHTML='<div class="empty">No trials match these filters.</div>'; return; }
+    var sorted=view.slice().sort(function(a,b){
+      return (a.db+group(a.cancer)+a.name).localeCompare(b.db+group(b.cancer)+b.name);
+    });
+    var out=[], last="";
+    sorted.forEach(function(c){
+      var g=(c.db==="early"?"Early stage":"Metastatic")+" · "+group(c.cancer);
+      if(g!==last){ out.push('<div class="grp">'+esc(g)+"</div>"); last=g; }
+      out.push('<button type="button" class="item" data-u="'+esc(c.url)+'">'+
+        '<span class="nm">'+esc(c.name)+(S.stars[c.url]?' <span class="star-on">★</span>':"")+'</span>'+
+        '<span class="mt">'+esc(c.setting)+" · "+esc(c.phase||"—")+(c.year?" · "+c.year:"")+'</span>'+
+        '<span class="tk">'+esc(firstSentence(c.takeaway))+'</span>'+
+        '</button>');
+    });
+    index.innerHTML=out.join("");
+  }
+
+  /* ---- navigation ---- */
+  function go(d){
+    if(!view.length) return;
+    resumed=false;
+    S.pos=(S.pos+d+view.length)%view.length; S.stage=0;
+    save(); render(); toTop();
+  }
+  function advance(){
+    if(!view.length) return;
+    if(S.stage<2){ S.stage++; save(); render(); } else go(1);
+  }
+  function newRun(){
+    resumed=false;
+    rebuild(true); S.stage=0; mode="card";
+    document.getElementById("stage").hidden=false; index.hidden=true;
+    var v=document.getElementById("viewBtn"); v.textContent="Index"; v.classList.remove("on");
+    render(); toTop();
+  }
+  function toggleStar(){
+    var c=current(); if(!c||mode==="index") return;
+    if(S.stars[c.url]) delete S.stars[c.url]; else S.stars[c.url]=1;
+    save(); render();
+  }
+  function filtersChanged(){
+    resumed=false;
+    S.filters.deck=document.querySelector('.seg button[aria-pressed="true"]').dataset.deck;
+    S.filters.q=document.getElementById("q").value;
+    S.filters.cancer=document.getElementById("fCancer").value;
+    S.filters.setting=document.getElementById("fSetting").value;
+    S.filters.tx=document.getElementById("fTx").value;
+    rebuild(true); S.stage=0; render();
+  }
+
+  /* ---- wiring ---- */
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".seg button").forEach(function(x){
+        x.setAttribute("aria-pressed", String(x===b)); });
+      filtersChanged();
+    });
+  });
+  ["q","fCancer","fSetting","fTx"].forEach(function(id){
+    document.getElementById(id).addEventListener("input",filtersChanged);
+  });
+  document.getElementById("shuffle").addEventListener("click",newRun);
+  document.getElementById("starOnly").addEventListener("click",function(){
+    S.filters.starOnly=!S.filters.starOnly;
+    this.setAttribute("aria-pressed",String(S.filters.starOnly));
+    this.classList.toggle("on",S.filters.starOnly);
+    filtersChanged();
+  });
+  document.getElementById("viewBtn").addEventListener("click",function(){
+    mode = mode==="card" ? "index" : "card";
+    this.textContent = mode==="card" ? "Index" : "Cards";
+    this.classList.toggle("on", mode==="index");
+    document.getElementById("stage").hidden = mode==="index";
+    index.hidden = mode!=="index";
+    render();
+  });
+  index.addEventListener("click",function(e){
+    var b=e.target.closest("button.item"); if(!b) return;
+    var u=b.dataset.u, k=S.order.indexOf(u);
+    if(k<0) return;
+    resumed=false;
+    S.pos=k; S.stage=0; mode="card";
+    var v=document.getElementById("viewBtn"); v.textContent="Index"; v.classList.remove("on");
+    document.getElementById("stage").hidden=false; index.hidden=true;
+    save(); render(); toTop();
+  });
+  document.getElementById("moreBtn").addEventListener("click",function(){
+    var m=document.getElementById("more"), open=m.classList.toggle("open");
+    this.setAttribute("aria-expanded",String(open));
+    this.classList.toggle("on",open);
+    this.textContent = open ? "Hide filters" : "Filters";
+  });
+  document.getElementById("next").addEventListener("click",advance);
+  document.getElementById("prev").addEventListener("click",function(){ go(-1); });
+  document.getElementById("star").addEventListener("click",toggleStar);
+  card.addEventListener("click",function(e){
+    if(e.target.closest("a")) return;
+    if(swiped) return;                       /* a swipe is not a tap */
+    var sel=window.getSelection&&window.getSelection();
+    if(sel&&!sel.isCollapsed) return;        /* let people select the numbers */
+    advance();
+  });
+
+  /* swipe between trials — the natural phone gesture */
+  var tx0=0, ty0=0, swiped=false;
+  var stageEl=document.getElementById("stage");
+  stageEl.addEventListener("touchstart",function(e){
+    if(e.touches.length!==1){ swiped=true; return; }
+    swiped=false; tx0=e.touches[0].clientX; ty0=e.touches[0].clientY;
+  },{passive:true});
+  stageEl.addEventListener("touchend",function(e){
+    var t=e.changedTouches&&e.changedTouches[0]; if(!t||swiped) return;
+    var dx=t.clientX-tx0, dy=t.clientY-ty0;
+    if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.6){ swiped=true; go(dx<0?1:-1); }
+  },{passive:true});
+
+  document.addEventListener("keydown",function(e){
+    if(!document.getElementById("sheet").hidden){
+      if(e.key==="Escape") closeSheet();
+      return;
+    }
+    var t=e.target.tagName;
+    if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA"){ if(e.key==="Escape") e.target.blur(); return; }
+    if(e.key===" "||e.key==="Enter"){ e.preventDefault(); advance(); }
+    else if(e.key==="ArrowRight"){ e.preventDefault(); go(1); }
+    else if(e.key==="ArrowLeft"){ e.preventDefault(); go(-1); }
+    else if(e.key==="s"||e.key==="S"){ toggleStar(); }
+    else if(e.key==="/"){ e.preventDefault(); document.getElementById("q").focus(); }
+  });
+  /* last-moment save, for a swipe-away that fires no unload */
+  ["pagehide","visibilitychange"].forEach(function(ev){
+    document.addEventListener(ev,function(){
+      if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; }
+      try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){}
+    });
+  });
+
+  /* ============ install as an app ============ */
+  function iconDataURL(size){
+    try{
+      var cv=document.createElement("canvas"); cv.width=cv.height=size;
+      var x=cv.getContext("2d"), r=size*0.22;
+      x.fillStyle="#11171b";
+      x.beginPath();
+      if(x.roundRect) x.roundRect(0,0,size,size,r); else x.rect(0,0,size,size);
+      x.fill();
+      /* two offset cards: the deck's two halves */
+      function cardShape(cx,cy,w,hgt,rot,fill){
+        x.save(); x.translate(cx,cy); x.rotate(rot);
+        x.fillStyle=fill;
+        x.beginPath();
+        if(x.roundRect) x.roundRect(-w/2,-hgt/2,w,hgt,size*0.055); else x.rect(-w/2,-hgt/2,w,hgt);
+        x.fill(); x.restore();
+      }
+      cardShape(size*0.44,size*0.50,size*0.40,size*0.52,-0.18,"#8c3a6b");
+      cardShape(size*0.57,size*0.50,size*0.40,size*0.52, 0.12,"#19b39a");
+      return cv.toDataURL("image/png");
+    }catch(e){ return null; }
+  }
+  function head(tag,attrs){
+    var el=document.createElement(tag);
+    for(var k in attrs) el.setAttribute(k,attrs[k]);
+    document.head.appendChild(el);
+    return el;
+  }
+  function setupInstall(){
+    if(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches) document.body.classList.add("standalone");
+    if(window.navigator.standalone) document.body.classList.add("standalone");
+
+    /* The GitHub Pages build ships a real <head> with a manifest and icon
+       files; injecting a second set there would fight it. Only the artifact
+       and the offline file need these built at runtime. */
+    if(document.querySelector('link[rel="manifest"]')) return;
+
+    /* iOS reads these when you tap Add to Home Screen, which is after load,
+       so injecting them here works even though the head is not ours to author */
+    head("meta",{name:"apple-mobile-web-app-capable",content:"yes"});
+    head("meta",{name:"mobile-web-app-capable",content:"yes"});
+    head("meta",{name:"apple-mobile-web-app-title",content:"Trial Recall"});
+    head("meta",{name:"apple-mobile-web-app-status-bar-style",content:"default"});
+    head("meta",{name:"application-name",content:"Trial Recall"});
+    head("meta",{name:"theme-color",content:"#0d6e5f"});
+    var icon=iconDataURL(180);
+    if(icon){
+      head("link",{rel:"apple-touch-icon",href:icon});
+      head("link",{rel:"icon",type:"image/png",href:icon});
+    }
+    try{
+      var mf={name:"Trial Recall",short_name:"Trial Recall",
+        description:"Flashcards for the oncology trial databases",
+        start_url:location.href,display:"standalone",
+        background_color:"#eceff1",theme_color:"#0d6e5f",
+        icons:icon?[{src:icon,sizes:"180x180",type:"image/png",purpose:"any"}]:[]};
+      var url=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:"application/manifest+json"}));
+      head("link",{rel:"manifest",href:url});
+    }catch(e){}
+
+  }
+
+  var deferredPrompt=null;
+  window.addEventListener("beforeinstallprompt",function(e){ e.preventDefault(); deferredPrompt=e; });
+
+  function openSheet(){
+    var ua=navigator.userAgent, body=document.getElementById("sheetBody");
+    var iOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(ua)&&navigator.maxTouchPoints>1);
+    var mac=/Macintosh/.test(ua)&&!(navigator.maxTouchPoints>1);
+    var framed=false;
+    try{ framed = window.top !== window.self; }catch(e){ framed = true; }
+    var html="";
+    if(document.body.classList.contains("standalone")){
+      html='<p class="note">You are already running Trial Recall as an installed app.</p>';
+    }else if(framed){
+      /* Hosted on claude.ai the deck runs inside a sandboxed frame, so Add to
+         Home Screen saves the page around it — claude.ai — not this one, and
+         not its icon. Promising otherwise would promise an icon that never
+         appears. */
+      document.getElementById("sheetNote").textContent =
+        "This copy runs inside claude.ai, so Add to Home Screen would save claude.ai — not this deck, and not its icon. Three ways to get a real one:";
+      html+='<h3>A. Offline copy — works anywhere</h3><ol>'+
+        '<li>Ask Claude for <strong>trial-recall-offline.html</strong>.</li>'+
+        '<li>Save it to <strong>Files</strong> on iPhone, or anywhere on a computer.</li>'+
+        '<li>Open it — no account, no connection, all '+CARDS.length+' cards. '+
+        'From Safari you can then Add to Home Screen properly.</li></ol>'+
+        '<p class="note" style="margin-top:8px">Replace the file after a sync; it does not update itself.</p>';
+      if(iOS){
+        html+='<h3>B. Icon that opens this link — Shortcuts app</h3><ol>'+
+          '<li>Open <strong>Shortcuts</strong> → <strong>+</strong> → <strong>Add Action</strong>.</li>'+
+          '<li>Search <strong>Open URL</strong> and paste this deck’s link.</li>'+
+          '<li>Tap the shortcut name → <strong>Add to Home Screen</strong>, then pick your own name and icon.</li></ol>'+
+          '<p class="note" style="margin-top:8px">Opens in Safari, and still needs you signed in to claude.ai.</p>';
+      }
+      html+='<h3>C. A genuinely installable app</h3><p class="note" style="margin:0">'+
+        'Ask Claude to publish the deck to GitHub Pages. It then has an address of its own, '+
+        'so it installs with its own icon and name, runs offline, needs no sign-in, and updates '+
+        'itself whenever the weekly sync runs.</p>';
+    }else if(iOS){
+      html+='<h3>iPhone &amp; iPad — Safari</h3><ol>'+
+        '<li>Tap the <strong>Share</strong> button (the square with an arrow).</li>'+
+        '<li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>'+
+        '<li>Name it <strong>Trial Recall</strong> and tap <strong>Add</strong>.</li></ol>'+
+        '<p class="note" style="margin-top:12px">It must be Safari — Chrome on iOS cannot add to the home screen. '+
+        'If the deck asks you to sign in after installing, open it once in Safari and sign in there first.</p>';
+    }else if(mac){
+      html+='<h3>Mac — Safari</h3><ol>'+
+        '<li>Open the <strong>File</strong> menu.</li>'+
+        '<li>Choose <strong>Add to Dock…</strong> and confirm.</li></ol>'+
+        '<h3>Mac — Chrome or Edge</h3><ol>'+
+        '<li>Open the <strong>⋮</strong> menu, then <strong>Cast, Save and Share</strong>.</li>'+
+        '<li>Choose <strong>Install page as app…</strong></li></ol>';
+    }else{
+      html+='<h3>Chrome, Edge or Brave</h3><ol>'+
+        '<li>Look for the <strong>install icon</strong> in the address bar, or open the <strong>⋮</strong> menu.</li>'+
+        '<li>Choose <strong>Install page as app…</strong> (or <strong>Apps → Install this site</strong>).</li></ol>';
+    }
+    if(!framed){
+      html+='<h3>Prefer no sign-in?</h3><p class="note" style="margin:0">'+
+        'Ask Claude for the offline copy — a single file you can keep on the device and open with no account and no connection. '+
+        'It does not update itself; you replace it after a sync.</p>';
+    }
+    body.innerHTML=html;
+
+    var sheet=document.getElementById("sheet");
+    sheet.hidden=false;
+    if(deferredPrompt){
+      var b=document.createElement("button");
+      b.className="btn primary"; b.style.width="100%"; b.style.marginTop="14px";
+      b.textContent="Install now";
+      b.addEventListener("click",function(){
+        deferredPrompt.prompt(); deferredPrompt=null; closeSheet();
+      });
+      body.appendChild(b);
+    }
+    document.getElementById("sheetClose").focus();
+  }
+  function closeSheet(){ document.getElementById("sheet").hidden=true; }
+  document.getElementById("installBtn").addEventListener("click",openSheet);
+  document.getElementById("sheetClose").addEventListener("click",closeSheet);
+  document.getElementById("sheet").addEventListener("click",function(e){
+    if(e.target===this) closeSheet();
+  });
+
+  /* ============ boot ============ */
+  function start(data){
+    CARDS=data;
+    CARDS.forEach(function(c){
+      byUrl[c.url]=c;
+      c._hay=[c.name,c.cancer,c.setting,c.biomarker,c.population,c.treatment,c.takeaway,
+        (c.tx||[]).join(" "),(c.endpoints||[]).map(function(e){return e.join(" ");}).join(" ")]
+        .join(" ").toLowerCase();
+    });
+    if(legacyStarNames){                     /* v1 stars were keyed by name */
+      var byName=Object.create(null);
+      CARDS.forEach(function(c){ byName[c.name]=c.url; });
+      legacyStarNames.forEach(function(nm){ if(byName[nm]) S.stars[byName[nm]]=1; });
+      legacyStarNames=null; save();
+    }
+    document.getElementById("tot").textContent=CARDS.length;
+    fill("fCancer", CARDS.map(function(c){return group(c.cancer);}));
+    fill("fSetting", CARDS.map(function(c){return bucket(c.setting);}));
+    var tx=[]; CARDS.forEach(function(c){ (c.tx||[]).forEach(function(t){ tx.push(t); }); });
+    fill("fTx", tx);
+
+    /* restore the saved filters into the controls */
+    var f=S.filters;
+    document.querySelectorAll(".seg button").forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.deck===f.deck)); });
+    document.getElementById("q").value=f.q||"";
+    setSel("fCancer",f.cancer); setSel("fSetting",f.setting); setSel("fTx",f.tx);
+    var so=document.getElementById("starOnly");
+    so.setAttribute("aria-pressed",String(!!f.starOnly)); so.classList.toggle("on",!!f.starOnly);
+
+    var had=S.order.length>0;
+    rebuild(false);
+    resumed = had && S.pos>0 && S.pos<view.length;
+    setupInstall();
+    render();
+  }
+  function setSel(id,v){
+    var s=document.getElementById(id);
+    for(var k=0;k<s.options.length;k++) if(s.options[k].value===v){ s.value=v; return; }
+  }
+  function fill(id, vals){
+    var counts=Object.create(null);
+    vals.forEach(function(v){ if(v) counts[v]=(counts[v]||0)+1; });
+    var sel=document.getElementById(id);
+    Object.keys(counts).sort().forEach(function(v){
+      var o=document.createElement("option"); o.value=v; o.textContent=v+" ("+counts[v]+")"; sel.appendChild(o);
+    });
+  }
+
+  load();
+  if(window.TRIAL_RECALL_DATA){            /* offline build inlines the deck */
+    start(window.TRIAL_RECALL_DATA);
+  }else{
+    fetch("trials.json").then(function(r){ return r.json(); }).then(start).catch(function(){
+      card.innerHTML='<div class="empty">Could not load the trial data. Reload the page to try again.</div>';
+    });
+  }
+})();
+</script>
