@@ -1,0 +1,541 @@
+<title>Trial Recall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --paper:#eceff1; --surface:#ffffff; --surface-2:#f4f7f8; --surface-3:#e4e9ec;
+  --ink:#11171b; --ink-2:#3e4b53; --ink-3:#6c7b84;
+  --rule:#d3dadd; --rule-2:#c2cbd0;
+  --early:#0d6e5f; --early-tint:#dcecea; --early-line:#9ecabf;
+  --met:#8c3a6b; --met-tint:#f3e1ec; --met-line:#d5a6c2;
+  --pos:#1c7a4f; --cau:#8a6400; --neg:#a33232; --neu:#5b6b74; --pend:#5a6a99;
+  --shadow:0 1px 2px rgba(17,23,27,.06), 0 8px 28px -12px rgba(17,23,27,.22);
+  --accent:var(--early); --accent-tint:var(--early-tint); --accent-line:var(--early-line);
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1215; --surface:#161d21; --surface-2:#1b242a; --surface-3:#243036;
+    --ink:#e9eff2; --ink-2:#aab9c1; --ink-3:#7d8e98;
+    --rule:#2a353b; --rule-2:#35434a;
+    --early:#4fd3ba; --early-tint:#0f302b; --early-line:#1f5a50;
+    --met:#e78fbe; --met-tint:#35182b; --met-line:#6b3354;
+    --pos:#5ad19a; --cau:#dfb54c; --neg:#f2908e; --neu:#8fa0aa; --pend:#9aabe0;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1215; --surface:#161d21; --surface-2:#1b242a; --surface-3:#243036;
+  --ink:#e9eff2; --ink-2:#aab9c1; --ink-3:#7d8e98;
+  --rule:#2a353b; --rule-2:#35434a;
+  --early:#4fd3ba; --early-tint:#0f302b; --early-line:#1f5a50;
+  --met:#e78fbe; --met-tint:#35182b; --met-line:#6b3354;
+  --pos:#5ad19a; --cau:#dfb54c; --neg:#f2908e; --neu:#8fa0aa; --pend:#9aabe0;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%; text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent;
+}
+.wrap{max-width:1080px; margin:0 auto; padding-inline:18px; padding-block:22px 56px}
+a{color:var(--accent)}
+button,select,input{font:inherit; color:inherit; touch-action:manipulation}
+button{-webkit-appearance:none; appearance:none}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+
+/* ---------- masthead ---------- */
+.head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px; margin-bottom:16px}
+.head h1{
+  font-family:var(--serif); font-weight:600; font-size:27px; letter-spacing:-.01em;
+  margin:0; text-wrap:balance;
+}
+.head .sub{color:var(--ink-3); font-size:13px; margin:0}
+.head .sub b{color:var(--ink-2); font-weight:500; font-family:var(--mono); font-size:12.5px}
+.spacer{flex:1 1 auto}
+
+/* ---------- controls ---------- */
+.rail{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  padding:10px; background:var(--surface); border:1px solid var(--rule);
+  border-radius:10px; margin-bottom:14px;
+}
+.seg{display:flex; border:1px solid var(--rule-2); border-radius:7px; overflow:hidden}
+.seg button{
+  background:transparent; border:0; padding:6px 11px; cursor:pointer;
+  font-size:12.5px; font-weight:500; color:var(--ink-2); white-space:nowrap;
+}
+.seg button+button{border-left:1px solid var(--rule-2)}
+.seg button[aria-pressed="true"]{background:var(--accent); color:var(--surface)}
+.seg button[aria-pressed="true"].d-early{background:var(--early)}
+.seg button[aria-pressed="true"].d-met{background:var(--met)}
+select,.srch{
+  background:var(--surface-2); border:1px solid var(--rule-2); border-radius:7px;
+  padding:6px 9px; font-size:12.5px; max-width:100%;
+  -webkit-appearance:none; appearance:none;
+}
+select{padding-right:26px; background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%); background-position:right 12px center,right 7px center; background-size:5px 5px,5px 5px; background-repeat:no-repeat}
+.srch{min-width:150px; flex:1 1 150px}
+.more{display:contents}
+.only-mobile{display:none}
+.btn{
+  background:var(--surface-2); border:1px solid var(--rule-2); border-radius:7px;
+  padding:6px 11px; font-size:12.5px; font-weight:500; cursor:pointer; white-space:nowrap;
+}
+.btn:hover{background:var(--surface-3)}
+.btn.on{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+
+/* ---------- progress ---------- */
+.meter{display:flex; align-items:center; gap:11px; margin-bottom:16px}
+.meter .track{flex:1; height:3px; background:var(--surface-3); border-radius:2px; overflow:hidden}
+.meter .fill{height:100%; background:var(--accent); transition:width .25s ease}
+.meter .count{
+  font-family:var(--mono); font-size:12px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+
+/* ---------- card ---------- */
+.stage{display:flex; flex-direction:column; gap:12px}
+.card{
+  background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent);
+  border-radius:12px; box-shadow:var(--shadow); overflow:hidden;
+}
+.card.d-early{--accent:var(--early); --accent-tint:var(--early-tint); --accent-line:var(--early-line)}
+.card.d-met{--accent:var(--met); --accent-tint:var(--met-tint); --accent-line:var(--met-line)}
+
+.face{padding:26px 26px 22px; display:flex; flex-direction:column; gap:13px}
+.chips{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.chip{
+  font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  padding:3px 8px; border-radius:4px; background:var(--surface-3); color:var(--ink-2);
+}
+.chip.deck{background:var(--accent-tint); color:var(--accent); border:1px solid var(--accent-line)}
+.chip.bm{background:transparent; border:1px dashed var(--rule-2); color:var(--ink-3); letter-spacing:.05em}
+.title{
+  font-family:var(--serif); font-weight:600; font-size:clamp(25px,4.6vw,36px);
+  line-height:1.14; letter-spacing:-.015em; margin:0; text-wrap:balance;
+}
+.facts{
+  display:flex; flex-wrap:wrap; gap:4px 16px; font-family:var(--mono);
+  font-size:12.5px; color:var(--ink-3); font-variant-numeric:tabular-nums;
+}
+.facts span b{color:var(--ink-2); font-weight:500}
+.cue{
+  font-size:13px; color:var(--ink-3); font-style:italic; font-family:var(--serif);
+  border-top:1px dashed var(--rule); padding-top:13px; margin:0;
+}
+
+/* revealed body */
+.body{border-top:1px solid var(--rule); padding:4px 26px 24px; display:flex; flex-direction:column}
+.block{padding-top:19px; display:flex; flex-direction:column; gap:6px}
+.block+.block{border-top:1px solid var(--rule); margin-top:19px}
+.lbl{
+  font-size:10.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.block p{margin:0; max-width:66ch; color:var(--ink-2)}
+.block p.arms{color:var(--ink); font-weight:500}
+
+/* endpoint table */
+.ep{display:flex; flex-direction:column; gap:1px; margin-top:2px}
+.ep .row{display:grid; grid-template-columns:132px 1fr; gap:0 14px; padding:7px 0 7px 11px; border-left:3px solid var(--neu)}
+.ep .row.pos{border-left-color:var(--pos)}
+.ep .row.cau{border-left-color:var(--cau)}
+.ep .row.neg{border-left-color:var(--neg)}
+.ep .row.pend{border-left-color:var(--pend)}
+.ep .row.note{border-left-color:var(--accent)}
+.ep .k{
+  font-size:11.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
+  text-transform:uppercase; padding-top:2px;
+}
+.ep .v{font-family:var(--mono); font-size:12.8px; line-height:1.5; color:var(--ink); font-variant-numeric:tabular-nums}
+.ep .row.pos .v{color:var(--pos)}
+.ep .row.neg .v{color:var(--neg)}
+.ep .row.cau .v{color:var(--cau)}
+.ep .row.pend .v{color:var(--pend)}
+
+/* takeaway */
+.take{background:var(--accent-tint); border-top:1px solid var(--accent-line); padding:20px 26px 22px}
+.take .lbl{color:var(--accent)}
+.take p{
+  margin:6px 0 0; font-family:var(--serif); font-size:17.5px; line-height:1.45;
+  color:var(--ink); max-width:62ch;
+}
+.src{padding:13px 26px 16px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3)}
+.src a{text-decoration:none; border-bottom:1px solid var(--accent-line)}
+
+/* footer nav */
+.nav{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.nav .hint{
+  flex:1 1 auto; text-align:right; font-size:11.5px; color:var(--ink-3);
+  font-family:var(--mono);
+}
+kbd{
+  font-family:var(--mono); font-size:10.5px; background:var(--surface-3);
+  border:1px solid var(--rule-2); border-bottom-width:2px; border-radius:4px;
+  padding:1px 5px; color:var(--ink-2);
+}
+.primary{background:var(--accent); border-color:var(--accent); color:var(--surface); font-weight:600}
+.primary:hover{filter:brightness(1.08); background:var(--accent)}
+
+/* ---------- index ---------- */
+.index{background:var(--surface); border:1px solid var(--rule); border-radius:12px; overflow:hidden}
+.index .grp{
+  padding:9px 16px; background:var(--surface-2); border-bottom:1px solid var(--rule);
+  font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+  position:sticky; top:0;
+}
+.index button.item{
+  display:grid; grid-template-columns:1fr auto; gap:3px 14px; align-items:baseline;
+  width:100%; text-align:left; background:transparent; border:0;
+  border-bottom:1px solid var(--rule); padding:10px 16px; cursor:pointer;
+}
+.index button.item:hover{background:var(--surface-2)}
+.index .nm{font-family:var(--serif); font-size:16px; font-weight:500; color:var(--ink)}
+.index .mt{font-family:var(--mono); font-size:11.5px; color:var(--ink-3); text-align:right}
+.index .tk{grid-column:1/-1; font-size:12.5px; color:var(--ink-3); max-width:80ch}
+.star-on{color:var(--cau)}
+.empty{padding:34px 20px; text-align:center; color:var(--ink-3); font-size:14px}
+
+@media (max-width:640px){
+  .wrap{padding-block:14px 20px}
+  .head{gap:4px 12px; margin-bottom:12px}
+  .head h1{font-size:23px}
+  .head .sub{font-size:12px}
+  .face{padding:20px 18px 18px}
+  .body{padding-inline:18px}
+  .take{padding-inline:18px}
+  .src{padding-inline:18px}
+  .ep .row{grid-template-columns:1fr; gap:3px; padding-left:10px}
+  .index button.item{grid-template-columns:1fr; padding-block:13px}
+  .index .mt{text-align:left}
+
+  /* 16px stops iOS Safari zooming the page when a field takes focus */
+  .srch{font-size:16px; padding:9px 11px; flex:1 1 100%; min-width:0}
+  select{font-size:16px; padding:9px 26px 9px 11px}
+  .only-mobile{display:inline-flex}
+  .seg button{padding:9px 12px; font-size:13px}
+  .rail{padding:9px; gap:7px}
+  .more{display:none; width:100%; flex-wrap:wrap; gap:7px}
+  .more.open{display:flex}
+  .more select{flex:1 1 46%}
+  .more .btn{flex:1 1 auto; text-align:center}
+
+  /* actions stay under the thumb instead of below a long card */
+  .nav{
+    position:sticky; bottom:0; z-index:20; gap:7px;
+    background:var(--paper); border-top:1px solid var(--rule);
+    margin-inline:-18px; margin-top:0;
+    padding:9px 18px calc(9px + env(safe-area-inset-bottom,0px));
+  }
+  .nav .hint{display:none}
+  .nav .btn{min-height:44px; display:inline-flex; align-items:center; justify-content:center}
+  .nav #next{flex:1 1 auto}
+  .stage{gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <h1>Trial Recall</h1>
+    <p class="sub"><b id="tot">—</b> trials from your Oncology Database</p>
+    <span class="spacer"></span>
+    <p class="sub" id="deckcount"></p>
+  </header>
+
+  <div class="rail">
+    <div class="seg" role="group" aria-label="Database">
+      <button type="button" id="dAll" data-deck="all" aria-pressed="true">All</button>
+      <button type="button" id="dEarly" class="d-early" data-deck="early" aria-pressed="false">Early stage</button>
+      <button type="button" id="dMet" class="d-met" data-deck="met" aria-pressed="false">Metastatic</button>
+    </div>
+    <input class="srch" id="q" type="search" placeholder="Search trial, drug, biomarker…" aria-label="Search">
+    <button type="button" class="btn only-mobile" id="moreBtn" aria-expanded="false" aria-controls="more">Filters</button>
+    <div class="more" id="more">
+      <select id="fCancer" aria-label="Cancer type"><option value="">All cancers</option></select>
+      <select id="fSetting" aria-label="Setting or line"><option value="">All settings</option></select>
+      <select id="fTx" aria-label="Treatment class"><option value="">All treatments</option></select>
+      <button type="button" class="btn" id="shuffle">Shuffle</button>
+      <button type="button" class="btn" id="starOnly" aria-pressed="false">★ Starred</button>
+      <button type="button" class="btn" id="viewBtn">Index</button>
+    </div>
+  </div>
+
+  <div class="meter">
+    <span class="count" id="pos">0 / 0</span>
+    <span class="track"><span class="fill" id="fill" style="width:0%"></span></span>
+    <span class="count" id="starCount">★ 0</span>
+  </div>
+
+  <section class="stage" id="stage">
+    <article class="card" id="card" aria-live="polite"></article>
+    <div class="nav">
+      <button type="button" class="btn" id="prev">← Previous</button>
+      <button type="button" class="btn primary" id="next">Reveal</button>
+      <button type="button" class="btn" id="star">★ Star</button>
+      <span class="hint"><kbd>space</kbd> reveal · <kbd>←</kbd><kbd>→</kbd> move · <kbd>s</kbd> star · <kbd>/</kbd> search</span>
+    </div>
+  </section>
+
+  <section class="index" id="index" hidden></section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var CARDS=[], view=[], i=0, stage=0, deck="all", starOnly=false, mode="card";
+  var stars=Object.create(null);
+  var card=document.getElementById("card"), index=document.getElementById("index");
+
+  /* ---- per-viewer star memory (best effort) ---- */
+  function loadStars(){
+    try{ var r=localStorage.getItem("trialrecall.stars");
+      if(r){ JSON.parse(r).forEach(function(n){ stars[n]=1; }); } }catch(e){}
+  }
+  function saveStars(){
+    try{ localStorage.setItem("trialrecall.stars", JSON.stringify(Object.keys(stars))); }catch(e){}
+  }
+
+  /* ---- helpers ---- */
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  var MARK={"\u2705":"pos","\u274c":"neg","\u26a0":"cau","\u2194":"neu","\u23f3":"pend","\u{1F4DD}":"pend","\u2b50":"note"};
+  function grade(v){
+    var s=String(v||"").trim();
+    for(var k in MARK){ if(s.indexOf(k)===0) return {cls:MARK[k], text:s.slice(k.length).replace(/^\ufe0f?\s*/,"")}; }
+    return {cls:"neu", text:s};
+  }
+  /* plain scan, not a lookbehind regex \u2014 Safari before iOS 16.4 throws on those */
+  function firstSentence(s){
+    s=String(s==null?"":s).trim();
+    var k=s.search(/\.[\s]/);
+    return k<0 ? s : s.slice(0,k+1);
+  }
+  function toTop(){
+    try{ window.scrollTo({top:0,behavior:"smooth"}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function group(c){
+    if(/^Lung/.test(c)) return "Lung";
+    if(/^Pan-tumour/.test(c)) return "Pan-tumour";
+    if(/^Sarcoma/.test(c)) return "Sarcoma";
+    return c;
+  }
+  function bucket(s){
+    if(s==="Adjuvant"||s==="Neoadjuvant"||s==="Peri-OP") return s;
+    if(/1L/.test(s)&&!/2L|3L/.test(s)) return "1st line";
+    if(/^2L/.test(s)) return "2nd line";
+    if(/^3L/.test(s)) return "3rd line";
+    return "Multi-line";
+  }
+
+  /* ---- filtering ---- */
+  function compute(){
+    var qv=document.getElementById("q").value.trim().toLowerCase();
+    var fc=document.getElementById("fCancer").value;
+    var fs=document.getElementById("fSetting").value;
+    var ft=document.getElementById("fTx").value;
+    view=CARDS.filter(function(c){
+      if(deck!=="all" && c.db!==deck) return false;
+      if(starOnly && !stars[c.name]) return false;
+      if(fc && group(c.cancer)!==fc) return false;
+      if(fs && bucket(c.setting)!==fs) return false;
+      if(ft && (c.tx||[]).indexOf(ft)<0) return false;
+      if(qv && c._hay.indexOf(qv)<0) return false;
+      return true;
+    });
+    if(i>=view.length) i=0;
+    render();
+  }
+
+  /* ---- card ---- */
+  function render(){
+    var n=view.length;
+    document.getElementById("pos").textContent=(n?i+1:0)+" / "+n;
+    document.getElementById("fill").style.width=(n?((i+1)/n*100):0)+"%";
+    document.getElementById("starCount").textContent="\u2605 "+Object.keys(stars).length;
+    document.getElementById("deckcount").textContent=n+" in view";
+
+    if(mode==="index"){ renderIndex(); return; }
+    if(!n){
+      card.className="card";
+      card.innerHTML='<div class="empty">No trials match these filters. Clear the search or pick another cancer type.</div>';
+      document.getElementById("next").textContent="Reveal";
+      return;
+    }
+    var c=view[i];
+    card.className="card d-"+c.db;
+    var chips='<span class="chip deck">'+(c.db==="early"?"Early stage":"Metastatic")+'</span>'+
+      '<span class="chip">'+esc(c.cancer)+'</span>'+
+      '<span class="chip">'+esc(c.setting)+'</span>'+
+      (c.biomarker?'<span class="chip bm">'+esc(c.biomarker)+'</span>':"")+
+      (stars[c.name]?'<span class="chip star-on">\u2605 starred</span>':"");
+
+    var facts=[];
+    if(c.phase) facts.push("<span>Phase <b>"+esc(c.phase)+"</b></span>");
+    if(c.year)  facts.push("<span>Reported <b>"+esc(c.year)+"</b></span>");
+    if(c.n)     facts.push("<span>n = <b>"+c.n.toLocaleString("en-US")+"</b></span>");
+
+    var h='<div class="face">'+
+      '<div class="chips">'+chips+'</div>'+
+      '<h2 class="title">'+esc(c.name)+'</h2>'+
+      (facts.length?'<div class="facts">'+facts.join("")+'</div>':"")+
+      (stage===0?'<p class="cue">Who was enrolled, what were they given, and what did it show?</p>':"")+
+      '</div>';
+
+    if(stage>=1){
+      var eps=(c.endpoints||[]).map(function(e){
+        var g=grade(e[1]);
+        return '<div class="row '+g.cls+'"><div class="k">'+esc(e[0])+'</div><div class="v">'+esc(g.text)+'</div></div>';
+      }).join("");
+      h+='<div class="body">'+
+        '<div class="block"><div class="lbl">Key patient population</div><p>'+esc(c.population)+'</p></div>'+
+        '<div class="block"><div class="lbl">Treatment</div><p class="arms">'+esc(c.treatment)+'</p></div>'+
+        '<div class="block"><div class="lbl">Efficacy endpoints</div><div class="ep">'+eps+'</div></div>'+
+        '</div>';
+    }
+    if(stage>=2){
+      h+='<div class="take"><div class="lbl">Key takeaway</div><p>'+esc(c.takeaway)+'</p></div>';
+      h+='<div class="src">Source: <a href="'+esc(c.url)+'" target="_blank" rel="noopener">open in Notion \u2197</a></div>';
+    }
+    card.innerHTML=h;
+    document.getElementById("next").textContent =
+      stage===0?"Reveal answer" : stage===1?"Reveal takeaway" : "Next trial \u2192";
+    document.getElementById("star").textContent = stars[c.name]?"\u2605 Starred":"\u2606 Star";
+  }
+
+  function renderIndex(){
+    if(!view.length){ index.innerHTML='<div class="empty">No trials match these filters.</div>'; return; }
+    var out=[], last="";
+    view.forEach(function(c,k){
+      var g=(c.db==="early"?"Early stage":"Metastatic")+" \u00b7 "+group(c.cancer);
+      if(g!==last){ out.push('<div class="grp">'+esc(g)+"</div>"); last=g; }
+      out.push('<button type="button" class="item" data-k="'+k+'">'+
+        '<span class="nm">'+esc(c.name)+(stars[c.name]?' <span class="star-on">\u2605</span>':"")+'</span>'+
+        '<span class="mt">'+esc(c.setting)+" \u00b7 "+esc(c.phase||"\u2014")+(c.year?" \u00b7 "+c.year:"")+'</span>'+
+        '<span class="tk">'+esc(firstSentence(c.takeaway))+'</span>'+
+        '</button>');
+    });
+    index.innerHTML=out.join("");
+  }
+
+  function go(d){ if(!view.length) return; i=(i+d+view.length)%view.length; stage=0; render(); toTop(); }
+  function advance(){ if(!view.length) return; if(stage<2){ stage++; render(); } else go(1); }
+  function toggleStar(){
+    if(!view.length||mode==="index") return;
+    var nm=view[i].name;
+    if(stars[nm]) delete stars[nm]; else stars[nm]=1;
+    saveStars(); render();
+  }
+
+  /* ---- wiring ---- */
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.addEventListener("click",function(){
+      deck=b.dataset.deck; i=0; stage=0;
+      document.querySelectorAll(".seg button").forEach(function(x){
+        x.setAttribute("aria-pressed", String(x===b)); });
+      compute();
+    });
+  });
+  ["q","fCancer","fSetting","fTx"].forEach(function(id){
+    document.getElementById(id).addEventListener("input",function(){ i=0; stage=0; compute(); });
+  });
+  document.getElementById("shuffle").addEventListener("click",function(){
+    for(var k=view.length-1;k>0;k--){ var j=Math.floor(Math.random()*(k+1)); var t=view[k]; view[k]=view[j]; view[j]=t; }
+    i=0; stage=0; render();
+  });
+  document.getElementById("starOnly").addEventListener("click",function(){
+    starOnly=!starOnly; this.setAttribute("aria-pressed",String(starOnly));
+    this.classList.toggle("on",starOnly); i=0; stage=0; compute();
+  });
+  document.getElementById("viewBtn").addEventListener("click",function(){
+    mode = mode==="card" ? "index" : "card";
+    this.textContent = mode==="card" ? "Index" : "Cards";
+    this.classList.toggle("on", mode==="index");
+    document.getElementById("stage").hidden = mode==="index";
+    index.hidden = mode!=="index";
+    render();
+  });
+  index.addEventListener("click",function(e){
+    var b=e.target.closest("button.item"); if(!b) return;
+    i=+b.dataset.k; stage=0; mode="card";
+    var v=document.getElementById("viewBtn"); v.textContent="Index"; v.classList.remove("on");
+    document.getElementById("stage").hidden=false; index.hidden=true;
+    render(); toTop();
+  });
+  document.getElementById("moreBtn").addEventListener("click",function(){
+    var m=document.getElementById("more"), open=m.classList.toggle("open");
+    this.setAttribute("aria-expanded",String(open));
+    this.classList.toggle("on",open);
+    this.textContent = open ? "Hide filters" : "Filters";
+  });
+  document.getElementById("next").addEventListener("click",advance);
+  document.getElementById("prev").addEventListener("click",function(){ go(-1); });
+  document.getElementById("star").addEventListener("click",toggleStar);
+  card.addEventListener("click",function(e){
+    if(e.target.closest("a")) return;
+    if(swiped) return;                       /* a swipe is not a tap */
+    var sel=window.getSelection&&window.getSelection();
+    if(sel&&!sel.isCollapsed) return;        /* let people select the numbers */
+    advance();
+  });
+
+  /* swipe between trials \u2014 the natural phone gesture */
+  var tx0=0, ty0=0, swiped=false;
+  var stageEl=document.getElementById("stage");
+  stageEl.addEventListener("touchstart",function(e){
+    if(e.touches.length!==1){ swiped=true; return; }
+    swiped=false; tx0=e.touches[0].clientX; ty0=e.touches[0].clientY;
+  },{passive:true});
+  stageEl.addEventListener("touchend",function(e){
+    var t=e.changedTouches&&e.changedTouches[0]; if(!t||swiped) return;
+    var dx=t.clientX-tx0, dy=t.clientY-ty0;
+    if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.6){ swiped=true; go(dx<0?1:-1); }
+  },{passive:true});
+
+  document.addEventListener("keydown",function(e){
+    var t=e.target.tagName;
+    if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA"){ if(e.key==="Escape") e.target.blur(); return; }
+    if(e.key===" "||e.key==="Enter"){ e.preventDefault(); advance(); }
+    else if(e.key==="ArrowRight"){ e.preventDefault(); go(1); }
+    else if(e.key==="ArrowLeft"){ e.preventDefault(); go(-1); }
+    else if(e.key==="s"||e.key==="S"){ toggleStar(); }
+    else if(e.key==="/"){ e.preventDefault(); document.getElementById("q").focus(); }
+  });
+
+  /* ---- boot ---- */
+  loadStars();
+  fetch("trials.json").then(function(r){ return r.json(); }).then(function(data){
+    CARDS=data;
+    CARDS.forEach(function(c){
+      c._hay=[c.name,c.cancer,c.setting,c.biomarker,c.population,c.treatment,c.takeaway,
+        (c.tx||[]).join(" "),(c.endpoints||[]).map(function(e){return e.join(" ");}).join(" ")]
+        .join(" ").toLowerCase();
+    });
+    document.getElementById("tot").textContent=CARDS.length;
+    fill("fCancer", CARDS.map(function(c){return group(c.cancer);}));
+    fill("fSetting", CARDS.map(function(c){return bucket(c.setting);}));
+    var tx=[]; CARDS.forEach(function(c){ (c.tx||[]).forEach(function(t){ tx.push(t); }); });
+    fill("fTx", tx);
+    compute();
+  }).catch(function(){
+    card.innerHTML='<div class="empty">Could not load the trial data. Reload the page to try again.</div>';
+  });
+
+  function fill(id, vals){
+    var counts=Object.create(null);
+    vals.forEach(function(v){ if(v) counts[v]=(counts[v]||0)+1; });
+    var sel=document.getElementById(id);
+    Object.keys(counts).sort().forEach(function(v){
+      var o=document.createElement("option"); o.value=v; o.textContent=v+" ("+counts[v]+")"; sel.appendChild(o);
+    });
+  }
+})();
+</script>

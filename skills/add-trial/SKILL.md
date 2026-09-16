@@ -1,6 +1,6 @@
 ---
 name: add-trial
-description: Use when the user uploads clinical-trial reference attachments (PDF, slide deck, or images) and a trial name, and wants it added/summarized into the Notion oncology databases. Routes the trial to either the "Early Stage Cancer Database" or the "Metastatic Cancer Database" based on disease setting. Trigger phrases: "add this trial to Notion", "summarize this trial into the database", "/add-trial".
+description: Use when the user uploads clinical-trial reference attachments (PDF, slide deck, or images) and a trial name, and wants it added/summarized into the Notion oncology databases. Routes the trial to either the "Early Stage Cancer Database" or the "Metastatic Cancer Database" based on disease setting. Also refreshes the Trial Recall flashcard deck for the trial it adds. Trigger phrases: "add this trial to Notion", "summarize this trial into the database", "/add-trial".
 argument-hint: <trial-name>
 ---
 
@@ -8,7 +8,8 @@ argument-hint: <trial-name>
 
 Summarizes a clinical trial from reference attachments (PDF, slide deck, or images)
 into a new page in **one of two** Notion databases, filling structured properties
-concisely and writing a detailed narrative summary in the page body.
+concisely and writing a detailed narrative summary in the page body — then adds
+the trial to the Trial Recall flashcard deck.
 
 <span style="color:red">**The single most important step is choosing the right
 database.**</span> The two databases have *different schemas*, so routing must
@@ -250,11 +251,43 @@ sections, `<table>`/`<columns>` blocks as shown above.
 10. **Verify**: re-fetch the created page and check that every table kept all of
     its columns and that the properties landed as intended. Notion fails
     silently on some markup — see Gotchas.
-11. **Report back**: share the new page URL, name the database it went into,
+11. **Make the flashcard**: once the page verifies clean, hand the new page URL
+    to the **flashcard-writer** subagent in targeted mode (see
+    [Keeping the flashcard deck in sync](#keeping-the-flashcard-deck-in-sync)).
+    Do this *after* verification, never before — a card built from properties
+    that silently failed to land will be wrong in the same way, twice.
+12. **Report back**: share the new page URL, name the database it went into,
     list any property values that were inferred/uncertain or left blank so the
-    user can spot-check against the source, and remind them that the original
-    file must be attached manually in Notion under Reference — the Notion MCP
-    tools have no file-upload capability.
+    user can spot-check against the source, give them the flashcard deck URL,
+    and remind them that the original file must be attached manually in Notion
+    under Reference — the Notion MCP tools have no file-upload capability.
+
+## Keeping the flashcard deck in sync
+
+Every trial in these databases also exists as a flashcard in the **Trial Recall**
+deck, so the deck has to be updated whenever the databases are. The card data
+lives in `deck/trials.json`; `deck/deck.json` holds the published artifact URL
+and the per-trial fingerprints used to detect changes.
+
+Do **not** write cards by hand from this skill. Delegate to the
+**flashcard-writer** subagent, which owns the card format:
+
+- **After adding a trial** (step 11): pass it the new Notion page URL. It writes
+  one card and republishes the deck.
+- **After editing an existing trial's properties**: pass it that page's URL the
+  same way. Editing a `Key takeaway` or an endpoint in Notion does not reach the
+  deck on its own.
+- **To catch everything at once**: run `/sync-flashcards` with no argument, or
+  let the weekly scheduled sync pick it up.
+
+Two rules matter when a page moves or is renamed:
+
+- A card is keyed on the **Notion page URL**, not the trial name. Renaming a
+  trial updates its existing card; it does not create a second one.
+- **Re-card a page after moving it between databases.** The move changes which
+  schema the trial is read under, so its card must be rebuilt — a card still
+  marked `"db": "met"` will sit in the wrong half of the deck and show the wrong
+  endpoint set.
 
 ## Correcting a mis-routed page
 
@@ -272,6 +305,8 @@ page body, URL, and any manually attached files:
    injected properties and restore any property whose type was changed.
 5. Verify with a query against both data sources that exactly one row exists,
    and re-fetch the destination schema to confirm it matches what it was.
+6. **Re-card the trial** — hand the page URL to the flashcard-writer subagent so
+   its flashcard is rebuilt against the destination schema.
 
 ## Gotchas
 
@@ -299,6 +334,10 @@ These are failure modes that have actually occurred — check for them.
   destination schema after a move, diff it against what it was, and clean up.
   Before dropping an injected column, check no other row uses it:
   `SELECT COUNT("<prop>") FROM "collection://…"`.
+- **A moved page keeps a stale flashcard.** `deck/trials.json` records which
+  database a trial came from. After moving a page, re-run the flashcard-writer
+  on it so the card is rebuilt against the new schema; otherwise the card stays
+  filed under the old database with the old endpoint set.
 - **`Cancer type` differs between the databases**: single `select` in Early
   Stage (pass a string), `multi_select` in Metastatic (pass an array).
 - **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
