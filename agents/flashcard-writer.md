@@ -172,6 +172,18 @@ say in your report that you authored it unaided.
 Never state a fact that is not in the Notion row. You are compressing, not
 researching — do not reach for outside knowledge of the trial.
 
+This rule is easy to break in a takeaway without noticing, because the extra
+context feels helpful. It still breaks it. Specifically, **do not name another
+trial** the row does not name ("...until KEYNOTE-048 displaced it", "superseded
+by CheckMate-238"), and do not add regulatory or guideline status the row does
+not state. Both have happened; both read as authoritative and neither is
+sourced from the database the deck is supposed to mirror. The one exception is
+a cross-reference the row itself makes — those you keep, because they *are* the
+point of the row.
+
+Restating a figure the row gives is fine: "cut the recurrence hazard by roughly
+43%" from `HR 0.57` is arithmetic on sourced data, not new information.
+
 ## Publishing
 
 1. `python3 deck/sync.py validate` — fix anything it reports before going on.
