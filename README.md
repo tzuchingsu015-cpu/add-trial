@@ -9,7 +9,7 @@ A Claude Code plugin that reads a clinical-trial reference attachment (PDF, slid
 | `skills/add-trial` | Reads the source, routes the trial, creates the Notion page, then triggers a flashcard |
 | `agents/flashcard-writer` | Subagent that turns Notion rows into flashcards and republishes the deck |
 | `commands/sync-flashcards` | `/sync-flashcards` — on-demand catch-up for edits made directly in Notion |
-| `deck/` | The deck: card data, the artifact page, sync state, and the diff tool |
+| `deck/` | The deck: card data, the artifact page, the offline build, sync state, and the diff tool |
 
 ## Workflow
 
@@ -32,6 +32,32 @@ Attach the trial PDF, exported slide deck (PDF preferred), or screenshots before
 ## The flashcard deck
 
 Every trial in the two databases is also a flashcard in **Trial Recall** — a two-stage study deck (identity → population/treatment/endpoints → takeaway) filterable by database, cancer type, setting and treatment class.
+
+### Using it as an app
+
+The deck installs to a home screen or dock — tap **Install** in the deck's own
+toolbar for the steps for your device. On iPhone it must be Safari (Chrome on
+iOS cannot add to the home screen), and because the hosted deck lives on
+claude.ai it needs you signed in.
+
+For studying with no account and no connection, `deck/trial-recall-offline.html`
+is the whole deck in one self-contained file — open it straight from Files or
+the filesystem. Rebuild it after a sync:
+
+```bash
+python3 deck/build-standalone.py
+```
+
+It does not update itself, so replace the copy on your device after each sync.
+
+### Order and progress
+
+Each launch continues the shuffled run you were in, at the card you stopped on.
+When a run finishes — or you press **New run** — the deck reshuffles. Trials
+added by a sync are mixed into the part of the run you have not reached yet, so
+syncing never restarts you. Progress, filters and starred cards live in that
+browser's local storage, so they are per-device and do not follow you between
+your phone and your desktop.
 
 The deck stays in sync three ways:
 
@@ -82,5 +108,6 @@ See [`skills/add-trial/SKILL.md`](skills/add-trial/SKILL.md) for the routing rul
 - Notion does not support `colspan`/`rowspan` in tables — it silently drops columns instead of erroring, so every row must have the same cell count. The skill verifies this after creating a page.
 - Notion rejects unknown multi-select option values rather than creating them; the skill leaves the property blank and flags it instead of forcing a wrong label. Adding an option replaces the whole option set, so every existing option and colour must be restated.
 - SQL queries against a data source return at most 100 rows; both databases are larger, so a full sync pages from both ends and de-duplicates on `url`. A short pull is indistinguishable from mass deletion, which is why the sync never deletes on its own.
+- The offline file is a build artifact of `deck/trials.json`; regenerate it with `deck/build-standalone.py` rather than editing it by hand.
 - Moving a trial between databases leaves its flashcard filed under the old one — re-run the flashcard-writer on that page after a move.
 - A trial filed in the wrong database should be **moved**, not recreated — see "Correcting a mis-routed page" in the skill. Note that moving a page carries its old properties along and Notion silently adds matching columns to the destination database, so the destination schema must be re-checked and cleaned up afterwards.

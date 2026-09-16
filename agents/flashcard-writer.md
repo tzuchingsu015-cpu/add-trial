@@ -204,10 +204,18 @@ Restating a figure the row gives is fine: "cut the recurrence hazard by roughly
 
    Do not pass `favicon` or `icon` on a republish, and do not publish without
    `url` — that would create a second, separate deck.
-4. `python3 deck/sync.py commit /path/to/rows.json` (full sync only) to record
+4. `python3 deck/build-standalone.py` to regenerate `deck/trial-recall-offline.html`,
+   the single-file copy the user keeps on their device. Skipping this leaves
+   them studying a stale deck offline while the hosted one is current — run it
+   on every sync that changed a card.
+5. `python3 deck/sync.py commit /path/to/rows.json` (full sync only) to record
    the new fingerprints and timestamp.
-5. Commit the changed files to git on the current branch. Do not push unless
+6. Commit the changed files to git on the current branch. Do not push unless
    the user asked.
+
+If cards changed, say so in your report and remind the user that the offline
+copy on their device needs replacing — the hosted deck updates itself, the
+file on their phone does not.
 
 ## Report back
 

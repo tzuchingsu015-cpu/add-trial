@@ -50,6 +50,9 @@ button,select,input{font:inherit; color:inherit; touch-action:manipulation}
 button{-webkit-appearance:none; appearance:none}
 :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
 
+/* installed as an app: no browser chrome, so clear the status bar ourselves */
+body.standalone .wrap{padding-top:calc(14px + env(safe-area-inset-top,0px))}
+
 /* ---------- masthead ---------- */
 .head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px; margin-bottom:16px}
 .head h1{
@@ -92,12 +95,20 @@ select{padding-right:26px; background-image:linear-gradient(45deg,transparent 50
 .btn.on{background:var(--accent); border-color:var(--accent); color:var(--surface)}
 
 /* ---------- progress ---------- */
-.meter{display:flex; align-items:center; gap:11px; margin-bottom:16px}
+.meter{display:flex; align-items:center; gap:11px; margin-bottom:6px}
 .meter .track{flex:1; height:3px; background:var(--surface-3); border-radius:2px; overflow:hidden}
 .meter .fill{height:100%; background:var(--accent); transition:width .25s ease}
 .meter .count{
   font-family:var(--mono); font-size:12px; color:var(--ink-3);
   font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.runbar{
+  display:flex; align-items:baseline; gap:9px; flex-wrap:wrap;
+  font-size:11.5px; color:var(--ink-3); margin-bottom:14px; min-height:17px;
+}
+.runbar button{
+  background:none; border:0; padding:0; font-size:11.5px; color:var(--accent);
+  cursor:pointer; text-decoration:underline; text-underline-offset:2px;
 }
 
 /* ---------- card ---------- */
@@ -203,6 +214,27 @@ kbd{
 .star-on{color:var(--cau)}
 .empty{padding:34px 20px; text-align:center; color:var(--ink-3); font-size:14px}
 
+/* ---------- install sheet ---------- */
+.sheet[hidden]{display:none}
+.sheet{
+  position:fixed; inset:0; z-index:60; background:rgba(8,12,15,.55);
+  display:flex; align-items:center; justify-content:center; padding:18px;
+}
+.sheet .panel{
+  background:var(--surface); border:1px solid var(--rule); border-radius:12px;
+  box-shadow:var(--shadow); max-width:430px; width:100%;
+  max-height:86vh; overflow-y:auto; padding:22px 22px 18px;
+}
+.sheet h2{font-family:var(--serif); font-size:20px; margin:0 0 4px; font-weight:600}
+.sheet .note{font-size:12.5px; color:var(--ink-3); margin:0 0 16px}
+.sheet h3{
+  font-size:10.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3); margin:16px 0 5px;
+}
+.sheet ol{margin:0; padding-left:19px; font-size:13.5px; color:var(--ink-2)}
+.sheet li{margin:3px 0}
+.sheet .close{margin-top:18px; width:100%; text-align:center}
+
 @media (max-width:640px){
   .wrap{padding-block:14px 20px}
   .head{gap:4px 12px; margin-bottom:12px}
@@ -262,9 +294,10 @@ kbd{
       <select id="fCancer" aria-label="Cancer type"><option value="">All cancers</option></select>
       <select id="fSetting" aria-label="Setting or line"><option value="">All settings</option></select>
       <select id="fTx" aria-label="Treatment class"><option value="">All treatments</option></select>
-      <button type="button" class="btn" id="shuffle">Shuffle</button>
+      <button type="button" class="btn" id="shuffle">New run</button>
       <button type="button" class="btn" id="starOnly" aria-pressed="false">★ Starred</button>
       <button type="button" class="btn" id="viewBtn">Index</button>
+      <button type="button" class="btn" id="installBtn">Install</button>
     </div>
   </div>
 
@@ -273,6 +306,7 @@ kbd{
     <span class="track"><span class="fill" id="fill" style="width:0%"></span></span>
     <span class="count" id="starCount">★ 0</span>
   </div>
+  <div class="runbar" id="runbar"></div>
 
   <section class="stage" id="stage">
     <article class="card" id="card" aria-live="polite"></article>
@@ -287,33 +321,75 @@ kbd{
   <section class="index" id="index" hidden></section>
 </div>
 
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="panel">
+    <h2 id="sheetTitle">Keep Trial Recall on your device</h2>
+    <p class="note" id="sheetNote">Adds a home-screen or dock icon that opens the deck full screen, without browser chrome.</p>
+    <div id="sheetBody"></div>
+    <button type="button" class="btn close" id="sheetClose">Close</button>
+  </div>
+</div>
+
 <script>
 (function(){
   "use strict";
-  var CARDS=[], view=[], i=0, stage=0, deck="all", starOnly=false, mode="card";
-  var stars=Object.create(null);
-  var card=document.getElementById("card"), index=document.getElementById("index");
 
-  /* ---- per-viewer star memory (best effort) ---- */
-  function loadStars(){
-    try{ var r=localStorage.getItem("trialrecall.stars");
-      if(r){ JSON.parse(r).forEach(function(n){ stars[n]=1; }); } }catch(e){}
+  /* ============ persistence ============
+     One record holds the shuffled run, the position in it, the revealed
+     depth and the filters, so reopening resumes exactly where you stopped.
+     Stars are keyed by Notion url, not name: a sync can rename a card. */
+  var KEY="trialrecall.v2", OLDKEY="trialrecall.stars";
+  var S={order:[],pos:0,stage:0,stars:{},filters:{deck:"all",cancer:"",setting:"",tx:"",q:"",starOnly:false}};
+  var resumed=false, saveTimer=null;
+
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY);
+      if(raw){
+        var d=JSON.parse(raw);
+        if(d&&typeof d==="object"){
+          S.order=Array.isArray(d.order)?d.order:[];
+          S.pos=typeof d.pos==="number"?d.pos:0;
+          S.stage=typeof d.stage==="number"?d.stage:0;
+          S.stars=d.stars&&typeof d.stars==="object"?d.stars:{};
+          if(d.filters&&typeof d.filters==="object"){
+            for(var k in S.filters) if(k in d.filters) S.filters[k]=d.filters[k];
+          }
+        }
+      }
+    }catch(e){}
+    return migrateStars();
   }
-  function saveStars(){
-    try{ localStorage.setItem("trialrecall.stars", JSON.stringify(Object.keys(stars))); }catch(e){}
+  /* v1 keyed stars by trial name; carry them over once we know the deck */
+  var legacyStarNames=null;
+  function migrateStars(){
+    try{
+      var old=localStorage.getItem(OLDKEY);
+      if(old&&!Object.keys(S.stars).length) legacyStarNames=JSON.parse(old);
+    }catch(e){}
   }
+  function save(){
+    if(saveTimer) return;
+    saveTimer=setTimeout(function(){
+      saveTimer=null;
+      try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){}
+    },150);
+  }
+
+  var CARDS=[], byUrl=Object.create(null), view=[], mode="card";
+  var card=document.getElementById("card"), index=document.getElementById("index");
 
   /* ---- helpers ---- */
   function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
-  var MARK={"\u2705":"pos","\u274c":"neg","\u26a0":"cau","\u2194":"neu","\u23f3":"pend","\u{1F4DD}":"pend","\u2b50":"note"};
+  var MARK={"✅":"pos","❌":"neg","⚠":"cau","↔":"neu","⏳":"pend","\u{1F4DD}":"pend","⭐":"note"};
   function grade(v){
     var s=String(v||"").trim();
-    for(var k in MARK){ if(s.indexOf(k)===0) return {cls:MARK[k], text:s.slice(k.length).replace(/^\ufe0f?\s*/,"")}; }
+    for(var k in MARK){ if(s.indexOf(k)===0) return {cls:MARK[k], text:s.slice(k.length).replace(/^️?\s*/,"")}; }
     return {cls:"neu", text:s};
   }
-  /* plain scan, not a lookbehind regex \u2014 Safari before iOS 16.4 throws on those */
+  /* plain scan, not a lookbehind regex — Safari before iOS 16.4 throws on those */
   function firstSentence(s){
     s=String(s==null?"":s).trim();
     var k=s.search(/\.[\s]/);
@@ -326,6 +402,7 @@ kbd{
     if(/^Lung/.test(c)) return "Lung";
     if(/^Pan-tumour/.test(c)) return "Pan-tumour";
     if(/^Sarcoma/.test(c)) return "Sarcoma";
+    if(/^Skin/.test(c)) return "Skin";
     return c;
   }
   function bucket(s){
@@ -335,33 +412,65 @@ kbd{
     if(/^3L/.test(s)) return "3rd line";
     return "Multi-line";
   }
+  function shuffled(a){
+    a=a.slice();
+    for(var k=a.length-1;k>0;k--){ var j=Math.floor(Math.random()*(k+1)); var t=a[k]; a[k]=a[j]; a[j]=t; }
+    return a;
+  }
 
-  /* ---- filtering ---- */
-  function compute(){
-    var qv=document.getElementById("q").value.trim().toLowerCase();
-    var fc=document.getElementById("fCancer").value;
-    var fs=document.getElementById("fSetting").value;
-    var ft=document.getElementById("fTx").value;
-    view=CARDS.filter(function(c){
-      if(deck!=="all" && c.db!==deck) return false;
-      if(starOnly && !stars[c.name]) return false;
-      if(fc && group(c.cancer)!==fc) return false;
-      if(fs && bucket(c.setting)!==fs) return false;
-      if(ft && (c.tx||[]).indexOf(ft)<0) return false;
+  /* ---- the run: a shuffled pass over the current filtered view ---- */
+  function pool(){
+    var f=S.filters, qv=(f.q||"").trim().toLowerCase();
+    return CARDS.filter(function(c){
+      if(f.deck!=="all" && c.db!==f.deck) return false;
+      if(f.starOnly && !S.stars[c.url]) return false;
+      if(f.cancer && group(c.cancer)!==f.cancer) return false;
+      if(f.setting && bucket(c.setting)!==f.setting) return false;
+      if(f.tx && (c.tx||[]).indexOf(f.tx)<0) return false;
       if(qv && c._hay.indexOf(qv)<0) return false;
       return true;
     });
-    if(i>=view.length) i=0;
-    render();
   }
 
-  /* ---- card ---- */
+  /* Rebuild the run for the current filters, keeping as much of the saved
+     progress as still applies. Cards added by a sync are shuffled into the
+     part of the run you have not reached yet, so a sync never restarts you. */
+  function rebuild(fresh){
+    var p=pool(), live=Object.create(null), k;
+    p.forEach(function(c){ live[c.url]=1; });
+
+    var kept=[];
+    if(!fresh){
+      for(k=0;k<S.order.length;k++) if(live[S.order[k]]) kept.push(S.order[k]);
+    }
+    var seen=Object.create(null);
+    kept.forEach(function(u){ seen[u]=1; });
+    var added=[];
+    for(k=0;k<p.length;k++) if(!seen[p[k].url]) added.push(p[k].url);
+
+    if(!kept.length){                       /* nothing to resume: fresh shuffle */
+      S.order=shuffled(added); S.pos=0; S.stage=0;
+    }else{
+      added=shuffled(added);
+      var at=Math.min(Math.max(S.pos+1,0), kept.length);
+      S.order=kept.slice(0,at).concat(added, kept.slice(at));
+      if(S.pos>=S.order.length) S.pos=0;
+    }
+    view=S.order.map(function(u){ return byUrl[u]; }).filter(Boolean);
+    if(S.pos>=view.length) S.pos=0;
+    save();
+  }
+
+  function current(){ return view[S.pos]; }
+
+  /* ---- render ---- */
   function render(){
-    var n=view.length;
-    document.getElementById("pos").textContent=(n?i+1:0)+" / "+n;
-    document.getElementById("fill").style.width=(n?((i+1)/n*100):0)+"%";
-    document.getElementById("starCount").textContent="\u2605 "+Object.keys(stars).length;
+    var n=view.length, c=current();
+    document.getElementById("pos").textContent=(n?S.pos+1:0)+" / "+n;
+    document.getElementById("fill").style.width=(n?((S.pos+1)/n*100):0)+"%";
+    document.getElementById("starCount").textContent="★ "+Object.keys(S.stars).length;
     document.getElementById("deckcount").textContent=n+" in view";
+    renderRunbar(n);
 
     if(mode==="index"){ renderIndex(); return; }
     if(!n){
@@ -370,13 +479,12 @@ kbd{
       document.getElementById("next").textContent="Reveal";
       return;
     }
-    var c=view[i];
     card.className="card d-"+c.db;
     var chips='<span class="chip deck">'+(c.db==="early"?"Early stage":"Metastatic")+'</span>'+
       '<span class="chip">'+esc(c.cancer)+'</span>'+
       '<span class="chip">'+esc(c.setting)+'</span>'+
       (c.biomarker?'<span class="chip bm">'+esc(c.biomarker)+'</span>':"")+
-      (stars[c.name]?'<span class="chip star-on">\u2605 starred</span>':"");
+      (S.stars[c.url]?'<span class="chip star-on">★ starred</span>':"");
 
     var facts=[];
     if(c.phase) facts.push("<span>Phase <b>"+esc(c.phase)+"</b></span>");
@@ -387,10 +495,10 @@ kbd{
       '<div class="chips">'+chips+'</div>'+
       '<h2 class="title">'+esc(c.name)+'</h2>'+
       (facts.length?'<div class="facts">'+facts.join("")+'</div>':"")+
-      (stage===0?'<p class="cue">Who was enrolled, what were they given, and what did it show?</p>':"")+
+      (S.stage===0?'<p class="cue">Who was enrolled, what were they given, and what did it show?</p>':"")+
       '</div>';
 
-    if(stage>=1){
+    if(S.stage>=1){
       var eps=(c.endpoints||[]).map(function(e){
         var g=grade(e[1]);
         return '<div class="row '+g.cls+'"><div class="k">'+esc(e[0])+'</div><div class="v">'+esc(g.text)+'</div></div>';
@@ -401,59 +509,98 @@ kbd{
         '<div class="block"><div class="lbl">Efficacy endpoints</div><div class="ep">'+eps+'</div></div>'+
         '</div>';
     }
-    if(stage>=2){
+    if(S.stage>=2){
       h+='<div class="take"><div class="lbl">Key takeaway</div><p>'+esc(c.takeaway)+'</p></div>';
-      h+='<div class="src">Source: <a href="'+esc(c.url)+'" target="_blank" rel="noopener">open in Notion \u2197</a></div>';
+      h+='<div class="src">Source: <a href="'+esc(c.url)+'" target="_blank" rel="noopener">open in Notion ↗</a></div>';
     }
     card.innerHTML=h;
     document.getElementById("next").textContent =
-      stage===0?"Reveal answer" : stage===1?"Reveal takeaway" : "Next trial \u2192";
-    document.getElementById("star").textContent = stars[c.name]?"\u2605 Starred":"\u2606 Star";
+      S.stage===0?"Reveal answer" : S.stage===1?"Reveal takeaway" : "Next trial →";
+    document.getElementById("star").textContent = S.stars[c.url]?"★ Starred":"☆ Star";
   }
 
+  function renderRunbar(n){
+    var el=document.getElementById("runbar");
+    if(!n){ el.innerHTML=""; return; }
+    var bits=[];
+    if(resumed && S.pos>0) bits.push("Resumed where you left off");
+    else if(S.pos===0) bits.push("Shuffled run — random order");
+    if(S.pos>=n-1) bits.push("Last card in this run");
+    el.innerHTML=(bits.join(" · ")||"&nbsp;")+
+      ' <button type="button" id="newrun">Start a new shuffled run</button>';
+    var b=document.getElementById("newrun");
+    if(b) b.addEventListener("click",newRun);
+  }
+
+  /* the index is for lookup, so it stays alphabetical whatever the run order */
   function renderIndex(){
     if(!view.length){ index.innerHTML='<div class="empty">No trials match these filters.</div>'; return; }
+    var sorted=view.slice().sort(function(a,b){
+      return (a.db+group(a.cancer)+a.name).localeCompare(b.db+group(b.cancer)+b.name);
+    });
     var out=[], last="";
-    view.forEach(function(c,k){
-      var g=(c.db==="early"?"Early stage":"Metastatic")+" \u00b7 "+group(c.cancer);
+    sorted.forEach(function(c){
+      var g=(c.db==="early"?"Early stage":"Metastatic")+" · "+group(c.cancer);
       if(g!==last){ out.push('<div class="grp">'+esc(g)+"</div>"); last=g; }
-      out.push('<button type="button" class="item" data-k="'+k+'">'+
-        '<span class="nm">'+esc(c.name)+(stars[c.name]?' <span class="star-on">\u2605</span>':"")+'</span>'+
-        '<span class="mt">'+esc(c.setting)+" \u00b7 "+esc(c.phase||"\u2014")+(c.year?" \u00b7 "+c.year:"")+'</span>'+
+      out.push('<button type="button" class="item" data-u="'+esc(c.url)+'">'+
+        '<span class="nm">'+esc(c.name)+(S.stars[c.url]?' <span class="star-on">★</span>':"")+'</span>'+
+        '<span class="mt">'+esc(c.setting)+" · "+esc(c.phase||"—")+(c.year?" · "+c.year:"")+'</span>'+
         '<span class="tk">'+esc(firstSentence(c.takeaway))+'</span>'+
         '</button>');
     });
     index.innerHTML=out.join("");
   }
 
-  function go(d){ if(!view.length) return; i=(i+d+view.length)%view.length; stage=0; render(); toTop(); }
-  function advance(){ if(!view.length) return; if(stage<2){ stage++; render(); } else go(1); }
+  /* ---- navigation ---- */
+  function go(d){
+    if(!view.length) return;
+    resumed=false;
+    S.pos=(S.pos+d+view.length)%view.length; S.stage=0;
+    save(); render(); toTop();
+  }
+  function advance(){
+    if(!view.length) return;
+    if(S.stage<2){ S.stage++; save(); render(); } else go(1);
+  }
+  function newRun(){
+    resumed=false;
+    rebuild(true); S.stage=0; mode="card";
+    document.getElementById("stage").hidden=false; index.hidden=true;
+    var v=document.getElementById("viewBtn"); v.textContent="Index"; v.classList.remove("on");
+    render(); toTop();
+  }
   function toggleStar(){
-    if(!view.length||mode==="index") return;
-    var nm=view[i].name;
-    if(stars[nm]) delete stars[nm]; else stars[nm]=1;
-    saveStars(); render();
+    var c=current(); if(!c||mode==="index") return;
+    if(S.stars[c.url]) delete S.stars[c.url]; else S.stars[c.url]=1;
+    save(); render();
+  }
+  function filtersChanged(){
+    resumed=false;
+    S.filters.deck=document.querySelector('.seg button[aria-pressed="true"]').dataset.deck;
+    S.filters.q=document.getElementById("q").value;
+    S.filters.cancer=document.getElementById("fCancer").value;
+    S.filters.setting=document.getElementById("fSetting").value;
+    S.filters.tx=document.getElementById("fTx").value;
+    rebuild(true); S.stage=0; render();
   }
 
   /* ---- wiring ---- */
   document.querySelectorAll(".seg button").forEach(function(b){
     b.addEventListener("click",function(){
-      deck=b.dataset.deck; i=0; stage=0;
       document.querySelectorAll(".seg button").forEach(function(x){
         x.setAttribute("aria-pressed", String(x===b)); });
-      compute();
+      filtersChanged();
     });
   });
   ["q","fCancer","fSetting","fTx"].forEach(function(id){
-    document.getElementById(id).addEventListener("input",function(){ i=0; stage=0; compute(); });
+    document.getElementById(id).addEventListener("input",filtersChanged);
   });
-  document.getElementById("shuffle").addEventListener("click",function(){
-    for(var k=view.length-1;k>0;k--){ var j=Math.floor(Math.random()*(k+1)); var t=view[k]; view[k]=view[j]; view[j]=t; }
-    i=0; stage=0; render();
-  });
+  document.getElementById("shuffle").addEventListener("click",newRun);
   document.getElementById("starOnly").addEventListener("click",function(){
-    starOnly=!starOnly; this.setAttribute("aria-pressed",String(starOnly));
-    this.classList.toggle("on",starOnly); i=0; stage=0; compute();
+    S.filters.starOnly=!S.filters.starOnly;
+    this.setAttribute("aria-pressed",String(S.filters.starOnly));
+    this.classList.toggle("on",S.filters.starOnly);
+    filtersChanged();
   });
   document.getElementById("viewBtn").addEventListener("click",function(){
     mode = mode==="card" ? "index" : "card";
@@ -465,10 +612,13 @@ kbd{
   });
   index.addEventListener("click",function(e){
     var b=e.target.closest("button.item"); if(!b) return;
-    i=+b.dataset.k; stage=0; mode="card";
+    var u=b.dataset.u, k=S.order.indexOf(u);
+    if(k<0) return;
+    resumed=false;
+    S.pos=k; S.stage=0; mode="card";
     var v=document.getElementById("viewBtn"); v.textContent="Index"; v.classList.remove("on");
     document.getElementById("stage").hidden=false; index.hidden=true;
-    render(); toTop();
+    save(); render(); toTop();
   });
   document.getElementById("moreBtn").addEventListener("click",function(){
     var m=document.getElementById("more"), open=m.classList.toggle("open");
@@ -487,7 +637,7 @@ kbd{
     advance();
   });
 
-  /* swipe between trials \u2014 the natural phone gesture */
+  /* swipe between trials — the natural phone gesture */
   var tx0=0, ty0=0, swiped=false;
   var stageEl=document.getElementById("stage");
   stageEl.addEventListener("touchstart",function(e){
@@ -501,6 +651,10 @@ kbd{
   },{passive:true});
 
   document.addEventListener("keydown",function(e){
+    if(!document.getElementById("sheet").hidden){
+      if(e.key==="Escape") closeSheet();
+      return;
+    }
     var t=e.target.tagName;
     if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA"){ if(e.key==="Escape") e.target.blur(); return; }
     if(e.key===" "||e.key==="Enter"){ e.preventDefault(); advance(); }
@@ -509,32 +663,179 @@ kbd{
     else if(e.key==="s"||e.key==="S"){ toggleStar(); }
     else if(e.key==="/"){ e.preventDefault(); document.getElementById("q").focus(); }
   });
+  /* last-moment save, for a swipe-away that fires no unload */
+  ["pagehide","visibilitychange"].forEach(function(ev){
+    document.addEventListener(ev,function(){
+      if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; }
+      try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){}
+    });
+  });
 
-  /* ---- boot ---- */
-  loadStars();
-  fetch("trials.json").then(function(r){ return r.json(); }).then(function(data){
+  /* ============ install as an app ============ */
+  function iconDataURL(size){
+    try{
+      var cv=document.createElement("canvas"); cv.width=cv.height=size;
+      var x=cv.getContext("2d"), r=size*0.22;
+      x.fillStyle="#11171b";
+      x.beginPath();
+      if(x.roundRect) x.roundRect(0,0,size,size,r); else x.rect(0,0,size,size);
+      x.fill();
+      /* two offset cards: the deck's two halves */
+      function cardShape(cx,cy,w,hgt,rot,fill){
+        x.save(); x.translate(cx,cy); x.rotate(rot);
+        x.fillStyle=fill;
+        x.beginPath();
+        if(x.roundRect) x.roundRect(-w/2,-hgt/2,w,hgt,size*0.055); else x.rect(-w/2,-hgt/2,w,hgt);
+        x.fill(); x.restore();
+      }
+      cardShape(size*0.44,size*0.50,size*0.40,size*0.52,-0.18,"#8c3a6b");
+      cardShape(size*0.57,size*0.50,size*0.40,size*0.52, 0.12,"#19b39a");
+      return cv.toDataURL("image/png");
+    }catch(e){ return null; }
+  }
+  function head(tag,attrs){
+    var el=document.createElement(tag);
+    for(var k in attrs) el.setAttribute(k,attrs[k]);
+    document.head.appendChild(el);
+    return el;
+  }
+  function setupInstall(){
+    /* iOS reads these when you tap Add to Home Screen, which is after load,
+       so injecting them here works even though the head is not ours to author */
+    head("meta",{name:"apple-mobile-web-app-capable",content:"yes"});
+    head("meta",{name:"mobile-web-app-capable",content:"yes"});
+    head("meta",{name:"apple-mobile-web-app-title",content:"Trial Recall"});
+    head("meta",{name:"apple-mobile-web-app-status-bar-style",content:"default"});
+    head("meta",{name:"application-name",content:"Trial Recall"});
+    head("meta",{name:"theme-color",content:"#0d6e5f"});
+    var icon=iconDataURL(180);
+    if(icon){
+      head("link",{rel:"apple-touch-icon",href:icon});
+      head("link",{rel:"icon",type:"image/png",href:icon});
+    }
+    try{
+      var mf={name:"Trial Recall",short_name:"Trial Recall",
+        description:"Flashcards for the oncology trial databases",
+        start_url:location.href,display:"standalone",
+        background_color:"#eceff1",theme_color:"#0d6e5f",
+        icons:icon?[{src:icon,sizes:"180x180",type:"image/png",purpose:"any"}]:[]};
+      var url=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:"application/manifest+json"}));
+      head("link",{rel:"manifest",href:url});
+    }catch(e){}
+
+    if(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches) document.body.classList.add("standalone");
+    if(window.navigator.standalone) document.body.classList.add("standalone");
+  }
+
+  var deferredPrompt=null;
+  window.addEventListener("beforeinstallprompt",function(e){ e.preventDefault(); deferredPrompt=e; });
+
+  function openSheet(){
+    var ua=navigator.userAgent, body=document.getElementById("sheetBody");
+    var iOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(ua)&&navigator.maxTouchPoints>1);
+    var mac=/Macintosh/.test(ua)&&!(navigator.maxTouchPoints>1);
+    var html="";
+    if(document.body.classList.contains("standalone")){
+      html='<p class="note">You are already running Trial Recall as an installed app.</p>';
+    }else if(iOS){
+      html+='<h3>iPhone &amp; iPad — Safari</h3><ol>'+
+        '<li>Tap the <strong>Share</strong> button (the square with an arrow).</li>'+
+        '<li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>'+
+        '<li>Name it <strong>Trial Recall</strong> and tap <strong>Add</strong>.</li></ol>'+
+        '<p class="note" style="margin-top:12px">It must be Safari — Chrome on iOS cannot add to the home screen. '+
+        'If the deck asks you to sign in after installing, open it once in Safari and sign in there first.</p>';
+    }else if(mac){
+      html+='<h3>Mac — Safari</h3><ol>'+
+        '<li>Open the <strong>File</strong> menu.</li>'+
+        '<li>Choose <strong>Add to Dock…</strong> and confirm.</li></ol>'+
+        '<h3>Mac — Chrome or Edge</h3><ol>'+
+        '<li>Open the <strong>⋮</strong> menu, then <strong>Cast, Save and Share</strong>.</li>'+
+        '<li>Choose <strong>Install page as app…</strong></li></ol>';
+    }else{
+      html+='<h3>Chrome, Edge or Brave</h3><ol>'+
+        '<li>Look for the <strong>install icon</strong> in the address bar, or open the <strong>⋮</strong> menu.</li>'+
+        '<li>Choose <strong>Install page as app…</strong> (or <strong>Apps → Install this site</strong>).</li></ol>';
+    }
+    html+='<h3>Prefer no sign-in?</h3><p class="note" style="margin:0">'+
+      'Ask Claude for the offline copy — a single file you can keep on the device and open with no account and no connection. '+
+      'It does not update itself; you replace it after a sync.</p>';
+    body.innerHTML=html;
+
+    var sheet=document.getElementById("sheet");
+    sheet.hidden=false;
+    if(deferredPrompt){
+      var b=document.createElement("button");
+      b.className="btn primary"; b.style.width="100%"; b.style.marginTop="14px";
+      b.textContent="Install now";
+      b.addEventListener("click",function(){
+        deferredPrompt.prompt(); deferredPrompt=null; closeSheet();
+      });
+      body.appendChild(b);
+    }
+    document.getElementById("sheetClose").focus();
+  }
+  function closeSheet(){ document.getElementById("sheet").hidden=true; }
+  document.getElementById("installBtn").addEventListener("click",openSheet);
+  document.getElementById("sheetClose").addEventListener("click",closeSheet);
+  document.getElementById("sheet").addEventListener("click",function(e){
+    if(e.target===this) closeSheet();
+  });
+
+  /* ============ boot ============ */
+  function start(data){
     CARDS=data;
     CARDS.forEach(function(c){
+      byUrl[c.url]=c;
       c._hay=[c.name,c.cancer,c.setting,c.biomarker,c.population,c.treatment,c.takeaway,
         (c.tx||[]).join(" "),(c.endpoints||[]).map(function(e){return e.join(" ");}).join(" ")]
         .join(" ").toLowerCase();
     });
+    if(legacyStarNames){                     /* v1 stars were keyed by name */
+      var byName=Object.create(null);
+      CARDS.forEach(function(c){ byName[c.name]=c.url; });
+      legacyStarNames.forEach(function(nm){ if(byName[nm]) S.stars[byName[nm]]=1; });
+      legacyStarNames=null; save();
+    }
     document.getElementById("tot").textContent=CARDS.length;
     fill("fCancer", CARDS.map(function(c){return group(c.cancer);}));
     fill("fSetting", CARDS.map(function(c){return bucket(c.setting);}));
     var tx=[]; CARDS.forEach(function(c){ (c.tx||[]).forEach(function(t){ tx.push(t); }); });
     fill("fTx", tx);
-    compute();
-  }).catch(function(){
-    card.innerHTML='<div class="empty">Could not load the trial data. Reload the page to try again.</div>';
-  });
 
+    /* restore the saved filters into the controls */
+    var f=S.filters;
+    document.querySelectorAll(".seg button").forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.deck===f.deck)); });
+    document.getElementById("q").value=f.q||"";
+    setSel("fCancer",f.cancer); setSel("fSetting",f.setting); setSel("fTx",f.tx);
+    var so=document.getElementById("starOnly");
+    so.setAttribute("aria-pressed",String(!!f.starOnly)); so.classList.toggle("on",!!f.starOnly);
+
+    var had=S.order.length>0;
+    rebuild(false);
+    resumed = had && S.pos>0 && S.pos<view.length;
+    setupInstall();
+    render();
+  }
+  function setSel(id,v){
+    var s=document.getElementById(id);
+    for(var k=0;k<s.options.length;k++) if(s.options[k].value===v){ s.value=v; return; }
+  }
   function fill(id, vals){
     var counts=Object.create(null);
     vals.forEach(function(v){ if(v) counts[v]=(counts[v]||0)+1; });
     var sel=document.getElementById(id);
     Object.keys(counts).sort().forEach(function(v){
       var o=document.createElement("option"); o.value=v; o.textContent=v+" ("+counts[v]+")"; sel.appendChild(o);
+    });
+  }
+
+  load();
+  if(window.TRIAL_RECALL_DATA){            /* offline build inlines the deck */
+    start(window.TRIAL_RECALL_DATA);
+  }else{
+    fetch("trials.json").then(function(r){ return r.json(); }).then(start).catch(function(){
+      card.innerHTML='<div class="empty">Could not load the trial data. Reload the page to try again.</div>';
     });
   }
 })();
