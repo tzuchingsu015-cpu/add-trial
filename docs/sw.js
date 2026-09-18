@@ -1,7 +1,7 @@
-/* Trial Recall service worker - build 64afa193b6
+/* Trial Recall service worker - build 804b8146c0
    Cache-first so the deck opens instantly and works with no connection, with a
    background refresh so a sync reaches you on the next launch. */
-var CACHE = "trial-recall-64afa193b6";
+var CACHE = "trial-recall-804b8146c0";
 var SHELL = ["./", "index.html", "trials.json", "manifest.webmanifest",
              "icon-180.png", "icon-192.png", "icon-512.png"];
 
