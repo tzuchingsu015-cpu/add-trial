@@ -6,8 +6,8 @@
     "early": "collection://2a312797-0a62-81c7-82ef-000b4de44d4b",
     "met": "collection://2a012797-0a62-81ff-b9bc-000b1334cb16"
   },
-  "last_synced_at": "2026-09-18T08:17:09Z",
-  "card_count": 268,
+  "last_synced_at": "2026-09-18T08:37:46Z",
+  "card_count": 274,
   "fingerprints": {
     "https://app.notion.com/3cf127970a62817d8fa2ced9568e84f0": "838eb4d87aa5",
     "https://app.notion.com/3a4127970a62819793b8f4c10bed0acb": "7b0422759095",
@@ -275,7 +275,13 @@
     "https://app.notion.com/3df127970a62814da92dd4b899150518": "35b7bb0624c2",
     "https://app.notion.com/3df127970a62813381f6c667f533a52f": "3a721a0ff838",
     "https://app.notion.com/3df127970a6281c187c3e9cedd40c6c4": "32a7f2685320",
-    "https://app.notion.com/3df127970a62816c912afde9a859ba8d": "8d2b83586580"
+    "https://app.notion.com/3df127970a62816c912afde9a859ba8d": "8d2b83586580",
+    "https://app.notion.com/3df127970a6281d8b96dee42ff47a1c6": "0ddd3be31367",
+    "https://app.notion.com/3df127970a6281f480eddede72d3da81": "3d1403973753",
+    "https://app.notion.com/3df127970a62815f993fe034745a3ebd": "d1c622d5ed3e",
+    "https://app.notion.com/3df127970a6281ac96c9cd8bb88e7fd6": "d9aea7bdc1c0",
+    "https://app.notion.com/3df127970a6281a8a222cdf2ca26be25": "de08a9a8a2d6",
+    "https://app.notion.com/3df127970a62818bac26e3a1401b5d0b": "016535b739ca"
   },
   "key": "notion page url"
 }

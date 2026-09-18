@@ -8986,5 +8986,201 @@
     ],
     "takeaway": "First randomized trial to validate the PI3K/AKT pathway (via PTEN loss) as an actionable biomarker in mHSPC, extending IPATential150's mCRPC finding to the hormone-sensitive setting. Efficacy tracked with how complete the PTEN loss was — a gradient supporting IHC-based patient selection — but OS is still immature and capivasertib added meaningful GI/metabolic/skin toxicity.",
     "url": "https://app.notion.com/3df127970a62816c912afde9a859ba8d"
+  },
+  {
+    "db": "met",
+    "name": "GETUG-AFU 15",
+    "year": 2013,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 385,
+    "population": "Metastatic, hormone-sensitive (non-castrate) prostate cancer; 67–75% metastatic at initial diagnosis; 81% bone metastases.",
+    "treatment": "ADT + docetaxel vs ADT alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "❌ 58.9 vs 54.2 mo — HR 1.01 (0.75–1.36), P=0.955"
+      ],
+      [
+        "Biochemical PFS",
+        "✅ 22.9 vs 12.9 mo — HR 0.72 (0.57–0.91), P=0.005"
+      ],
+      [
+        "Clinical PFS",
+        "✅ 23.5 vs 15.4 mo — HR 0.75 (0.59–0.94), P=0.015"
+      ]
+    ],
+    "takeaway": "A negative trial for its primary OS endpoint, in apparent contrast to CHAARTED — despite clear gains on progression-free survival. Heavy crossover (62% of the ADT-alone arm later received docetaxel) and a longer-than-expected control-arm survival likely diluted the OS signal; larger, later trials (CHAARTED, STAMPEDE) went on to confirm the OS benefit of early docetaxel.",
+    "url": "https://app.notion.com/3df127970a6281d8b96dee42ff47a1c6"
+  },
+  {
+    "db": "met",
+    "name": "LATITUDE",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1199,
+    "population": "High-risk, newly diagnosed metastatic castration-sensitive prostate cancer; all patients had ≥2 of Gleason ≥8, ≥3 bone lesions, or measurable visceral metastasis. 50% symptomatic at baseline.",
+    "treatment": "Abiraterone + prednisone + ADT vs placebo + ADT",
+    "tx": [
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ NR vs 34.7 mo — HR 0.62 (0.51–0.76), P<0.001"
+      ],
+      [
+        "rPFS (1°)",
+        "✅ 33.0 vs 14.8 mo — HR 0.47 (0.39–0.55), P<0.001"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ 33.2 vs 7.4 mo — HR 0.30 (0.26–0.35), P<0.001"
+      ]
+    ],
+    "takeaway": "Adding abiraterone to ADT as initial therapy for high-risk mCSPC cut the risk of death by 38% and of radiographic progression by 53%. Benefit was large and consistent enough that the trial unblinded early with crossover offered to the placebo arm.",
+    "url": "https://app.notion.com/3df127970a6281f480eddede72d3da81"
+  },
+  {
+    "db": "met",
+    "name": "PEACE-1",
+    "year": 2024,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1173,
+    "population": "De novo metastatic castration-sensitive prostate cancer; 2×2 factorial adding abiraterone and/or prostate radiotherapy to a standard-of-care backbone of ADT ± docetaxel (docetaxel mandatory from 2017). 43% low-volume disease.",
+    "treatment": "Standard of care (ADT ± docetaxel) ± abiraterone, ± prostate radiotherapy (74 Gy/37 fx)",
+    "tx": [
+      "RT",
+      "ARPI",
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "rPFS, low-volume, RT added to abiraterone (1°)",
+        "✅ 7.5 vs 4.4 yr — HR 0.65 (99.9% CI 0.36–1.19), P=0.019"
+      ],
+      [
+        "rPFS, low-volume, RT added to SOC alone",
+        "❌ HR 1.08 (99.9% CI 0.65–1.80), P=0.61 — no benefit without abiraterone"
+      ],
+      [
+        "Castration resistance-free survival, low-volume",
+        "✅ 6.9 vs 3.6 yr — HR 0.62 (0.44–0.87), P=0.0056"
+      ],
+      [
+        "OS, low-volume and overall (pooled RT vs no RT)",
+        "❌ HR 0.98 both — no survival benefit from adding RT"
+      ]
+    ],
+    "takeaway": "Prostate radiotherapy added to an abiraterone-containing systemic backbone improved radiographic PFS and delayed castration resistance in low-volume de novo mCSPC, and cut serious genitourinary events across all volumes — but RT alone (without abiraterone) showed no rPFS benefit, and no arm showed an OS benefit from adding RT. The reported gain is disease-control and symptom-prevention, not survival.",
+    "url": "https://app.notion.com/3df127970a62815f993fe034745a3ebd"
+  },
+  {
+    "db": "met",
+    "name": "INT-0162 (SWOG S9346)",
+    "year": 2006,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1345,
+    "population": "Newly diagnosed D2 (metastatic), hormone-naive prostate cancer, all receiving 7-month induction ADT (goserelin + bicalutamide) before eligible responders were randomized to continuous vs intermittent ADT.",
+    "treatment": "Induction ADT (goserelin + bicalutamide) → Continuous ADT vs Intermittent ADT",
+    "tx": [
+      "Endocrine"
+    ],
+    "endpoints": [
+      [
+        "OS by PSA strata at months 6–7",
+        "PSA >4: 13 mo · 0.2–4: 44 mo · ≤0.2 (undetectable): 75 mo"
+      ],
+      [
+        "Risk of death, PSA 0.2–4 vs >4 ng/mL",
+        "✅ HR 0.30 (0.24–0.38), P<0.0001"
+      ],
+      [
+        "Risk of death, PSA ≤0.2 vs >4 ng/mL",
+        "✅ HR 0.17 (0.13–0.21), P<0.0001"
+      ],
+      [
+        "Continuous vs intermittent ADT (from the trial's primary report, not this substudy)",
+        "📝 Median OS 5.8 vs 5.1 yr — continuous numerically better; noninferiority of intermittent not established"
+      ]
+    ],
+    "takeaway": "This substudy establishes that absolute PSA value after 7 months of induction ADT — especially reaching an undetectable level (≤0.2 ng/mL) — is the strongest independent predictor of survival identified in D2 prostate cancer, with median OS ranging almost sixfold (13 to 75 months) across strata. It is a prognostic-biomarker analysis, not the trial's headline continuous-vs-intermittent ADT comparison, which was reported separately and favored continuous therapy without meeting its noninferiority bar for intermittent dosing.",
+    "url": "https://app.notion.com/3df127970a6281ac96c9cd8bb88e7fd6"
+  },
+  {
+    "db": "met",
+    "name": "HERO",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "N/A — mixed disease settings, not metastatic-specific",
+    "n": 930,
+    "population": "⚠️ Only 31.7% of patients had metastatic disease; 50.2% had biochemical/clinical relapse after curative local therapy and 27.1% had advanced localized disease. This is a head-to-head ADT-formulation trial (oral GnRH antagonist vs injectable LHRH agonist), not a disease-stage treatment trial — testosterone suppression and cardiovascular safety are the endpoints, not oncologic efficacy.",
+    "treatment": "Relugolix (oral GnRH antagonist) vs leuprolide (injectable LHRH agonist)",
+    "tx": [
+      "Endocrine"
+    ],
+    "endpoints": [
+      [
+        "Sustained castration rate through 48 wk (1°)",
+        "✅ 96.7% vs 88.8% — +7.9 pts (95% CI 4.1–11.8), P<0.001 superiority"
+      ],
+      [
+        "Castration by day 4",
+        "✅ 56.0% vs 0% — leuprolide causes an initial testosterone surge, relugolix does not"
+      ],
+      [
+        "Major adverse cardiovascular events",
+        "✅ 2.9% vs 6.2% — HR 0.46 (0.24–0.88)"
+      ]
+    ],
+    "takeaway": "Oral relugolix suppresses testosterone faster (no initial surge) and more completely than injectable leuprolide, with a 54% lower risk of major cardiovascular events — most pronounced in the >90% of patients with pre-existing cardiovascular risk factors. This is a drug-formulation comparison usable across disease stages, not a stage-specific treatment-intensification trial, so its 'line of therapy' is not applicable the way other cards in this deck are.",
+    "url": "https://app.notion.com/3df127970a6281a8a222cdf2ca26be25"
+  },
+  {
+    "db": "early",
+    "name": "HERO",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "Other",
+    "n": 930,
+    "population": "⚠️ Cross-listed with the Metastatic deck entry for the same trial — the population spans curative-intent, biochemically-relapsed, and metastatic settings (only 31.7% metastatic), so it doesn't fit either database's usual disease-stage framing. Testosterone suppression and cardiovascular safety are the endpoints, not DFS/OS/pCR.",
+    "treatment": "Relugolix (oral GnRH antagonist) vs leuprolide (injectable LHRH agonist)",
+    "tx": [
+      "ET"
+    ],
+    "endpoints": [
+      [
+        "Sustained castration rate through 48 wk (1°)",
+        "✅ 96.7% vs 88.8% — +7.9 pts (95% CI 4.1–11.8), P<0.001 superiority"
+      ],
+      [
+        "Castration by day 4",
+        "✅ 56.0% vs 0% — leuprolide causes an initial testosterone surge, relugolix does not"
+      ],
+      [
+        "Major adverse cardiovascular events",
+        "✅ 2.9% vs 6.2% — HR 0.46 (0.24–0.88)"
+      ]
+    ],
+    "takeaway": "Same trial as the Metastatic deck's HERO card, filed here too because the population is mostly non-metastatic. Oral relugolix suppresses testosterone faster and more completely than injectable leuprolide, with a 54% lower risk of major cardiovascular events. It's a drug-formulation comparison usable across stages, not a curative-intent neoadjuvant/adjuvant trial.",
+    "url": "https://app.notion.com/3df127970a62818bac26e3a1401b5d0b"
   }
 ]
