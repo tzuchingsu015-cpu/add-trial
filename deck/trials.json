@@ -9298,5 +9298,45 @@
     ],
     "takeaway": "In men with non-metastatic, high-risk locally advanced or node-positive prostate cancer (mostly treated with concurrent definitive radiotherapy), adding abiraterone to ADT produced a large failure-free-survival benefit even though abiraterone was capped at 2 years. The overall-survival signal favors abiraterone but remains immature with few events, so it should be read alongside longer follow-up.",
     "url": "https://app.notion.com/3df127970a6281d295fccf4bbbc17eb5"
+  },
+  {
+    "db": "met",
+    "name": "TITAN",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1052,
+    "population": "Metastatic, castration-sensitive prostate cancer (mCSPC), mostly newly diagnosed. High-volume (CHAARTED) 62.7%, low-volume 37.3%. Prior docetaxel allowed (10.7%, max 6 cycles) and prior localized therapy allowed (16.4%). Median age 68.",
+    "treatment": "Apalutamide 240 mg/day + ADT vs placebo + ADT",
+    "tx": [
+      "ARPI",
+      "Endocrine"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°)",
+        "✅ 24-mo rPFS 68.2% vs 47.5% — HR 0.48 (0.39–0.60), P<0.001"
+      ],
+      [
+        "OS (1°, interim)",
+        "✅ 24-mo OS 82.4% vs 73.5% — HR 0.67 (0.51–0.89), P=0.005"
+      ],
+      [
+        "Time to cytotoxic chemo",
+        "✅ HR 0.39 (0.27–0.56), P<0.001"
+      ],
+      [
+        "Time to pain progression",
+        "⚠️ HR 0.83 (0.65–1.05), NS"
+      ],
+      [
+        ">= Gr.3 AE",
+        "⚠️ 42.2% vs 40.8%; rash 27.1% vs 8.5%, hypothyroidism 6.5% vs 1.1%"
+      ]
+    ],
+    "takeaway": "Apalutamide added to ADT met both co-primary endpoints — radiographic PFS and overall survival — at the first interim analysis in metastatic castration-sensitive prostate cancer, with benefit consistent regardless of disease volume or prior docetaxel exposure. Grade 3/4 toxicity overall was similar to placebo, though rash and mild hypothyroidism were more common with apalutamide, and quality of life was preserved.",
+    "url": "https://app.notion.com/3df127970a6281afb253ef20abc1351e"
   }
 ]
