@@ -9226,5 +9226,77 @@
     ],
     "takeaway": "Long-term STAMPEDE follow-up (median 78.2 mo) confirms upfront docetaxel + ADT improves OS, FFS, PFS, mPFS and PCSS in metastatic hormone-naïve prostate cancer. Unlike CHAARTED/GETUG-15 subgroup analyses, STAMPEDE found no evidence the benefit is confined to high-burden disease — its larger, mostly de-novo low-burden cohort showed no attenuation. No late toxicity signal after year 1.",
     "url": "https://app.notion.com/3df127970a62812bae0bed25388c590d"
+  },
+  {
+    "db": "met",
+    "name": "STAMPEDE (Abiraterone, Arm G) — M1",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1002,
+    "population": "Pre-specified metastatic (M1) subgroup of STAMPEDE's abiraterone comparison (n=1002 of 1917 total). Newly diagnosed M1 prostate cancer starting long-term ADT. Trial-wide: median age 67, median PSA 53 ng/mL, ~95% newly diagnosed. Companion card: STAMPEDE (Abiraterone, Arm G) — M0.",
+    "treatment": "SOC (ADT) vs SOC + abiraterone acetate 1000 mg + prednisolone 5 mg once daily",
+    "tx": [
+      "ARPI",
+      "Endocrine"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ Deaths 150/500 (30%) vs 218/502 (43%) — HR 0.61 (0.49–0.75)"
+      ],
+      [
+        "FFS",
+        "✅ Events 210/500 (42%) vs 393/502 (78%) — HR 0.31 (0.26–0.37)"
+      ],
+      [
+        "OS by metastatic status",
+        "↔ No heterogeneity vs M0 subgroup (interaction P=0.37)"
+      ],
+      [
+        ">= Gr.3 AE (trial-wide)",
+        "⚠️ 47% abiraterone vs 33% SOC; 9 vs 3 grade-5 events"
+      ]
+    ],
+    "takeaway": "Adding abiraterone to ADT improves OS and FFS in men with newly diagnosed metastatic hormone-naive prostate cancer, with a larger relative FFS effect than STAMPEDE's docetaxel comparison in a similar population. Benefit was consistent regardless of metastatic status, at the cost of more grade 3-5 toxicity (mainly hypertension and hepatic).",
+    "url": "https://app.notion.com/3df127970a6281798f62e3f907ed29b6"
+  },
+  {
+    "db": "early",
+    "name": "STAMPEDE (Abiraterone, Arm G) — M0",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "Other",
+    "n": 915,
+    "population": "Pre-specified non-metastatic (M0) subgroup of STAMPEDE's abiraterone comparison (n=915 of 1917 total): node-positive nonmetastatic, or node-negative high-risk locally advanced (≥2 of T3/T4, Gleason 8–10, PSA ≥40) disease. RT mandatory (node-negative) or encouraged (node-positive). Companion card: STAMPEDE (Abiraterone, Arm G) — M1.",
+    "treatment": "SOC (ADT ± RT) vs SOC + abiraterone acetate 1000 mg + prednisolone 5 mg once daily, capped at 2 yr if RT planned",
+    "tx": [
+      "ET",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "FFS (1° intermediate)",
+        "✅ Events 38/460 (8%) vs 142/455 (31%) — HR 0.21 (0.15–0.31)"
+      ],
+      [
+        "OS",
+        "⏳ Deaths 34/460 (7%) vs 44/455 (10%) — HR 0.75 (0.48–1.18), immature (78 deaths total)"
+      ],
+      [
+        "OS by metastatic status",
+        "↔ No heterogeneity vs M1 subgroup (interaction P=0.37)"
+      ],
+      [
+        ">= Gr.3 AE (trial-wide)",
+        "⚠️ 47% abiraterone vs 33% SOC; 9 vs 3 grade-5 events"
+      ]
+    ],
+    "takeaway": "In men with non-metastatic, high-risk locally advanced or node-positive prostate cancer (mostly treated with concurrent definitive radiotherapy), adding abiraterone to ADT produced a large failure-free-survival benefit even though abiraterone was capped at 2 years. The overall-survival signal favors abiraterone but remains immature with few events, so it should be read alongside longer follow-up.",
+    "url": "https://app.notion.com/3df127970a6281d295fccf4bbbc17eb5"
   }
 ]
