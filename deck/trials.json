@@ -9378,5 +9378,153 @@
     ],
     "takeaway": "First B7-H3-directed antibody-drug conjugate to significantly improve overall survival over topotecan in second-line relapsed SCLC, at a pre-planned interim analysis, positioning it as a potential new standard of care in a setting with historically poor options. Results are from a conference presentation, not yet a peer-reviewed publication.",
     "url": "https://app.notion.com/3e0127970a6281a1b390f024bbf84dbb"
+  },
+  {
+    "db": "met",
+    "name": "AFFIRM",
+    "year": 2012,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "2L / 3L",
+    "n": 1199,
+    "population": "mCRPC after 1–2 prior chemo regimens (≥1 containing docetaxel), PCWG2-defined progression, castrate testosterone. ECOG PS 0–1 91%, visceral disease 23%.",
+    "treatment": "Enzalutamide vs. placebo",
+    "tx": [
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 18.4 vs 13.6 mo — HR 0.63 (0.53–0.75), P<0.001"
+      ],
+      [
+        "Radiographic PFS",
+        "✅ 8.3 vs 2.9 mo — HR 0.40 (0.35–0.47), P<0.001"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ 8.3 vs 3.0 mo — HR 0.25 (0.20–0.30), P<0.001"
+      ],
+      [
+        "Soft-tissue response",
+        "✅ 29% vs 4%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "45.3% vs 53.1% (favors enzalutamide)"
+      ]
+    ],
+    "takeaway": "One of the first androgen-receptor-signaling inhibitors, alongside abiraterone (COU-AA-301), to show an overall-survival benefit in men with metastatic castration-resistant prostate cancer after docetaxel chemotherapy. The benefit held across all secondary endpoints and subgroups, though seizures occurred in 0.6% of treated patients — a class effect that warrants caution in patients with seizure risk factors.",
+    "url": "https://app.notion.com/3e0127970a6281428680d2cf70311f15"
+  },
+  {
+    "db": "met",
+    "name": "COU-AA-301",
+    "year": 2011,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "2L / 3L",
+    "n": 1195,
+    "population": "mCRPC after docetaxel-based chemotherapy (1 prior regimen 70%, 2 regimens 30%), castrate testosterone. Bone mets 89%, ECOG PS 0–1 ~90%.",
+    "treatment": "Abiraterone + prednisone vs. placebo + prednisone",
+    "tx": [
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 14.8 vs 10.9 mo — HR 0.65 (0.54–0.77), P<0.001"
+      ],
+      [
+        "Radiographic PFS",
+        "✅ 5.6 vs 3.6 mo — HR 0.67 (0.58–0.78), P<0.001"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ 10.2 vs 6.6 mo — HR 0.58 (0.46–0.73), P<0.001"
+      ],
+      [
+        "Mineralocorticoid-related AEs",
+        "⚠️ 55% vs 43%, P<0.001 (mostly grade 1–2)"
+      ]
+    ],
+    "takeaway": "Established inhibition of extragonadal/intratumoral androgen biosynthesis (CYP17 blockade) as a life-prolonging strategy in post-docetaxel metastatic castration-resistant prostate cancer, alongside enzalutamide (AFFIRM). Toxicity is mechanism-based (fluid retention, hypokalemia, hypertension from mineralocorticoid excess) and largely manageable with the co-administered low-dose prednisone.",
+    "url": "https://app.notion.com/3e0127970a6281baa044c73a9f9dbb03"
+  },
+  {
+    "db": "met",
+    "name": "COU-AA-302",
+    "year": 2013,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1088,
+    "population": "Chemotherapy-naive, asymptomatic/mildly symptomatic mCRPC, ECOG PS 0–1, no visceral metastases, ongoing ADT.",
+    "treatment": "Abiraterone + prednisone vs. placebo + prednisone",
+    "tx": [
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "Radiographic PFS (co-1°)",
+        "✅ 16.5 vs 8.3 mo — HR 0.53 (0.45–0.62), P<0.001"
+      ],
+      [
+        "OS (co-1°, interim)",
+        "⚠️ NR vs 27.2 mo — HR 0.75 (0.61–0.93), P=0.01 (did not cross the prespecified efficacy boundary at this interim analysis)"
+      ],
+      [
+        "Time to cytotoxic chemo",
+        "✅ 25.2 vs 16.8 mo — HR 0.58 (0.49–0.69), P<0.001"
+      ],
+      [
+        "Gr 3/4 AE",
+        "48% vs 42%"
+      ]
+    ],
+    "takeaway": "Extended the abiraterone survival strategy from post-chemotherapy (COU-AA-301) to the chemotherapy-naive setting, delaying opiate use, chemotherapy initiation, and functional decline even before this interim analysis's OS boundary was formally crossed. This trial excluded visceral metastases, unlike the contemporaneous enzalutamide trial PREVAIL. A later publication (not the source for this card) reportedly reported a significant final OS analysis.",
+    "url": "https://app.notion.com/3e0127970a6281538e53e3502ff9146d"
+  },
+  {
+    "db": "met",
+    "name": "PREVAIL",
+    "year": 2014,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1717,
+    "population": "Chemotherapy-naive mCRPC progressing despite ADT, ECOG PS 0–1, asymptomatic/mildly symptomatic; visceral (lung/liver) metastases allowed.",
+    "treatment": "Enzalutamide vs. placebo",
+    "tx": [
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "Radiographic PFS at 12 mo (co-1°)",
+        "✅ 65% vs 14% — HR 0.19 (0.15–0.23), P<0.001"
+      ],
+      [
+        "OS (co-1°, interim)",
+        "✅ NR vs 30.2 mo — HR 0.71 (0.60–0.84), P<0.001"
+      ],
+      [
+        "Time to cytotoxic chemo",
+        "✅ 28.0 vs 10.8 mo — HR 0.35 (0.30–0.40), P<0.001"
+      ],
+      [
+        "Objective response",
+        "✅ 59% vs 5%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "43% vs 37%"
+      ]
+    ],
+    "takeaway": "Extended enzalutamide's post-chemotherapy benefit (AFFIRM) to the chemotherapy-naive metastatic castration-resistant prostate cancer setting with a very large radiographic PFS effect, and — unlike the contemporaneous abiraterone trial COU-AA-302 — enrolled patients with visceral metastases, broadening the evidence base for that higher-risk subgroup.",
+    "url": "https://app.notion.com/3e0127970a628190b417ff9fec77f703"
   }
 ]
