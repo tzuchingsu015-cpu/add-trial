@@ -9526,5 +9526,188 @@
     ],
     "takeaway": "Extended enzalutamide's post-chemotherapy benefit (AFFIRM) to the chemotherapy-naive metastatic castration-resistant prostate cancer setting with a very large radiographic PFS effect, and — unlike the contemporaneous abiraterone trial COU-AA-302 — enrolled patients with visceral metastases, broadening the evidence base for that higher-risk subgroup.",
     "url": "https://app.notion.com/3e0127970a628190b417ff9fec77f703"
+  },
+  {
+    "db": "met",
+    "name": "MAGNITUDE",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "BRCA (HRR+ trial; BRCA1/2 subgroup)",
+    "setting": "1L",
+    "n": 423,
+    "population": "1L mCRPC with a prospectively identified HRR gene alteration (BRCA1/2 subgroup 53%). Baseline imbalances (worse ECOG, more bone/visceral disease) disadvantaged the niraparib arm.",
+    "treatment": "Niraparib + abiraterone/prednisone (AAP) vs. placebo + AAP",
+    "tx": [
+      "PARPi",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, earlier interim analysis)",
+        "✅ HRR+ HR 0.73 (0.56–0.96); BRCA1/2 HR 0.53 (0.36–0.79) — basis for approval, not re-reported at this final analysis"
+      ],
+      [
+        "OS, HRR+ (final, unadjusted)",
+        "❌ 30.36 vs 30.98 mo — HR 0.931 (0.720–1.203), P=0.585"
+      ],
+      [
+        "OS, BRCA1/2 (final, unadjusted)",
+        "⚠️ 30.36 vs 28.55 mo — HR 0.788 (0.554–1.120), nominal P=0.183"
+      ],
+      [
+        "Time to symptomatic progression, HRR+",
+        "✅ HR 0.547 (0.396–0.754), P=0.006"
+      ],
+      [
+        "Gr 3–4 TEAE",
+        "74.1% vs 51.2%"
+      ]
+    ],
+    "takeaway": "At long-term follow-up (37.3 mo), niraparib + abiraterone/prednisone did not significantly improve overall survival over placebo + AAP in the HRR+ population or BRCA1/2 subgroup, though baseline imbalances disadvantaged the niraparib arm and adjusted analyses trended toward benefit. The trial's primary endpoint (radiographic PFS) had already been met, which is what supports niraparib's approval in BRCA-altered first-line mCRPC; this update mainly confirms durable benefit in time to symptomatic progression and a stable, hematologic-predominant safety profile.",
+    "url": "https://app.notion.com/3e0127970a62811e9eefdce694f83aa1"
+  },
+  {
+    "db": "met",
+    "name": "PROfound",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "BRCA (Cohort A: BRCA1/2/ATM)",
+    "setting": "2L / 3L",
+    "n": 245,
+    "population": "mCRPC progressing on enzalutamide or abiraterone, with a BRCA1, BRCA2, or ATM alteration (Cohort A); ~65% also had prior taxane chemotherapy.",
+    "treatment": "Olaparib vs. physician's choice of enzalutamide or abiraterone + prednisone",
+    "tx": [
+      "PARPi",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "Imaging-based PFS (1°)",
+        "✅ 7.4 vs 3.6 mo — HR 0.34 (0.25–0.47), P<0.001"
+      ],
+      [
+        "OS (interim)",
+        "✅ 18.5 vs 15.1 mo — HR 0.64 (0.43–0.97), P=0.02"
+      ],
+      [
+        "Confirmed objective response",
+        "✅ 33% vs 2%"
+      ],
+      [
+        "Time to pain progression",
+        "✅ HR 0.44 (0.22–0.91), P=0.02"
+      ]
+    ],
+    "takeaway": "First phase 3 trial to show that switching to a PARP inhibitor beats switching between enzalutamide and abiraterone in mCRPC with BRCA1/2/ATM alterations that progressed on one of those agents. The interim OS benefit held up despite 81% crossover from control to olaparib, which would be expected to bias toward the null, and led to olaparib's approval in this HRR-altered post-hormonal-therapy setting.",
+    "url": "https://app.notion.com/3e0127970a6281d1b61df80430ca59ff"
+  },
+  {
+    "db": "met",
+    "name": "PROpel",
+    "year": 2022,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 796,
+    "population": "1L mCRPC enrolled regardless of HRR gene mutation (HRRm) status (HRRm ~28%, non-HRRm ~69%).",
+    "treatment": "Abiraterone + olaparib vs. abiraterone + placebo",
+    "tx": [
+      "PARPi",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "Imaging-based PFS (1°, investigator)",
+        "✅ 24.8 vs 16.6 mo — HR 0.66 (0.54–0.81), P<0.001"
+      ],
+      [
+        "Imaging-based PFS (BICR)",
+        "✅ 27.6 vs 16.4 mo — HR 0.61 (0.49–0.74)"
+      ],
+      [
+        "OS (interim, 28.6% maturity)",
+        "⏳ HR 0.86 (0.66–1.12), P=0.29 — immature"
+      ],
+      [
+        "Objective response",
+        "✅ 58.4% vs 48.1%"
+      ]
+    ],
+    "takeaway": "Adding olaparib to abiraterone significantly delays radiographic progression in first-line mCRPC regardless of HRR mutation status, though the OS benefit had not reached significance at this primary analysis (data still immature). Benefit was seen in both HRR-mutant and HRR-wildtype patients, consistent with a proposed mechanism where ARPI treatment itself can induce a 'functional' HRR deficiency that sensitizes tumors to PARP inhibition even without a baseline mutation.",
+    "url": "https://app.notion.com/3e0127970a6281a2b8d3e75f91483330"
+  },
+  {
+    "db": "met",
+    "name": "TALAPRO-2",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 805,
+    "population": "1L mCRPC, unselected cohort regardless of HRR gene alteration status (HRR-deficient 21%).",
+    "treatment": "Talazoparib + enzalutamide vs. placebo + enzalutamide",
+    "tx": [
+      "PARPi",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "OS (key secondary endpoint, final analysis)",
+        "✅ 45.8 vs 37.0 mo — HR 0.80 (0.66–0.96), P=0.016"
+      ],
+      [
+        "Radiographic PFS (updated, BICR)",
+        "✅ 33.1 vs 19.5 mo — HR 0.67 (0.55–0.81), P<0.0001"
+      ],
+      [
+        "OS, HRR-deficient subgroup",
+        "✅ HR 0.55 (0.36–0.83), nominal P=0.0035"
+      ],
+      [
+        "Gr 3–4 anaemia",
+        "49% vs 4%"
+      ]
+    ],
+    "takeaway": "First trial to show a statistically significant, clinically meaningful overall-survival benefit for a PARP inhibitor + ARPI combination over an active standard-of-care ARPI (enzalutamide alone, not just placebo) in first-line mCRPC unselected for HRR status. Benefit was largest in the HRR-deficient subgroup but extended, to a lesser degree, even to patients with no detectable HRR alteration, at the cost of a substantial anaemia/neutropenia burden that was manageable with dose modification and did not compromise quality of life over more than 4 years of follow-up.",
+    "url": "https://app.notion.com/3e0127970a628189b1fbc1a5ce1a0a2d"
+  },
+  {
+    "db": "met",
+    "name": "TRITON2",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "Prostate",
+    "biomarker": "BRCA (BRCA1/2 required for enrollment)",
+    "setting": "2L / 3L",
+    "n": 115,
+    "population": "Heavily pretreated mCRPC with a deleterious BRCA1 or BRCA2 alteration, progressed after 1–2 lines of AR-directed therapy and 1 taxane; single-arm, no comparator.",
+    "treatment": "Rucaparib monotherapy (single-arm)",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "Confirmed ORR (1°, IRR / investigator)",
+        "✅ 43.5% / 50.8% — no comparator arm"
+      ],
+      [
+        "Confirmed PSA response (≥50%)",
+        "✅ 54.8%"
+      ],
+      [
+        "Disease control (SD or better)",
+        "✅ ~89%"
+      ],
+      [
+        "Gr ≥3 TEAE",
+        "60.9% (most common: anaemia 25.2%)"
+      ]
+    ],
+    "takeaway": "Single-arm phase 2 data showing rucaparib monotherapy has meaningful antitumor activity in heavily pretreated BRCA1/2-altered mCRPC, where response rates to further AR-directed therapy or chemotherapy are historically poor. These data supported rucaparib's accelerated FDA approval in this setting, but the lack of a comparator arm is the key limitation — the confirmatory phase 3 TRITON3 trial was designed to validate benefit against physician's choice of therapy in an earlier disease setting.",
+    "url": "https://app.notion.com/3e0127970a6281c2bc19f3f9bc64bad6"
   }
 ]
