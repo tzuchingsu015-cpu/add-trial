@@ -9967,5 +9967,44 @@
     ],
     "takeaway": "The first phase 3 trial of ¹⁷⁷Lu-PSMA-617 in taxane-naive mCRPC, complementing VISION's post-taxane population. It significantly delayed radiographic progression, skeletal events, and PSA progression versus simply switching to a second ARPI, but showed no OS difference at this interim analysis — interpretation is limited by the very high crossover rate (57% of the ARPI-change arm received ¹⁷⁷Lu-PSMA-617 after progression), and the final OS analysis is still pending.",
     "url": "https://app.notion.com/p/3e1127970a628184ae57e066e222c899"
+  },
+  {
+    "db": "met",
+    "name": "TAX 327",
+    "year": 2004,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1006,
+    "population": "Metastatic hormone-refractory (castration-resistant) prostate cancer, progressing on ADT, chemo-naive (estramustine allowed); randomized 1:1:1 to D3P/D1P/MP; ≈45% had baseline pain, median PSA 108–123 ng/mL, ≈90% bone mets.",
+    "treatment": "Docetaxel 75 mg/m² q3w (D3P, primary comparison) vs docetaxel 30 mg/m² weekly ×5/6wk (D1P, non-significant) vs mitoxantrone 12 mg/m² q3w (MP, control) — all + prednisone 5 mg PO BID",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS, D3P vs MP (1°, updated 2008)",
+        "✅ 19.2 vs 16.3 mo — HR 0.79 (0.67–0.93), P=0.004 [original 2004: 18.9 vs 16.5 mo, HR 0.76 (0.62–0.94), P=0.009]"
+      ],
+      [
+        "OS, D1P vs MP (updated 2008)",
+        "↔ 17.8 vs 16.3 mo — HR 0.87 (0.74–1.02), P=0.086 [original 2004: HR 0.91 (0.75–1.11), P=0.36]"
+      ],
+      [
+        "OS, combined docetaxel vs MP (original 2004)",
+        "✅ HR 0.83 (0.70–0.99), P=0.04"
+      ],
+      [
+        "Tumor response (measurable disease)",
+        "12% (D3P) vs 8% (D1P) vs 7% (MP), P=0.11/0.59 — NS"
+      ],
+      [
+        "≥Gr 3 TRAE",
+        "26% (D3P) vs 29% (D1P) vs 20% (MP); Gr 3/4 neutropenia 32% vs 2% vs 22%; impaired LVEF more frequent with mitoxantrone (22% vs ≈9% docetaxel)"
+      ]
+    ],
+    "takeaway": "Docetaxel q3w + prednisone (D3P) improved overall survival, pain, PSA response, and quality of life versus mitoxantrone in metastatic castration-resistant prostate cancer — the first chemotherapy shown to prolong survival in this disease, confirmed with a stronger P value on 2008 updated follow-up. Weekly docetaxel (D1P) showed no survival benefit over mitoxantrone in either analysis, establishing D3P — not D1P — as the standard of care and the foundational chemotherapy regimen in mCRPC.",
+    "url": "https://app.notion.com/p/3e1127970a6281dc9c85e8be23f4527c"
   }
 ]
