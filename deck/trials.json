@@ -9820,5 +9820,152 @@
     ],
     "takeaway": "Adding radium-223 to first-line enzalutamide improved radiographic PFS and, in the mature final analysis, overall survival (HR 0.76, P=0.0096; roughly +5.6 months median OS) versus enzalutamide alone in mCRPC. The benefit required a mandatory bone-protecting agent in both arms from 2018 onward, and even with that safeguard the combination still carried a higher risk of fractures and osteonecrosis of the jaw than enzalutamide alone.",
     "url": "https://app.notion.com/p/3e1127970a6281cfbd6eff5535693821"
+  },
+  {
+    "db": "met",
+    "name": "CARD",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "3L",
+    "n": 255,
+    "population": "mCRPC after ≥3 cycles of docetaxel plus progression within 12 months on an ARSI (abiraterone or enzalutamide, given before or after docetaxel); median age 70–71, ≈67% had pain at entry, Gleason 8–10 at diagnosis in 57–64%.",
+    "treatment": "Cabazitaxel vs the alternative ARSI not yet received (abiraterone or enzalutamide) — cabazitaxel 25 mg/m² IV q3w + prednisone + mandatory prophylactic G-CSF",
+    "tx": [
+      "ChT",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "Imaging-based PFS (1°)",
+        "✅ 8.0 vs 3.7 mo — HR 0.54 (0.40–0.73), P<0.001"
+      ],
+      [
+        "OS",
+        "✅ 13.6 vs 11.0 mo — HR 0.64 (0.46–0.89), P=0.008"
+      ],
+      [
+        "PFS",
+        "✅ 4.4 vs 2.7 mo — HR 0.52 (0.40–0.68), P<0.001"
+      ],
+      [
+        "Tumor response",
+        "✅ 37% vs 12%, P=0.004"
+      ],
+      [
+        "Time to first symptomatic skeletal event",
+        "⚠️ HR 0.59 (0.35–1.01)"
+      ]
+    ],
+    "takeaway": "The first prospective trial to show that switching to a second ARSI after early progression (≤12 months) on a first ARSI has poor efficacy, consistent with shared resistance mechanisms between abiraterone and enzalutamide. Cabazitaxel's distinct microtubule-targeting mechanism overcame this cross-resistance, improving imaging-based PFS and OS and establishing cabazitaxel — not a second ARSI — as the preferred next therapy in this setting.",
+    "url": "https://app.notion.com/p/3e1127970a62813b83acde9013536858"
+  },
+  {
+    "db": "met",
+    "name": "VISION",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "PSMA-PET-positive",
+    "setting": "3L",
+    "n": 831,
+    "population": "mCRPC, centrally PSMA-PET-positive, progressed after ≥1 ARPI and 1–2 taxane regimens (97% prior docetaxel, 38% prior cabazitaxel); median age 71, ECOG 0/1 ≈92%.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 + standard care vs standard care alone — ¹⁷⁷Lu-PSMA-617 7.4 GBq IV q6wk ×4–6 cycles",
+    "tx": [
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, co-primary)",
+        "✅ 8.7 vs 3.4 mo — HR 0.40 (99.2% CI 0.29–0.57), P<0.001"
+      ],
+      [
+        "OS (1°, co-primary)",
+        "✅ 15.3 vs 11.3 mo — HR 0.62 (0.52–0.74), P<0.001"
+      ],
+      [
+        "Time to first symptomatic skeletal event",
+        "✅ HR 0.50 (0.40–0.62), P<0.001"
+      ],
+      [
+        "Objective response (measurable disease)",
+        "✅ 51% vs 3% (CR+PR)"
+      ]
+    ],
+    "takeaway": "The first phase 3 trial to establish an overall survival benefit for a PSMA-targeted radioligand therapy, using theranostic PSMA-PET selection in post-taxane, post-ARPI mCRPC. It led to FDA approval of ¹⁷⁷Lu-PSMA-617 (Pluvicto) in this setting; unlike TheraP, it compared against standard care rather than an active life-prolonging comparator.",
+    "url": "https://app.notion.com/p/3e1127970a62816d80e4fc6b6ac89d96"
+  },
+  {
+    "db": "met",
+    "name": "TheraP",
+    "year": 2021,
+    "phase": "II",
+    "cancer": "Prostate",
+    "biomarker": "PSMA-PET-positive (dual PSMA/FDG-selected)",
+    "setting": "2L / 3L",
+    "n": 200,
+    "population": "mCRPC post-docetaxel, PSMA-PET-positive (SUVmax ≥20) without FDG-discordant disease (28% of screened men excluded on this basis); 91% had prior enzalutamide or abiraterone.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 vs cabazitaxel — ¹⁷⁷Lu-PSMA-617 6.0–8.5 GBq IV q6wk ×6 (dose-decrementing) vs cabazitaxel 20 mg/m² IV q3w ×10",
+    "tx": [
+      "RT",
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PSA response ≥50% (1°)",
+        "✅ 66% vs 37% — diff 29% (16–42), P<0.0001"
+      ],
+      [
+        "PFS",
+        "✅ 5.1 vs 5.1 mo — HR 0.63 (0.46–0.86), P=0.0028"
+      ],
+      [
+        "Objective response (measurable disease)",
+        "✅ 49% vs 24% — RR 2.12 (1.10–4.08), P=0.019"
+      ],
+      [
+        "OS (mature, 35.7-mo follow-up)",
+        "↔ 16.4 vs 19.4 mo — HR 0.97 (0.70–1.35), P=0.99"
+      ]
+    ],
+    "takeaway": "A randomized phase 2 trial — the first to test a PSMA-targeted radioligand against an active, life-prolonging comparator (cabazitaxel) rather than placebo or standard care. ¹⁷⁷Lu-PSMA-617 gave better PSA response, objective response, PFS, safety, and quality of life, but mature follow-up showed no OS difference; the trial was powered for PSA response, not OS, and substantial post-protocol crossover in both directions (32%/20%) likely diluted any OS signal.",
+    "url": "https://app.notion.com/p/3e1127970a6281b69c53cbb039b9ca7e"
+  },
+  {
+    "db": "met",
+    "name": "PSMAfore",
+    "year": 2024,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "PSMA-PET-positive",
+    "setting": "2L",
+    "n": 468,
+    "population": "Taxane-naive mCRPC, PSMA-PET-positive, progressed once on a prior ARPI (abiraterone, enzalutamide, darolutamide, or apalutamide) as most recent therapy; 81% had received that ARPI in the CRPC setting.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 vs change of ARPI (investigator-selected abiraterone or enzalutamide; crossover allowed at confirmed progression) — ¹⁷⁷Lu-PSMA-617 7.4 GBq IV q6wk ×6",
+    "tx": [
+      "RT",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, 3rd cutoff)",
+        "✅ 11.6 vs 5.6 mo — HR 0.49 (0.39–0.61)"
+      ],
+      [
+        "OS (ITT, interim, 57% crossover)",
+        "↔ 23.7 vs 23.9 mo — HR 0.98 (0.75–1.28), P=0.44"
+      ],
+      [
+        "Time to first symptomatic skeletal event",
+        "✅ HR 0.41 (0.26–0.63)"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ 10.6 vs 4.2 mo — HR 0.40 (0.31–0.50)"
+      ]
+    ],
+    "takeaway": "The first phase 3 trial of ¹⁷⁷Lu-PSMA-617 in taxane-naive mCRPC, complementing VISION's post-taxane population. It significantly delayed radiographic progression, skeletal events, and PSA progression versus simply switching to a second ARPI, but showed no OS difference at this interim analysis — interpretation is limited by the very high crossover rate (57% of the ARPI-change arm received ¹⁷⁷Lu-PSMA-617 after progression), and the final OS analysis is still pending.",
+    "url": "https://app.notion.com/p/3e1127970a628184ae57e066e222c899"
   }
 ]
