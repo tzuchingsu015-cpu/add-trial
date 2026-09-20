@@ -9709,5 +9709,116 @@
     ],
     "takeaway": "Single-arm phase 2 data showing rucaparib monotherapy has meaningful antitumor activity in heavily pretreated BRCA1/2-altered mCRPC, where response rates to further AR-directed therapy or chemotherapy are historically poor. These data supported rucaparib's accelerated FDA approval in this setting, but the lack of a comparator arm is the key limitation — the confirmatory phase 3 TRITON3 trial was designed to validate benefit against physician's choice of therapy in an earlier disease setting.",
     "url": "https://app.notion.com/3e0127970a6281c2bc19f3f9bc64bad6"
+  },
+  {
+    "db": "met",
+    "name": "ALSYMPCA",
+    "year": 2013,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 921,
+    "population": "Symptomatic mCRPC with ≥2 bone metastases and no visceral metastases; median age 71, ECOG 0–2. 57% had received prior docetaxel (or were ineligible for/declined it) and 57% had WHO pain-ladder score ≥2 requiring regular analgesics or recent EBRT.",
+    "treatment": "Radium-223 vs placebo, both + best standard of care (BSC) — Ra-223 50 kBq/kg IV q4wk ×6",
+    "tx": [
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 14.9 vs 11.3 mo — HR 0.70 (0.58–0.83), P<0.001"
+      ],
+      [
+        "Time to first SSE",
+        "✅ 15.6 vs 9.8 mo — HR 0.66 (0.52–0.83), P<0.001"
+      ],
+      [
+        "Time to ALP increase",
+        "✅ 7.4 vs 3.8 mo — HR 0.17 (0.13–0.22), P<0.001"
+      ],
+      [
+        "Time to PSA increase",
+        "✅ 3.6 vs 3.4 mo — HR 0.64 (0.54–0.77), P<0.001"
+      ]
+    ],
+    "takeaway": "First survival benefit ever shown for a bone-targeted radiopharmaceutical: radium-223 improved overall survival and delayed skeletal complications versus placebo plus best standard of care in symptomatic mCRPC with bone-only metastases. Its favorable safety profile — lower rates of high-grade AEs than placebo, with low myelosuppression — set it apart from beta-emitting radiopharmaceuticals and chemotherapy, establishing radium-223 as a standard of care in this setting.",
+    "url": "https://app.notion.com/p/3e1127970a6281faa959f7c34efe0d48"
+  },
+  {
+    "db": "met",
+    "name": "ERA-223",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 806,
+    "population": "Chemotherapy-naive, asymptomatic or mildly symptomatic mCRPC with ≥2 bone metastases and no visceral/brain metastases; median age 71, ECOG 0–1. Excluded prior cytotoxic chemotherapy or prior abiraterone/prednisone use for CRPC.",
+    "treatment": "Radium-223 + abiraterone acetate/prednisone(-lone) vs placebo + abiraterone acetate/prednisone(-lone) — Ra-223 55 kBq/kg IV q4wk ×6, AA 1000 mg/d + prednisone 5 mg BID",
+    "tx": [
+      "ARPI",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "SSE-free survival (1°)",
+        "❌ 22.3 vs 26.0 mo — HR 1.122 (0.917–1.374), P=0.2636"
+      ],
+      [
+        "OS",
+        "⚠️ 30.7 vs 33.3 mo (numerically worse with Ra-223) — HR 1.195 (0.950–1.505), P=0.128"
+      ],
+      [
+        "rPFS (central review)",
+        "⚠️ 11.2 vs 12.4 mo — HR 1.152 (0.960–1.383)"
+      ],
+      [
+        "Fractures (time-to-first)",
+        "❌ 29% vs 11% — HR 3.135 (2.206–4.455)"
+      ]
+    ],
+    "takeaway": "Adding radium-223 to abiraterone plus prednisone did not improve symptomatic skeletal-event-free survival and numerically worsened OS, while more than doubling fracture risk (29% vs 11%) versus abiraterone/prednisone alone. The combination is now contraindicated, and the safety signal prompted mandatory bone-protecting-agent use in the companion trial PEACE-3.",
+    "url": "https://app.notion.com/p/3e1127970a6281e1a224dcd839684245"
+  },
+  {
+    "db": "met",
+    "name": "PEACE-3",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 446,
+    "population": "First-line mCRPC with ≥2 bone metastases (≥4 required in Europe from Jul 2018) ± nodal metastases, no visceral metastases; asymptomatic or mildly symptomatic. Median age 70; ~30% prior docetaxel (given in the mHSPC setting), only 2.5% had prior ARPI exposure.",
+    "treatment": "Enzalutamide alone vs enzalutamide + radium-223 (open-label, no placebo) — Enza 160 mg/d; Ra-223 55 kBq/kg IV q4wk ×6; bone-protecting agent mandatory in both arms from 2018",
+    "tx": [
+      "ARPI",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, final analysis)",
+        "✅ 16.4 vs 19.2 mo — HR 0.71 (0.57–0.89)"
+      ],
+      [
+        "OS (final analysis)",
+        "✅ 32.6 vs 38.2 mo — HR 0.76 (0.60–0.96), P=0.0096"
+      ],
+      [
+        "Time to next systemic treatment",
+        "✅ HR 0.57 (0.44–0.75), P<0.0001"
+      ],
+      [
+        "Time to first SSE",
+        "↔ HR 0.93 (0.62–1.38), NS"
+      ],
+      [
+        "Fractures (time-to-first)",
+        "❌ 14.3% vs 27.1% — HR 2.05 (1.33–3.18)"
+      ]
+    ],
+    "takeaway": "Adding radium-223 to first-line enzalutamide improved radiographic PFS and, in the mature final analysis, overall survival (HR 0.76, P=0.0096; roughly +5.6 months median OS) versus enzalutamide alone in mCRPC. The benefit required a mandatory bone-protecting agent in both arms from 2018 onward, and even with that safeguard the combination still carried a higher risk of fractures and osteonecrosis of the jaw than enzalutamide alone.",
+    "url": "https://app.notion.com/p/3e1127970a6281cfbd6eff5535693821"
   }
 ]
