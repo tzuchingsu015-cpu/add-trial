@@ -10179,5 +10179,32 @@
     ],
     "takeaway": "KEYNOTE-966 was the second global chemo-immunotherapy trial to show a statistically significant OS benefit in advanced BTC, after TOPAZ-1, with pembrolizumab + gemcitabine/cisplatin lowering the risk of death by 17% (HR 0.83). That OS win should not be read as a positive trial across the board: PFS (HR 0.86, P=0.023) and ORR (29% vs 29%, no difference) both failed to cross their pre-specified statistical efficacy boundaries despite the OS benefit. PD-L1 expression was not associated with benefit, echoing TOPAZ-1.",
     "url": "https://app.notion.com/p/3e2127970a628127a5e6e859ad69d874"
+  },
+  {
+    "db": "met",
+    "name": "ABC-02",
+    "year": 2010,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 410,
+    "population": "Previously untreated, locally advanced or metastatic biliary tract cancer (cholangiocarcinoma, gallbladder cancer, or ampullary cancer), ECOG PS 0-2, across 37 centres in the UK.",
+    "treatment": "Cisplatin + gemcitabine (GC) vs gemcitabine alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 11.7 vs 8.1 mo (median) — HR 0.64 (95% CI 0.52-0.80), P<0.001"
+      ],
+      [
+        "PFS",
+        "✅ 8.0 vs 5.0 mo (median) — HR 0.63, P<0.001"
+      ]
+    ],
+    "takeaway": "ABC-02 is the foundational trial of advanced biliary tract cancer: it established cisplatin + gemcitabine (GC) as the first-line standard of care, a position GC has held ever since and against which every later regimen in this cancer (FUGA-BT's gemcitabine+S-1, KHBO1401-MITSUBA's added S-1, TOPAZ-1's and KEYNOTE-966's addition of a checkpoint inhibitor) has had to prove itself as the comparator arm. Adding cisplatin to gemcitabine alone cut the risk of death by 36% with no unacceptable increase in toxicity, turning a single-agent regimen into a two-drug backbone that later trials build on rather than replace.",
+    "url": "https://app.notion.com/p/3e2127970a628147918fd5992e4d6db5"
   }
 ]
