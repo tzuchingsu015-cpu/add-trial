@@ -10045,5 +10045,139 @@
     ],
     "takeaway": "BILCAP missed its prespecified ITT primary endpoint for overall survival (HR 0.81, 95% CI 0.63–1.04, P=0.097), but the prespecified adjusted sensitivity analysis (HR 0.71, P=0.010) and per-protocol analysis (HR 0.75, P=0.028, a 14.7-month median OS difference) were both positive, as was recurrence-free survival in the first 24 months. Despite missing its primary endpoint, this body of evidence established adjuvant capecitabine as standard of care after curative resection of biliary tract cancer — no dedicated adjuvant trial had previously defined one for this disease.",
     "url": "https://app.notion.com/p/3e2127970a6281dcae52ff3d1b391792"
+  },
+  {
+    "db": "met",
+    "name": "FUGA-BT (JCOG1113)",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 354,
+    "population": "Chemotherapy-naive advanced/recurrent biliary tract cancer (cholangiocarcinoma or gallbladder/ampullary cancer), ECOG PS 0-1, enrolled across 33 institutions in Japan. Primary tumor sites were roughly balanced (gallbladder ~39%, intrahepatic ~27%, extrahepatic ~30%, ampulla ~3-4%) and about 60% had metastatic disease.",
+    "treatment": "Gemcitabine + S-1 (GS) vs gemcitabine + cisplatin (GC)",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°, non-inferiority)",
+        "↔ 15.1 vs 13.4 mo (median) — HR 0.945 (90% CI 0.777-1.149), P=0.046 for non-inferiority"
+      ],
+      [
+        "PFS",
+        "6.8 vs 5.8 mo (median) — HR 0.864 (95% CI 0.697-1.070)"
+      ],
+      [
+        "ORR",
+        "29.8% vs 32.4%"
+      ]
+    ],
+    "takeaway": "GS met its non-inferiority margin against GC as first-line therapy for advanced/recurrent BTC — this is a non-inferiority result, not a superiority win, so GS is a practical alternative rather than a new standard that beats GC on efficacy. Its main advantage is logistical: GS avoids the mandatory pre/post-hydration that cisplatin requires, and grade 3/4 anemia and peripheral neuropathy were both less frequent with GS. The trial population was exclusively Japanese, so whether a gemcitabine+capecitabine substitute would perform similarly in non-Asian patients is untested.",
+    "url": "https://app.notion.com/p/3e2127970a62811f8976ddeea6b78a5a"
+  },
+  {
+    "db": "met",
+    "name": "KHBO1401-MITSUBA",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 246,
+    "population": "Advanced biliary tract cancer (unresectable or recurrent adenocarcinoma/adenosquamous carcinoma of the bile duct, gallbladder, or ampulla), ECOG PS 0-2, across 39 centers in Japan (Kansai Hepatobiliary Oncology Group). About three-quarters of patients had unresectable disease and one-quarter had recurrence after surgery.",
+    "treatment": "Gemcitabine + cisplatin + S-1 (GCS) vs gemcitabine + cisplatin (GC)",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 13.5 vs 12.6 mo (median) — HR 0.79 (90% CI 0.628-0.996), P=0.046"
+      ],
+      [
+        "PFS",
+        "✅ 7.4 vs 5.5 mo (median) — HR 0.75 (95% CI 0.577-0.970), P=0.015"
+      ],
+      [
+        "ORR",
+        "✅ 41.5% vs 15.0%, P<0.001"
+      ],
+      [
+        "DCR",
+        "✅ 78.7% vs 62.0%, P=0.0066"
+      ]
+    ],
+    "takeaway": "GCS became the first regimen to beat GC in advanced BTC since GC was established as standard of care a decade earlier, improving OS, PFS, and nearly tripling response rate, with manageable added toxicity attributed to the biweekly schedule. The response benefit is of practical interest for conversion to surgery in initially unresectable disease. The trial population was exclusively Japanese, and because S-1 pharmacokinetics differ in Caucasian patients, a capecitabine-based triplet may be needed to replicate the approach outside Asia.",
+    "url": "https://app.notion.com/p/3e2127970a6281b8b8d3d859898694cc"
+  },
+  {
+    "db": "met",
+    "name": "TOPAZ-1",
+    "year": 2022,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 685,
+    "population": "Previously untreated, unresectable, locally advanced, or metastatic biliary tract cancer (cholangiocarcinoma or gallbladder cancer; ampullary carcinoma excluded), ECOG PS 0-1, at 105 sites in 17 countries. About 80% had initially unresectable disease and roughly 60% had PD-L1 tumor area positivity ≥1%.",
+    "treatment": "Durvalumab + gemcitabine/cisplatin vs placebo + gemcitabine/cisplatin",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°, updated analysis)",
+        "✅ 12.9 vs 11.3 mo (median) — HR 0.76 (95% CI 0.64-0.91); interim analysis HR 0.80 (0.66-0.97), P=0.021"
+      ],
+      [
+        "PFS",
+        "✅ 7.2 vs 5.7 mo (median) — HR 0.75 (95% CI 0.63-0.89), P=0.001"
+      ],
+      [
+        "ORR",
+        "✅ 26.7% vs 18.7%"
+      ],
+      [
+        "24-mo OS rate",
+        "✅ 23.6% vs 11.5%"
+      ]
+    ],
+    "takeaway": "TOPAZ-1 was the first phase 3 trial to show that adding a checkpoint inhibitor to first-line chemotherapy improves OS in advanced BTC, establishing durvalumab + gemcitabine/cisplatin as a new standard of care; the original interim analysis (HR 0.80, P=0.021) was confirmed and strengthened by a later analysis with 23.4-month median follow-up (HR 0.76), where the 24-month OS rate more than doubled versus chemotherapy alone — evidence of a durable rather than early/transient effect. PD-L1 expression was not predictive of benefit, with consistent hazard ratios regardless of tumor area positivity status.",
+    "url": "https://app.notion.com/p/3e2127970a6281f4a7ffe18dc351c444"
+  },
+  {
+    "db": "met",
+    "name": "KEYNOTE-966",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1069,
+    "population": "Previously untreated, unresectable locally advanced or metastatic biliary tract cancer, including mixed hepatocellular-cholangiocarcinoma, ECOG PS 0-1, at 175 sites across Asia-Pacific, Europe, North America, and South America — a larger and more globally representative population than TOPAZ-1 (55% enrolled outside Asia). About 68% had PD-L1 combined positive score ≥1.",
+    "treatment": "Pembrolizumab + gemcitabine/cisplatin vs placebo + gemcitabine/cisplatin",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 12.7 vs 10.9 mo (median) — HR 0.83 (95% CI 0.72-0.95), one-sided P=0.0034"
+      ],
+      [
+        "PFS",
+        "⚠️ 6.5 vs 5.6 mo (median) — HR 0.86 (95% CI 0.75-1.00), P=0.023 — efficacy boundary not met"
+      ],
+      [
+        "ORR",
+        "⚠️ 29% vs 29% — no difference"
+      ]
+    ],
+    "takeaway": "KEYNOTE-966 was the second global chemo-immunotherapy trial to show a statistically significant OS benefit in advanced BTC, after TOPAZ-1, with pembrolizumab + gemcitabine/cisplatin lowering the risk of death by 17% (HR 0.83). That OS win should not be read as a positive trial across the board: PFS (HR 0.86, P=0.023) and ORR (29% vs 29%, no difference) both failed to cross their pre-specified statistical efficacy boundaries despite the OS benefit. PD-L1 expression was not associated with benefit, echoing TOPAZ-1.",
+    "url": "https://app.notion.com/p/3e2127970a628127a5e6e859ad69d874"
   }
 ]
