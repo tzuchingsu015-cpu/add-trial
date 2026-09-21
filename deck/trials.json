@@ -10006,5 +10006,44 @@
     ],
     "takeaway": "Docetaxel q3w + prednisone (D3P) improved overall survival, pain, PSA response, and quality of life versus mitoxantrone in metastatic castration-resistant prostate cancer — the first chemotherapy shown to prolong survival in this disease, confirmed with a stronger P value on 2008 updated follow-up. Weekly docetaxel (D1P) showed no survival benefit over mitoxantrone in either analysis, establishing D3P — not D1P — as the standard of care and the foundational chemotherapy regimen in mCRPC.",
     "url": "https://app.notion.com/p/3e1127970a6281dc9c85e8be23f4527c"
+  },
+  {
+    "db": "early",
+    "name": "BILCAP",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "Adjuvant",
+    "n": 447,
+    "population": "Resected cholangiocarcinoma (intrahepatic, hilar, or lower CBD) or muscle-invasive gallbladder cancer, stage I–III, with macroscopically complete (R0/R1) resection and ECOG PS <2; R1 margins in ~38% of each arm.",
+    "treatment": "Adjuvant capecitabine 1250 mg/m² BID D1–14 q3w ×8 cycles (24 wk) vs observation",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS, ITT (1°)",
+        "⚠️ 51.1 vs 36.4 mo — HR 0.81 (0.63–1.04), P=0.097 — missed primary endpoint"
+      ],
+      [
+        "OS, adjusted sensitivity analysis",
+        "✅ HR 0.71 (0.55–0.92), P=0.010"
+      ],
+      [
+        "OS, per-protocol",
+        "✅ 53 vs 36 mo — HR 0.75 (0.58–0.97), P=0.028"
+      ],
+      [
+        "RFS, ITT (0–24 mo)",
+        "✅ 24.4 vs 17.5 mo — HR 0.75 (0.58–0.98), P=0.033"
+      ],
+      [
+        "RFS, beyond 24 mo",
+        "⚠️ HR 1.48 (0.80–2.77), P=0.21 — benefit not sustained"
+      ]
+    ],
+    "takeaway": "BILCAP missed its prespecified ITT primary endpoint for overall survival (HR 0.81, 95% CI 0.63–1.04, P=0.097), but the prespecified adjusted sensitivity analysis (HR 0.71, P=0.010) and per-protocol analysis (HR 0.75, P=0.028, a 14.7-month median OS difference) were both positive, as was recurrence-free survival in the first 24 months. Despite missing its primary endpoint, this body of evidence established adjuvant capecitabine as standard of care after curative resection of biliary tract cancer — no dedicated adjuvant trial had previously defined one for this disease.",
+    "url": "https://app.notion.com/p/3e2127970a6281dcae52ff3d1b391792"
   }
 ]
