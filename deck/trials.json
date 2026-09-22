@@ -10469,5 +10469,83 @@
     ],
     "takeaway": "Establishes c-Met protein overexpression by IHC — not a genomic MET alteration — as the selection biomarker for telisotuzumab vedotin (Teliso-V), a c-Met-directed ADC, in previously-treated nonsquamous EGFR-wildtype NSCLC; this protein-expression strategy is eligible in a much larger population (~25% of nonsquamous EGFR-wildtype NSCLC) than genomic MET exon 14 skipping (~3-4%). ORR was numerically higher in c-Met-high (34.6%) than c-Met-intermediate (22.9%) tumors, but DCR, PFS, and OS were comparable across both tiers, so efficacy is not confined to the c-Met-high group alone. Single-arm with no internal comparator; ILD (9.9%, including 3 grade 5 events) and peripheral neuropathy are the notable toxicities, and the squamous/EGFR-mutant cohorts closed for futility, supporting an ongoing phase 3 trial vs docetaxel in this population.",
     "url": "https://app.notion.com/p/3e3127970a628119a67cdddeea95fdd8"
+  },
+  {
+    "db": "met",
+    "name": "FIGHT-202",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": "FGFR2 (fusion/rearrangement)",
+    "setting": "2L / 3L",
+    "n": 107,
+    "population": "Previously-treated, locally advanced or metastatic cholangiocarcinoma (89% intrahepatic) with centrally-confirmed FGFR2 fusion or rearrangement — the primary cohort (n=107). Two non-randomized comparator cohorts, other FGF/FGFR alterations (n=20) and no FGF/FGFR alterations (n=18), enrolled in parallel. ECOG 0-2, ≥1 prior systemic therapy (39% ≥2 prior lines); prior FGFR-inhibitor therapy excluded.",
+    "treatment": "Pemigatinib monotherapy (single-arm, non-randomized cohorts by biomarker status)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 35.5% (26.5–45.4), FGFR2 fusion/rearrangement cohort (n=107)"
+      ],
+      [
+        "ORR, comparator cohorts",
+        "❌ 0% in both other FGF/FGFR alterations (n=20) and no FGF/FGFR alterations (n=18) — benefit is fusion/rearrangement-specific, not pathway-wide"
+      ],
+      [
+        "PFS",
+        "6.9 mo (6.2–9.6), FGFR2 fusion/rearrangement cohort — vs 2.1 mo (other FGF/FGFR) and 1.7 mo (no FGF/FGFR), exploratory cohort comparison only"
+      ],
+      [
+        "OS",
+        "⏳ 21.1 mo (14.8–NE), FGFR2 fusion/rearrangement cohort; immature (37% dead at cutoff) — vs 6.7 mo (other FGF/FGFR) and 4.0 mo (no FGF/FGFR), exploratory"
+      ],
+      [
+        "DCR",
+        "82% (74–89), FGFR2 fusion/rearrangement cohort"
+      ]
+    ],
+    "takeaway": "First prospective phase 2 evidence for an FGFR inhibitor in FGFR2 fusion/rearrangement-positive cholangiocarcinoma (10–16% of patients, almost exclusively intrahepatic), establishing pemigatinib in this molecularly-defined subgroup and leading to its accelerated approval and the ongoing phase 3 FIGHT-302 (pemigatinib vs gemcitabine+cisplatin, 1L). The stark contrast between cohorts — 35.5% ORR with FGFR2 fusion/rearrangement vs 0% in both other-alteration cohorts — shows the benefit is specific to fusion/rearrangement events rather than FGF/FGFR pathway alterations broadly, reinforcing fusion/rearrangement testing as the correct selection strategy. Single-arm with non-randomized cohorts and immature OS (37% dead at cutoff); hyperphosphatemia is the on-target class toxicity, with no treatment-related deaths.",
+    "url": "https://app.notion.com/p/3e3127970a628147adc6fb7ab2842179"
+  },
+  {
+    "db": "met",
+    "name": "FOENIX-CCA2",
+    "year": 2023,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": "FGFR2 (fusion/rearrangement)",
+    "setting": "2L / 3L",
+    "n": 103,
+    "population": "Previously-treated, unresectable or metastatic intrahepatic cholangiocarcinoma with FGFR2 fusion or rearrangement (all-comers, no comparator cohorts). ≥1 prior systemic regimen including ≥1 prior gemcitabine+platinum regimen; no prior FGFR-inhibitor therapy; ECOG 0-1. 53% had ≥2 prior lines; 46 unique FGFR2 fusion partners identified.",
+    "treatment": "Futibatinib monotherapy (single-arm)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 42% (32–52), independent central review"
+      ],
+      [
+        "DCR",
+        "83% (74–89)"
+      ],
+      [
+        "DOR",
+        "9.7 mo (7.6–17.0) — durable, ≥72% of responses ≥6 mo"
+      ],
+      [
+        "PFS",
+        "9.0 mo (6.9–13.1)"
+      ],
+      [
+        "OS",
+        "21.7 mo (14.5–NE)"
+      ]
+    ],
+    "takeaway": "Establishes futibatinib — a covalent, irreversible pan-FGFR1-4 inhibitor — in previously-treated, FGFR2 fusion/rearrangement-positive intrahepatic cholangiocarcinoma, with ORR 42% (32–52) and durable responses (median DOR 9.7 mo) consistent across subgroups including heavily pretreated and older patients and those with co-occurring TP53 mutations. Complements FIGHT-202 (pemigatinib): both trials independently validate FGFR2 fusion/rearrangement as an actionable biomarker, with futibatinib numerically outperforming pemigatinib's ORR (42% vs 35.5%) and PFS (9.0 vs 6.9 mo) in cross-trial, non-randomized comparison — not tested head-to-head, so interpret cautiously. Covalent, irreversible FGFR binding is designed, preclinically, to be less susceptible to acquired FGFR2 kinase-domain resistance mutations than reversible inhibitors like pemigatinib, though FOENIX-CCA2 has no comparator arm to prove that advantage; hyperphosphatemia is the same on-target class toxicity as FIGHT-202, with no treatment-related deaths and only 2% discontinuing for toxicity.",
+    "url": "https://app.notion.com/p/3e3127970a6281e394b5ca478686c34c"
   }
 ]
