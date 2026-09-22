@@ -10206,5 +10206,190 @@
     ],
     "takeaway": "ABC-02 is the foundational trial of advanced biliary tract cancer: it established cisplatin + gemcitabine (GC) as the first-line standard of care, a position GC has held ever since and against which every later regimen in this cancer (FUGA-BT's gemcitabine+S-1, KHBO1401-MITSUBA's added S-1, TOPAZ-1's and KEYNOTE-966's addition of a checkpoint inhibitor) has had to prove itself as the comparator arm. Adding cisplatin to gemcitabine alone cut the risk of death by 36% with no unacceptable increase in toxicity, turning a single-agent regimen into a two-drug backbone that later trials build on rather than replace.",
     "url": "https://app.notion.com/p/3e2127970a628147918fd5992e4d6db5"
+  },
+  {
+    "db": "met",
+    "name": "ABC-06",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "BTC",
+    "biomarker": null,
+    "setting": "2L",
+    "n": null,
+    "population": "Advanced biliary tract cancer (intra-/extrahepatic CCA, gallbladder, or ampullary), with radiological progression on 1L gemcitabine+cisplatin. ECOG 0-1; 81-83% metastatic disease; median age 65.",
+    "treatment": "FOLFOX + ASC vs. ASC alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 6.2 vs 5.3 mo — HR 0.69 (0.50–0.97), P=0.031"
+      ],
+      [
+        "6-mo OS",
+        "✅ 50.6% vs 35.5%"
+      ],
+      [
+        "12-mo OS",
+        "✅ 25.9% vs 11.4%"
+      ],
+      [
+        "PFS",
+        "4.0 mo (FOLFOX arm only — no routine imaging in ASC-alone arm)"
+      ],
+      [
+        "ORR",
+        "4% (FOLFOX arm; CR 1%, PR 4%)"
+      ]
+    ],
+    "takeaway": "First randomized phase 3 evidence for second-line chemotherapy in advanced BTC, establishing FOLFOX as the standard-of-care 2L regimen. The absolute median OS gain looks modest, but the real signal is the doubling of 6- and 12-month OS rates over active symptom control alone. Complements NIFTY (a different 2L chemotherapy backbone) as a second positive randomized 2L option.",
+    "url": "https://app.notion.com/p/3e3127970a62810ea64be775f76692b2"
+  },
+  {
+    "db": "met",
+    "name": "ClarIDHy",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "BTC",
+    "biomarker": "IDH1 (mutant)",
+    "setting": "2L / 3L",
+    "n": null,
+    "population": "IDH1-mutant advanced cholangiocarcinoma, centrally confirmed, 1-2 prior treatment regimens with progression on prior therapy. ECOG 0-1; 92% metastatic disease; R132C was the most prevalent IDH1 mutation (70%).",
+    "treatment": "Ivosidenib vs. placebo (2:1); crossover to open-label ivosidenib permitted on placebo progression",
+    "tx": [
+      "IDH1i"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, IRC)",
+        "✅ 2.7 vs 1.4 mo — HR 0.37 (0.25–0.54), P<0.0001"
+      ],
+      [
+        "OS, ITT",
+        "⚠️ 10.8 vs 9.7 mo — HR 0.69 (0.44–1.10), P=0.060 (confounded by 57% crossover)"
+      ],
+      [
+        "OS, RPSFT-adjusted",
+        "✅ 10.8 vs 6.0 mo — HR 0.46 (0.28–0.75), P=0.0008"
+      ],
+      [
+        "DCR",
+        "53% vs 28%"
+      ]
+    ],
+    "takeaway": "First randomized phase 3 evidence for a targeted therapy in IDH1-mutant, chemotherapy-refractory cholangiocarcinoma (~13% of intrahepatic CCA), establishing ivosidenib as an option in this molecularly-defined subgroup. The PFS win is clean, but the intention-to-treat OS analysis is diluted by 57% of placebo patients crossing over to ivosidenib; a pre-specified crossover-adjusted (RPSFT) analysis shows a real OS benefit. Ivosidenib also had a favorable, well-tolerated safety profile with no treatment-related deaths.",
+    "url": "https://app.notion.com/p/3e3127970a628165bd75c759741af621"
+  },
+  {
+    "db": "met",
+    "name": "HERIZON-GEA-01",
+    "year": 2026,
+    "phase": "III",
+    "cancer": "GC / Esophagus",
+    "biomarker": "HER2",
+    "setting": "1L",
+    "n": null,
+    "population": "Previously untreated, HER2-positive (IHC3+ or IHC2+/ISH+) unresectable locally advanced/recurrent/metastatic gastric, GEJ, or esophageal adenocarcinoma. No prior HER2-targeted agents or checkpoint inhibitors allowed; 94-97% metastatic disease; ~60% PD-L1 TAP ≥1%.",
+    "treatment": "Zanidatamab + tislelizumab + chemo vs. zanidatamab + chemo vs. trastuzumab + chemo (comparator), 1:1:1",
+    "tx": [
+      "BsAb",
+      "ICI",
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, BICR)",
+        "✅ Zani-tisle-ChT 12.4 vs trastuzumab-ChT 8.1 mo — HR 0.63 (0.51–0.78), P<0.001"
+      ],
+      [
+        "PFS (1°, BICR)",
+        "✅ Zani-ChT 12.4 vs trastuzumab-ChT 8.1 mo — HR 0.65 (0.52–0.81), P<0.001"
+      ],
+      [
+        "OS (1°, 1st interim)",
+        "✅ Zani-tisle-ChT 26.4 vs trastuzumab-ChT 19.2 mo — HR 0.72 (0.57–0.90), P=0.004"
+      ],
+      [
+        "OS (1°, 1st interim)",
+        "⚠️ Zani-ChT 24.4 vs trastuzumab-ChT 19.2 mo — HR 0.80 (0.64–1.01), P=0.06, not yet significant at this interim"
+      ],
+      [
+        "ORR",
+        "70.7% vs 69.6% vs 65.7%"
+      ]
+    ],
+    "takeaway": "First phase 3 trial to beat trastuzumab + chemotherapy — the 15-year first-line standard since ToGA — in HER2-positive advanced gastroesophageal adenocarcinoma, with both zanidatamab-containing regimens improving PFS. At this first OS interim, the triplet with tislelizumab also beat trastuzumab on OS, but the zanidatamab+chemo doublet's OS has not yet reached significance and awaits the planned final analyses. Diarrhea, not myelosuppression, is the dominant zanidatamab-class toxicity.",
+    "url": "https://app.notion.com/p/3e3127970a62813c9991ff8f67e9c830"
+  },
+  {
+    "db": "met",
+    "name": "KEYNOTE-158",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": "MSI-H / dMMR",
+    "setting": "2L / 3L",
+    "n": null,
+    "population": "Previously-treated, advanced/metastatic MSI-H/dMMR noncolorectal solid tumors (27 tumor types, N=233), progressed on or intolerant to ≥1 prior therapy. Cholangiocarcinoma was the third most common tumor type (9.4%, n=22).",
+    "treatment": "Pembrolizumab monotherapy (single-arm, pan-tumor basket trial)",
+    "tx": [
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 34.3% (28.3–40.8), all tumor types"
+      ],
+      [
+        "ORR, cholangiocarcinoma cohort",
+        "40.9% (20.7–63.6), n=22"
+      ],
+      [
+        "OS, cholangiocarcinoma cohort",
+        "24.3 mo (6.5–NR)"
+      ],
+      [
+        "Durability",
+        "87% of responders ongoing ≥12 mo"
+      ]
+    ],
+    "takeaway": "Pan-tumor evidence that pembrolizumab monotherapy is highly active in MSI-H/dMMR solid tumors regardless of anatomic origin, supporting a biomarker-driven, tumor-agnostic option rather than a BTC-specific trial design. Directly relevant to BTC: the cholangiocarcinoma subgroup (n=22) had an ORR of 40.9% and median OS of 24.3 months, dramatically better than unselected chemo-refractory BTC. MSI-H/dMMR is uncommon in BTC (roughly 1-3% of cases) but identifies a small subset with markedly better immunotherapy outcomes when present.",
+    "url": "https://app.notion.com/p/3e3127970a6281f8a305dd08a10be7cd"
+  },
+  {
+    "db": "met",
+    "name": "NIFTY",
+    "year": 2021,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": null,
+    "setting": "2L",
+    "n": null,
+    "population": "Metastatic biliary tract cancer (intra-/extrahepatic CCA, gallbladder), with radiological progression on 1L gemcitabine+cisplatin. ECOG 0-1; South Korea, 5 centres; 100% metastatic by design.",
+    "treatment": "Liposomal irinotecan + 5-FU/LV vs. 5-FU/LV alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, BICR)",
+        "✅ 7.1 vs 1.4 mo — HR 0.56 (0.39–0.81), P=0.0019"
+      ],
+      [
+        "OS",
+        "✅ 8.6 vs 5.5 mo — HR 0.68 (0.48–0.98), P=0.035"
+      ],
+      [
+        "DCR",
+        "✅ 64.8% vs 34.9%, P=0.0002"
+      ],
+      [
+        "ORR",
+        "⚠️ 14.8% vs 5.8%, P=0.068 — trend only, not significant"
+      ]
+    ],
+    "takeaway": "First randomized trial to show superiority of a combination regimen over a fluoropyrimidine-alone backbone in second-line advanced BTC after gemcitabine-platinum failure. PFS, OS, and disease control rate all met, though the response-rate difference was only a trend — response-based endpoints appear to under-detect benefit in BTC, where disease stabilization often drives the survival gain. Complements ABC-06 (chemotherapy vs. active symptom control) as a second evidence-based 2L option.",
+    "url": "https://app.notion.com/p/3e3127970a628149b623f2123edbeb73"
   }
 ]
