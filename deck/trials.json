@@ -10391,5 +10391,83 @@
     ],
     "takeaway": "First randomized trial to show superiority of a combination regimen over a fluoropyrimidine-alone backbone in second-line advanced BTC after gemcitabine-platinum failure. PFS, OS, and disease control rate all met, though the response-rate difference was only a trend — response-based endpoints appear to under-detect benefit in BTC, where disease stabilization often drives the survival gain. Complements ABC-06 (chemotherapy vs. active symptom control) as a second evidence-based 2L option.",
     "url": "https://app.notion.com/p/3e3127970a628149b623f2123edbeb73"
+  },
+  {
+    "db": "met",
+    "name": "VISION",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "Lung",
+    "biomarker": "MET (exon 14 skipping)",
+    "setting": "1L–3L",
+    "n": 99,
+    "population": "Advanced/metastatic NSCLC with centrally-confirmed MET exon 14 skipping mutation, detected by liquid and/or tissue biopsy. Efficacy population (combined-biopsy, N=99): median age 74, 90% adenocarcinoma; up to 2 prior lines (43% treatment-naïve, 33% 1 prior line, 23% ≥2 prior lines). Stable/treated brain metastases eligible (11% had brain mets).",
+    "treatment": "Tepotinib monotherapy (single-arm)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 46% (36–57), combined biopsy — consistent whether MET ex14 skipping was detected by liquid biopsy (48%, 36–61) or tissue biopsy (50%, 37–63)"
+      ],
+      [
+        "DOR",
+        "Median 11.1 mo (combined biopsy); up to 15.7 mo (tissue-biopsy group) — durable"
+      ],
+      [
+        "PFS",
+        "8.5 mo (6.7–11.0), combined biopsy; 11.0 mo (5.7–17.1), tissue-biopsy group"
+      ],
+      [
+        "ORR, brain metastases (n=11)",
+        "55% (23–83)"
+      ],
+      [
+        "OS",
+        "⏳ 17.1 mo (immature at cutoff; 35% had received subsequent therapy)"
+      ]
+    ],
+    "takeaway": "Establishes tepotinib, an oral MET TKI, as a targeted option for advanced NSCLC with MET exon 14 skipping mutations (~3-4% of NSCLC) — a single-arm trial with no internal comparator, but its ORR (46%) and durability (DOR up to 15.7 months) compare favorably with earlier-generation MET-directed therapy such as crizotinib and capmatinib. Response was consistent whether MET exon 14 skipping was detected by liquid or tissue biopsy, supporting either as an adequate diagnostic strategy, and activity was maintained in patients with brain metastases (ORR 55%). Peripheral edema (7% grade ≥3) is the class-defining toxicity of MET inhibitors.",
+    "url": "https://app.notion.com/p/3e3127970a6281789380fcf74be9b5d3"
+  },
+  {
+    "db": "met",
+    "name": "LUMINOSITY",
+    "year": 2024,
+    "phase": "II",
+    "cancer": "Lung",
+    "biomarker": "MET (protein overexpression, IHC)",
+    "setting": "2L / 3L",
+    "n": 161,
+    "population": "Previously-treated, c-Met protein-overexpressing (IHC ≥25% 3+), nonsquamous EGFR-wildtype NSCLC. Up to 2 prior lines (≤1 prior cytotoxic chemo); heavily pretreated (98% prior platinum, 82% prior checkpoint inhibitor). Split into c-Met high (≥50% 3+, n=78) and c-Met intermediate (25–<50% 3+, n=83) subgroups.",
+    "treatment": "Telisotuzumab vedotin (Teliso-V) monotherapy (single-arm)",
+    "tx": [
+      "ADC"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 28.6% (21.7–36.2), c-Met OE total — 34.6% (24.2–46.2) c-Met high; 22.9% (14.4–33.4) c-Met intermediate"
+      ],
+      [
+        "DCR",
+        "59.0% (51.0–66.7) — 60.3% c-Met high; 57.8% c-Met intermediate"
+      ],
+      [
+        "PFS",
+        "5.7 mo (4.6–6.9) — comparable across c-Met high (5.5 mo) and intermediate (6.0 mo)"
+      ],
+      [
+        "OS",
+        "14.5 mo (9.9–16.6) — comparable across c-Met high (14.6 mo) and intermediate (14.2 mo)"
+      ],
+      [
+        "DOR",
+        "8.3 mo (5.6–11.3); DOR ≥6 mo in 56.5% of responders"
+      ]
+    ],
+    "takeaway": "Establishes c-Met protein overexpression by IHC — not a genomic MET alteration — as the selection biomarker for telisotuzumab vedotin (Teliso-V), a c-Met-directed ADC, in previously-treated nonsquamous EGFR-wildtype NSCLC; this protein-expression strategy is eligible in a much larger population (~25% of nonsquamous EGFR-wildtype NSCLC) than genomic MET exon 14 skipping (~3-4%). ORR was numerically higher in c-Met-high (34.6%) than c-Met-intermediate (22.9%) tumors, but DCR, PFS, and OS were comparable across both tiers, so efficacy is not confined to the c-Met-high group alone. Single-arm with no internal comparator; ILD (9.9%, including 3 grade 5 events) and peripheral neuropathy are the notable toxicities, and the squamous/EGFR-mutant cohorts closed for futility, supporting an ongoing phase 3 trial vs docetaxel in this population.",
+    "url": "https://app.notion.com/p/3e3127970a628119a67cdddeea95fdd8"
   }
 ]
