@@ -9709,5 +9709,44 @@
     ],
     "takeaway": "Single-arm phase 2 data showing rucaparib monotherapy has meaningful antitumor activity in heavily pretreated BRCA1/2-altered mCRPC, where response rates to further AR-directed therapy or chemotherapy are historically poor. These data supported rucaparib's accelerated FDA approval in this setting, but the lack of a comparator arm is the key limitation — the confirmatory phase 3 TRITON3 trial was designed to validate benefit against physician's choice of therapy in an earlier disease setting.",
     "url": "https://app.notion.com/3e0127970a6281c2bc19f3f9bc64bad6"
+  },
+  {
+    "db": "met",
+    "name": "ROAR",
+    "year": 2023,
+    "phase": "II",
+    "cancer": "BTC / HEENT (ATC) / GIST / Other (glioma, small-bowel adenoCA, HCL, MM)",
+    "biomarker": "RAF (BRAF V600E)",
+    "setting": "2L",
+    "n": 206,
+    "population": "Previously treated BRAF V600E advanced rare cancers with no satisfactory standard option, ECOG ≤2, BRAF/MEK-inhibitor naive. Single-arm basket: ATC 36, BTC 43, GIST 1, ASI 3, LGG 13, HGG 45, HCL 55, MM 10.",
+    "treatment": "Dabrafenib 150 mg BID + trametinib 2 mg QD (single-arm, no control)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°, investigator)",
+        "✅ ATC 56%, BTC 53%, LGG 54%, HGG 33%, ASI 67%, HCL 89%, MM 50%, GIST 0% (1 pt)"
+      ],
+      [
+        "Median PFS",
+        "ATC 6.7, BTC 9.0, HGG 5.5, ASI 9.5, MM 6.3 mo; LGG/HCL NE"
+      ],
+      [
+        "Median OS",
+        "ATC 14.5, BTC 13.5, HGG 17.6, ASI 21.8, MM 33.9 mo; LGG/HCL NE"
+      ],
+      [
+        "Median DoR",
+        "ATC 14.4, BTC 8.9, HGG 31.2, MM 11.1, ASI 7.7 mo; LGG/HCL NR"
+      ],
+      [
+        "Safety",
+        "G3/4 AE (any cause) 59.2%; AE → discontinuation 13.6%; no drug-related deaths"
+      ]
+    ],
+    "takeaway": "Dabrafenib + trametinib was active across BRAF V600E rare cancers, with ORR ≥50% in every cohort except high-grade glioma (33%). That tumor-agnostic activity was the basis of the FDA accelerated approval for any previously treated BRAF V600E unresectable or metastatic solid tumor (age ≥6; CRC excluded). In BTC, 53% ORR and 9.0-month median PFS make it a key 2L option. The caveat is the design: single-arm and non-randomized, and some cohorts are tiny.",
+    "url": "https://app.notion.com/3e4127970a62818f8bf4e3f2197185aa"
   }
 ]
