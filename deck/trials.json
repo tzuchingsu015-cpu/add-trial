@@ -9709,5 +9709,50 @@
     ],
     "takeaway": "Single-arm phase 2 data showing rucaparib monotherapy has meaningful antitumor activity in heavily pretreated BRCA1/2-altered mCRPC, where response rates to further AR-directed therapy or chemotherapy are historically poor. These data supported rucaparib's accelerated FDA approval in this setting, but the lack of a comparator arm is the key limitation — the confirmatory phase 3 TRITON3 trial was designed to validate benefit against physician's choice of therapy in an earlier disease setting.",
     "url": "https://app.notion.com/3e0127970a6281c2bc19f3f9bc64bad6"
+  },
+  {
+    "db": "met",
+    "name": "PSMAddition",
+    "year": 2026,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1144,
+    "population": "PSMA-PET-positive mHSPC, treatment-naive or ≤45 days of ADT/ARPI; no docetaxel (ADT + ARPI doublet backbone). 68% high-volume, 50% de novo, 15% lung/liver metastases.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 (×6 cycles) + ADT + ARPI vs ADT + ARPI (open-label, crossover on confirmed rPD)",
+    "tx": [
+      "RT",
+      "ARPI",
+      "Endocrine"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°)",
+        "✅ NR vs NR — HR 0.72 (0.58–0.90), P=0.0021"
+      ],
+      [
+        "OS",
+        "⏳ Immature at interim — HR 0.84 (0.63–1.13), P=0.13"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ HR 0.42 (0.30–0.59)"
+      ],
+      [
+        "Time to mCRPC",
+        "✅ HR 0.70 (0.58–0.84)"
+      ],
+      [
+        "ORR / CR",
+        "85% vs 81% / 57% vs 42%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "⚠️ 51% vs 43%; dry mouth 46% (all Gr 1–2)"
+      ]
+    ],
+    "takeaway": "The first phase 3 radioligand trial in mHSPC: adding ¹⁷⁷Lu-PSMA-617 to ADT + ARPI cut the risk of radiographic progression or death by 28%. OS is still immature and not significant (HR 0.84), and crossover may confound it; the gain came with more adverse events (dry mouth, cytopenias, GI) and a slight trend toward earlier quality-of-life worsening.",
+    "url": "https://app.notion.com/3e4127970a6281788acdd0dc71f745f7"
   }
 ]
