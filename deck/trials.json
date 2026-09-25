@@ -811,6 +811,45 @@
   },
   {
     "db": "early",
+    "name": "CREATE-X",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Breast",
+    "biomarker": "HER2 (HER2-negative) / ER/PR (HR+ or TNBC)",
+    "setting": "Adjuvant",
+    "n": 910,
+    "population": "HER2-negative stage I–IIIB breast cancer with residual invasive disease (non-pCR) or ypN+ after neoadjuvant anthracycline and/or taxane. Japan + South Korea, age 20–74, ECOG 0–1. HR+ 68%, TNBC 32%; stage IIIA–IIIB ~40%.",
+    "treatment": "Post-neoadjuvant capecitabine 1250 mg/m² BID D1–14 Q3W ×6–8 cycles + standard therapy vs standard therapy alone (ET ×5 yr if HR+, RT if indicated)",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "DFS (1°)",
+        "✅ 5-yr 74.1% vs 67.6% — HR 0.70 (0.53–0.92), P=0.01"
+      ],
+      [
+        "OS",
+        "✅ 5-yr 89.2% vs 83.6% — HR 0.59 (0.39–0.90), P=0.01"
+      ],
+      [
+        "TNBC",
+        "✅ 5-yr DFS 69.8% vs 56.1% — HR 0.58 (0.39–0.87); OS HR 0.52 (0.30–0.90)"
+      ],
+      [
+        "HR+",
+        "⚠️ 5-yr DFS 76.4% vs 73.4% — HR 0.81 (0.55–1.17), NS; OS HR 0.73 (0.38–1.40)"
+      ],
+      [
+        "Toxicity",
+        "⚠️ Hand–foot syndrome 73.4% any grade, 11.1% Gr3; Gr3–4 neutropenia 6.3%"
+      ]
+    ],
+    "takeaway": "First proof that residual-disease-guided escalation works: adjuvant capecitabine after non-pCR in HER2-negative breast cancer improves both DFS and OS. The benefit is concentrated in TNBC; in HR+ disease it is small and not significant. It underpins today's SOC of capecitabine for residual TNBC, though how it combines with adjuvant pembrolizumab in the post-KEYNOTE-522 era is untested.",
+    "url": "https://app.notion.com/3e6127970a6281ab8d80f1ac9f76d6e3"
+  },
+  {
+    "db": "early",
     "name": "CTNeoBC (pooled analysis)",
     "year": 2014,
     "phase": "Meta / Retro",
