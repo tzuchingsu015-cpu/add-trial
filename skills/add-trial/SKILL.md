@@ -65,9 +65,9 @@ Data source: `2a312797-0a62-81c7-82ef-000b4de44d4b`
 
 - `Phase` (multi-select): Meta, Ongoing, I, II, III, Retro
 - `Timing` (**select**, single): Peri-OP, Neoadjuvant, Adjuvant
-- `Cancer type` (**select**, single): Other, Endometrial CA, Cerical CA, Ovary,
+- `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
   Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
+  HEENT, Prostate, NEN (see the NEN note under the metastatic schema)
 - `Treatment` (multi-select): CDK4/6i, ET, ADC, ICI, RT, TKI, ChT, Anti-HER2,
   Others
 - `Biomarker` (multi-select): HER2, ER/PR (HR), PD-L1, BRCA1/2, PIK3CA, ESR1,
@@ -101,7 +101,7 @@ Data source: `2a012797-0a62-81ff-b9bc-000b1334cb16`
   HEENT, Prostate, GIST, NEN
   - `NEN` = neuroendocrine neoplasms (both NET and NEC, any primary site). Tag
     NEN trials with `NEN` alone — not `Pancreas`/`Lung`, which mean the
-    carcinomas. NEN exists in this database only, not the early-stage one.
+    carcinomas. NEN exists in both databases.
 - `Treatments` (multi-select — note the plural name): NSAI, Anti-EGFR, SERD,
   CDK4/6i, Endocrine, RT, BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
 - `Biomarker` (multi-select): BRCA, AKT, PIK3CA, HR, TP53, dMMR, RAF, RAS, RET,
@@ -341,8 +341,9 @@ These are failure modes that have actually occurred — check for them.
   database a trial came from. After moving a page, re-run the flashcard-writer
   on it so the card is rebuilt against the new schema; otherwise the card stays
   filed under the old database with the old endpoint set.
-- **`Cancer type` differs between the databases**: single `select` in Early
-  Stage (pass a string), `multi_select` in Metastatic (pass an array).
+- **`Cancer type` is `multi_select` in both databases** (pass an array). The
+  Early Stage one used to be a single `select`; older pages may still hold only
+  one value.
 - **Property name differs**: `Treatment` (early) vs `Treatments` (metastatic).
 - **Avoid `***text***`** — triple asterisks around a term (e.g. bolding a phrase
   that ends in an italicized gene name) round-trip badly. Write `**bold** *ital*`
