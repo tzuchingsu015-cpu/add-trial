@@ -98,7 +98,10 @@ Data source: `2a012797-0a62-81ff-b9bc-000b1334cb16`
 - `Line` (multi-select): 1, 2, 3
 - `Cancer type` (**multi-select**): Other, Endometrial CA, Cerical CA, Ovary,
   Sarcoma, Skin, CRC, GC, Esophagus, UC, Pancreas, BTC, HCC, Breast, Lung, NPC,
-  HEENT
+  HEENT, Prostate, GIST, NEN
+  - `NEN` = neuroendocrine neoplasms (both NET and NEC, any primary site). Tag
+    NEN trials with `NEN` alone — not `Pancreas`/`Lung`, which mean the
+    carcinomas. NEN exists in this database only, not the early-stage one.
 - `Treatments` (multi-select — note the plural name): NSAI, Anti-EGFR, SERD,
   CDK4/6i, Endocrine, RT, BsAb, Others, ADC, TKI, Anti-VEGF, ICI, ChT
 - `Biomarker` (multi-select): BRCA, AKT, PIK3CA, HR, TP53, dMMR, RAF, RAS, RET,
