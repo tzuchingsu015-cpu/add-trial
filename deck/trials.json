@@ -9709,5 +9709,927 @@
     ],
     "takeaway": "Single-arm phase 2 data showing rucaparib monotherapy has meaningful antitumor activity in heavily pretreated BRCA1/2-altered mCRPC, where response rates to further AR-directed therapy or chemotherapy are historically poor. These data supported rucaparib's accelerated FDA approval in this setting, but the lack of a comparator arm is the key limitation — the confirmatory phase 3 TRITON3 trial was designed to validate benefit against physician's choice of therapy in an earlier disease setting.",
     "url": "https://app.notion.com/3e0127970a6281c2bc19f3f9bc64bad6"
+  },
+  {
+    "db": "met",
+    "name": "ALSYMPCA",
+    "year": 2013,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 921,
+    "population": "Symptomatic mCRPC with ≥2 bone metastases and no visceral metastases; median age 71, ECOG 0–2. 57% had received prior docetaxel (or were ineligible for/declined it) and 57% had WHO pain-ladder score ≥2 requiring regular analgesics or recent EBRT.",
+    "treatment": "Radium-223 vs placebo, both + best standard of care (BSC) — Ra-223 50 kBq/kg IV q4wk ×6",
+    "tx": [
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 14.9 vs 11.3 mo — HR 0.70 (0.58–0.83), P<0.001"
+      ],
+      [
+        "Time to first SSE",
+        "✅ 15.6 vs 9.8 mo — HR 0.66 (0.52–0.83), P<0.001"
+      ],
+      [
+        "Time to ALP increase",
+        "✅ 7.4 vs 3.8 mo — HR 0.17 (0.13–0.22), P<0.001"
+      ],
+      [
+        "Time to PSA increase",
+        "✅ 3.6 vs 3.4 mo — HR 0.64 (0.54–0.77), P<0.001"
+      ]
+    ],
+    "takeaway": "First survival benefit ever shown for a bone-targeted radiopharmaceutical: radium-223 improved overall survival and delayed skeletal complications versus placebo plus best standard of care in symptomatic mCRPC with bone-only metastases. Its favorable safety profile — lower rates of high-grade AEs than placebo, with low myelosuppression — set it apart from beta-emitting radiopharmaceuticals and chemotherapy, establishing radium-223 as a standard of care in this setting.",
+    "url": "https://app.notion.com/p/3e1127970a6281faa959f7c34efe0d48"
+  },
+  {
+    "db": "met",
+    "name": "ERA-223",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 806,
+    "population": "Chemotherapy-naive, asymptomatic or mildly symptomatic mCRPC with ≥2 bone metastases and no visceral/brain metastases; median age 71, ECOG 0–1. Excluded prior cytotoxic chemotherapy or prior abiraterone/prednisone use for CRPC.",
+    "treatment": "Radium-223 + abiraterone acetate/prednisone(-lone) vs placebo + abiraterone acetate/prednisone(-lone) — Ra-223 55 kBq/kg IV q4wk ×6, AA 1000 mg/d + prednisone 5 mg BID",
+    "tx": [
+      "ARPI",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "SSE-free survival (1°)",
+        "❌ 22.3 vs 26.0 mo — HR 1.122 (0.917–1.374), P=0.2636"
+      ],
+      [
+        "OS",
+        "⚠️ 30.7 vs 33.3 mo (numerically worse with Ra-223) — HR 1.195 (0.950–1.505), P=0.128"
+      ],
+      [
+        "rPFS (central review)",
+        "⚠️ 11.2 vs 12.4 mo — HR 1.152 (0.960–1.383)"
+      ],
+      [
+        "Fractures (time-to-first)",
+        "❌ 29% vs 11% — HR 3.135 (2.206–4.455)"
+      ]
+    ],
+    "takeaway": "Adding radium-223 to abiraterone plus prednisone did not improve symptomatic skeletal-event-free survival and numerically worsened OS, while more than doubling fracture risk (29% vs 11%) versus abiraterone/prednisone alone. The combination is now contraindicated, and the safety signal prompted mandatory bone-protecting-agent use in the companion trial PEACE-3.",
+    "url": "https://app.notion.com/p/3e1127970a6281e1a224dcd839684245"
+  },
+  {
+    "db": "met",
+    "name": "PEACE-3",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 446,
+    "population": "First-line mCRPC with ≥2 bone metastases (≥4 required in Europe from Jul 2018) ± nodal metastases, no visceral metastases; asymptomatic or mildly symptomatic. Median age 70; ~30% prior docetaxel (given in the mHSPC setting), only 2.5% had prior ARPI exposure.",
+    "treatment": "Enzalutamide alone vs enzalutamide + radium-223 (open-label, no placebo) — Enza 160 mg/d; Ra-223 55 kBq/kg IV q4wk ×6; bone-protecting agent mandatory in both arms from 2018",
+    "tx": [
+      "ARPI",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, final analysis)",
+        "✅ 16.4 vs 19.2 mo — HR 0.71 (0.57–0.89)"
+      ],
+      [
+        "OS (final analysis)",
+        "✅ 32.6 vs 38.2 mo — HR 0.76 (0.60–0.96), P=0.0096"
+      ],
+      [
+        "Time to next systemic treatment",
+        "✅ HR 0.57 (0.44–0.75), P<0.0001"
+      ],
+      [
+        "Time to first SSE",
+        "↔ HR 0.93 (0.62–1.38), NS"
+      ],
+      [
+        "Fractures (time-to-first)",
+        "❌ 14.3% vs 27.1% — HR 2.05 (1.33–3.18)"
+      ]
+    ],
+    "takeaway": "Adding radium-223 to first-line enzalutamide improved radiographic PFS and, in the mature final analysis, overall survival (HR 0.76, P=0.0096; roughly +5.6 months median OS) versus enzalutamide alone in mCRPC. The benefit required a mandatory bone-protecting agent in both arms from 2018 onward, and even with that safeguard the combination still carried a higher risk of fractures and osteonecrosis of the jaw than enzalutamide alone.",
+    "url": "https://app.notion.com/p/3e1127970a6281cfbd6eff5535693821"
+  },
+  {
+    "db": "met",
+    "name": "CARD",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "3L",
+    "n": 255,
+    "population": "mCRPC after ≥3 cycles of docetaxel plus progression within 12 months on an ARSI (abiraterone or enzalutamide, given before or after docetaxel); median age 70–71, ≈67% had pain at entry, Gleason 8–10 at diagnosis in 57–64%.",
+    "treatment": "Cabazitaxel vs the alternative ARSI not yet received (abiraterone or enzalutamide) — cabazitaxel 25 mg/m² IV q3w + prednisone + mandatory prophylactic G-CSF",
+    "tx": [
+      "ChT",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "Imaging-based PFS (1°)",
+        "✅ 8.0 vs 3.7 mo — HR 0.54 (0.40–0.73), P<0.001"
+      ],
+      [
+        "OS",
+        "✅ 13.6 vs 11.0 mo — HR 0.64 (0.46–0.89), P=0.008"
+      ],
+      [
+        "PFS",
+        "✅ 4.4 vs 2.7 mo — HR 0.52 (0.40–0.68), P<0.001"
+      ],
+      [
+        "Tumor response",
+        "✅ 37% vs 12%, P=0.004"
+      ],
+      [
+        "Time to first symptomatic skeletal event",
+        "⚠️ HR 0.59 (0.35–1.01)"
+      ]
+    ],
+    "takeaway": "The first prospective trial to show that switching to a second ARSI after early progression (≤12 months) on a first ARSI has poor efficacy, consistent with shared resistance mechanisms between abiraterone and enzalutamide. Cabazitaxel's distinct microtubule-targeting mechanism overcame this cross-resistance, improving imaging-based PFS and OS and establishing cabazitaxel — not a second ARSI — as the preferred next therapy in this setting.",
+    "url": "https://app.notion.com/p/3e1127970a62813b83acde9013536858"
+  },
+  {
+    "db": "met",
+    "name": "VISION",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "PSMA-PET-positive",
+    "setting": "3L",
+    "n": 831,
+    "population": "mCRPC, centrally PSMA-PET-positive, progressed after ≥1 ARPI and 1–2 taxane regimens (97% prior docetaxel, 38% prior cabazitaxel); median age 71, ECOG 0/1 ≈92%.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 + standard care vs standard care alone — ¹⁷⁷Lu-PSMA-617 7.4 GBq IV q6wk ×4–6 cycles",
+    "tx": [
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, co-primary)",
+        "✅ 8.7 vs 3.4 mo — HR 0.40 (99.2% CI 0.29–0.57), P<0.001"
+      ],
+      [
+        "OS (1°, co-primary)",
+        "✅ 15.3 vs 11.3 mo — HR 0.62 (0.52–0.74), P<0.001"
+      ],
+      [
+        "Time to first symptomatic skeletal event",
+        "✅ HR 0.50 (0.40–0.62), P<0.001"
+      ],
+      [
+        "Objective response (measurable disease)",
+        "✅ 51% vs 3% (CR+PR)"
+      ]
+    ],
+    "takeaway": "The first phase 3 trial to establish an overall survival benefit for a PSMA-targeted radioligand therapy, using theranostic PSMA-PET selection in post-taxane, post-ARPI mCRPC. It led to FDA approval of ¹⁷⁷Lu-PSMA-617 (Pluvicto) in this setting; unlike TheraP, it compared against standard care rather than an active life-prolonging comparator.",
+    "url": "https://app.notion.com/p/3e1127970a62816d80e4fc6b6ac89d96"
+  },
+  {
+    "db": "met",
+    "name": "TheraP",
+    "year": 2021,
+    "phase": "II",
+    "cancer": "Prostate",
+    "biomarker": "PSMA-PET-positive (dual PSMA/FDG-selected)",
+    "setting": "2L / 3L",
+    "n": 200,
+    "population": "mCRPC post-docetaxel, PSMA-PET-positive (SUVmax ≥20) without FDG-discordant disease (28% of screened men excluded on this basis); 91% had prior enzalutamide or abiraterone.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 vs cabazitaxel — ¹⁷⁷Lu-PSMA-617 6.0–8.5 GBq IV q6wk ×6 (dose-decrementing) vs cabazitaxel 20 mg/m² IV q3w ×10",
+    "tx": [
+      "RT",
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PSA response ≥50% (1°)",
+        "✅ 66% vs 37% — diff 29% (16–42), P<0.0001"
+      ],
+      [
+        "PFS",
+        "✅ 5.1 vs 5.1 mo — HR 0.63 (0.46–0.86), P=0.0028"
+      ],
+      [
+        "Objective response (measurable disease)",
+        "✅ 49% vs 24% — RR 2.12 (1.10–4.08), P=0.019"
+      ],
+      [
+        "OS (mature, 35.7-mo follow-up)",
+        "↔ 16.4 vs 19.4 mo — HR 0.97 (0.70–1.35), P=0.99"
+      ]
+    ],
+    "takeaway": "A randomized phase 2 trial — the first to test a PSMA-targeted radioligand against an active, life-prolonging comparator (cabazitaxel) rather than placebo or standard care. ¹⁷⁷Lu-PSMA-617 gave better PSA response, objective response, PFS, safety, and quality of life, but mature follow-up showed no OS difference; the trial was powered for PSA response, not OS, and substantial post-protocol crossover in both directions (32%/20%) likely diluted any OS signal.",
+    "url": "https://app.notion.com/p/3e1127970a6281b69c53cbb039b9ca7e"
+  },
+  {
+    "db": "met",
+    "name": "PSMAfore",
+    "year": 2024,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "PSMA-PET-positive",
+    "setting": "2L",
+    "n": 468,
+    "population": "Taxane-naive mCRPC, PSMA-PET-positive, progressed once on a prior ARPI (abiraterone, enzalutamide, darolutamide, or apalutamide) as most recent therapy; 81% had received that ARPI in the CRPC setting.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 vs change of ARPI (investigator-selected abiraterone or enzalutamide; crossover allowed at confirmed progression) — ¹⁷⁷Lu-PSMA-617 7.4 GBq IV q6wk ×6",
+    "tx": [
+      "RT",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°, 3rd cutoff)",
+        "✅ 11.6 vs 5.6 mo — HR 0.49 (0.39–0.61)"
+      ],
+      [
+        "OS (ITT, interim, 57% crossover)",
+        "↔ 23.7 vs 23.9 mo — HR 0.98 (0.75–1.28), P=0.44"
+      ],
+      [
+        "Time to first symptomatic skeletal event",
+        "✅ HR 0.41 (0.26–0.63)"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ 10.6 vs 4.2 mo — HR 0.40 (0.31–0.50)"
+      ]
+    ],
+    "takeaway": "The first phase 3 trial of ¹⁷⁷Lu-PSMA-617 in taxane-naive mCRPC, complementing VISION's post-taxane population. It significantly delayed radiographic progression, skeletal events, and PSA progression versus simply switching to a second ARPI, but showed no OS difference at this interim analysis — interpretation is limited by the very high crossover rate (57% of the ARPI-change arm received ¹⁷⁷Lu-PSMA-617 after progression), and the final OS analysis is still pending.",
+    "url": "https://app.notion.com/p/3e1127970a628184ae57e066e222c899"
+  },
+  {
+    "db": "met",
+    "name": "TAX 327",
+    "year": 2004,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1006,
+    "population": "Metastatic hormone-refractory (castration-resistant) prostate cancer, progressing on ADT, chemo-naive (estramustine allowed); randomized 1:1:1 to D3P/D1P/MP; ≈45% had baseline pain, median PSA 108–123 ng/mL, ≈90% bone mets.",
+    "treatment": "Docetaxel 75 mg/m² q3w (D3P, primary comparison) vs docetaxel 30 mg/m² weekly ×5/6wk (D1P, non-significant) vs mitoxantrone 12 mg/m² q3w (MP, control) — all + prednisone 5 mg PO BID",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS, D3P vs MP (1°, updated 2008)",
+        "✅ 19.2 vs 16.3 mo — HR 0.79 (0.67–0.93), P=0.004 [original 2004: 18.9 vs 16.5 mo, HR 0.76 (0.62–0.94), P=0.009]"
+      ],
+      [
+        "OS, D1P vs MP (updated 2008)",
+        "↔ 17.8 vs 16.3 mo — HR 0.87 (0.74–1.02), P=0.086 [original 2004: HR 0.91 (0.75–1.11), P=0.36]"
+      ],
+      [
+        "OS, combined docetaxel vs MP (original 2004)",
+        "✅ HR 0.83 (0.70–0.99), P=0.04"
+      ],
+      [
+        "Tumor response (measurable disease)",
+        "12% (D3P) vs 8% (D1P) vs 7% (MP), P=0.11/0.59 — NS"
+      ],
+      [
+        "≥Gr 3 TRAE",
+        "26% (D3P) vs 29% (D1P) vs 20% (MP); Gr 3/4 neutropenia 32% vs 2% vs 22%; impaired LVEF more frequent with mitoxantrone (22% vs ≈9% docetaxel)"
+      ]
+    ],
+    "takeaway": "Docetaxel q3w + prednisone (D3P) improved overall survival, pain, PSA response, and quality of life versus mitoxantrone in metastatic castration-resistant prostate cancer — the first chemotherapy shown to prolong survival in this disease, confirmed with a stronger P value on 2008 updated follow-up. Weekly docetaxel (D1P) showed no survival benefit over mitoxantrone in either analysis, establishing D3P — not D1P — as the standard of care and the foundational chemotherapy regimen in mCRPC.",
+    "url": "https://app.notion.com/p/3e1127970a6281dc9c85e8be23f4527c"
+  },
+  {
+    "db": "early",
+    "name": "BILCAP",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "Adjuvant",
+    "n": 447,
+    "population": "Resected cholangiocarcinoma (intrahepatic, hilar, or lower CBD) or muscle-invasive gallbladder cancer, stage I–III, with macroscopically complete (R0/R1) resection and ECOG PS <2; R1 margins in ~38% of each arm.",
+    "treatment": "Adjuvant capecitabine 1250 mg/m² BID D1–14 q3w ×8 cycles (24 wk) vs observation",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS, ITT (1°)",
+        "⚠️ 51.1 vs 36.4 mo — HR 0.81 (0.63–1.04), P=0.097 — missed primary endpoint"
+      ],
+      [
+        "OS, adjusted sensitivity analysis",
+        "✅ HR 0.71 (0.55–0.92), P=0.010"
+      ],
+      [
+        "OS, per-protocol",
+        "✅ 53 vs 36 mo — HR 0.75 (0.58–0.97), P=0.028"
+      ],
+      [
+        "RFS, ITT (0–24 mo)",
+        "✅ 24.4 vs 17.5 mo — HR 0.75 (0.58–0.98), P=0.033"
+      ],
+      [
+        "RFS, beyond 24 mo",
+        "⚠️ HR 1.48 (0.80–2.77), P=0.21 — benefit not sustained"
+      ]
+    ],
+    "takeaway": "BILCAP missed its prespecified ITT primary endpoint for overall survival (HR 0.81, 95% CI 0.63–1.04, P=0.097), but the prespecified adjusted sensitivity analysis (HR 0.71, P=0.010) and per-protocol analysis (HR 0.75, P=0.028, a 14.7-month median OS difference) were both positive, as was recurrence-free survival in the first 24 months. Despite missing its primary endpoint, this body of evidence established adjuvant capecitabine as standard of care after curative resection of biliary tract cancer — no dedicated adjuvant trial had previously defined one for this disease.",
+    "url": "https://app.notion.com/p/3e2127970a6281dcae52ff3d1b391792"
+  },
+  {
+    "db": "met",
+    "name": "FUGA-BT (JCOG1113)",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 354,
+    "population": "Chemotherapy-naive advanced/recurrent biliary tract cancer (cholangiocarcinoma or gallbladder/ampullary cancer), ECOG PS 0-1, enrolled across 33 institutions in Japan. Primary tumor sites were roughly balanced (gallbladder ~39%, intrahepatic ~27%, extrahepatic ~30%, ampulla ~3-4%) and about 60% had metastatic disease.",
+    "treatment": "Gemcitabine + S-1 (GS) vs gemcitabine + cisplatin (GC)",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°, non-inferiority)",
+        "↔ 15.1 vs 13.4 mo (median) — HR 0.945 (90% CI 0.777-1.149), P=0.046 for non-inferiority"
+      ],
+      [
+        "PFS",
+        "6.8 vs 5.8 mo (median) — HR 0.864 (95% CI 0.697-1.070)"
+      ],
+      [
+        "ORR",
+        "29.8% vs 32.4%"
+      ]
+    ],
+    "takeaway": "GS met its non-inferiority margin against GC as first-line therapy for advanced/recurrent BTC — this is a non-inferiority result, not a superiority win, so GS is a practical alternative rather than a new standard that beats GC on efficacy. Its main advantage is logistical: GS avoids the mandatory pre/post-hydration that cisplatin requires, and grade 3/4 anemia and peripheral neuropathy were both less frequent with GS. The trial population was exclusively Japanese, so whether a gemcitabine+capecitabine substitute would perform similarly in non-Asian patients is untested.",
+    "url": "https://app.notion.com/p/3e2127970a62811f8976ddeea6b78a5a"
+  },
+  {
+    "db": "met",
+    "name": "KHBO1401-MITSUBA",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 246,
+    "population": "Advanced biliary tract cancer (unresectable or recurrent adenocarcinoma/adenosquamous carcinoma of the bile duct, gallbladder, or ampulla), ECOG PS 0-2, across 39 centers in Japan (Kansai Hepatobiliary Oncology Group). About three-quarters of patients had unresectable disease and one-quarter had recurrence after surgery.",
+    "treatment": "Gemcitabine + cisplatin + S-1 (GCS) vs gemcitabine + cisplatin (GC)",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 13.5 vs 12.6 mo (median) — HR 0.79 (90% CI 0.628-0.996), P=0.046"
+      ],
+      [
+        "PFS",
+        "✅ 7.4 vs 5.5 mo (median) — HR 0.75 (95% CI 0.577-0.970), P=0.015"
+      ],
+      [
+        "ORR",
+        "✅ 41.5% vs 15.0%, P<0.001"
+      ],
+      [
+        "DCR",
+        "✅ 78.7% vs 62.0%, P=0.0066"
+      ]
+    ],
+    "takeaway": "GCS became the first regimen to beat GC in advanced BTC since GC was established as standard of care a decade earlier, improving OS, PFS, and nearly tripling response rate, with manageable added toxicity attributed to the biweekly schedule. The response benefit is of practical interest for conversion to surgery in initially unresectable disease. The trial population was exclusively Japanese, and because S-1 pharmacokinetics differ in Caucasian patients, a capecitabine-based triplet may be needed to replicate the approach outside Asia.",
+    "url": "https://app.notion.com/p/3e2127970a6281b8b8d3d859898694cc"
+  },
+  {
+    "db": "met",
+    "name": "TOPAZ-1",
+    "year": 2022,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 685,
+    "population": "Previously untreated, unresectable, locally advanced, or metastatic biliary tract cancer (cholangiocarcinoma or gallbladder cancer; ampullary carcinoma excluded), ECOG PS 0-1, at 105 sites in 17 countries. About 80% had initially unresectable disease and roughly 60% had PD-L1 tumor area positivity ≥1%.",
+    "treatment": "Durvalumab + gemcitabine/cisplatin vs placebo + gemcitabine/cisplatin",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°, updated analysis)",
+        "✅ 12.9 vs 11.3 mo (median) — HR 0.76 (95% CI 0.64-0.91); interim analysis HR 0.80 (0.66-0.97), P=0.021"
+      ],
+      [
+        "PFS",
+        "✅ 7.2 vs 5.7 mo (median) — HR 0.75 (95% CI 0.63-0.89), P=0.001"
+      ],
+      [
+        "ORR",
+        "✅ 26.7% vs 18.7%"
+      ],
+      [
+        "24-mo OS rate",
+        "✅ 23.6% vs 11.5%"
+      ]
+    ],
+    "takeaway": "TOPAZ-1 was the first phase 3 trial to show that adding a checkpoint inhibitor to first-line chemotherapy improves OS in advanced BTC, establishing durvalumab + gemcitabine/cisplatin as a new standard of care; the original interim analysis (HR 0.80, P=0.021) was confirmed and strengthened by a later analysis with 23.4-month median follow-up (HR 0.76), where the 24-month OS rate more than doubled versus chemotherapy alone — evidence of a durable rather than early/transient effect. PD-L1 expression was not predictive of benefit, with consistent hazard ratios regardless of tumor area positivity status.",
+    "url": "https://app.notion.com/p/3e2127970a6281f4a7ffe18dc351c444"
+  },
+  {
+    "db": "met",
+    "name": "KEYNOTE-966",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1069,
+    "population": "Previously untreated, unresectable locally advanced or metastatic biliary tract cancer, including mixed hepatocellular-cholangiocarcinoma, ECOG PS 0-1, at 175 sites across Asia-Pacific, Europe, North America, and South America — a larger and more globally representative population than TOPAZ-1 (55% enrolled outside Asia). About 68% had PD-L1 combined positive score ≥1.",
+    "treatment": "Pembrolizumab + gemcitabine/cisplatin vs placebo + gemcitabine/cisplatin",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 12.7 vs 10.9 mo (median) — HR 0.83 (95% CI 0.72-0.95), one-sided P=0.0034"
+      ],
+      [
+        "PFS",
+        "⚠️ 6.5 vs 5.6 mo (median) — HR 0.86 (95% CI 0.75-1.00), P=0.023 — efficacy boundary not met"
+      ],
+      [
+        "ORR",
+        "⚠️ 29% vs 29% — no difference"
+      ]
+    ],
+    "takeaway": "KEYNOTE-966 was the second global chemo-immunotherapy trial to show a statistically significant OS benefit in advanced BTC, after TOPAZ-1, with pembrolizumab + gemcitabine/cisplatin lowering the risk of death by 17% (HR 0.83). That OS win should not be read as a positive trial across the board: PFS (HR 0.86, P=0.023) and ORR (29% vs 29%, no difference) both failed to cross their pre-specified statistical efficacy boundaries despite the OS benefit. PD-L1 expression was not associated with benefit, echoing TOPAZ-1.",
+    "url": "https://app.notion.com/p/3e2127970a628127a5e6e859ad69d874"
+  },
+  {
+    "db": "met",
+    "name": "ABC-02",
+    "year": 2010,
+    "phase": "III",
+    "cancer": "Biliary tract cancer (BTC)",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 410,
+    "population": "Previously untreated, locally advanced or metastatic biliary tract cancer (cholangiocarcinoma, gallbladder cancer, or ampullary cancer), ECOG PS 0-2, across 37 centres in the UK.",
+    "treatment": "Cisplatin + gemcitabine (GC) vs gemcitabine alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 11.7 vs 8.1 mo (median) — HR 0.64 (95% CI 0.52-0.80), P<0.001"
+      ],
+      [
+        "PFS",
+        "✅ 8.0 vs 5.0 mo (median) — HR 0.63, P<0.001"
+      ]
+    ],
+    "takeaway": "ABC-02 is the foundational trial of advanced biliary tract cancer: it established cisplatin + gemcitabine (GC) as the first-line standard of care, a position GC has held ever since and against which every later regimen in this cancer (FUGA-BT's gemcitabine+S-1, KHBO1401-MITSUBA's added S-1, TOPAZ-1's and KEYNOTE-966's addition of a checkpoint inhibitor) has had to prove itself as the comparator arm. Adding cisplatin to gemcitabine alone cut the risk of death by 36% with no unacceptable increase in toxicity, turning a single-agent regimen into a two-drug backbone that later trials build on rather than replace.",
+    "url": "https://app.notion.com/p/3e2127970a628147918fd5992e4d6db5"
+  },
+  {
+    "db": "met",
+    "name": "ABC-06",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "BTC",
+    "biomarker": null,
+    "setting": "2L",
+    "n": null,
+    "population": "Advanced biliary tract cancer (intra-/extrahepatic CCA, gallbladder, or ampullary), with radiological progression on 1L gemcitabine+cisplatin. ECOG 0-1; 81-83% metastatic disease; median age 65.",
+    "treatment": "FOLFOX + ASC vs. ASC alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "✅ 6.2 vs 5.3 mo — HR 0.69 (0.50–0.97), P=0.031"
+      ],
+      [
+        "6-mo OS",
+        "✅ 50.6% vs 35.5%"
+      ],
+      [
+        "12-mo OS",
+        "✅ 25.9% vs 11.4%"
+      ],
+      [
+        "PFS",
+        "4.0 mo (FOLFOX arm only — no routine imaging in ASC-alone arm)"
+      ],
+      [
+        "ORR",
+        "4% (FOLFOX arm; CR 1%, PR 4%)"
+      ]
+    ],
+    "takeaway": "First randomized phase 3 evidence for second-line chemotherapy in advanced BTC, establishing FOLFOX as the standard-of-care 2L regimen. The absolute median OS gain looks modest, but the real signal is the doubling of 6- and 12-month OS rates over active symptom control alone. Complements NIFTY (a different 2L chemotherapy backbone) as a second positive randomized 2L option.",
+    "url": "https://app.notion.com/p/3e3127970a62810ea64be775f76692b2"
+  },
+  {
+    "db": "met",
+    "name": "ClarIDHy",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "BTC",
+    "biomarker": "IDH1 (mutant)",
+    "setting": "2L / 3L",
+    "n": null,
+    "population": "IDH1-mutant advanced cholangiocarcinoma, centrally confirmed, 1-2 prior treatment regimens with progression on prior therapy. ECOG 0-1; 92% metastatic disease; R132C was the most prevalent IDH1 mutation (70%).",
+    "treatment": "Ivosidenib vs. placebo (2:1); crossover to open-label ivosidenib permitted on placebo progression",
+    "tx": [
+      "IDH1i"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, IRC)",
+        "✅ 2.7 vs 1.4 mo — HR 0.37 (0.25–0.54), P<0.0001"
+      ],
+      [
+        "OS, ITT",
+        "⚠️ 10.8 vs 9.7 mo — HR 0.69 (0.44–1.10), P=0.060 (confounded by 57% crossover)"
+      ],
+      [
+        "OS, RPSFT-adjusted",
+        "✅ 10.8 vs 6.0 mo — HR 0.46 (0.28–0.75), P=0.0008"
+      ],
+      [
+        "DCR",
+        "53% vs 28%"
+      ]
+    ],
+    "takeaway": "First randomized phase 3 evidence for a targeted therapy in IDH1-mutant, chemotherapy-refractory cholangiocarcinoma (~13% of intrahepatic CCA), establishing ivosidenib as an option in this molecularly-defined subgroup. The PFS win is clean, but the intention-to-treat OS analysis is diluted by 57% of placebo patients crossing over to ivosidenib; a pre-specified crossover-adjusted (RPSFT) analysis shows a real OS benefit. Ivosidenib also had a favorable, well-tolerated safety profile with no treatment-related deaths.",
+    "url": "https://app.notion.com/p/3e3127970a628165bd75c759741af621"
+  },
+  {
+    "db": "met",
+    "name": "HERIZON-GEA-01",
+    "year": 2026,
+    "phase": "III",
+    "cancer": "GC / Esophagus",
+    "biomarker": "HER2",
+    "setting": "1L",
+    "n": null,
+    "population": "Previously untreated, HER2-positive (IHC3+ or IHC2+/ISH+) unresectable locally advanced/recurrent/metastatic gastric, GEJ, or esophageal adenocarcinoma. No prior HER2-targeted agents or checkpoint inhibitors allowed; 94-97% metastatic disease; ~60% PD-L1 TAP ≥1%.",
+    "treatment": "Zanidatamab + tislelizumab + chemo vs. zanidatamab + chemo vs. trastuzumab + chemo (comparator), 1:1:1",
+    "tx": [
+      "BsAb",
+      "ICI",
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, BICR)",
+        "✅ Zani-tisle-ChT 12.4 vs trastuzumab-ChT 8.1 mo — HR 0.63 (0.51–0.78), P<0.001"
+      ],
+      [
+        "PFS (1°, BICR)",
+        "✅ Zani-ChT 12.4 vs trastuzumab-ChT 8.1 mo — HR 0.65 (0.52–0.81), P<0.001"
+      ],
+      [
+        "OS (1°, 1st interim)",
+        "✅ Zani-tisle-ChT 26.4 vs trastuzumab-ChT 19.2 mo — HR 0.72 (0.57–0.90), P=0.004"
+      ],
+      [
+        "OS (1°, 1st interim)",
+        "⚠️ Zani-ChT 24.4 vs trastuzumab-ChT 19.2 mo — HR 0.80 (0.64–1.01), P=0.06, not yet significant at this interim"
+      ],
+      [
+        "ORR",
+        "70.7% vs 69.6% vs 65.7%"
+      ]
+    ],
+    "takeaway": "First phase 3 trial to beat trastuzumab + chemotherapy — the 15-year first-line standard since ToGA — in HER2-positive advanced gastroesophageal adenocarcinoma, with both zanidatamab-containing regimens improving PFS. At this first OS interim, the triplet with tislelizumab also beat trastuzumab on OS, but the zanidatamab+chemo doublet's OS has not yet reached significance and awaits the planned final analyses. Diarrhea, not myelosuppression, is the dominant zanidatamab-class toxicity.",
+    "url": "https://app.notion.com/p/3e3127970a62813c9991ff8f67e9c830"
+  },
+  {
+    "db": "met",
+    "name": "KEYNOTE-158",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": "MSI-H / dMMR",
+    "setting": "2L / 3L",
+    "n": null,
+    "population": "Previously-treated, advanced/metastatic MSI-H/dMMR noncolorectal solid tumors (27 tumor types, N=233), progressed on or intolerant to ≥1 prior therapy. Cholangiocarcinoma was the third most common tumor type (9.4%, n=22).",
+    "treatment": "Pembrolizumab monotherapy (single-arm, pan-tumor basket trial)",
+    "tx": [
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 34.3% (28.3–40.8), all tumor types"
+      ],
+      [
+        "ORR, cholangiocarcinoma cohort",
+        "40.9% (20.7–63.6), n=22"
+      ],
+      [
+        "OS, cholangiocarcinoma cohort",
+        "24.3 mo (6.5–NR)"
+      ],
+      [
+        "Durability",
+        "87% of responders ongoing ≥12 mo"
+      ]
+    ],
+    "takeaway": "Pan-tumor evidence that pembrolizumab monotherapy is highly active in MSI-H/dMMR solid tumors regardless of anatomic origin, supporting a biomarker-driven, tumor-agnostic option rather than a BTC-specific trial design. Directly relevant to BTC: the cholangiocarcinoma subgroup (n=22) had an ORR of 40.9% and median OS of 24.3 months, dramatically better than unselected chemo-refractory BTC. MSI-H/dMMR is uncommon in BTC (roughly 1-3% of cases) but identifies a small subset with markedly better immunotherapy outcomes when present.",
+    "url": "https://app.notion.com/p/3e3127970a6281f8a305dd08a10be7cd"
+  },
+  {
+    "db": "met",
+    "name": "NIFTY",
+    "year": 2021,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": null,
+    "setting": "2L",
+    "n": null,
+    "population": "Metastatic biliary tract cancer (intra-/extrahepatic CCA, gallbladder), with radiological progression on 1L gemcitabine+cisplatin. ECOG 0-1; South Korea, 5 centres; 100% metastatic by design.",
+    "treatment": "Liposomal irinotecan + 5-FU/LV vs. 5-FU/LV alone",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, BICR)",
+        "✅ 7.1 vs 1.4 mo — HR 0.56 (0.39–0.81), P=0.0019"
+      ],
+      [
+        "OS",
+        "✅ 8.6 vs 5.5 mo — HR 0.68 (0.48–0.98), P=0.035"
+      ],
+      [
+        "DCR",
+        "✅ 64.8% vs 34.9%, P=0.0002"
+      ],
+      [
+        "ORR",
+        "⚠️ 14.8% vs 5.8%, P=0.068 — trend only, not significant"
+      ]
+    ],
+    "takeaway": "First randomized trial to show superiority of a combination regimen over a fluoropyrimidine-alone backbone in second-line advanced BTC after gemcitabine-platinum failure. PFS, OS, and disease control rate all met, though the response-rate difference was only a trend — response-based endpoints appear to under-detect benefit in BTC, where disease stabilization often drives the survival gain. Complements ABC-06 (chemotherapy vs. active symptom control) as a second evidence-based 2L option.",
+    "url": "https://app.notion.com/p/3e3127970a628149b623f2123edbeb73"
+  },
+  {
+    "db": "met",
+    "name": "VISION",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "Lung",
+    "biomarker": "MET (exon 14 skipping)",
+    "setting": "1L–3L",
+    "n": 99,
+    "population": "Advanced/metastatic NSCLC with centrally-confirmed MET exon 14 skipping mutation, detected by liquid and/or tissue biopsy. Efficacy population (combined-biopsy, N=99): median age 74, 90% adenocarcinoma; up to 2 prior lines (43% treatment-naïve, 33% 1 prior line, 23% ≥2 prior lines). Stable/treated brain metastases eligible (11% had brain mets).",
+    "treatment": "Tepotinib monotherapy (single-arm)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 46% (36–57), combined biopsy — consistent whether MET ex14 skipping was detected by liquid biopsy (48%, 36–61) or tissue biopsy (50%, 37–63)"
+      ],
+      [
+        "DOR",
+        "Median 11.1 mo (combined biopsy); up to 15.7 mo (tissue-biopsy group) — durable"
+      ],
+      [
+        "PFS",
+        "8.5 mo (6.7–11.0), combined biopsy; 11.0 mo (5.7–17.1), tissue-biopsy group"
+      ],
+      [
+        "ORR, brain metastases (n=11)",
+        "55% (23–83)"
+      ],
+      [
+        "OS",
+        "⏳ 17.1 mo (immature at cutoff; 35% had received subsequent therapy)"
+      ]
+    ],
+    "takeaway": "Establishes tepotinib, an oral MET TKI, as a targeted option for advanced NSCLC with MET exon 14 skipping mutations (~3-4% of NSCLC) — a single-arm trial with no internal comparator, but its ORR (46%) and durability (DOR up to 15.7 months) compare favorably with earlier-generation MET-directed therapy such as crizotinib and capmatinib. Response was consistent whether MET exon 14 skipping was detected by liquid or tissue biopsy, supporting either as an adequate diagnostic strategy, and activity was maintained in patients with brain metastases (ORR 55%). Peripheral edema (7% grade ≥3) is the class-defining toxicity of MET inhibitors.",
+    "url": "https://app.notion.com/p/3e3127970a6281789380fcf74be9b5d3"
+  },
+  {
+    "db": "met",
+    "name": "LUMINOSITY",
+    "year": 2024,
+    "phase": "II",
+    "cancer": "Lung",
+    "biomarker": "MET (protein overexpression, IHC)",
+    "setting": "2L / 3L",
+    "n": 161,
+    "population": "Previously-treated, c-Met protein-overexpressing (IHC ≥25% 3+), nonsquamous EGFR-wildtype NSCLC. Up to 2 prior lines (≤1 prior cytotoxic chemo); heavily pretreated (98% prior platinum, 82% prior checkpoint inhibitor). Split into c-Met high (≥50% 3+, n=78) and c-Met intermediate (25–<50% 3+, n=83) subgroups.",
+    "treatment": "Telisotuzumab vedotin (Teliso-V) monotherapy (single-arm)",
+    "tx": [
+      "ADC"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 28.6% (21.7–36.2), c-Met OE total — 34.6% (24.2–46.2) c-Met high; 22.9% (14.4–33.4) c-Met intermediate"
+      ],
+      [
+        "DCR",
+        "59.0% (51.0–66.7) — 60.3% c-Met high; 57.8% c-Met intermediate"
+      ],
+      [
+        "PFS",
+        "5.7 mo (4.6–6.9) — comparable across c-Met high (5.5 mo) and intermediate (6.0 mo)"
+      ],
+      [
+        "OS",
+        "14.5 mo (9.9–16.6) — comparable across c-Met high (14.6 mo) and intermediate (14.2 mo)"
+      ],
+      [
+        "DOR",
+        "8.3 mo (5.6–11.3); DOR ≥6 mo in 56.5% of responders"
+      ]
+    ],
+    "takeaway": "Establishes c-Met protein overexpression by IHC — not a genomic MET alteration — as the selection biomarker for telisotuzumab vedotin (Teliso-V), a c-Met-directed ADC, in previously-treated nonsquamous EGFR-wildtype NSCLC; this protein-expression strategy is eligible in a much larger population (~25% of nonsquamous EGFR-wildtype NSCLC) than genomic MET exon 14 skipping (~3-4%). ORR was numerically higher in c-Met-high (34.6%) than c-Met-intermediate (22.9%) tumors, but DCR, PFS, and OS were comparable across both tiers, so efficacy is not confined to the c-Met-high group alone. Single-arm with no internal comparator; ILD (9.9%, including 3 grade 5 events) and peripheral neuropathy are the notable toxicities, and the squamous/EGFR-mutant cohorts closed for futility, supporting an ongoing phase 3 trial vs docetaxel in this population.",
+    "url": "https://app.notion.com/p/3e3127970a628119a67cdddeea95fdd8"
+  },
+  {
+    "db": "met",
+    "name": "FIGHT-202",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": "FGFR2 (fusion/rearrangement)",
+    "setting": "2L / 3L",
+    "n": 107,
+    "population": "Previously-treated, locally advanced or metastatic cholangiocarcinoma (89% intrahepatic) with centrally-confirmed FGFR2 fusion or rearrangement — the primary cohort (n=107). Two non-randomized comparator cohorts, other FGF/FGFR alterations (n=20) and no FGF/FGFR alterations (n=18), enrolled in parallel. ECOG 0-2, ≥1 prior systemic therapy (39% ≥2 prior lines); prior FGFR-inhibitor therapy excluded.",
+    "treatment": "Pemigatinib monotherapy (single-arm, non-randomized cohorts by biomarker status)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 35.5% (26.5–45.4), FGFR2 fusion/rearrangement cohort (n=107)"
+      ],
+      [
+        "ORR, comparator cohorts",
+        "❌ 0% in both other FGF/FGFR alterations (n=20) and no FGF/FGFR alterations (n=18) — benefit is fusion/rearrangement-specific, not pathway-wide"
+      ],
+      [
+        "PFS",
+        "6.9 mo (6.2–9.6), FGFR2 fusion/rearrangement cohort — vs 2.1 mo (other FGF/FGFR) and 1.7 mo (no FGF/FGFR), exploratory cohort comparison only"
+      ],
+      [
+        "OS",
+        "⏳ 21.1 mo (14.8–NE), FGFR2 fusion/rearrangement cohort; immature (37% dead at cutoff) — vs 6.7 mo (other FGF/FGFR) and 4.0 mo (no FGF/FGFR), exploratory"
+      ],
+      [
+        "DCR",
+        "82% (74–89), FGFR2 fusion/rearrangement cohort"
+      ]
+    ],
+    "takeaway": "First prospective phase 2 evidence for an FGFR inhibitor in FGFR2 fusion/rearrangement-positive cholangiocarcinoma (10–16% of patients, almost exclusively intrahepatic), establishing pemigatinib in this molecularly-defined subgroup and leading to its accelerated approval and the ongoing phase 3 FIGHT-302 (pemigatinib vs gemcitabine+cisplatin, 1L). The stark contrast between cohorts — 35.5% ORR with FGFR2 fusion/rearrangement vs 0% in both other-alteration cohorts — shows the benefit is specific to fusion/rearrangement events rather than FGF/FGFR pathway alterations broadly, reinforcing fusion/rearrangement testing as the correct selection strategy. Single-arm with non-randomized cohorts and immature OS (37% dead at cutoff); hyperphosphatemia is the on-target class toxicity, with no treatment-related deaths.",
+    "url": "https://app.notion.com/p/3e3127970a628147adc6fb7ab2842179"
+  },
+  {
+    "db": "met",
+    "name": "FOENIX-CCA2",
+    "year": 2023,
+    "phase": "II",
+    "cancer": "BTC",
+    "biomarker": "FGFR2 (fusion/rearrangement)",
+    "setting": "2L / 3L",
+    "n": 103,
+    "population": "Previously-treated, unresectable or metastatic intrahepatic cholangiocarcinoma with FGFR2 fusion or rearrangement (all-comers, no comparator cohorts). ≥1 prior systemic regimen including ≥1 prior gemcitabine+platinum regimen; no prior FGFR-inhibitor therapy; ECOG 0-1. 53% had ≥2 prior lines; 46 unique FGFR2 fusion partners identified.",
+    "treatment": "Futibatinib monotherapy (single-arm)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°)",
+        "✅ 42% (32–52), independent central review"
+      ],
+      [
+        "DCR",
+        "83% (74–89)"
+      ],
+      [
+        "DOR",
+        "9.7 mo (7.6–17.0) — durable, ≥72% of responses ≥6 mo"
+      ],
+      [
+        "PFS",
+        "9.0 mo (6.9–13.1)"
+      ],
+      [
+        "OS",
+        "21.7 mo (14.5–NE)"
+      ]
+    ],
+    "takeaway": "Establishes futibatinib — a covalent, irreversible pan-FGFR1-4 inhibitor — in previously-treated, FGFR2 fusion/rearrangement-positive intrahepatic cholangiocarcinoma, with ORR 42% (32–52) and durable responses (median DOR 9.7 mo) consistent across subgroups including heavily pretreated and older patients and those with co-occurring TP53 mutations. Complements FIGHT-202 (pemigatinib): both trials independently validate FGFR2 fusion/rearrangement as an actionable biomarker, with futibatinib numerically outperforming pemigatinib's ORR (42% vs 35.5%) and PFS (9.0 vs 6.9 mo) in cross-trial, non-randomized comparison — not tested head-to-head, so interpret cautiously. Covalent, irreversible FGFR binding is designed, preclinically, to be less susceptible to acquired FGFR2 kinase-domain resistance mutations than reversible inhibitors like pemigatinib, though FOENIX-CCA2 has no comparator arm to prove that advantage; hyperphosphatemia is the same on-target class toxicity as FIGHT-202, with no treatment-related deaths and only 2% discontinuing for toxicity.",
+    "url": "https://app.notion.com/p/3e3127970a6281e394b5ca478686c34c"
+  },
+  {
+    "db": "met",
+    "name": "ROAR",
+    "year": 2023,
+    "phase": "II",
+    "cancer": "BTC / HEENT (ATC) / GIST / Other (glioma, small-bowel adenoCA, HCL, MM)",
+    "biomarker": "RAF (BRAF V600E)",
+    "setting": "2L",
+    "n": 206,
+    "population": "Previously treated BRAF V600E advanced rare cancers with no satisfactory standard option, ECOG ≤2, BRAF/MEK-inhibitor naive. Single-arm basket: ATC 36, BTC 43, GIST 1, ASI 3, LGG 13, HGG 45, HCL 55, MM 10.",
+    "treatment": "Dabrafenib 150 mg BID + trametinib 2 mg QD (single-arm, no control)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "ORR (1°, investigator)",
+        "✅ ATC 56%, BTC 53%, LGG 54%, HGG 33%, ASI 67%, HCL 89%, MM 50%, GIST 0% (1 pt)"
+      ],
+      [
+        "Median PFS",
+        "ATC 6.7, BTC 9.0, HGG 5.5, ASI 9.5, MM 6.3 mo; LGG/HCL NE"
+      ],
+      [
+        "Median OS",
+        "ATC 14.5, BTC 13.5, HGG 17.6, ASI 21.8, MM 33.9 mo; LGG/HCL NE"
+      ],
+      [
+        "Median DoR",
+        "ATC 14.4, BTC 8.9, HGG 31.2, MM 11.1, ASI 7.7 mo; LGG/HCL NR"
+      ],
+      [
+        "Safety",
+        "G3/4 AE (any cause) 59.2%; AE → discontinuation 13.6%; no drug-related deaths"
+      ]
+    ],
+    "takeaway": "Dabrafenib + trametinib was active across BRAF V600E rare cancers, with ORR ≥50% in every cohort except high-grade glioma (33%). That tumor-agnostic activity was the basis of the FDA accelerated approval for any previously treated BRAF V600E unresectable or metastatic solid tumor (age ≥6; CRC excluded). In BTC, 53% ORR and 9.0-month median PFS make it a key 2L option. The caveat is the design: single-arm and non-randomized, and some cohorts are tiny.",
+    "url": "https://app.notion.com/3e4127970a62818f8bf4e3f2197185aa"
+  },
+  {
+    "db": "met",
+    "name": "PSMAddition",
+    "year": 2026,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1144,
+    "population": "PSMA-PET-positive mHSPC, treatment-naive or ≤45 days of ADT/ARPI; no docetaxel (ADT + ARPI doublet backbone). 68% high-volume, 50% de novo, 15% lung/liver metastases.",
+    "treatment": "¹⁷⁷Lu-PSMA-617 (×6 cycles) + ADT + ARPI vs ADT + ARPI (open-label, crossover on confirmed rPD)",
+    "tx": [
+      "RT",
+      "ARPI",
+      "Endocrine"
+    ],
+    "endpoints": [
+      [
+        "rPFS (1°)",
+        "✅ NR vs NR — HR 0.72 (0.58–0.90), P=0.0021"
+      ],
+      [
+        "OS",
+        "⏳ Immature at interim — HR 0.84 (0.63–1.13), P=0.13"
+      ],
+      [
+        "Time to PSA progression",
+        "✅ HR 0.42 (0.30–0.59)"
+      ],
+      [
+        "Time to mCRPC",
+        "✅ HR 0.70 (0.58–0.84)"
+      ],
+      [
+        "ORR / CR",
+        "85% vs 81% / 57% vs 42%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "⚠️ 51% vs 43%; dry mouth 46% (all Gr 1–2)"
+      ]
+    ],
+    "takeaway": "The first phase 3 radioligand trial in mHSPC: adding ¹⁷⁷Lu-PSMA-617 to ADT + ARPI cut the risk of radiographic progression or death by 28%. OS is still immature and not significant (HR 0.84), and crossover may confound it; the gain came with more adverse events (dry mouth, cytopenias, GI) and a slight trend toward earlier quality-of-life worsening.",
+    "url": "https://app.notion.com/3e4127970a6281788acdd0dc71f745f7"
   }
 ]

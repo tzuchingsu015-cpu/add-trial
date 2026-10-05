@@ -212,8 +212,22 @@ Restating a figure the row gives is fine: "cut the recurrence hazard by roughly
    else, because Pages deploys from what is committed.
 5. `python3 deck/sync.py commit /path/to/rows.json` (full sync only) to record
    the new fingerprints and timestamp.
-6. Commit the changed files to git on the current branch. Do not push unless
-   the user asked.
+6. Commit the changed files to git on the current branch, and push. Do not
+   leave this step out.
+
+   **Publishing without committing strands cards.** The artifact is not the
+   source of truth; `deck/trials.json` in the repo is. A card that exists only
+   in the published artifact is invisible to `sync.py plan`, absent from the
+   GitHub Pages app, and will be silently overwritten by the next session that
+   publishes from a repo checkout. This has happened: 25 prostate and biliary
+   trials lived only in the artifact until a later run hit a publish conflict
+   and recovered them. If a push fails, say so loudly rather than finishing
+   quietly — the cards are at risk until it lands.
+
+   If a publish is ever refused because the live `trials.json` is newer than
+   yours, that means exactly this drift. Read the published file, treat it as
+   the base, re-apply your work on top, and commit the result — never resend
+   your own copy over it.
 
 If cards changed, say so in your report. The artifact and the installed app
 both update themselves; only the single offline file on their device needs

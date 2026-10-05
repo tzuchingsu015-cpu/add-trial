@@ -256,7 +256,7 @@ kbd{
   .rail{padding:9px; gap:7px}
   .more{display:none; width:100%; flex-wrap:wrap; gap:7px}
   .more.open{display:flex}
-  .more select{flex:1 1 46%}
+  .more select{flex:1 1 100%}
   .more .btn{flex:1 1 auto; text-align:center}
 
   /* actions stay under the thumb instead of below a long card */
@@ -294,6 +294,7 @@ kbd{
       <select id="fCancer" aria-label="Cancer type"><option value="">All cancers</option></select>
       <select id="fSetting" aria-label="Setting or line"><option value="">All settings</option></select>
       <select id="fTx" aria-label="Treatment class"><option value="">All treatments</option></select>
+      <select id="fBm" aria-label="Biomarker"><option value="">All biomarkers</option></select>
       <button type="button" class="btn" id="shuffle">New run</button>
       <button type="button" class="btn" id="starOnly" aria-pressed="false">★ Starred</button>
       <button type="button" class="btn" id="viewBtn">Index</button>
@@ -339,7 +340,7 @@ kbd{
      depth and the filters, so reopening resumes exactly where you stopped.
      Stars are keyed by Notion url, not name: a sync can rename a card. */
   var KEY="trialrecall.v2", OLDKEY="trialrecall.stars";
-  var S={order:[],pos:0,stage:0,stars:{},filters:{deck:"all",cancer:"",setting:"",tx:"",q:"",starOnly:false}};
+  var S={order:[],pos:0,stage:0,stars:{},filters:{deck:"all",cancer:"",setting:"",tx:"",bm:"",q:"",starOnly:false}};
   var resumed=false, saveTimer=null;
 
   function load(){
@@ -412,6 +413,34 @@ kbd{
     if(/^3L/.test(s)) return "3rd line";
     return "Multi-line";
   }
+
+  /* The two databases label the same biomarker differently — the early DB says
+     "ER/PR (HR)" where the metastatic one says "HR", and "MSI-H / dMMR" where
+     the other says "dMMR". Filtering on the raw strings would split each of
+     those groups in half, so fold the synonyms together first. */
+  var BM_ALIAS={
+    "ER/PR":"HR (ER/PR)", "ER/PR (HR)":"HR (ER/PR)", "HR":"HR (ER/PR)",
+    "MSI-H":"MSI-H / dMMR", "dMMR":"MSI-H / dMMR",
+    "BRCA1/2":"BRCA",
+    "RAF":"BRAF",
+    "ESR":"ESR1",
+    "TP53 Y220C":"TP53",
+    "PIK3CA wild-type":"PIK3CA"
+  };
+  var BM_NONE="__none__";
+  function bmList(s){
+    if(!s) return [];
+    var out=[], seen=Object.create(null);
+    String(s).split(" / ").forEach(function(part){
+      /* the parenthetical is the detail, not the identity:
+         "RAS (KRAS G12C)" and "RAS" are one filter, not two */
+      var k=part.replace(/\s*\([^)]*\)\s*/g," ").trim();
+      if(!k) return;
+      k=BM_ALIAS[k]||k;
+      if(!seen[k]){ seen[k]=1; out.push(k); }
+    });
+    return out;
+  }
   function shuffled(a){
     a=a.slice();
     for(var k=a.length-1;k>0;k--){ var j=Math.floor(Math.random()*(k+1)); var t=a[k]; a[k]=a[j]; a[j]=t; }
@@ -427,6 +456,8 @@ kbd{
       if(f.cancer && group(c.cancer)!==f.cancer) return false;
       if(f.setting && bucket(c.setting)!==f.setting) return false;
       if(f.tx && (c.tx||[]).indexOf(f.tx)<0) return false;
+      if(f.bm===BM_NONE){ if((c._bm||[]).length) return false; }
+      else if(f.bm && (c._bm||[]).indexOf(f.bm)<0) return false;
       if(qv && c._hay.indexOf(qv)<0) return false;
       return true;
     });
@@ -581,6 +612,7 @@ kbd{
     S.filters.cancer=document.getElementById("fCancer").value;
     S.filters.setting=document.getElementById("fSetting").value;
     S.filters.tx=document.getElementById("fTx").value;
+    S.filters.bm=document.getElementById("fBm").value;
     rebuild(true); S.stage=0; render();
   }
 
@@ -592,7 +624,7 @@ kbd{
       filtersChanged();
     });
   });
-  ["q","fCancer","fSetting","fTx"].forEach(function(id){
+  ["q","fCancer","fSetting","fTx","fBm"].forEach(function(id){
     document.getElementById(id).addEventListener("input",filtersChanged);
   });
   document.getElementById("shuffle").addEventListener("click",newRun);
@@ -820,6 +852,7 @@ kbd{
     CARDS=data;
     CARDS.forEach(function(c){
       byUrl[c.url]=c;
+      c._bm=bmList(c.biomarker);
       c._hay=[c.name,c.cancer,c.setting,c.biomarker,c.population,c.treatment,c.takeaway,
         (c.tx||[]).join(" "),(c.endpoints||[]).map(function(e){return e.join(" ");}).join(" ")]
         .join(" ").toLowerCase();
@@ -835,6 +868,15 @@ kbd{
     fill("fSetting", CARDS.map(function(c){return bucket(c.setting);}));
     var tx=[]; CARDS.forEach(function(c){ (c.tx||[]).forEach(function(t){ tx.push(t); }); });
     fill("fTx", tx);
+    var bm=[]; CARDS.forEach(function(c){ c._bm.forEach(function(t){ bm.push(t); }); });
+    fill("fBm", bm);
+    /* all-comer trials are a real thing to study, so make them selectable */
+    var nb=CARDS.filter(function(c){ return !c._bm.length; }).length;
+    if(nb){
+      var o=document.createElement("option");
+      o.value=BM_NONE; o.textContent="(no biomarker) ("+nb+")";
+      document.getElementById("fBm").appendChild(o);
+    }
 
     /* restore the saved filters into the controls */
     var f=S.filters;
@@ -842,6 +884,7 @@ kbd{
       b.setAttribute("aria-pressed", String(b.dataset.deck===f.deck)); });
     document.getElementById("q").value=f.q||"";
     setSel("fCancer",f.cancer); setSel("fSetting",f.setting); setSel("fTx",f.tx);
+    setSel("fBm",f.bm);
     var so=document.getElementById("starOnly");
     so.setAttribute("aria-pressed",String(!!f.starOnly)); so.classList.toggle("on",!!f.starOnly);
 
