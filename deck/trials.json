@@ -811,6 +811,45 @@
   },
   {
     "db": "early",
+    "name": "CREATE-X",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Breast",
+    "biomarker": "HER2 (HER2-negative) / ER/PR (HR+ or TNBC)",
+    "setting": "Adjuvant",
+    "n": 910,
+    "population": "HER2-negative stage I–IIIB breast cancer with residual invasive disease (non-pCR) or ypN+ after neoadjuvant anthracycline and/or taxane. Japan + South Korea, age 20–74, ECOG 0–1. HR+ 68%, TNBC 32%; stage IIIA–IIIB ~40%.",
+    "treatment": "Post-neoadjuvant capecitabine 1250 mg/m² BID D1–14 Q3W ×6–8 cycles + standard therapy vs standard therapy alone (ET ×5 yr if HR+, RT if indicated)",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "DFS (1°)",
+        "✅ 5-yr 74.1% vs 67.6% — HR 0.70 (0.53–0.92), P=0.01"
+      ],
+      [
+        "OS",
+        "✅ 5-yr 89.2% vs 83.6% — HR 0.59 (0.39–0.90), P=0.01"
+      ],
+      [
+        "TNBC",
+        "✅ 5-yr DFS 69.8% vs 56.1% — HR 0.58 (0.39–0.87); OS HR 0.52 (0.30–0.90)"
+      ],
+      [
+        "HR+",
+        "⚠️ 5-yr DFS 76.4% vs 73.4% — HR 0.81 (0.55–1.17), NS; OS HR 0.73 (0.38–1.40)"
+      ],
+      [
+        "Toxicity",
+        "⚠️ Hand–foot syndrome 73.4% any grade, 11.1% Gr3; Gr3–4 neutropenia 6.3%"
+      ]
+    ],
+    "takeaway": "First proof that residual-disease-guided escalation works: adjuvant capecitabine after non-pCR in HER2-negative breast cancer improves both DFS and OS. The benefit is concentrated in TNBC; in HR+ disease it is small and not significant. It underpins today's SOC of capecitabine for residual TNBC, though how it combines with adjuvant pembrolizumab in the post-KEYNOTE-522 era is untested.",
+    "url": "https://app.notion.com/3e6127970a6281ab8d80f1ac9f76d6e3"
+  },
+  {
+    "db": "early",
     "name": "CTNeoBC (pooled analysis)",
     "year": 2014,
     "phase": "Meta / Retro",
@@ -10631,5 +10670,1404 @@
     ],
     "takeaway": "The first phase 3 radioligand trial in mHSPC: adding ¹⁷⁷Lu-PSMA-617 to ADT + ARPI cut the risk of radiographic progression or death by 28%. OS is still immature and not significant (HR 0.84), and crossover may confound it; the gain came with more adverse events (dry mouth, cytopenias, GI) and a slight trend toward earlier quality-of-life worsening.",
     "url": "https://app.notion.com/3e4127970a6281788acdd0dc71f745f7"
+  },
+  {
+    "db": "met",
+    "name": "CLARINET",
+    "year": 2014,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 204,
+    "population": "Advanced/metastatic, nonfunctioning, SSTR-positive (Krenning ≥2) enteropancreatic NET G1–2 with Ki-67 <10%. Pancreas 45%, midgut 36%, hindgut 7%, unknown 13%; 96% had stable disease at baseline, 84% were treatment-naïve, and hepatic tumor volume was >25% in 33%.",
+    "treatment": "Lanreotide Autogel 120 mg deep SC q28d vs placebo, up to 96 wk (crossover to open-label lanreotide)",
+    "tx": [
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ NR vs 18.0 mo — HR 0.47 (0.30–0.73), P<0.001; 24-mo PFS 65.1% vs 33.0%"
+      ],
+      [
+        "PFS by primary",
+        "Midgut HR 0.35 (0.16–0.80); pancreas 0.58 (0.32–1.04)"
+      ],
+      [
+        "Alive & progression-free",
+        "Wk 48 66% vs 49%; wk 96 52% vs 25%"
+      ],
+      [
+        "OS",
+        "↔ No significant difference (crossover to open-label lanreotide)"
+      ],
+      [
+        "Safety",
+        "Severe AE 26% vs 31%; drug-related AE 50% vs 28% (diarrhea 26% vs 9%, cholelithiasis 10% vs 3%); withdrawal for AE 3% vs 3%"
+      ]
+    ],
+    "takeaway": "The first RCT to prove an antiproliferative effect of a somatostatin analogue beyond midgut G1 disease: lanreotide roughly halved the risk of progression in nonfunctioning GEP-NET G1–2 (Ki-67 <10%), including pancreatic NET. The benefit came in mostly stable, untreated disease, which supports starting an SSA rather than watch-and-wait for higher-burden disease. There was no OS or quality-of-life difference, and it was well tolerated apart from GI effects and gallstones.",
+    "url": "https://app.notion.com/3e6127970a62817d921ff947bcc4e9cd"
+  },
+  {
+    "db": "met",
+    "name": "CABINET",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "2L / 3L",
+    "n": 298,
+    "population": "Advanced well/moderately differentiated NET G1–3 that progressed within 12 mo on ≥1 FDA-approved therapy (Lu-177 dotatate, everolimus, sunitinib); SSA continuation allowed. Two cohorts: extrapancreatic NET n=203 (GI 57%, lung 19%) and pancreatic NET n=95. Median 2 (epNET) / 2–3 (pNET) prior lines; ~60% had prior Lu-177 dotatate.",
+    "treatment": "Cabozantinib 60 mg PO daily vs placebo (2:1), separate epNET and pNET cohorts; crossover after central progression",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, epNET)",
+        "✅ 8.4 vs 3.9 mo — HR 0.38 (0.25–0.59), P<0.001"
+      ],
+      [
+        "PFS (1°, pNET)",
+        "✅ 13.8 vs 4.4 mo — HR 0.23 (0.12–0.42), P<0.001"
+      ],
+      [
+        "OS",
+        "↔ epNET 21.9 vs 19.7 mo — HR 0.86 (0.56–1.31); pNET 40.0 vs 31.1 mo — HR 0.95 (0.45–2.00) (immature; crossover)"
+      ],
+      [
+        "ORR",
+        "epNET 5% vs 0%; pNET 19% vs 0% (all PR)"
+      ],
+      [
+        "Gr ≥3 TRAE",
+        "⚠️ epNET 62% vs 27%; pNET 65% vs 23%; dose reduction 66–68%; 4 possibly related Gr5 (epNET)"
+      ]
+    ],
+    "takeaway": "The first phase III to show benefit after Lu-177 dotatate or everolimus: cabozantinib roughly tripled median PFS in both extrapancreatic (HR 0.38) and pancreatic NET (HR 0.23). The effect is mostly disease stabilization (ORR 5% epNET, 19% pNET), and OS is immature and confounded by crossover. It is toxic — grade ≥3 TRAEs in ~60% and dose reduction in two-thirds — so it is a new later-line option that needs active AE management.",
+    "url": "https://app.notion.com/3e6127970a6281509fbee86bf6a0af0a"
+  },
+  {
+    "db": "met",
+    "name": "ECOG-ACRIN E2211",
+    "year": 2023,
+    "phase": "II",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 144,
+    "population": "Advanced/unresectable low- or intermediate-grade pancreatic NET with radiographic progression within 12 mo. No prior temozolomide, dacarbazine, capecitabine or 5-FU; prior SSA 63%, everolimus ~35%, sunitinib ~10%; liver metastases 94%.",
+    "treatment": "CAPTEM (capecitabine 750 mg/m² BID D1–14 + temozolomide 200 mg/m² D10–14, q28d) vs temozolomide alone (200 mg/m² D1–5, q28d), up to 13 cycles",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 22.7 vs 14.4 mo — HR 0.58 (0.36–0.93), P=0.022 (interim; 2-sided α 0.20 design)"
+      ],
+      [
+        "PFS (final)",
+        "⚠️ 23.2 vs 15.1 mo — HR 0.71 (0.46–1.07)"
+      ],
+      [
+        "OS (final)",
+        "⚠️ 58.7 vs 53.8 mo — HR 0.82 (0.51–1.33), P=0.42"
+      ],
+      [
+        "ORR",
+        "39.7% vs 33.8% (P=0.59, NS)"
+      ],
+      [
+        "ORR by MGMT (IHC)",
+        "MGMT-low 52% vs MGMT-high 15% — OR 6.38 (2.19–18.60), P=0.0004"
+      ],
+      [
+        "Gr 3–4 TRAE",
+        "⚠️ 45% vs 22% (OR 2.69; P=0.005); no treatment deaths"
+      ]
+    ],
+    "takeaway": "The only randomized trial of CAPTEM in pancreatic NET: adding capecitabine to temozolomide lengthened PFS (22.7 vs 14.4 mo, HR 0.58), with the highest ORR (~40%) of any randomized pNET regimen. The ~5-month OS gain was not significant, the primary result came from the interim analysis of a lenient phase II design, and grade 3–4 toxicity doubled (45% vs 22%). MGMT deficiency tracked with response (IHC-low ORR 52% vs 15%), so testing is worth considering when tumor shrinkage is the goal.",
+    "url": "https://app.notion.com/3e6127970a6281f2be95ce0674370214"
+  },
+  {
+    "db": "met",
+    "name": "NETTER-1",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "2L",
+    "n": 229,
+    "population": "Inoperable, well-differentiated (Ki-67 ≤20%), SSTR-positive (all target lesions) midgut NET that progressed on standard-dose octreotide LAR (20–30 mg); KPS ≥60. Ileum 74%, liver metastases 83%, G1 69%.",
+    "treatment": "¹⁷⁷Lu-Dotatate 7.4 GBq IV q8w ×4 + octreotide LAR 30 mg vs high-dose octreotide LAR 60 mg q4w",
+    "tx": [
+      "RT",
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ NR vs 8.4 mo — HR 0.21 (0.13–0.33), P<0.001; 20-mo PFS 65.2% vs 10.8%"
+      ],
+      [
+        "OS (final)",
+        "⚠️ 48.0 vs 36.3 mo — HR 0.84 (0.60–1.17), P=0.30; 36% control crossover (crossover-adjusted HR 0.73, 0.40–1.34)"
+      ],
+      [
+        "ORR",
+        "18% vs 3% (P<0.001)"
+      ],
+      [
+        "Gr 3–4 AE",
+        "41% vs 33%; lymphopenia 9%, thrombocytopenia 2%; no renal toxicity; long-term MDS 2% (1 death), no AML"
+      ]
+    ],
+    "takeaway": "A practice-changer for PRRT: ¹⁷⁷Lu-Dotatate cut the risk of progression by about 80% versus high-dose octreotide in SSA-refractory midgut NET (20-month PFS 65% vs 11%), making it the standard second line after SSA for SSTR-positive midgut NET. The final 11.7-month OS gain was not significant (HR 0.84), with 36% of controls crossing over to PRRT. It was well tolerated, though long-term MDS occurred in about 2%.",
+    "url": "https://app.notion.com/3e6127970a628101a153c3ae89779326"
+  },
+  {
+    "db": "met",
+    "name": "NETTER-2",
+    "year": 2024,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 226,
+    "population": "Newly diagnosed (within 6 mo), SSTR-positive, well-differentiated advanced GEP-NET of higher grade: G2 (Ki-67 10–20%) or G3 (Ki-67 >20–55%). Pancreas 54%, small intestine 29%; G3 35%; liver metastases 90%; median 1.9 mo from diagnosis.",
+    "treatment": "¹⁷⁷Lu-Dotatate 7.4 GBq IV q8w ×4 + octreotide LAR 30 mg vs high-dose octreotide LAR 60 mg q4w (2:1)",
+    "tx": [
+      "RT",
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 22.8 vs 8.5 mo (BICR) — HR 0.276 (0.182–0.418), P<0.0001"
+      ],
+      [
+        "ORR",
+        "43.0% vs 9.3% — OR 7.81 (3.32–18.40), P<0.0001; CR 5% vs 0%"
+      ],
+      [
+        "OS",
+        "⏳ Immature — NR in both arms; 48% of controls crossed over to ¹⁷⁷Lu-Dotatate"
+      ],
+      [
+        "Gr ≥3 AE",
+        "Any Gr ≥3 AE 35% vs 27%; lymphopenia 5%, leukopenia 2%, thrombocytopenia 2%; 1 MDS (~14 mo); no drug-related deaths"
+      ]
+    ],
+    "takeaway": "The first phase III of first-line PRRT: adding ¹⁷⁷Lu-Dotatate to octreotide nearly tripled median PFS (22.8 vs 8.5 mo, HR 0.28) in newly diagnosed higher-grade (G2 Ki-67 ≥10% and G3) SSTR-positive GEP-NET, with an ORR of 43% that is unusual for NET. It sets a new first-line standard for this population, but OS is immature and confounded by 48% crossover, QoL did not differ, and MDS risk remains. The open-label control arm (octreotide 60 mg) is not an established standard for higher-grade NET.",
+    "url": "https://app.notion.com/3e6127970a62815f8856d2e380c25845"
+  },
+  {
+    "db": "met",
+    "name": "PROMID",
+    "year": 2009,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 85,
+    "population": "Treatment-naïve, well-differentiated, locally inoperable or metastatic midgut NET. Ki-67 ≤2% in 95%; functional (carcinoid syndrome) 39%; primary resected 66%; hepatic tumor load ≤10% in most (75%).",
+    "treatment": "Octreotide LAR 30 mg IM q28d vs placebo, until progression or death",
+    "tx": [
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "TTP (1°)",
+        "✅ 14.3 vs 6.0 mo — HR 0.34 (0.20–0.59), P=0.000072 (planned interim analysis)"
+      ],
+      [
+        "TTP by subgroup",
+        "Liver load ≤10% HR 0.17 vs >50% 0.71; primary resected 0.16 vs not resected 0.84; functional 0.23, non-functional 0.25"
+      ],
+      [
+        "OS",
+        "↔ NR vs 73.7 mo — HR 0.81 (0.30–2.18), P=0.77 (16 deaths; crossover)"
+      ],
+      [
+        "Response",
+        "1 PR in the whole trial (1.2%); SD at 6 mo 66.7% vs 37.2%"
+      ],
+      [
+        "Safety",
+        "Grade ≥3 rate not reported; serious AE 11 vs 10 patients; discontinuation for AE 5 vs 0; diarrhea, flatulence, gallstones (5 vs 1) more with octreotide"
+      ]
+    ],
+    "takeaway": "The first placebo-controlled proof that a somatostatin analogue controls NET growth, not just symptoms: octreotide LAR more than doubled time to progression (14.3 vs 6.0 mo, HR 0.34) in treatment-naïve metastatic midgut NET, and it is the basis of first-line SSA for midgut NET. The effect held in both functional and non-functional tumors and was largest with low (≤10%) liver burden and a resected primary. The trial was small, almost entirely Ki-67 ≤2%, and showed no OS signal given few deaths and crossover.",
+    "url": "https://app.notion.com/3e6127970a6281d8a8dee2bfd76525c9"
+  },
+  {
+    "db": "met",
+    "name": "RADIANT-2",
+    "year": 2011,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 429,
+    "population": "Advanced low/intermediate-grade functional NET with a history of carcinoid syndrome and RECIST progression within 12 mo. Small intestine 52%, lung 10%, colon 7%; prior SSA 79%, prior chemo 30%. Baseline imbalances favoured the placebo arm (fewer lung primaries, better PS, less prior chemo).",
+    "treatment": "Everolimus 10 mg PO daily + octreotide LAR 30 mg vs placebo + octreotide LAR 30 mg q28d",
+    "tx": [
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "⚠️ 16.4 vs 11.3 mo (central) — HR 0.77 (0.59–1.00), one-sided P=0.026; missed prespecified boundary (≤0.0246)"
+      ],
+      [
+        "PFS (investigator / IPCW)",
+        "Investigator HR 0.78 (0.62–0.98); IPCW-adjusted HR 0.60 (0.44–0.84)"
+      ],
+      [
+        "OS",
+        "↔ NR; HR 1.22 (0.91–1.62), adjusted 1.06 (58% placebo crossover)"
+      ],
+      [
+        "ORR",
+        "2% vs 2%; SD 84% vs 81%"
+      ],
+      [
+        "Gr 3–4 AE",
+        "Stomatitis 7%, fatigue 7%, diarrhea 6%, hyperglycemia 5%, thrombocytopenia 5%, infections 5%; pneumonitis 8%; discontinuation for TRAE 19% vs 3%"
+      ]
+    ],
+    "takeaway": "Negative by its prespecified criteria: adding everolimus to octreotide LAR in functional NET with carcinoid syndrome gave a numerically meaningful PFS gain (16.4 vs 11.3 mo, HR 0.77) but just missed the significance boundary (P=0.026 vs ≤0.0246). Baseline imbalances and informative censoring probably blunted the effect (IPCW HR 0.60), and there was no OS benefit with 58% crossover. It led to RADIANT-4 in non-functional lung/GI NET.",
+    "url": "https://app.notion.com/3e6127970a6281bfb0e7efca494a7602"
+  },
+  {
+    "db": "met",
+    "name": "RADIANT-3",
+    "year": 2011,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 410,
+    "population": "Advanced low/intermediate-grade pancreatic NET with radiologic progression within 12 mo. Well differentiated 83%; liver metastases 92%; functional 24%; prior chemo 50%, prior SSA 49%.",
+    "treatment": "Everolimus 10 mg PO daily vs placebo, both with best supportive care (SSA allowed)",
+    "tx": [
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 11.0 vs 4.6 mo (investigator) — HR 0.35 (0.27–0.45), P<0.001; central 11.4 vs 5.4 mo — HR 0.34 (0.26–0.44)"
+      ],
+      [
+        "18-mo PFS",
+        "34% vs 9%"
+      ],
+      [
+        "OS",
+        "↔ NR in both arms — HR 1.05 (0.71–1.55), P=0.59 (73% placebo crossover)"
+      ],
+      [
+        "ORR",
+        "5% vs 2%; SD 73% vs 51%"
+      ],
+      [
+        "Gr 3–4 AE",
+        "Anemia 6% vs 0%, hyperglycemia 5% vs 2%; pneumonitis 12% any grade; discontinuation for TRAE 13% vs 2%; 1 drug-related death (ARDS)"
+      ]
+    ],
+    "takeaway": "Established everolimus for progressive advanced pancreatic NET: it more than doubled median PFS (11.0 vs 4.6 mo), a 65% reduction in the risk of progression (HR 0.35). The benefit is mostly disease stabilization (ORR 5%, SD 73%), and there was no OS difference with 73% crossover. Stomatitis, pneumonitis, hyperglycemia and infections need active monitoring.",
+    "url": "https://app.notion.com/3e6127970a6281b58223f4a7b1760253"
+  },
+  {
+    "db": "met",
+    "name": "RADIANT-4",
+    "year": 2016,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 302,
+    "population": "Advanced, progressive, well-differentiated, non-functional NET of lung or GI origin. Lung 30%, GI 58% (ileum, rectum…), unknown primary 12%; prior SSA >50%, prior chemo ~25%.",
+    "treatment": "Everolimus 10 mg PO daily vs placebo (2:1), both with best supportive care",
+    "tx": [
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 11.0 vs 3.9 mo (central) — HR 0.48 (0.35–0.67), P<0.00001; investigator 14.0 vs 5.5 mo"
+      ],
+      [
+        "PFS by origin",
+        "Lung HR 0.50 (0.28–0.88); GI 0.56 (0.37–0.84)"
+      ],
+      [
+        "OS (interim)",
+        "⚠️ NR — HR 0.64 (0.40–1.05), P=0.037 (boundary 0.0002)"
+      ],
+      [
+        "ORR",
+        "2% vs 1%; SD 81% vs 64%"
+      ],
+      [
+        "Gr 3–4 AE",
+        "Stomatitis 9%, diarrhea 7%, infections 7%, anemia 4%, fatigue 3%, hyperglycemia 3%; pneumonitis 16% any grade (Gr3 1%); discontinuation 12% vs 3%"
+      ]
+    ],
+    "takeaway": "The first positive phase III in non-functional lung and GI NET: everolimus nearly tripled median PFS (11.0 vs 3.9 mo, HR 0.48), with benefit in both lung (HR 0.50) and GI (HR 0.56) primaries. The effect is mostly disease stabilization (ORR 2%), and the OS trend (HR 0.64) was not significant at the interim analysis. It is a standard option for progressive lung/GI NET.",
+    "url": "https://app.notion.com/3e6127970a6281e0b12fe200c3cc35b8"
+  },
+  {
+    "db": "met",
+    "name": "SUN1111",
+    "year": 2011,
+    "phase": "III",
+    "cancer": "NEN",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 171,
+    "population": "Advanced/metastatic, unresectable, well-differentiated pancreatic NET with RECIST progression within 12 mo; ECOG 0–1, no prior TKI/VEGF inhibitor. Prior systemic chemo 69%, prior SSA 36%; non-functioning ~50%.",
+    "treatment": "Sunitinib 37.5 mg PO daily (continuous) vs placebo, both with best supportive care (SSA allowed)",
+    "tx": [
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 11.4 vs 5.5 mo — HR 0.42 (0.26–0.66), P<0.001; stopped early (z 3.85 vs boundary 3.88)"
+      ],
+      [
+        "6-mo PFS",
+        "71.3% vs 43.2%"
+      ],
+      [
+        "OS",
+        "⚠️ NR in both arms; deaths 10% vs 25% — HR 0.41 (0.19–0.89), P=0.02 (immature; crossover)"
+      ],
+      [
+        "ORR",
+        "9.3% vs 0% (P=0.007); CR 2%, PR 7%; DCR 72% vs 60%"
+      ],
+      [
+        "Gr 3–4 AE",
+        "Neutropenia 12%, hypertension 10%, diarrhea 5%; discontinuation for AE 17% vs 8%; dose reduction 31%; 1 grade 5 cardiac failure"
+      ]
+    ],
+    "takeaway": "Established sunitinib for progressive well-differentiated pancreatic NET, roughly doubling median PFS (11.4 vs 5.5 mo, HR 0.42) and, unlike everolimus in RADIANT-3, producing some objective responses (ORR 9%). The trial stopped early at 171 of 340 planned patients with z just below the formal boundary, so the PFS effect and the OS signal (HR 0.41, immature and crossover-confounded) are likely overestimated. Watch for neutropenia, hypertension, diarrhea and hand–foot syndrome.",
+    "url": "https://app.notion.com/3e7127970a62819b9701cae6974b855c"
+  },
+  {
+    "db": "met",
+    "name": "DUO-E",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Endometrial",
+    "biomarker": "dMMR / PD-L1",
+    "setting": "1L",
+    "n": 718,
+    "population": "Newly diagnosed measurable stage III/IV or recurrent endometrial cancer, 1L (prior adjuvant chemo allowed if relapse ≥12 mo); carcinosarcoma allowed. pMMR 80%, recurrent 52%, PD-L1+ (TAP ≥1%) ~67%.",
+    "treatment": "Carboplatin/paclitaxel + durvalumab → durvalumab + olaparib vs carboplatin/paclitaxel + durvalumab → durvalumab vs carboplatin/paclitaxel + placebo (1:1:1)",
+    "tx": [
+      "ChT",
+      "ICI",
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°) D+O vs control",
+        "✅ 15.1 vs 9.6 mo — HR 0.55 (0.43–0.69), P<0.0001"
+      ],
+      [
+        "PFS (1°) D vs control",
+        "✅ 10.2 vs 9.6 mo — HR 0.71 (0.57–0.89), P=0.003"
+      ],
+      [
+        "PFS by MMR",
+        "dMMR: D+O HR 0.41 (0.21–0.75), D 0.42 (0.22–0.80); pMMR: D+O 0.57 (0.44–0.73), D 0.77 (0.60–0.97)"
+      ],
+      [
+        "D+O vs D (exploratory)",
+        "ITT HR 0.78 (0.61–0.99); pMMR 0.76 (0.59–0.99); dMMR 0.97 (0.49–1.98)"
+      ],
+      [
+        "OS (interim)",
+        "⚠️ NR vs NR vs 25.9 mo — D+O HR 0.59 (0.42–0.83), P=0.003; D 0.77 (0.56–1.07), P=0.12 (IA1, 28% maturity; not formally significant)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "67% vs 55% vs 56% (maintenance 41% vs 16% vs 17%); anemia 24% vs 16% vs 14%; no MDS/AML"
+      ]
+    ],
+    "takeaway": "First phase III to add a PARP inhibitor to chemo-immunotherapy in 1L advanced/recurrent endometrial cancer: durvalumab + carboplatin/paclitaxel improved PFS, and olaparib maintenance improved it further. Olaparib's extra benefit lies mainly in pMMR (HR 0.76 vs durvalumab) and PD-L1-positive disease — none in dMMR (HR 0.97), where durvalumab drives the gain — and PD-L1-negative patients gained little from either arm. OS is immature, and olaparib adds grade ≥3 toxicity, mainly anemia.",
+    "url": "https://app.notion.com/3e8127970a6281048d13da82b020a320"
+  },
+  {
+    "db": "met",
+    "name": "GOG0209",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "Endometrial",
+    "biomarker": null,
+    "setting": "1L",
+    "n": 1381,
+    "population": "Chemo-naive stage III/IV or recurrent endometrial cancer with poor potential for cure by surgery/RT; GOG PS 0–2. Measurable or recurrent disease 61% (non-measurable stage III/IV allowed from 2006); median age 61.",
+    "treatment": "Paclitaxel 175 mg/m² + carboplatin AUC 6 (TC) vs doxorubicin 45 + cisplatin 50 + paclitaxel 160 with G-CSF (TAP), q3w × 7",
+    "tx": [
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "OS (1°)",
+        "↔ 37.0 vs 41.1 mo — HR 1.002 (90% CI 0.90–1.12); non-inferior (margin 1.2)"
+      ],
+      [
+        "PFS",
+        "↔ 13.2 vs 13.9 mo — HR 1.032 (90% CI 0.93–1.15)"
+      ],
+      [
+        "ORR",
+        "↔ 52% vs 52% (measurable disease)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "Neutropenia 80% vs 52%; thrombocytopenia 12% vs 23%; G≥2 sensory neuropathy 20% vs 26%; discontinuation for toxicity 12% vs 18%"
+      ]
+    ],
+    "takeaway": "Carboplatin + paclitaxel was non-inferior to doxorubicin/cisplatin/paclitaxel (TAP) for OS and PFS, with less toxicity, slightly better quality of life, and a simpler one-day schedule without routine G-CSF. That made TC the 1L standard for advanced/recurrent endometrial cancer and the backbone for the later ICI trials (NRG-GY018, RUBY, DUO-E). Caveat: open-label, with a mixed measurable/non-measurable population after the 2006 eligibility change.",
+    "url": "https://app.notion.com/3e8127970a6281fe81d1f23034156224"
+  },
+  {
+    "db": "met",
+    "name": "GOG-229E",
+    "year": 2011,
+    "phase": "II",
+    "cancer": "Endometrial",
+    "biomarker": null,
+    "setting": "2L / 3L",
+    "n": 52,
+    "population": "Recurrent/persistent endometrial cancer after 1–2 prior cytotoxic regimens; measurable disease, GOG PS 0–2, no prior VEGF-targeted therapy. Serous 27%, grade 3 71%, 2 prior regimens 37%.",
+    "treatment": "Bevacizumab 15 mg/kg IV q3w (single-arm)",
+    "tx": [
+      "Anti-VEGF"
+    ],
+    "endpoints": [
+      [
+        "6-mo PFS (1°)",
+        "✅ 40.4% (21/52; 90% CI 29–53%) — met criterion (>10 pts)"
+      ],
+      [
+        "ORR (1°)",
+        "⚠️ 13.5% (7/52; 90% CI 6.5–27%); CR 1.9%, PR 11.5%; median DoR 6.0 mo"
+      ],
+      [
+        "PFS / OS",
+        "Median PFS 4.2 mo; median OS 10.5 mo"
+      ],
+      [
+        "Plasma VEGF-A (exploratory)",
+        "High (≥76.9 pg/mL) → no response and worse OS, adjusted HR 5.30 (2.00–14.02)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "Hypertension 8%; hemorrhage 2 pts (1 G4 gastric); thrombosis 2; proteinuria 2; no GI perforation/fistula, no treatment-related deaths"
+      ]
+    ],
+    "takeaway": "Single-agent bevacizumab is active in previously treated recurrent endometrial cancer: 40% were progression-free at 6 months, meeting the prespecified criterion and the best among GOG historical phase II controls, though ORR was modest (13.5%). Responses occurred across histologies (4 of 7 in serous tumours), and high plasma VEGF-A predicted no response and worse OS in exploratory analysis. Small single-arm study against historical controls.",
+    "url": "https://app.notion.com/3e8127970a62818782a9d6c579dee1d8"
+  },
+  {
+    "db": "met",
+    "name": "KEYNOTE-775",
+    "year": 2022,
+    "phase": "III",
+    "cancer": "Endometrial",
+    "biomarker": "dMMR",
+    "setting": "2L",
+    "n": 827,
+    "population": "Advanced/recurrent endometrial cancer after 1 prior platinum regimen (2 allowed if one was (neo)adjuvant); no prior ICI or VEGF-targeted therapy; any histology except carcinosarcoma/sarcoma; ECOG 0–1. pMMR 84%; serous 26%.",
+    "treatment": "Lenvatinib 20 mg QD + pembrolizumab 200 mg q3w (≤35 doses) vs physician's choice of doxorubicin 60 q3w or weekly paclitaxel 80 (3 on / 1 off)",
+    "tx": [
+      "TKI",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ pMMR 6.6 vs 3.8 mo — HR 0.60 (0.50–0.72); all 7.2 vs 3.8 mo — HR 0.56 (0.47–0.66); both P<0.001"
+      ],
+      [
+        "OS (1°)",
+        "✅ pMMR 17.4 vs 12.0 mo — HR 0.68 (0.56–0.84); all 18.3 vs 11.4 mo — HR 0.62 (0.51–0.75); both P<0.001"
+      ],
+      [
+        "ORR",
+        "✅ All 31.9% vs 14.7%; pMMR 30.3% vs 15.1%; dMMR 40% vs 12%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "88.9% vs 72.7%; L+P hypertension 37.9%, weight loss 10.3%; lenvatinib dose reduction 66.5%; discontinuation of any drug 33.0% vs 8.0%"
+      ]
+    ],
+    "takeaway": "After platinum-based chemotherapy, lenvatinib + pembrolizumab improved PFS, OS and ORR over doxorubicin or weekly paclitaxel in advanced endometrial cancer — and the OS benefit holds in pMMR disease (HR 0.68), where PD-1 monotherapy is weak. The price is substantial toxicity: grade ≥3 AEs in 89%, lenvatinib dose reduction in two-thirds, and hypothyroidism in 57%.",
+    "url": "https://app.notion.com/3e8127970a62813d8927ec9d434a34fc"
+  },
+  {
+    "db": "met",
+    "name": "KEYNOTE-868 (NRG-GY018)",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Endometrial",
+    "biomarker": "dMMR",
+    "setting": "1L",
+    "n": 816,
+    "population": "Measurable stage III/IVA, or stage IVB/recurrent (± measurable) endometrial cancer; prior adjuvant chemo allowed if ≥12 mo; carcinosarcoma excluded; ECOG 0–2. Randomized in separate dMMR (n=225) and pMMR (n=591) cohorts.",
+    "treatment": "Pembrolizumab 200 mg q3w + carboplatin/paclitaxel × 6 → pembrolizumab 400 mg q6w (≤14 cycles) vs placebo + carboplatin/paclitaxel → placebo",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "PFS dMMR (1°)",
+        "✅ NR vs 7.6 mo — HR 0.30 (0.19–0.48), P<0.001; 12-mo PFS 74% vs 38%"
+      ],
+      [
+        "PFS pMMR (1°)",
+        "✅ 13.1 vs 8.7 mo — HR 0.54 (0.41–0.71), P<0.001"
+      ],
+      [
+        "OS",
+        "⏳ Immature (interim futility analysis only)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "dMMR 63.3% vs 47.2%; pMMR 55.1% vs 45.3% — mainly anemia and neutropenia"
+      ]
+    ],
+    "takeaway": "Adding pembrolizumab to carboplatin–paclitaxel and continuing it as maintenance improved PFS in 1L advanced/recurrent endometrial cancer in both MMR cohorts — a 70% cut in progression risk in dMMR (HR 0.30) and 46% in pMMR (HR 0.54). Chemotherapy toxicity was not noticeably increased and immune-related AEs were as expected. Caveats: OS is immature and pMMR median follow-up was only 7.9 months.",
+    "url": "https://app.notion.com/3e8127970a62812cbea7dbc44ddebf6b"
+  },
+  {
+    "db": "met",
+    "name": "MITO END-2",
+    "year": 2019,
+    "phase": "II",
+    "cancer": "Endometrial",
+    "biomarker": null,
+    "setting": "1L / 2L",
+    "n": 108,
+    "population": "Advanced (FIGO III–IV) or recurrent endometrial cancer, measurable or evaluable; ≤1 prior platinum line (≥6 mo interval); carcinosarcoma excluded; ECOG ≤2. Recurrent ~62%, grade 3 ~50%, serous/clear cell 16%, prior chemo 24%.",
+    "treatment": "Carboplatin AUC 5 + paclitaxel 175 q3w × 6–8 + bevacizumab 15 mg/kg q3w → bevacizumab maintenance vs carboplatin/paclitaxel alone",
+    "tx": [
+      "ChT",
+      "Anti-VEGF"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "❌ 13.7 vs 10.5 mo — HR 0.84 (0.5–1.3), P=0.43; post-hoc Breslow test P=0.08 (study α 0.20)"
+      ],
+      [
+        "ORR",
+        "⚠️ 74.4% vs 53.1% (evaluable pts); CR 44.7% vs 18.4%"
+      ],
+      [
+        "Disease control",
+        "✅ 6-mo 90.7% vs 70.4%; 12-mo 53.7% vs 44.4%"
+      ],
+      [
+        "OS",
+        "⚠️ 40.0 vs 29.7 mo — HR 0.71 (0.31–1.36), P=0.24 (immature, NS)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "Neutropenia 57% vs 46%; FN 6% vs 0%; arterial/venous thrombosis 11% vs 2%; de novo G2 HTN 21% vs 0%; GI fistula 2 pts (bev, prior RT); discontinuation for toxicity 18% vs 4%; no treatment-related deaths"
+      ]
+    ],
+    "takeaway": "Adding bevacizumab to carboplatin–paclitaxel (then as maintenance) in advanced/recurrent endometrial cancer missed its primary PFS endpoint, though ORR, 6-month disease control and OS numerically favored bevacizumab. The cost was more thromboembolism, hypertension and toxicity-driven discontinuation. Caveat: a small phase II with a lenient one-sided α of 0.20 and no molecular stratification.",
+    "url": "https://app.notion.com/3e8127970a6281d0b5e4eb91264da0e6"
+  },
+  {
+    "db": "met",
+    "name": "RUBY",
+    "year": 2023,
+    "phase": "III",
+    "cancer": "Endometrial",
+    "biomarker": "dMMR",
+    "setting": "1L",
+    "n": 494,
+    "population": "Primary advanced stage III–IV (not amenable to cure) or first-recurrence endometrial cancer; carcinosarcoma allowed. dMMR/MSI-H 24%; recurrent 48%, primary stage IV 34%, stage III 19%.",
+    "treatment": "Dostarlimab 500 mg + carboplatin/paclitaxel q3w × 6 → dostarlimab 1000 mg q6w (≤3 yr) vs placebo + carboplatin/paclitaxel → placebo",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "PFS dMMR (1°)",
+        "✅ 24-mo PFS 61.4% vs 15.7% — HR 0.28 (0.16–0.50), P<0.001"
+      ],
+      [
+        "PFS overall (1°)",
+        "✅ 24-mo PFS 36.1% vs 18.1% — HR 0.64 (0.51–0.80), P<0.001"
+      ],
+      [
+        "PFS pMMR",
+        "24-mo PFS 28.4% vs 18.8% — HR 0.76 (0.59–0.98)"
+      ],
+      [
+        "OS overall (1°)",
+        "⚠️ 24-mo OS 71.3% vs 56.0% — HR 0.64 (0.46–0.87), P=0.0021; interim, boundary 0.00177 not crossed. dMMR 83.3% vs 58.7%, HR 0.30 (0.13–0.70)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "70.5% vs 59.8% (dostarlimab/placebo-related 33.2% vs 19.5%); dostarlimab discontinuation 17.4% vs 9.3%; grade 5 AEs 5 (2.1%) vs 0"
+      ]
+    ],
+    "takeaway": "Adding dostarlimab to carboplatin–paclitaxel and continuing it as maintenance improved PFS in 1L advanced/recurrent endometrial cancer — most strikingly in dMMR disease (HR 0.28), and overall (HR 0.64). pMMR patients gained less (PFS HR 0.76). Results are 24-month landmark rates rather than medians, and OS, though favorable (HR 0.64), is from the first interim analysis and did not cross its boundary.",
+    "url": "https://app.notion.com/3e8127970a6281aa974cd85ac2fce070"
+  },
+  {
+    "db": "met",
+    "name": "AtTEnd",
+    "year": 2024,
+    "phase": "III",
+    "cancer": "Endometrial",
+    "biomarker": "dMMR / PD-L1",
+    "setting": "1L",
+    "n": 551,
+    "population": "Newly diagnosed residual/inoperable stage III–IV or recurrent endometrial cancer (no prior chemo for recurrence; prior adjuvant platinum allowed if platinum-free interval ≥6 mo); carcinosarcoma allowed; ECOG 0–2. Recurrent 67%, Asian 20%, central dMMR 23%.",
+    "treatment": "Atezolizumab 1200 mg + carboplatin/paclitaxel q3w × 6–8 → atezolizumab q3w until progression vs placebo + carboplatin/paclitaxel → placebo (2:1)",
+    "tx": [
+      "ChT",
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "PFS dMMR (1°)",
+        "✅ NE vs 6.9 mo — HR 0.36 (0.23–0.57), P=0.0005"
+      ],
+      [
+        "PFS overall (1°)",
+        "✅ 10.1 vs 8.9 mo — HR 0.74 (0.61–0.91), P=0.022"
+      ],
+      [
+        "OS overall (1°)",
+        "⚠️ 38.7 vs 30.2 mo — HR 0.82 (0.63–1.07), P=0.048; interim, boundary 0.024 not crossed. dMMR NE vs 25.7 mo, HR 0.41 (0.22–0.76)"
+      ],
+      [
+        "pMMR",
+        "❌ PFS 9.5 vs 9.2 mo — HR 0.92 (0.73–1.16); OS 31.5 vs 28.6 mo — HR 1.00 (0.74–1.35)"
+      ],
+      [
+        "ORR",
+        "↔ No difference by MMR or PD-L1 status"
+      ],
+      [
+        "Gr ≥3 AE",
+        "67% vs 64% (treatment-related 26% vs 14%); neutropenia 27% vs 28%; treatment-related serious AEs 13% vs 3%; treatment-related deaths 1 vs 1 (pneumonia)"
+      ]
+    ],
+    "takeaway": "Atezolizumab with carboplatin–paclitaxel, then as maintenance, improved PFS in 1L advanced/recurrent endometrial cancer, but the benefit was driven by dMMR tumours (HR 0.36); the overall HR was 0.74. Unlike RUBY, GY018 and DUO-E, pMMR patients gained nothing in PFS (HR 0.92) or OS (HR 1.00). OS is interim and not significant.",
+    "url": "https://app.notion.com/3e8127970a628122a08fe59f0e010b5f"
+  },
+  {
+    "db": "met",
+    "name": "NCT01367002 (HER2+ USC)",
+    "year": 2020,
+    "phase": "II",
+    "cancer": "Endometrial",
+    "biomarker": "HER2 (IHC 3+ or 2+/FISH+)",
+    "setting": "1L / 2L",
+    "n": 58,
+    "population": "HER2-positive (IHC 3+ or 2+/FISH+, central review) uterine serous carcinoma: stage III–IV after surgery (71%) or measurable recurrent disease (29%; PFI >6 mo, ≤3 prior chemo); ECOG 0–2. Control arm older (median 73 vs 66).",
+    "treatment": "Carboplatin AUC 5 + paclitaxel 175 q3w × 6 + trastuzumab (8 → 6 mg/kg q3w) → trastuzumab maintenance until progression vs carboplatin/paclitaxel alone",
+    "tx": [
+      "ChT",
+      "Others"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 12.9 vs 8.0 mo — HR 0.46 (90% CI 0.28–0.76), one-sided P=0.005"
+      ],
+      [
+        "PFS by disease status",
+        "Stage III–IV 17.7 vs 9.3 mo — HR 0.44 (0.23–0.83); recurrent 9.2 vs 7.0 mo — HR 0.12 (0.03–0.48) (90% CIs)"
+      ],
+      [
+        "OS",
+        "✅ 29.6 vs 24.4 mo — HR 0.58 (90% CI 0.34–0.99), one-sided P=0.046"
+      ],
+      [
+        "OS by disease status",
+        "Stage III–IV NR vs 25.4 mo — HR 0.49 (0.25–0.97); recurrent 25.0 vs 22.5 mo — HR 0.86 (0.36–2.10), NS (90% CIs)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "No difference in toxicity between arms (P=0.49); no trastuzumab discontinuations for toxicity"
+      ]
+    ],
+    "takeaway": "Adding trastuzumab to carboplatin–paclitaxel, then as maintenance, improved both PFS (HR 0.46) and OS (HR 0.58) in HER2-positive uterine serous carcinoma without added toxicity. The benefit was largest in primary stage III–IV disease after surgery (OS not reached vs 25.4 mo), with no OS gain in recurrent disease. Caveat: a small phase II (n=58) closed early for slow accrual, using one-sided tests at α 0.10 with 90% CIs.",
+    "url": "https://app.notion.com/3e8127970a62817e959fc92b0b5675de"
+  },
+  {
+    "db": "met",
+    "name": "SOLO-1",
+    "year": 2018,
+    "phase": "III",
+    "cancer": "Ovary",
+    "biomarker": "BRCA (BRCA1/2 mutation required)",
+    "setting": "1L maintenance",
+    "n": 391,
+    "population": "Newly diagnosed FIGO III–IV high-grade serous or endometrioid ovarian, fallopian-tube or peritoneal cancer with a BRCA1/2 mutation, in response after first-line platinum chemotherapy; prior bevacizumab excluded. CR 82%, stage III 83%, BRCA1 72%.",
+    "treatment": "Olaparib 300 mg BID vs placebo (2:1), up to 2 years (longer if PR)",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ NR vs 13.8 mo — HR 0.30 (0.23–0.41), P<0.001; 3-yr 60% vs 27%"
+      ],
+      [
+        "PFS (BICR)",
+        "HR 0.28 (0.20–0.39)"
+      ],
+      [
+        "PFS2",
+        "✅ HR 0.50 (0.35–0.72), P<0.001"
+      ],
+      [
+        "OS",
+        "⚠️ 7-yr 67.0% vs 46.5% — HR 0.55 (0.40–0.76), P=0.0004 (>0.0001 boundary, NS)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "39% vs 18% — anemia 22%, neutropenia 9%; dose reduction 28%, discontinuation 12% vs 2%"
+      ]
+    ],
+    "takeaway": "First-line olaparib maintenance after platinum chemotherapy in BRCA-mutated advanced ovarian cancer cut the risk of progression or death by about 70%, and the benefit was sustained after treatment stopped at 2 years. The 7-year OS gap (67.0% vs 46.5%, HR 0.55) is large but did not cross its significance boundary, so OS is formally not significant — and the trial applies only to BRCA-mutated disease.",
+    "url": "https://app.notion.com/3e8127970a6281a0a5b4ef0e2231e524"
+  },
+  {
+    "db": "met",
+    "name": "PRIMA",
+    "year": 2019,
+    "phase": "III",
+    "cancer": "Ovary",
+    "biomarker": "BRCA / HRD",
+    "setting": "1L maintenance",
+    "n": 733,
+    "population": "High-risk newly diagnosed FIGO III–IV high-grade serous or endometrioid ovarian, fallopian-tube or peritoneal cancer (e.g. visible residual disease, stage IV, or neoadjuvant chemo) in response after first-line platinum chemotherapy, enrolled regardless of HRD status; prior bevacizumab allowed. CR 70%, stage III 65%, HRD 51%, neoadjuvant chemo 67%.",
+    "treatment": "Niraparib 300 mg QD vs placebo (2:1), up to 3 years; niraparib dose adjusted for body weight and platelets",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS HRD (1°)",
+        "✅ 21.9 vs 10.4 mo — HR 0.43 (0.31–0.59), P<0.001; BRCAm HR 0.40, HRD non-BRCA 0.50"
+      ],
+      [
+        "PFS overall (1°)",
+        "✅ 13.8 vs 8.2 mo — HR 0.62 (0.50–0.76), P<0.001"
+      ],
+      [
+        "PFS HR-proficient",
+        "✅ HR 0.68 (0.49–0.94)"
+      ],
+      [
+        "OS",
+        "❌ ITT 46.6 vs 48.8 mo — HR 1.01 (0.84–1.23); HRD 71.9 vs 69.8 mo, HR 0.95 (0.70–1.29); HRp 36.6 vs 32.2 mo, HR 0.93 (0.69–1.26)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "70.5% vs 18.9% — anemia 30%, thrombocytopenia 30%, low WBC 13%; dose reduction 70%, discontinuation 12%"
+      ]
+    ],
+    "takeaway": "Niraparib maintenance after first-line platinum chemotherapy improved PFS in high-risk advanced ovarian cancer regardless of HRD status — largest in HRD tumours, but also present in HR-proficient disease. That PFS gain did not translate into any OS benefit (ITT HR 1.01, and no benefit in HRD or HR-proficient subgroups), and grade ≥3 haematological toxicity was high, with 70% needing a dose reduction.",
+    "url": "https://app.notion.com/3e8127970a6281dd9529c8db4850f9f6"
+  },
+  {
+    "db": "met",
+    "name": "ATHENA-MONO",
+    "year": 2022,
+    "phase": "III",
+    "cancer": "Ovary",
+    "biomarker": "BRCA / HRD",
+    "setting": "1L maintenance",
+    "n": 538,
+    "population": "Newly diagnosed FIGO III–IV high-grade serous or endometrioid ovarian, fallopian-tube or peritoneal cancer in response after first-line platinum chemotherapy, enrolled regardless of HRD status; complete (R0) resection allowed. Stage III 76%, HRD 43%, BRCA wild-type 79%.",
+    "treatment": "Rucaparib 600 mg BID vs placebo (4:1), up to 2 years",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS HRD (1°)",
+        "✅ 28.7 vs 11.3 mo — HR 0.47 (0.31–0.72), P=0.0004; BRCAm HR 0.40, BRCA wt/LOH-high 0.58"
+      ],
+      [
+        "PFS ITT (1°)",
+        "✅ 20.2 vs 9.2 mo — HR 0.52 (0.40–0.68), P<0.0001"
+      ],
+      [
+        "PFS HRD-negative",
+        "✅ 12.1 vs 9.1 mo — HR 0.65 (0.45–0.95)"
+      ],
+      [
+        "ORR (measurable disease, ~10%)",
+        "ITT 48.8% vs 9.1%; HRD 58.8% vs 20.0% — not formally tested"
+      ],
+      [
+        "OS",
+        "⏳ Immature (24.7% deaths)"
+      ],
+      [
+        "Gr ≥3 AE",
+        "60.5% vs 22.7% — anemia 28.7%, low WBC 14.6%, ALT/AST↑ 10.6%; dose reduction 49.4%, discontinuation 11.8%"
+      ]
+    ],
+    "takeaway": "Rucaparib maintenance after first-line platinum chemotherapy improved PFS in the HRD population, the whole ITT population (HR 0.52) and even HRD-negative tumours (HR 0.65). It enrolled the broadest first-line PARP inhibitor population — complete resection allowed, 79% BRCA wild-type — but OS is still immature.",
+    "url": "https://app.notion.com/3e8127970a62813d9836e029edb84a3d"
+  },
+  {
+    "db": "met",
+    "name": "SOLO-2",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "Ovary",
+    "biomarker": "BRCA (BRCA1/2 mutation required; all germline)",
+    "setting": "2L / 3L maintenance",
+    "n": 295,
+    "population": "Platinum-sensitive relapsed high-grade serous or endometrioid ovarian cancer with a BRCA1/2 mutation (all germline), after ≥2 prior platinum lines and in CR/PR to the last one; ECOG 0–1, no prior PARP inhibitor.",
+    "treatment": "Olaparib tablets 300 mg BID vs placebo (2:1), maintenance until progression",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 19.1 vs 5.5 mo — HR 0.30 (0.22–0.41), P<0.0001 (primary analysis)"
+      ],
+      [
+        "OS (final)",
+        "⚠️ 51.7 vs 38.8 mo — HR 0.74 (0.54–1.00), P=0.054 (NS); 5-yr 42% vs 33%"
+      ],
+      [
+        "OS (crossover-adjusted)",
+        "HR 0.56 (0.35–0.97) — 38% of placebo patients later received a PARP inhibitor"
+      ],
+      [
+        "TFST / TSST",
+        "HR 0.37 / 0.51"
+      ],
+      [
+        "Gr ≥3 AE",
+        "Anemia 21% vs 2%; serious AE 26% vs 8%; dose reduction 28%, discontinuation 17% vs 3%; MDS/AML 8% vs 4%"
+      ]
+    ],
+    "takeaway": "Olaparib maintenance in germline BRCA-mutated, platinum-sensitive relapsed ovarian cancer cut the risk of progression or death by about 70%. The final analysis showed a 12.9-month median OS gain (51.7 vs 38.8 mo), but it missed significance (P=0.054), likely diluted by 38% of placebo patients crossing over to a PARP inhibitor. The price of long exposure is MDS/AML in 8% of patients.",
+    "url": "https://app.notion.com/3e8127970a6281558b2ec88b4458c895"
+  },
+  {
+    "db": "met",
+    "name": "NOVA (ENGOT-OV16)",
+    "year": 2016,
+    "phase": "III",
+    "cancer": "Ovary",
+    "biomarker": "BRCA / HRD",
+    "setting": "2L / 3L maintenance",
+    "n": 553,
+    "population": "Platinum-sensitive recurrent, predominantly high-grade serous ovarian cancer after ≥2 prior platinum lines, in CR/PR to the last one. Two independent cohorts: germline BRCA (n=203) and non-gBRCA (n=350), the latter tested for HRD (myChoice).",
+    "treatment": "Niraparib 300 mg QD vs placebo (2:1), in gBRCA and non-gBRCA cohorts",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS gBRCA (1°)",
+        "✅ 21.0 vs 5.5 mo — HR 0.27 (0.17–0.41), P<0.001"
+      ],
+      [
+        "PFS non-gBRCA HRD+ (1°)",
+        "✅ 12.9 vs 3.8 mo — HR 0.38 (0.24–0.59), P<0.001"
+      ],
+      [
+        "PFS non-gBRCA (1°)",
+        "✅ 9.3 vs 3.9 mo — HR 0.45 (0.34–0.61), P<0.001; HRD-negative 6.9 vs 3.8 mo, HR 0.58"
+      ],
+      [
+        "OS (final)",
+        "↔ No difference — gBRCA 40.9 vs 38.1 mo, HR 0.85 (0.61–1.20); non-gBRCA 31.0 vs 34.8 mo, HR 1.06 (0.81–1.37)"
+      ],
+      [
+        "PFS2",
+        "gBRCA HR 0.70; non-gBRCA HR 0.80"
+      ],
+      [
+        "Gr ≥3 AE",
+        "74.1% vs 22.9% — thrombocytopenia 33.8%, anemia 25.3%, neutropenia 19.6%; discontinuation 14.7% vs 2.2%; MDS/AML (final) 3.8% vs 1.7%"
+      ]
+    ],
+    "takeaway": "Niraparib maintenance improved PFS in platinum-sensitive recurrent ovarian cancer whatever the BRCA or HRD status — largest with germline BRCA (HR 0.27), smaller but still present in HRD-negative tumours (HR 0.58). That PFS gain did not become an OS benefit at the final analysis (gBRCA HR 0.85, non-gBRCA 1.06), and grade 3–4 thrombocytopenia hit a third of patients, managed with dose reductions.",
+    "url": "https://app.notion.com/3e8127970a6281d08381e8081cdb2d3e"
+  },
+  {
+    "db": "met",
+    "name": "ARIEL3",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Ovary",
+    "biomarker": "BRCA / HRD",
+    "setting": "2L / 3L maintenance",
+    "n": 564,
+    "population": "Platinum-sensitive recurrent high-grade serous or endometrioid ovarian cancer after ≥2 prior platinum lines, in CR/PR to the last one with no limit on residual tumour size and CA-125 <ULN; ECOG 0–1. BRCA-mutant 35% (germline + somatic), HRD 63%, measurable disease 37%.",
+    "treatment": "Rucaparib 600 mg BID vs placebo (2:1), maintenance until progression",
+    "tx": [
+      "PARPi"
+    ],
+    "endpoints": [
+      [
+        "PFS BRCAm (1°)",
+        "✅ 16.6 vs 5.4 mo — HR 0.23 (0.16–0.34), P<0.0001"
+      ],
+      [
+        "PFS HRD (1°)",
+        "✅ 13.6 vs 5.4 mo — HR 0.32 (0.24–0.42), P<0.0001"
+      ],
+      [
+        "PFS ITT (1°)",
+        "✅ 10.8 vs 5.4 mo — HR 0.36 (0.30–0.45), P<0.0001; BRCA wt/LOH-low 6.7 vs 5.4 mo, HR 0.58"
+      ],
+      [
+        "OS (final)",
+        "↔ No benefit — BRCAm 45.9 vs 47.8 mo, HR 0.83 (0.58–1.19); HRD 40.5 vs 47.8 mo, HR 1.0; ITT 36.0 vs 43.2 mo, HR 0.995"
+      ],
+      [
+        "PFS2",
+        "✅ BRCAm HR 0.67; ITT HR 0.70"
+      ],
+      [
+        "Gr ≥3 AE",
+        "56% vs 15% (final 63% vs 16%) — anemia 19% (final 23%), ALT/AST↑ 10%; dose reduction 55%, discontinuation 13% vs 2%; MDS/AML (final) 4% vs 3%"
+      ]
+    ],
+    "takeaway": "Rucaparib maintenance improved PFS in platinum-sensitive recurrent ovarian cancer across every molecular group — BRCA-mutant (HR 0.23), HRD (0.32), the whole ITT population (0.36) and even BRCA wild-type/LOH-low tumours (0.58). The final analysis showed no OS benefit (ITT HR 0.995) despite a PFS2 gain, and PFS on subsequent platinum was shorter after rucaparib.",
+    "url": "https://app.notion.com/3e8127970a62810bb392d04c14c31d3c"
+  },
+  {
+    "db": "early",
+    "name": "PACIFIC",
+    "year": 2017,
+    "phase": "III",
+    "cancer": "Lung",
+    "biomarker": null,
+    "setting": "Adjuvant",
+    "n": 713,
+    "population": "Unresectable stage III NSCLC (IASLC 7th) with no progression after ≥2 cycles of platinum-based concurrent chemoRT. Unselected for PD-L1 (TC ≥25% 22%, <25% 41%, unknown 37%); EGFR-mutant 6%.",
+    "treatment": "Consolidation durvalumab 10 mg/kg Q2W up to 12 mo vs placebo (2:1), starting 1–42 days after chemoRT",
+    "tx": [
+      "ICI",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, BICR)",
+        "✅ 16.8 vs 5.6 mo — HR 0.52 (0.42–0.65), P<0.001; 2-yr 45.0% vs 25.1%; PD-L1 <25% HR 0.59, ≥25% HR 0.41"
+      ],
+      [
+        "OS",
+        "✅ 47.5 vs 29.1 mo — HR 0.72 (0.59-0.89); 5-yr 42.9% vs 33.4%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "29.9% vs 26.1%; ILD any grade 33.9% vs 24.8%; discontinuation due to AE 15.4% vs 9.8%"
+      ]
+    ],
+    "takeaway": "One year of consolidation durvalumab after chemoradiotherapy for unresectable stage III NSCLC improved both PFS and OS, making it the standard of care, with benefit regardless of PD-L1 expression. Benefit was smaller in EGFR-mutant disease, and durvalumab should be started within 42 days of completing chemoRT.",
+    "url": "https://app.notion.com/3e9127970a6281f29b19f9275e2eea06"
+  },
+  {
+    "db": "early",
+    "name": "LAURA",
+    "year": 2024,
+    "phase": "III",
+    "cancer": "Lung",
+    "biomarker": "EGFR (Ex19del/L858R)",
+    "setting": "Adjuvant",
+    "n": 216,
+    "population": "Unresectable stage III NSCLC (AJCC 8th) with EGFR Ex19del/L858R and no progression after concurrent or sequential platinum-based chemoRT. Asian 82%.",
+    "treatment": "Consolidation osimertinib 80 mg QD vs placebo (2:1) until BICR-confirmed PD; open-label osimertinib offered to both arms after PD",
+    "tx": [
+      "TKI",
+      "RT"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, BICR)",
+        "✅ 39.1 vs 5.6 mo — HR 0.16 (0.10–0.24), P<0.001; 2-yr 65% vs 13%"
+      ],
+      [
+        "OS",
+        "⚠️ 36-mo 84% vs 74% — HR 0.81 (0.42–1.56), P=0.53; 20% maturity, crossover 81%"
+      ],
+      [
+        "Gr ≥3 AE",
+        "35% vs 12%; radiation pneumonitis (any grade) 48% vs 38%; ILD 8% vs 1%; discontinuation due to AE 13% vs 5%"
+      ]
+    ],
+    "takeaway": "Osimertinib after chemoradiotherapy dramatically prolonged PFS in EGFR-mutant unresectable stage III NSCLC, so EGFR should be tested before chemoRT. OS remains immature and is confounded by 81% crossover, and radiation pneumonitis and ILD were more frequent with osimertinib.",
+    "url": "https://app.notion.com/3e9127970a6281c1bb66d9f8d67988da"
+  },
+  {
+    "db": "met",
+    "name": "AMPLITUDE",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "Prostate",
+    "biomarker": "BRCA / HRD (HRR alteration required; BRCA1/2 56%)",
+    "setting": "1L",
+    "n": 696,
+    "population": "mCSPC (ADT started 14 days–6 mo before randomization) with a required HRR gene alteration (BRCA1/2, BRIP1, CHEK2, CDK12, FANCA, PALB2, RAD51B, RAD54L); ECOG 0–2. BRCA1/2 56%, high volume 78%, prior docetaxel 16%.",
+    "treatment": "Niraparib 200 mg + abiraterone 1000 mg (dual-action tablet) + prednisone 5 mg QD vs placebo + AAP",
+    "tx": [
+      "PARPi",
+      "ARPI"
+    ],
+    "endpoints": [
+      [
+        "rPFS BRCA (1°, hierarchical)",
+        "✅ NR vs 26.0 mo — HR 0.52 (0.37–0.72), P<0.0001"
+      ],
+      [
+        "rPFS HRR effector (1°, hierarchical)",
+        "✅ NR vs 27.6 mo — HR 0.57 (0.42–0.77), P=0.0003"
+      ],
+      [
+        "rPFS ITT (1°, hierarchical)",
+        "✅ NR vs 29.5 mo — HR 0.63 (0.49–0.80), P=0.0001; non-BRCA HRR (post hoc) HR 0.81 (0.56–1.18)"
+      ],
+      [
+        "Time to symptomatic progression",
+        "BRCA HR 0.44; ITT HR 0.50"
+      ],
+      [
+        "OS (1st interim)",
+        "⚠️ BRCA HR 0.75 (0.51–1.11), P=0.15; ITT HR 0.79 (0.59–1.04), P=0.10"
+      ],
+      [
+        "Gr ≥3 AE",
+        "75.2% vs 58.9%; anemia 29.1% (transfusion 25.1%); HTN 26.5%; TEAE deaths 14 vs 7; 1 MDS"
+      ]
+    ],
+    "takeaway": "Adding niraparib to abiraterone/prednisone improved radiographic PFS in HRR-altered mCSPC, but the benefit is concentrated in BRCA-mutated patients (non-BRCA HRR post hoc HR 0.81, CI crossing 1). OS is still immature, and anemia and hypertension are the main toxicity costs.",
+    "url": "https://app.notion.com/3e9127970a62816c8285dddba5749b53"
+  },
+  {
+    "db": "met",
+    "name": "CARES-005",
+    "year": 2026,
+    "phase": "II",
+    "cancer": "HCC (TACE-eligible, unresectable)",
+    "biomarker": null,
+    "setting": "1L (with TACE)",
+    "n": 200,
+    "population": "Unresectable HCC treatable with TACE (CNLC Ib–IIIa = BCLC A–C without extrahepatic mets), Child-Pugh A; China only. BCLC C 43% and Vp3–4 PVTT 27%; beyond up-to-7 90%; HBV 80%.",
+    "treatment": "TACE + camrelizumab 200 mg q3w + rivoceranib (apatinib) 250 mg QD vs TACE alone (on-demand cTACE; crossover allowed at progression)",
+    "tx": [
+      "ICI",
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, composite)",
+        "✅ 10.8 vs 3.2 mo — HR 0.34 (0.24–0.50), P<0.001"
+      ],
+      [
+        "PFS (mRECIST)",
+        "8.8 vs 3.1 mo — HR 0.43 (0.30–0.62)"
+      ],
+      [
+        "OS",
+        "⏳ 24.0 vs 21.5 mo — HR 0.87 (0.57–1.32), P=0.50; immature (90 deaths), 75% of TACE-arm progressors crossed over"
+      ],
+      [
+        "ORR",
+        "RECICL 65% vs 29%; mRECIST 61% vs 29%"
+      ],
+      [
+        "DCR",
+        "RECICL 87% vs 63%; mRECIST 85% vs 58%"
+      ],
+      [
+        "G≥3 TRAE",
+        "74.5% vs 22.3%; TRAE deaths 3 vs 1"
+      ]
+    ],
+    "takeaway": "Adding camrelizumab plus rivoceranib to TACE roughly tripled composite PFS (HR 0.34), and it is the only TACE-combination trial to enrol BCLC C patients with Vp3–4 portal vein tumour thrombus (27%). OS is immature and confounded by 75% crossover, and this is an open-label, investigator-assessed, China-only phase II, so it is hypothesis-strengthening rather than practice-defining.",
+    "url": "https://app.notion.com/3eb127970a6281bb8e20dafd2d7e148e"
+  },
+  {
+    "db": "met",
+    "name": "EMERALD-1",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "HCC (TACE-eligible, unresectable)",
+    "biomarker": null,
+    "setting": "1L (with TACE)",
+    "n": 616,
+    "population": "Unresectable HCC amenable to TACE, no extrahepatic disease, Child-Pugh A–B7; Vp3/Vp4 excluded. BCLC A 26% / B 57% / C 16%; beyond up-to-7 52%; portal vein invasion (Vp1–2) 7%.",
+    "treatment": "TACE + durvalumab 1500 mg q4w → durvalumab 1120 mg + bevacizumab 15 mg/kg q3w (bev only ≥14 d after last TACE) vs TACE + durvalumab + placebo vs TACE + placebo",
+    "tx": [
+      "ICI",
+      "Anti-VEGF"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, D+B vs PBO)",
+        "✅ 15.0 vs 8.2 mo — HR 0.77 (0.61–0.98), P=0.032"
+      ],
+      [
+        "PFS (D vs PBO)",
+        "❌ 10.0 vs 8.2 mo — HR 0.94 (0.75–1.19), P=0.64"
+      ],
+      [
+        "TTP (D+B vs PBO)",
+        "HR 0.63 (0.48–0.82)"
+      ],
+      [
+        "ORR",
+        "44% (D+B) vs 41% (D) vs 30% (PBO) — RECIST 1.1 BICR"
+      ],
+      [
+        "OS",
+        "⏳ Not reported — interim OS not significant; still masked"
+      ],
+      [
+        "G≥3 TRAE",
+        "27% (D+B) vs 6% (D) vs 6% (PBO); no treatment-related deaths with D+B"
+      ]
+    ],
+    "takeaway": "The first positive phase III of systemic therapy added to TACE: durvalumab plus bevacizumab extended PFS from 8.2 to 15.0 months. Durvalumab plus TACE without bevacizumab did not help, so the anti-VEGF partner is what matters. OS has not yet been reported.",
+    "url": "https://app.notion.com/3eb127970a628198aa07cd01b87aa76e"
+  },
+  {
+    "db": "met",
+    "name": "EMERALD-3",
+    "year": 2026,
+    "phase": "III",
+    "cancer": "HCC (TACE-eligible, unresectable)",
+    "biomarker": null,
+    "setting": "1L (with TACE)",
+    "n": 760,
+    "population": "Embolisation-eligible unresectable HCC, Child-Pugh A, no Vp3/Vp4, ≤1 prior palliative embolisation. BCLC A 20% / B 62% / C 18%; beyond up-to-7 62%; Asian 72%.",
+    "treatment": "STRIDE (tremelimumab 300 mg ×1 + durvalumab 1500 mg q4w) + lenvatinib 8/12 mg QD + TACE vs STRIDE + TACE vs TACE alone (open-label, sponsor-blinded)",
+    "tx": [
+      "ICI",
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°, STRIDE+L+TACE vs TACE)",
+        "✅ 13.0 vs 9.8 mo — HR 0.70 (0.57–0.86), P=0.0007"
+      ],
+      [
+        "OS",
+        "⚠️ 39.5 vs 34.7 mo — HR 0.84 (0.65–1.09), P=0.18 (boundary 0.021); interim, 40% maturity"
+      ],
+      [
+        "STRIDE+TACE vs TACE (descriptive)",
+        "PFS 12.9 vs 8.1 mo — HR 0.71 (0.56–0.91); OS NR vs 32.9 mo — HR 0.70 (0.51–0.95); not formally tested"
+      ],
+      [
+        "ORR",
+        "37% vs 30% (STRIDE+TACE 41% vs 27%)"
+      ],
+      [
+        "G≥3 TRAE",
+        "63% (STRIDE+L) vs 49% (STRIDE) vs 19% (TACE); TRAE deaths 7 (2%) vs 0 vs 2"
+      ]
+    ],
+    "takeaway": "STRIDE plus lenvatinib added to TACE improved PFS (HR 0.70), but OS (HR 0.84) was not significant at interim. STRIDE plus TACE without lenvatinib looked just as good (PFS HR 0.71, OS HR 0.70) with less toxicity, though it was never formally tested. Lenvatinib added grade 3–4 toxicity, discontinuations and treatment-related deaths.",
+    "url": "https://app.notion.com/3eb127970a628169bc18e6f1133031a9"
+  },
+  {
+    "db": "met",
+    "name": "LEAP-012",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "HCC (TACE-eligible, unresectable)",
+    "biomarker": null,
+    "setting": "1L (with TACE)",
+    "n": 480,
+    "population": "Unresectable, non-metastatic HCC amenable to TACE; no portal vein invasion or extrahepatic disease; Child-Pugh A. Excluded tumour ≥10 cm, >10 tumours or ≥50% of liver. BCLC A 31% / B 59% / C 10%; tumour burden score ≤6 48%.",
+    "treatment": "Lenvatinib 8/12 mg QD + pembrolizumab 400 mg q6w (≤2 yr) + TACE vs dual placebo + TACE; systemic therapy started 2–4 wk before first TACE",
+    "tx": [
+      "ICI",
+      "TKI"
+    ],
+    "endpoints": [
+      [
+        "PFS (1°)",
+        "✅ 14.6 vs 10.0 mo — HR 0.66 (0.51–0.84), P=0.0002"
+      ],
+      [
+        "OS (1°)",
+        "⚠️ Interim — median not reported; 24-mo OS 75% vs 69% — HR 0.80 (0.57–1.11), P=0.087 (boundary 0.0012)"
+      ],
+      [
+        "TTP",
+        "HR 0.59 (0.46–0.77)"
+      ],
+      [
+        "ORR",
+        "RECIST 1.1 47% vs 33%; mRECIST 71% vs 50%"
+      ],
+      [
+        "G≥3 TRAE",
+        "71% vs 32%; hypertension 24%; TRAE deaths 4 (2%) vs 1"
+      ]
+    ],
+    "takeaway": "Lenvatinib plus pembrolizumab started before TACE extended PFS from 10.0 to 14.6 months (HR 0.66), so the trial is positive on PFS. The co-primary OS endpoint was not significant at interim, and the trial was later announced to close because of a low likelihood of meeting its OS threshold. The benefit comes at heavy cost: grade ≥3 TRAEs in 71%.",
+    "url": "https://app.notion.com/3eb127970a62815085dffdae0b0384dc"
+  },
+  {
+    "db": "early",
+    "name": "KEYNOTE-B15 / EV-304",
+    "year": 2026,
+    "phase": "III",
+    "cancer": "UC",
+    "biomarker": null,
+    "setting": "Peri-OP",
+    "n": 808,
+    "population": "Cisplatin-ELIGIBLE muscle-invasive bladder cancer (cT2–T4aN0 or T1–T4aN1), ECOG 0–1. ~72% T3N0/T4aN0; ~57% PD-L1 CPS ≥10.",
+    "treatment": "Enfortumab vedotin + pembrolizumab (neoadjuvant ×4 → cystectomy → adjuvant EV ×5 + pembro ×13) vs neoadjuvant gem/cis ×4 → cystectomy",
+    "tx": [
+      "ICI",
+      "ADC"
+    ],
+    "endpoints": [
+      [
+        "EFS (1°)",
+        "✅ 2-yr 79.4% vs 66.2%; median NR vs 48.5 mo — HR 0.53 (0.41–0.70), P<0.001"
+      ],
+      [
+        "OS",
+        "✅ 2-yr 86.9% vs 81.3% — HR 0.65 (0.48–0.89), P=0.006"
+      ],
+      [
+        "pCR",
+        "✅ 55.8% vs 32.5%, P<0.001"
+      ],
+      [
+        "DFS (post-cystectomy)",
+        "HR 0.50 (0.36–0.70)"
+      ]
+    ],
+    "takeaway": "Perioperative EV + pembrolizumab beat cisplatin-based neoadjuvant chemotherapy on EFS, OS and pCR — the first non-platinum regimen to do so. With KEYNOTE-905 it supports EV-P irrespective of cisplatin eligibility; caveats are a control arm without perioperative ICI (cf. NIAGARA), more grade ≥3 AEs (75.7% vs 67.2%) and longer treatment.",
+    "url": "https://app.notion.com/3ee127970a628136a978d7291c7bfd01"
+  },
+  {
+    "db": "early",
+    "name": "IMvigor010",
+    "year": 2021,
+    "phase": "III",
+    "cancer": "UC",
+    "biomarker": "PD-L1, ctDNA",
+    "setting": "Adjuvant",
+    "n": 809,
+    "population": "High-risk muscle-invasive urothelial carcinoma (bladder 93%, UTUC 7%) after radical surgery — ypT2–4a/ypN+ after NAC, or pT3–4a/pN+ without NAC. 52% pN+, 48% prior NAC.",
+    "treatment": "Atezolizumab 1200 mg q3w for 1 yr vs observation",
+    "tx": [
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "DFS (1°)",
+        "❌ 19.4 vs 16.6 mo — HR 0.89 (0.74–1.08), P=0.24"
+      ],
+      [
+        "OS (ITT, updated)",
+        "❌ 61.4 vs 59.0 mo — HR 0.91 (0.73–1.13)"
+      ],
+      [
+        "OS ctDNA+",
+        "⚠️ 29.8 vs 14.1 mo — HR 0.59 (0.42–0.83); ctDNA− HR 1.38, P-interaction <0.001"
+      ]
+    ],
+    "takeaway": "The first phase 3 adjuvant ICI trial in MIUC was negative for DFS and OS, with no benefit by PD-L1. Its legacy is the exploratory ctDNA signal: ctDNA-positive patients (37%) gained OS with atezolizumab while ctDNA-negative patients got no benefit and more AEs — the hypothesis IMvigor011 went on to test.",
+    "url": "https://app.notion.com/3ee127970a6281f09410de7705ec601e"
+  },
+  {
+    "db": "early",
+    "name": "IMvigor011",
+    "year": 2025,
+    "phase": "III",
+    "cancer": "UC",
+    "biomarker": "ctDNA",
+    "setting": "Adjuvant",
+    "n": 250,
+    "population": "MIBC after cystectomy, (y)pT2–4aN0 or (y)pT0–4aN+, radiologically disease-free. 761 entered serial ctDNA surveillance (q6w ×9 mo + 1 yr); 250 who turned ctDNA+ were randomized. ctDNA+ group: 57% N+, 72% T3/T4.",
+    "treatment": "Atezolizumab 1680 mg q4w for 1 yr vs placebo (2:1), ctDNA-positive patients only",
+    "tx": [
+      "ICI"
+    ],
+    "endpoints": [
+      [
+        "DFS (1°)",
+        "✅ 9.9 vs 4.8 mo — HR 0.64 (0.47–0.87), P=0.005"
+      ],
+      [
+        "OS",
+        "✅ 32.8 vs 21.1 mo — HR 0.59 (0.39–0.90), P=0.01"
+      ],
+      [
+        "Persistent ctDNA− (untreated)",
+        "1-yr DFS 95%, 2-yr DFS 88%"
+      ]
+    ],
+    "takeaway": "The first prospective ctDNA-guided adjuvant trial: treating only patients who turn ctDNA-positive improved both DFS and OS, with OS benefit regardless of PD-L1. Persistently ctDNA-negative patients did well untreated, supporting de-escalation — but follow-up is short (16.1 mo).",
+    "url": "https://app.notion.com/3ee127970a628147a188ffb1ef90e66e"
+  },
+  {
+    "db": "met",
+    "name": "IMvigor130",
+    "year": 2020,
+    "phase": "III",
+    "cancer": "UC",
+    "biomarker": "PD-L1",
+    "setting": "1L",
+    "n": 1213,
+    "population": "Untreated locally advanced or metastatic urothelial carcinoma, both cisplatin-eligible and -ineligible; ECOG 0–2. Investigator chose carboplatin in 70% (A) / 66% (C); PD-L1 IC2/3 ~24%. Arm B was restricted to PD-L1 IC2/3 after Apr 2018.",
+    "treatment": "Atezolizumab + platinum-gemcitabine (A) vs atezolizumab monotherapy (B) vs placebo + platinum-gemcitabine (C)",
+    "tx": [
+      "ICI",
+      "ChT"
+    ],
+    "endpoints": [
+      [
+        "PFS A vs C (1°)",
+        "✅ 8.2 vs 6.3 mo — HR 0.82 (0.70–0.96); P=0.007"
+      ],
+      [
+        "OS A vs C (1°)",
+        "❌ 16.1 vs 13.4 mo (final) — HR 0.85 (0.73–1.00); P=0.023 (boundary P=0.021)"
+      ],
+      [
+        "OS B vs C",
+        "❌ 15.2 vs 13.3 mo (final, exploratory) — HR 0.98 (0.82–1.16); not formally tested"
+      ],
+      [
+        "ORR",
+        "A vs C 48.1% vs 44.8%; B vs C 24.2% vs 44.4%"
+      ]
+    ],
+    "takeaway": "Adding atezolizumab to platinum-gemcitabine improved PFS, but at final analysis OS was not significantly improved (HR 0.85, missed boundary). Atezolizumab monotherapy gave OS similar to chemo overall, with a signal only in PD-L1 IC2/3 cisplatin-ineligible patients (HR 0.56, post-hoc). An exploratory cisplatin subgroup (OS 21.5 vs 13.4 mo, HR 0.76) supports pairing ICI with cisplatin-based rather than carboplatin-based chemo.",
+    "url": "https://app.notion.com/p/3f1127970a6281d5a62ec03a01260873"
   }
 ]
