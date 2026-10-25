@@ -44,6 +44,12 @@ CARD_KEYS = ["db", "name", "year", "phase", "cancer", "biomarker", "setting",
              "n", "population", "treatment", "tx", "endpoints", "takeaway", "url"]
 
 
+def canon(url):
+    """Notion hands out the same page as .../<id> and .../p/<id>; stars are
+    keyed on the card's stored url, so compare on the id and leave cards alone."""
+    return (url or "").replace("notion.com/p/", "notion.com/")
+
+
 def norm(v):
     """Whitespace-insensitive so a stray newline in Notion is not a 'change'."""
     if v is None:
@@ -87,7 +93,7 @@ def cmd_plan(rows_path):
     state = load_state()
     old = state.get("fingerprints", {})
     rows = load_rows(rows_path)
-    cards = {c["url"]: c for c in json.loads(CARDS.read_text(encoding="utf-8"))}
+    cards = {canon(c["url"]): c for c in json.loads(CARDS.read_text(encoding="utf-8"))}
 
     new, changed, gone = [], [], []
     for url, (db, row) in sorted(rows.items(), key=lambda kv: kv[1][1].get("name") or ""):
@@ -180,7 +186,7 @@ def cmd_validate():
                     break
         if not str(c.get("url") or "").startswith("http"):
             problems.append("%s url must be a link to the Notion page" % where)
-        url = c.get("url")
+        url = canon(c.get("url"))
         if url in seen:
             problems.append("two cards share notion url %r (cards %d and %d) - "
                             "one trial, one card" % (url, seen[url], idx))
