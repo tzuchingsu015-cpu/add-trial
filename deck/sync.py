@@ -71,14 +71,25 @@ def is_template(row):
     return norm(row.get("name") or "").lower().startswith("template for")
 
 
+def page_id(url):
+    """Notion serves the same page as .../<id> and .../p/<id>; the id is the key."""
+    return url.rstrip("/").split("/")[-1]
+
+
 def load_rows(path):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
+    # Cards (and the user's starred cards) are keyed on the url spelling they
+    # were written with, so map each row onto the existing card's spelling.
+    known = {page_id(c["url"]): c["url"]
+             for c in json.loads(CARDS.read_text(encoding="utf-8"))}
     out = {}
     for db in ("early", "met"):
         for row in data.get(db, []):
             url = (row.get("url") or "").strip()
             if not url or is_template(row):
                 continue
+            url = known.get(page_id(url), url)
+            row["url"] = url
             out[url] = (db, row)
     return out
 
