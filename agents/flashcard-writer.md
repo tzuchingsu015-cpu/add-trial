@@ -43,12 +43,13 @@ SELECT "Key Trials/Med" AS name, "Year" AS yr, "Phase" AS phase,
 FROM "collection://2a312797-0a62-81c7-82ef-000b4de44d4b" ORDER BY name
 ```
 
-Metastatic — note `Treatments` (plural) and the different endpoint columns:
+Metastatic — note the different endpoint columns. (The treatment column was
+renamed from `Treatments` to `Treatment` in Notion; the `tx` alias is unchanged.)
 
 ```sql
 SELECT "Key Trials/Med" AS name, "Year" AS yr, "Phase" AS phase,
        "Cancer type" AS ca, "Biomarker" AS bm, "Line" AS line,
-       "Patient population" AS pop, "Drug/Control" AS arms, "Treatments" AS tx,
+       "Patient population" AS pop, "Drug/Control" AS arms, "Treatment" AS tx,
        "ORR (%)" AS orr, "DCR (%)" AS dcr, "PFS (month)" AS pfs,
        "mOS (month)" AS os, "HR (95% CI)" AS hr, "Key takeaway" AS takeaway, url
 FROM "collection://2a012797-0a62-81ff-b9bc-000b1334cb16" ORDER BY name
@@ -56,7 +57,9 @@ FROM "collection://2a012797-0a62-81ff-b9bc-000b1334cb16" ORDER BY name
 
 **SQL mode returns at most 100 rows.** Both databases are larger than that.
 Check `has_more` and page with `ORDER BY name DESC LIMIT 100` to sweep from the
-other end, then merge and de-duplicate on `url`. Confirm your row count against
+other end, then merge and de-duplicate on `url`. Once a database passes 200
+rows the two ends no longer meet: add `ORDER BY name LIMIT 100 OFFSET <k>`
+pages for the middle (the metastatic database needed one at 244 rows). Confirm your row count against
 `SELECT COUNT(*)` before trusting it — a short pull looks exactly like a batch
 of deleted trials.
 
@@ -129,7 +132,7 @@ Notion row `CM-274` is the card `CheckMate-274`.
 | `n` | `Number` (early only) as an integer, else `null` — unless the population text states an N you can trust |
 | `population` | 1–3 sentences of **key demographics**: disease and stage, the enrolment criterion that defines the trial, and the 2–4 baseline figures that change how you read the result. Not the whole eligibility list |
 | `treatment` | The arms, as a comparison. Keep dose/duration when it is the point of the trial (`"Extended anastrozole 2 more yr (total 7) vs 5 more yr (total 10)"`) |
-| `tx` | The `Treatment`/`Treatments` array verbatim — these drive the deck's treatment filter, so use the exact DB labels |
+| `tx` | The `Treatment` array verbatim — these drive the deck's treatment filter, so use the exact DB labels |
 | `endpoints` | 2–6 `[label, value]` pairs. See below |
 | `takeaway` | 1–3 sentences of your own synthesis. See below |
 | `url` | The Notion page URL, unchanged |

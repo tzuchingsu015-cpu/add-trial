@@ -353,6 +353,11 @@ kbd{
           S.pos=typeof d.pos==="number"?d.pos:0;
           S.stage=typeof d.stage==="number"?d.stage:0;
           S.stars=d.stars&&typeof d.stars==="object"?d.stars:{};
+          /* some cards once used Notion's /p/<id> link form; re-key to the canonical url */
+          for(var sk in S.stars) if(sk.indexOf("app.notion.com/p/")>=0){
+            S.stars[sk.replace("app.notion.com/p/","app.notion.com/")]=S.stars[sk]; delete S.stars[sk];
+          }
+          S.order=S.order.map(function(u){return typeof u==="string"?u.replace("app.notion.com/p/","app.notion.com/"):u;});
           if(d.filters&&typeof d.filters==="object"){
             for(var k in S.filters) if(k in d.filters) S.filters[k]=d.filters[k];
           }
